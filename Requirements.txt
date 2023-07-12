@@ -1,0 +1,85 @@
+Bag Container Adaptor v2
+========================
+A bag, sometimes called a multiset, is an abstract data type that can store a collection of elements without regard to their order. Equal elements can appear multiple times in a bag.
+Although the elements contained in a bag have no inherent order, iterating over the bag elements is guaranteed to visit each element exactly once.
+A bag is called dynamic if it supports runtime insertion and removal of elements.
+
+A bag can be implemented using different data structures, such as linked lists, hash tables, or various tree structures.
+This flexibility of implementation, as well as the relatively low number of supported operations, makes bag a candidate for being implemented as a C++ container adaptor.
+The goal of this assignment is to develop a dynamic bag container adaptor that can use various container types already defined in the C++ standard library.
+
+
+Requirements
+------------
+- The bag shall be written in C++14.
+- The bag shall be an STL compatible container adaptor.
+- The bag shall be a template class, taking the underlying container type as a template parameter.
+- The bag shall support the underlying container types std::vector, std::deque, std::list, std::forward_list, std::multiset, and std::unordered_multiset.
+- The bag shall support the underlying container Dynamic Ring Buffer [Jere Luhtanen, upcoming].
+- The bag shall support constant time move construction, move assignment to empty bag, and swapping.
+- The bag shall support const and non-const iteration over the contained elements.
+- The bag iterators shall satisfy the requirements of LegacyForwardIterator.
+- The member function front() shall return the in iteration order first element of the bag in constant time.
+- The member function size() shall return the number of elements in the bag in constant time.
+- The member function empty() shall return whether the bag lacks elements in constant time.
+- The bag shall support insertion of new elements.
+- The bag shall support lookup of arbitrary elements.
+- The bag shall support removal of found elements.
+- The bag shall give the strictest time complexity guarantee supported by the underlying container type for element insertion, lookup, and removal.
+- Each member variable, function, parameter, return value, precondition, postcondition, side effect, exception, and exception safety guarantee shall be documented.
+- Each testable requirement shall have a test.
+- The bag shall be benchmarked for time and memory usage in differing use cases using all supported underlying container types.
+- The bag shall be deployable in commercial software without restrictions.
+
+Notes
+-----
+- All time complexity requirements are defined against the number of elements contained in the bag.
+- The bag may also support non-required functions, if applicable.
+- Any modifying operation may invalidate all iterators, pointers, and references to elements contained within the bag.
+- Any modifying operation may change the iteration order of the elements.
+- The bag may use the method presented in The Art of Computer Programming: Combinatorial Algorithms, Part2, Volume 4B, Section 7.2.2 Backtrack Programming - Sequential allocation redux. (page 62)
+- The bag implementation should use existing C++ utilities, such as std::find(), where applicable.
+- The bag should be thread agnostic, relying on external synchronization for thread safety.
+- The bag may support a "safe" build variant, similar to _GLIBCXX_DEBUG in libstdc++.
+- The implementation process may use the design science methodology.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- Benchmark iteration
+- Benchmark push n, pop n... 
+- Benchmark push n, pop n/2, push n... 
+- Benchmark memory usage
+- Benchmark with costly default insertable objects
+
