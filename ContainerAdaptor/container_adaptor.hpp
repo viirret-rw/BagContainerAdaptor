@@ -32,6 +32,11 @@ public:
 		m_implementation.insert(value);
 	}
 
+	void remove(const value_type& value)
+	{
+		m_implementation.remove(value);
+	}
+
 	void print()
 	{
 		m_implementation.print();
