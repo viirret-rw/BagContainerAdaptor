@@ -6,8 +6,7 @@
 #include <vector>
 #include <list>
 
-#define DEBUG
-
+// TODO this class should be inside the linked list.
 template <typename Value>
 struct Node
 {
@@ -67,18 +66,6 @@ public:
 			m_tail = newNode;
 			m_tail->m_inverse = prevNode;
 		}
-
-// Just checking stuff before I have created actual tests.
-#ifdef DEBUG
-		std::uintptr_t headAddress = reinterpret_cast<std::uintptr_t>(m_head);
-		std::uintptr_t tailAddress = reinterpret_cast<std::uintptr_t>(m_tail);
-		std::uintptr_t inverseAddress = reinterpret_cast<std::uintptr_t>(m_tail->m_inverse);
-
-		std::cout << "Head Address: " << headAddress << std::endl;
-		std::cout << "Tail Address: " << tailAddress << std::endl;
-		std::cout << "Inverse address: " << inverseAddress << std::endl;
-		std::cout << std::endl;
-#endif
 	}
 
 	void remove(const Value& value)
@@ -94,30 +81,86 @@ public:
 
 		if (currentNode)
 		{
-			// This means that the target Node is the head Node.
-			if (previousNode == nullptr)
+			// Target Node is the head Node.
+			if (!previousNode)
 			{
 				m_head = currentNode->m_next;
+				currentNode->m_next->m_inverse = nullptr;
 			}
+
+			// Target Node is the tail Node.
+			else if (!currentNode->m_next)
+			{
+				m_tail = previousNode;
+				previousNode->m_next = nullptr;
+			}
+
+			// Target Node is normal Node.
 			else
 			{
 				previousNode->m_next = currentNode->m_next;
-				previousNode->m_inverse = previousNode;
+				currentNode->m_next->m_inverse = previousNode;
 			}
+
 			delete currentNode;
+			remove(value);
 		}
 		else
 		{
-			std::cout << "Could not find the Node to delete" << std::endl;
+			return;
 		}
 	}
 
-	void print()
+	void activate(const Value& value)
+	{
+		Node<Value>* travellerNode = m_head;
+
+		while (travellerNode)
+		{
+			if (travellerNode->m_inverse && travellerNode->m_inverse->m_data == value)
+			{
+				travellerNode->m_inverse->isActive = true;
+				break;
+			}
+			travellerNode = travellerNode->m_next;
+		}
+	}
+
+	void deactivate(const Value& value)
+	{
+		Node<Value>* travellerNode = m_head;
+
+		while (travellerNode)
+		{
+			if (travellerNode->m_inverse && travellerNode->m_inverse->m_data == value)
+			{
+				travellerNode->m_inverse->isActive = false;
+				break;
+			}
+			travellerNode = travellerNode->m_next;
+		}
+	}
+
+	void debugInfo() const
 	{
 		auto current = m_head;
 		while (current)
 		{
-			std::cout << current->m_data << " ";
+			if (current == m_head)
+			{
+				std::cout << "Head ";
+			}
+			if (current == m_tail)
+			{
+				std::cout << "Tail ";
+			}
+
+			std::cout << "Node: " << (current->isActive ? "X" : "_") << " " << current->m_data << std::endl;
+			std::cout << "Address: " << current << std::endl;
+			std::cout << "Inverse address: " << current->m_inverse << std::endl;
+			std::cout << "Next address: " << current->m_next << std::endl;
+			std::cout << std::endl;
+
 			current = current->m_next;
 		}
 		std::cout << std::endl;

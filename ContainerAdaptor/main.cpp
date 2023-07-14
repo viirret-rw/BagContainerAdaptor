@@ -16,9 +16,19 @@ int main()
 	f.insert(1);
 	f.insert(2);
 	f.insert(5);
+	f.insert(5);
 	f.insert(100);
 	f.insert(1000);
 	f.insert(33);
+
+	f.deactivate(5);
+
+	f.debugInfo();
+
+	f.remove(5);
+
+	f.debugInfo();
+
 
 	//std::vector<int> vec { 1, 2, 3, 4, 5};
 
@@ -27,11 +37,9 @@ int main()
 	//ContainerAdaptor<std::vector<int>, SequentialList<int>> a;
 	//ContainerAdaptor<std::list<int>> g;
 
-	f.print();
 
 	//f.remove(1);
 
-	f.print();
 
 	return 0;
 }

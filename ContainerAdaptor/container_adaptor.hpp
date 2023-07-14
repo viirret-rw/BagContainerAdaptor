@@ -37,9 +37,19 @@ public:
 		m_implementation.remove(value);
 	}
 
-	void print()
+	void activate(const value_type& value)
 	{
-		m_implementation.print();
+		m_implementation.activate(value);
+	}
+
+	void deactivate(const value_type& value)
+	{
+		m_implementation.deactivate(value);
+	}
+
+	void debugInfo() const
+	{
+		m_implementation.debugInfo();
 	}
 
 private:
