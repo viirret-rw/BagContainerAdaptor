@@ -6,38 +6,39 @@
 #include <vector>
 #include <list>
 
-// TODO this class should be inside the linked list.
-template <typename Value>
-struct Node
-{
-	/// Constructor.
-	explicit Node(const Value& value) :
-		m_data(value)
-	{
-	}
-
-	// Copy constructor.
-	explicit Node(const Node<Value>& node) :
-		m_data(node.m_data)
-	{
-	}
-
-	Value m_data;
-
-	Node<Value>* m_next = nullptr;
-	Node<Value>* m_inverse = nullptr;
-
-	bool isActive = true;
-};
-
-template <typename Value>
+template <typename Container>
 class LinkedList
 {
 public:
+	using value_type = typename Container::value_type;
+
+	template <typename T>
+	struct Node
+	{
+		/// Constructor.
+		explicit Node(const T& value) :
+			m_data(value)
+		{
+		}
+
+		// Copy constructor.
+		explicit Node(const Node<T>& node) :
+			m_data(node.m_data)
+		{
+		}
+
+		T m_data;
+
+		Node<T>* m_next = nullptr;
+		Node<T>* m_inverse = nullptr;
+
+		bool isActive = true;
+	};
+
 	~LinkedList()
 	{
 		auto current = m_head;
-		Node<Value>* previous = nullptr;
+		Node<value_type>* previous = nullptr;
 		while (current)
 		{
 			previous = current;
@@ -47,9 +48,9 @@ public:
 	}
 	
 
-	void insert(const Value& value)
+	void insert(const value_type& value)
 	{
-		Node<Value>* newNode = new Node<Value>(value);
+		Node<value_type>* newNode = new Node<value_type>(value);
 
 		// List is empty.
 		if (!m_head)
@@ -61,17 +62,18 @@ public:
 		// Adding a new Node to the linked list.
 		else
 		{
-			Node<Value>* prevNode = m_tail;
+			Node<value_type>* prevNode = m_tail;
 			m_tail->m_next = newNode;
 			m_tail = newNode;
 			m_tail->m_inverse = prevNode;
 		}
+		m_count++;
 	}
 
-	void remove(const Value& value)
+	void remove(const value_type& value)
 	{
-		Node<Value>* currentNode = m_head;
-		Node<Value>* previousNode = nullptr;
+		Node<value_type>* currentNode = m_head;
+		Node<value_type>* previousNode = nullptr;
 
 		while (currentNode && currentNode->m_data != value)
 		{
@@ -103,6 +105,7 @@ public:
 			}
 
 			delete currentNode;
+			m_count--;
 			remove(value);
 		}
 		else
@@ -111,9 +114,9 @@ public:
 		}
 	}
 
-	void activate(const Value& value)
+	void activate(const value_type& value)
 	{
-		Node<Value>* travellerNode = m_head;
+		Node<value_type>* travellerNode = m_head;
 
 		while (travellerNode)
 		{
@@ -126,9 +129,9 @@ public:
 		}
 	}
 
-	void deactivate(const Value& value)
+	void deactivate(const value_type& value)
 	{
-		Node<Value>* travellerNode = m_head;
+		Node<value_type>* travellerNode = m_head;
 
 		while (travellerNode)
 		{
@@ -139,6 +142,36 @@ public:
 			}
 			travellerNode = travellerNode->m_next;
 		}
+	}
+
+	value_type& front()
+	{
+		return m_head->m_data;
+	}
+
+	const value_type& front() const
+	{
+		return m_head->m_data;
+	}
+
+	value_type& back()
+	{
+		return m_tail->m_data;
+	}
+
+	const value_type& back() const
+	{
+		return m_tail->m_data;
+	}
+
+	size_t size() const
+	{
+		return m_count;
+	}
+
+	bool empty() const
+	{
+		return !m_head;
 	}
 
 	void debugInfo() const
@@ -169,10 +202,13 @@ public:
 private:
 
 	// Pointing always to the first element.
-	Node<Value>* m_head = nullptr;
+	Node<value_type>* m_head = nullptr;
 
 	// Pointing always to the last element.
-	Node<Value>* m_tail = nullptr;
+	Node<value_type>* m_tail = nullptr;
+
+	// Amount of Nodes in the linked list.
+	size_t m_count = 0;
 };
 
 #endif

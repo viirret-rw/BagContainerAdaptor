@@ -21,13 +21,17 @@ int main()
 	f.insert(1000);
 	f.insert(33);
 
-	f.deactivate(5);
+	f.debugInfo();
+
+	f.insert(std::vector<int>{ 1, 2, 3, 4, 5 });
 
 	f.debugInfo();
 
-	f.remove(5);
-
-	f.debugInfo();
+	// Testing member functions.
+	std::cout << "Front: " << f.front() << std::endl;
+	std::cout << "Back: " << f.back() << std::endl;
+	std::cout << "Size: " << f.size() << std::endl;
+	std::cout << "Empty: " << f.empty() << std::endl;
 
 
 	//std::vector<int> vec { 1, 2, 3, 4, 5};
