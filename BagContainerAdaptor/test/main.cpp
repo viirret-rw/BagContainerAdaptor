@@ -1,4 +1,4 @@
-#include "container_adaptor.hpp"
+#include <BagContainerAdaptor/container_adaptor.hpp>
 
 template <typename T>
 struct Example
@@ -47,4 +47,3 @@ int main()
 
 	return 0;
 }
-

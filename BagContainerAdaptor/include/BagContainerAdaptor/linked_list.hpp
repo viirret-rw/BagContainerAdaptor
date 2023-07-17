@@ -47,7 +47,6 @@ public:
 		}
 	}
 	
-
 	void insert(const value_type& value)
 	{
 		Node<value_type>* newNode = new Node<value_type>(value);
