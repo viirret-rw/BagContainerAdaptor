@@ -1,49 +1,36 @@
-#include <BagContainerAdaptor/container_adaptor.hpp>
+#include <gtest/gtest.h>
 
-template <typename T>
-struct Example
+#define ADD_BENCHMARK
+
+#include "performance.cpp"
+
+#include <algorithm>
+
+TEST(mainTests, IteratorTest)
 {
-	T* data;	
-};
+	BagContainerAdaptor<std::list<int>> adapter;
 
-int main()
+	adapter.insert(1);
+	adapter.insert(2);
+	adapter.insert(5);
+	adapter.insert(7);
+	adapter.insert(11);
+	adapter.insert(30);
+
+	auto it = std::find(adapter.begin(), adapter.end(), 7);
+
+	if(it != adapter.end())
+	{
+		std::cout << "Value found" << std::endl;
+	}
+	else
+	{
+		std::cout << "Value not found" << std::endl;
+	}
+}
+
+int main(int argc, char** argv)
 {
-	//ContainerAdaptor<int, std::vector> adaptor1;
-	//ContainerAdaptor<int, Example> adaptor2;
-
-	ContainerAdaptor<std::vector<int>> f;
-
-	f.insert(1);
-	f.insert(2);
-	f.insert(5);
-	f.insert(5);
-	f.insert(100);
-	f.insert(1000);
-	f.insert(33);
-
-	f.debugInfo();
-
-	f.insert(std::vector<int>{ 1, 2, 3, 4, 5 });
-
-	f.debugInfo();
-
-	// Testing member functions.
-	std::cout << "Front: " << f.front() << std::endl;
-	std::cout << "Back: " << f.back() << std::endl;
-	std::cout << "Size: " << f.size() << std::endl;
-	std::cout << "Empty: " << f.empty() << std::endl;
-
-
-	//std::vector<int> vec { 1, 2, 3, 4, 5};
-
-	//ContainerAdaptor<vec> g;
-
-	//ContainerAdaptor<std::vector<int>, SequentialList<int>> a;
-	//ContainerAdaptor<std::list<int>> g;
-
-
-	//f.remove(1);
-
-
-	return 0;
+	testing::InitGoogleTest(&argc, argv);
+	return RUN_ALL_TESTS();
 }

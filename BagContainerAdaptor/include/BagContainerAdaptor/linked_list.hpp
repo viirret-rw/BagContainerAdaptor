@@ -2,7 +2,7 @@
 #define LINKED_LIST_HPP
 
 #include <iostream>
-
+#include <cstddef>
 #include <vector>
 #include <list>
 
@@ -34,6 +34,75 @@ public:
 
 		bool isActive = true;
 	};
+
+	class Iterator : public std::iterator<
+						std::forward_iterator_tag, 
+						Node<value_type>, 
+						std::ptrdiff_t, 
+						Node<value_type>*, 
+						Node<value_type>&
+						>
+	{
+	public:
+		explicit Iterator(Node<value_type>* node) :
+			currentNode(node)
+		{
+		}
+
+		value_type& operator*() const
+		{
+			return currentNode->m_data;
+		}
+
+		value_type* operator->() const
+		{
+			return &(currentNode->m_data);
+		}
+
+		Iterator& operator++()
+		{
+			currentNode = currentNode->m_next;
+			return *this;
+		}
+
+		Iterator operator++(int)
+		{
+			Iterator temp = *this;
+			++(*this);
+			return temp;
+		}
+
+		bool operator==(const Iterator& other) const
+		{
+			return currentNode == other.currentNode;
+		}
+
+		bool operator!=(const Iterator& other) const
+		{
+			return currentNode != other.currentNode;
+		}
+
+		// Copy constructibility
+		Iterator(const Iterator&) = default;
+		Iterator& operator=(const Iterator&) = default;
+
+		// Move constructibility
+		Iterator(Iterator&&) = default;
+		Iterator& operator=(Iterator&&) = default; 
+
+	private:
+		Node<value_type>* currentNode;
+	};
+
+	Iterator begin()
+	{
+		return Iterator(m_head);
+	}
+
+	Iterator end()
+	{
+		return Iterator(nullptr);
+	}
 
 	~LinkedList()
 	{

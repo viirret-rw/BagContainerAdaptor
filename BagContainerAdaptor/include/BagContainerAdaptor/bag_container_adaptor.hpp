@@ -4,17 +4,17 @@
 #include "linked_list.hpp"
 
 template <typename Container, typename Implementation = LinkedList<Container>>
-class ContainerAdaptor
+class BagContainerAdaptor
 {
 public:
 	using value_type = typename Container::value_type;
 
 	// Move constructor.
-	ContainerAdaptor(Container&& container) : m_container(std::move(container))
+	BagContainerAdaptor(Container&& container) : m_container(std::move(container))
 	{
 	}
 
-	ContainerAdaptor()
+	BagContainerAdaptor()
 	{
 		// Container type is std::vector.
 		if (std::is_same<Container, std::vector<value_type>>::value)
@@ -34,19 +34,20 @@ public:
 
 	void insert(const Container& container)
 	{
-		// Container type is std::vector.
-		if (std::is_same<Container, std::vector<value_type>>::value)
+		for (const auto& item : container)
 		{
-			for (const auto& item : container)
-			{
-				m_implementation.insert(item);
-			}
+			m_implementation.insert(item);
 		}
+	}
 
-		// Container type is std::list.
-		else if (std::is_same<Container, std::list<value_type>>::value)
-		{
-		}
+	typename Implementation::Iterator begin()
+	{
+		return m_implementation.begin();
+	}
+
+	typename Implementation::Iterator end()
+	{
+		return m_implementation.end();
 	}
 
 	void remove(const value_type& value)
