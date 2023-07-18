@@ -3,6 +3,9 @@
 
 #include "linked_list.hpp"
 
+#include <vector>
+#include <list>
+
 template <typename Container, typename Implementation = LinkedList<Container>>
 class BagContainerAdaptor
 {
@@ -34,10 +37,22 @@ public:
 
 	void insert(const Container& container)
 	{
-		for (const auto& item : container)
-		{
-			m_implementation.insert(item);
-		}
+		m_implementation.insert(container);
+	}
+
+	void remove(const value_type& value)
+	{
+		m_implementation.remove(value);
+	}
+
+	void swap(BagContainerAdaptor& other)
+	{
+		m_implementation.swap(other.m_implementation);
+	}
+
+	typename Implementation::Iterator cbegin() const
+	{
+		return m_implementation.cbegin();
 	}
 
 	typename Implementation::Iterator begin()
@@ -45,14 +60,24 @@ public:
 		return m_implementation.begin();
 	}
 
+	typename Implementation::Iterator cend() const
+	{
+		return m_implementation.cend();
+	}
+
 	typename Implementation::Iterator end()
 	{
 		return m_implementation.end();
 	}
 
-	void remove(const value_type& value)
+	typename Implementation::Iterator find(const value_type& value) const
 	{
-		m_implementation.remove(value);
+		return m_implementation.find(value);
+	}
+
+	typename Implementation::Iterator find(const value_type& value)
+	{
+		return m_implementation.find(value);
 	}
 
 	void activate(const value_type& value)

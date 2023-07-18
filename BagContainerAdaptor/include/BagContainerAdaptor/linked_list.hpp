@@ -2,9 +2,8 @@
 #define LINKED_LIST_HPP
 
 #include <iostream>
+#include <algorithm>
 #include <cstddef>
-#include <vector>
-#include <list>
 
 template <typename Container>
 class LinkedList
@@ -99,9 +98,19 @@ public:
 		return Iterator(m_head);
 	}
 
+	Iterator cbegin() const
+	{
+		return Iterator(m_head);
+	}
+
 	Iterator end()
 	{
-		return Iterator(nullptr);
+		return Iterator(m_tail);
+	}
+
+	Iterator cend() const
+	{
+		return Iterator(m_tail);
 	}
 
 	~LinkedList()
@@ -136,6 +145,14 @@ public:
 			m_tail->m_inverse = prevNode;
 		}
 		m_count++;
+	}
+
+	void insert(const Container& container)
+	{
+		for (auto&& item : container)
+		{
+			insert(item);
+		}
 	}
 
 	void remove(const value_type& value)
@@ -180,6 +197,28 @@ public:
 		{
 			return;
 		}
+	}
+
+	void swap(LinkedList& other)
+	{
+		auto tempHead = m_head;
+		auto tempTail = m_head;
+
+		m_head = other.m_head;
+		m_tail = other.m_tail;
+
+		other.m_head = tempHead;
+		other.m_tail = tempTail;
+	}
+
+	Iterator find(const value_type& value) const
+	{
+		return std::find(cbegin(), cend(), value);
+	}
+
+	Iterator find(const value_type& value)
+	{
+		return std::find(begin(), end(), value);
 	}
 
 	void activate(const value_type& value)
