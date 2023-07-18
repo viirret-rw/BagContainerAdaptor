@@ -13,8 +13,19 @@ public:
 	using value_type = typename Container::value_type;
 
 	// Move constructor.
-	BagContainerAdaptor(Container&& container) : m_container(std::move(container))
+	BagContainerAdaptor(Container&& container)
 	{
+		m_implementation.setContainerType(std::move(container));
+	}
+
+	// Move assignment operator.
+	BagContainerAdaptor& operator=(BagContainerAdaptor&& other)
+	{
+		if (this != &other)
+		{
+			m_implementation = std::move(other.m_implementation);
+		}
+		return *this;
 	}
 
 	BagContainerAdaptor()
@@ -126,7 +137,6 @@ public:
 	}
 
 private:
-	Container m_container;
 	Implementation m_implementation;
 };
 

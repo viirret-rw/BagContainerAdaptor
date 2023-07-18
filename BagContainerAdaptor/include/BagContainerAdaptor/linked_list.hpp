@@ -115,6 +115,29 @@ public:
 
 	~LinkedList()
 	{
+		clear();
+	}
+
+	LinkedList& operator=(LinkedList&& other)
+	{
+		if (this != &other)
+		{
+			m_head = other.m_head;
+			m_tail = other.m_tail;
+			m_count = other.m_count;
+
+			// This is not actually needed at least yet.
+			m_container = std::move(other.m_container);
+
+			other.m_head = nullptr;
+			other.m_tail = nullptr;
+		}
+		return *this;
+	}
+
+
+	void clear()
+	{
 		auto current = m_head;
 		Node<value_type>* previous = nullptr;
 		while (current)
@@ -306,6 +329,11 @@ public:
 		std::cout << std::endl;
 	}
 
+	void setContainerType(Container&& container)
+	{
+		m_container = std::move(container);
+	}
+
 private:
 
 	// Pointing always to the first element.
@@ -316,6 +344,9 @@ private:
 
 	// Amount of Nodes in the linked list.
 	size_t m_count = 0;
+
+	// Type of STL container.
+	Container m_container;
 };
 
 #endif
