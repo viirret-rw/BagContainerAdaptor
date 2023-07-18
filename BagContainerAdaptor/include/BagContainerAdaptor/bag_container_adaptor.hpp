@@ -3,19 +3,20 @@
 
 #include "linked_list.hpp"
 
-#include <vector>
-#include <list>
-
-template <typename Container, typename Implementation = LinkedList<Container>>
+template <typename Container>
 class BagContainerAdaptor
 {
 public:
 	using value_type = typename Container::value_type;
 
-	// Move constructor.
-	BagContainerAdaptor(Container&& container)
+	BagContainerAdaptor()
 	{
-		m_implementation.setContainerType(std::move(container));
+		initializeContainer();
+	}
+
+	// Move constructor.
+	BagContainerAdaptor(Container&& container) : m_container(std::move(container))
+	{
 	}
 
 	// Move assignment operator.
@@ -23,121 +24,113 @@ public:
 	{
 		if (this != &other)
 		{
-			m_implementation = std::move(other.m_implementation);
+			m_container = std::move(other.m_container);
 		}
 		return *this;
 	}
 
-	BagContainerAdaptor()
-	{
-		// Container type is std::vector.
-		if (std::is_same<Container, std::vector<value_type>>::value)
-		{
-		}
-
-		// Container type is std::list.
-		else if (std::is_same<Container, std::list<value_type>>::value)
-		{
-		}
-	}
-
 	void insert(const value_type& value)
 	{
-		m_implementation.insert(value);
+		m_container.insert(value);
 	}
 
 	void insert(const Container& container)
 	{
-		m_implementation.insert(container);
+		m_container.insert(container);
 	}
 
 	void remove(const value_type& value)
 	{
-		m_implementation.remove(value);
+		m_container.remove(value);
 	}
 
 	void swap(BagContainerAdaptor& other)
 	{
-		m_implementation.swap(other.m_implementation);
+		m_container.swap(other.m_container);
 	}
 
-	typename Implementation::Iterator cbegin() const
+	typename Container::Iterator cbegin() const
 	{
-		return m_implementation.cbegin();
+		return m_container.cbegin();
 	}
 
-	typename Implementation::Iterator begin()
+	typename Container::Iterator begin()
 	{
-		return m_implementation.begin();
+		return m_container.begin();
 	}
 
-	typename Implementation::Iterator cend() const
+	typename Container::Iterator cend() const
 	{
-		return m_implementation.cend();
+		return m_container.cend();
 	}
 
-	typename Implementation::Iterator end()
+	typename Container::Iterator end()
 	{
-		return m_implementation.end();
+		return m_container.end();
 	}
 
-	typename Implementation::Iterator find(const value_type& value) const
+	typename Container::Iterator find(const value_type& value) const
 	{
-		return m_implementation.find(value);
+		return m_container.find(value);
 	}
 
-	typename Implementation::Iterator find(const value_type& value)
+	typename Container::Iterator find(const value_type& value)
 	{
-		return m_implementation.find(value);
+		return m_container.find(value);
 	}
 
 	void activate(const value_type& value)
 	{
-		m_implementation.activate(value);
+		m_container.activate(value);
 	}
 
 	void deactivate(const value_type& value)
 	{
-		m_implementation.deactivate(value);
+		m_container.deactivate(value);
 	}
 
 	value_type& front()
 	{
-		return m_implementation.front();
+		return m_container.front();
 	}
 
 	const value_type& front() const
 	{
-		return m_implementation.front();
+		return m_container.front();
 	}
 
 	value_type& back()
 	{
-		return m_implementation.back();
+		return m_container.back();
 	}
 
 	const value_type& back() const
 	{
-		return m_implementation.back();
+		return m_container.back();
 	}
 
 	size_t size() const
 	{
-		return m_implementation.size();
+		return m_container.size();
 	}
 
 	bool empty() const
 	{
-		return m_implementation.empty();
+		return m_container.empty();
 	}
 
 	void debugInfo() const
 	{
-		m_implementation.debugInfo();
+		m_container.debugInfo();
+	}
+
+	void initializeContainer()
+	{
+		m_container = LinkedList<int>();
 	}
 
 private:
-	Implementation m_implementation;
+	Container m_container;
 };
 
 #endif

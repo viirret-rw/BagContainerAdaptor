@@ -5,13 +5,12 @@
 #include <algorithm>
 #include <cstddef>
 
-template <typename Container>
+template <typename T>
 class LinkedList
 {
 public:
-	using value_type = typename Container::value_type;
+	using value_type = T;
 
-	template <typename T>
 	struct Node
 	{
 		/// Constructor.
@@ -21,39 +20,39 @@ public:
 		}
 
 		// Copy constructor.
-		explicit Node(const Node<T>& node) :
+		explicit Node(const Node& node) :
 			m_data(node.m_data)
 		{
 		}
 
 		T m_data;
 
-		Node<T>* m_next = nullptr;
-		Node<T>* m_inverse = nullptr;
+		Node* m_next = nullptr;
+		Node* m_inverse = nullptr;
 
 		bool isActive = true;
 	};
 
 	class Iterator : public std::iterator<
 						std::forward_iterator_tag, 
-						Node<value_type>, 
+						Node, 
 						std::ptrdiff_t, 
-						Node<value_type>*, 
-						Node<value_type>&
+						Node*, 
+						Node&
 						>
 	{
 	public:
-		explicit Iterator(Node<value_type>* node) :
+		explicit Iterator(Node* node) :
 			currentNode(node)
 		{
 		}
 
-		value_type& operator*() const
+		T& operator*() const
 		{
 			return currentNode->m_data;
 		}
 
-		value_type* operator->() const
+		T* operator->() const
 		{
 			return &(currentNode->m_data);
 		}
@@ -90,7 +89,7 @@ public:
 		Iterator& operator=(Iterator&&) = default; 
 
 	private:
-		Node<value_type>* currentNode;
+		Node* currentNode;
 	};
 
 	Iterator begin()
@@ -126,20 +125,16 @@ public:
 			m_tail = other.m_tail;
 			m_count = other.m_count;
 
-			// This is not actually needed at least yet.
-			m_container = std::move(other.m_container);
-
 			other.m_head = nullptr;
 			other.m_tail = nullptr;
 		}
 		return *this;
 	}
 
-
 	void clear()
 	{
 		auto current = m_head;
-		Node<value_type>* previous = nullptr;
+		Node* previous = nullptr;
 		while (current)
 		{
 			previous = current;
@@ -147,10 +142,10 @@ public:
 			delete previous;
 		}
 	}
-	
-	void insert(const value_type& value)
+
+	void insert(const T& value)
 	{
-		Node<value_type>* newNode = new Node<value_type>(value);
+		Node* newNode = new Node(value);
 
 		// List is empty.
 		if (!m_head)
@@ -162,7 +157,7 @@ public:
 		// Adding a new Node to the linked list.
 		else
 		{
-			Node<value_type>* prevNode = m_tail;
+			Node* prevNode = m_tail;
 			m_tail->m_next = newNode;
 			m_tail = newNode;
 			m_tail->m_inverse = prevNode;
@@ -170,18 +165,10 @@ public:
 		m_count++;
 	}
 
-	void insert(const Container& container)
+	void remove(const T& value)
 	{
-		for (auto&& item : container)
-		{
-			insert(item);
-		}
-	}
-
-	void remove(const value_type& value)
-	{
-		Node<value_type>* currentNode = m_head;
-		Node<value_type>* previousNode = nullptr;
+		Node* currentNode = m_head;
+		Node* previousNode = nullptr;
 
 		while (currentNode && currentNode->m_data != value)
 		{
@@ -234,19 +221,19 @@ public:
 		other.m_tail = tempTail;
 	}
 
-	Iterator find(const value_type& value) const
+	Iterator find(const T& value) const
 	{
 		return std::find(cbegin(), cend(), value);
 	}
 
-	Iterator find(const value_type& value)
+	Iterator find(const T& value)
 	{
 		return std::find(begin(), end(), value);
 	}
 
-	void activate(const value_type& value)
+	void activate(const T& value)
 	{
-		Node<value_type>* travellerNode = m_head;
+		Node* travellerNode = m_head;
 
 		while (travellerNode)
 		{
@@ -259,9 +246,9 @@ public:
 		}
 	}
 
-	void deactivate(const value_type& value)
+	void deactivate(const T& value)
 	{
-		Node<value_type>* travellerNode = m_head;
+		Node* travellerNode = m_head;
 
 		while (travellerNode)
 		{
@@ -274,22 +261,22 @@ public:
 		}
 	}
 
-	value_type& front()
+	T& front()
 	{
 		return m_head->m_data;
 	}
 
-	const value_type& front() const
+	const T& front() const
 	{
 		return m_head->m_data;
 	}
 
-	value_type& back()
+	T& back()
 	{
 		return m_tail->m_data;
 	}
 
-	const value_type& back() const
+	const T& back() const
 	{
 		return m_tail->m_data;
 	}
@@ -329,24 +316,16 @@ public:
 		std::cout << std::endl;
 	}
 
-	void setContainerType(Container&& container)
-	{
-		m_container = std::move(container);
-	}
-
 private:
 
 	// Pointing always to the first element.
-	Node<value_type>* m_head = nullptr;
+	Node* m_head = nullptr;
 
 	// Pointing always to the last element.
-	Node<value_type>* m_tail = nullptr;
+	Node* m_tail = nullptr;
 
 	// Amount of Nodes in the linked list.
 	size_t m_count = 0;
-
-	// Type of STL container.
-	Container m_container;
 };
 
 #endif

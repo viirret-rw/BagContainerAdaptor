@@ -1,20 +1,23 @@
+#include <BagContainerAdaptor/bag_container_adaptor.hpp>
+#include <BagContainerAdaptor/linked_list.hpp>
+
 #include <gtest/gtest.h>
 
 #define ADD_BENCHMARK
 
-#include "performance.cpp"
+//#include "performance.cpp"
 
 #include <algorithm>
 
 TEST(mainTests, SwapTest)
 {
-	BagContainerAdaptor<std::list<int>> adapter1;
+	BagContainerAdaptor<LinkedList<int>> adapter1;
 
 	adapter1.insert(1);
 	adapter1.insert(2);
 	adapter1.insert(3);
 
-	BagContainerAdaptor<std::list<int>> adapter2;
+	BagContainerAdaptor<LinkedList<int>> adapter2;
 	adapter2.insert(4);
 	adapter2.insert(5);
 	adapter2.insert(6);
@@ -29,7 +32,7 @@ TEST(mainTests, SwapTest)
 
 TEST(mainTests, MoveAssingmentTest)
 {
-	BagContainerAdaptor<std::list<int>> adapter;
+	BagContainerAdaptor<LinkedList<int>> adapter;
 
 	adapter.insert(1);
 	adapter.insert(2);
@@ -38,7 +41,7 @@ TEST(mainTests, MoveAssingmentTest)
 	adapter.insert(11);
 	adapter.insert(30);
 
-	BagContainerAdaptor<std::list<int>> adapter2;
+	BagContainerAdaptor<LinkedList<int>> adapter2;
 	adapter2 = std::move(adapter);
 
 	adapter2.debugInfo();
@@ -49,7 +52,7 @@ TEST(mainTests, MoveAssingmentTest)
 
 TEST(mainTests, IteratorTest)
 {
-	BagContainerAdaptor<std::list<int>> adapter;
+	BagContainerAdaptor<LinkedList<int>> adapter;
 
 	adapter.insert(1);
 	adapter.insert(2);
