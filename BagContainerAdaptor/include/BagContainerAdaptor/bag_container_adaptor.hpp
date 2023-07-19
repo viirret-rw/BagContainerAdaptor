@@ -1,7 +1,8 @@
-#ifndef CONTAINER_ADAPTOR_HH
-#define CONTAINER_ADAPTOR_HH
+#ifndef CONTAINER_ADAPTOR_HPP
+#define CONTAINER_ADAPTOR_HPP
 
 #include "linked_list.hpp"
+#include "hash_map.hpp"
 
 template <typename Container>
 class BagContainerAdaptor
@@ -32,11 +33,6 @@ public:
 	void insert(const value_type& value)
 	{
 		m_container.insert(value);
-	}
-
-	void insert(const Container& container)
-	{
-		m_container.insert(container);
 	}
 
 	void remove(const value_type& value)
@@ -134,6 +130,13 @@ private:
 	void initializeContainer(BagContainerAdaptor<LinkedList<T>>& bag)
 	{
 		m_container = std::move(LinkedList<T>());
+	}
+
+	// Specialization for HashMap.
+	template <typename Key, typename Value>
+	void initializeContainer(BagContainerAdaptor<HashMap<Key, Value>>& bag)
+	{
+		m_container = HashMap<Key, Value>();
 	}
 
 private:

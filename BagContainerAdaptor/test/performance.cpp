@@ -16,7 +16,7 @@ protected:
 	void insert(int itemCount)
 	{
 		Container testContainer;
-		BagContainerAdaptor<Container> testBagContainerAdaptor;
+		BagContainerAdaptor<LinkedList<typename Container::value_type>> testBagContainerAdaptor;
 
 		auto startContainerAdd = std::chrono::high_resolution_clock::now();
 		for (int i = 0; i < itemCount; i++)
@@ -57,7 +57,7 @@ public:
 	void remove(int itemCount, std::vector<int> itemsToRemove)
 	{
 		Container testContainer;
-		BagContainerAdaptor<Container> testBagContainerAdaptor;
+		BagContainerAdaptor<LinkedList<typename Container::value_type>> testBagContainerAdaptor;
 
 		for (int i = 0; i < itemCount; i++)
 		{

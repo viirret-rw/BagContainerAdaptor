@@ -1,11 +1,10 @@
 #include <BagContainerAdaptor/bag_container_adaptor.hpp>
-#include <BagContainerAdaptor/linked_list.hpp>
 
 #include <gtest/gtest.h>
 
 #define ADD_BENCHMARK
 
-//#include "performance.cpp"
+#include "performance.cpp"
 
 #include <algorithm>
 
@@ -21,7 +20,6 @@ TEST(mainTests, SwapTest)
 	adapter2.insert(4);
 	adapter2.insert(5);
 	adapter2.insert(6);
-
 
 	adapter1.swap(adapter2);
 
@@ -48,6 +46,16 @@ TEST(mainTests, MoveAssingmentTest)
 
 	std::cout << "the next should be empty" << std::endl;
 	adapter.debugInfo();
+}
+
+TEST(mainTests, HashMapTest)
+{
+	BagContainerAdaptor<HashMap<std::string, int>> adapter;
+
+	adapter.insert(std::make_pair("moi", 1));
+	adapter.insert(std::make_pair("moi2", 2));
+
+	adapter.remove(std::make_pair("moi", 1));
 }
 
 TEST(mainTests, IteratorTest)
