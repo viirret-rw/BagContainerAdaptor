@@ -11,7 +11,7 @@ public:
 
 	BagContainerAdaptor()
 	{
-		initializeContainer();
+		initializeContainer(*this);
 	}
 
 	// Move constructor.
@@ -124,9 +124,16 @@ public:
 		m_container.debugInfo();
 	}
 
-	void initializeContainer()
+private:
+	// Default initialization.
+	template <typename T>
+	void initializeContainer(BagContainerAdaptor<T>& bag) = delete;
+
+	// Specialization for LinkedList.
+	template <typename T>
+	void initializeContainer(BagContainerAdaptor<LinkedList<T>>& bag)
 	{
-		m_container = LinkedList<int>();
+		m_container = std::move(LinkedList<T>());
 	}
 
 private:
