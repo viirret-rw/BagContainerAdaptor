@@ -18,7 +18,7 @@ public:
 	{
 		/// Constructor.
 		Node(const value_type& hashPair) :
-			m_key(hashPair.m_key), m_value(hashPair.m_value)
+			m_key(hashPair.first), m_value(hashPair.second)
 		{
 		}
 
@@ -27,12 +27,51 @@ public:
 		Node* m_next = nullptr;
 	};
 
+	class iterator : public std::iterator<
+						std::forward_iterator_tag, 
+						Node, 
+						std::ptrdiff_t, 
+						Node*, 
+						Node&
+						>
+	{
+	public:
+		explicit iterator(Node* node) : m_currentNode(node)
+		{
+		}
+
+		Value& operator*() const
+		{
+			return m_currentNode->m_value;
+		}
+
+		Value* operator->() const
+		{
+			return &(m_currentNode->m_value);
+		}
+
+		iterator& operator++()
+		{
+
+		}
+
+	private:
+		Node* m_currentNode;
+	};
+
+    // Constructor
+    HashMap(size_t numBuckets = BucketSize) : numBuckets(numBuckets)
+    {
+        buckets.resize(numBuckets);
+    }
+	
+
 	void insert(const value_type& hashPair)
 	{
 		size_t index = hash(hashPair.first);
 		auto& bucket = buckets[index];
-		
-		buckets.push_back(Node(hashPair.key, hashPair.value));
+
+		bucket.push_back(Node(hashPair));
 	}
 
 	// I don't actually know if this function HAVE to be implemented,

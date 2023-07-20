@@ -2,83 +2,34 @@
 
 #include <gtest/gtest.h>
 
-#define ADD_BENCHMARK
-
-#include "performance.cpp"
-
-#include <algorithm>
-
-TEST(mainTests, SwapTest)
+template <typename Container>
+class BagContainerAdaptorTest : public ::testing::Test
 {
-	BagContainerAdaptor<LinkedList<int>> adapter1;
-
-	adapter1.insert(1);
-	adapter1.insert(2);
-	adapter1.insert(3);
-
-	BagContainerAdaptor<LinkedList<int>> adapter2;
-	adapter2.insert(4);
-	adapter2.insert(5);
-	adapter2.insert(6);
-
-	adapter1.swap(adapter2);
-
-	// Show contents of the adapter1
-	adapter1.debugInfo();
-	adapter2.debugInfo();
-}
-
-TEST(mainTests, MoveAssingmentTest)
-{
-	BagContainerAdaptor<LinkedList<int>> adapter;
-
-	adapter.insert(1);
-	adapter.insert(2);
-	adapter.insert(5);
-	adapter.insert(7);
-	adapter.insert(11);
-	adapter.insert(30);
-
-	BagContainerAdaptor<LinkedList<int>> adapter2;
-	adapter2 = std::move(adapter);
-
-	adapter2.debugInfo();
-
-	std::cout << "the next should be empty" << std::endl;
-	adapter.debugInfo();
-}
-
-TEST(mainTests, HashMapTest)
-{
-	BagContainerAdaptor<HashMap<std::string, int>> adapter;
-
-	adapter.insert(std::make_pair("moi", 1));
-	adapter.insert(std::make_pair("moi2", 2));
-
-	adapter.remove(std::make_pair("moi", 1));
-}
-
-TEST(mainTests, IteratorTest)
-{
-	BagContainerAdaptor<LinkedList<int>> adapter;
-
-	adapter.insert(1);
-	adapter.insert(2);
-	adapter.insert(5);
-	adapter.insert(7);
-	adapter.insert(11);
-	adapter.insert(30);
-
-	auto it = adapter.find(11);
-
-	if(it != adapter.end())
+protected:
+	void frontTest()
 	{
-		std::cout << "Value found" << std::endl;
+		BagContainerAdaptor<Container> adapter;
+
+		adapter.insert(adapter.begin(), 1);
+
+		EXPECT_EQ(adapter.front(), 1);
 	}
-	else
-	{
-		std::cout << "Value not found" << std::endl;
-	}
+};
+
+typedef ::testing::Types<
+	std::list<int>,
+	std::vector<int>,
+	std::deque<int>,
+	std::forward_list<int>,
+	std::multiset<int>/*
+	std::unordered_multiset<int>*/
+> ContainerTypes;
+
+TYPED_TEST_SUITE(BagContainerAdaptorTest, ContainerTypes);
+
+TYPED_TEST(BagContainerAdaptorTest, frontTest)
+{
+	this->frontTest();
 }
 
 int main(int argc, char** argv)
@@ -86,3 +37,4 @@ int main(int argc, char** argv)
 	testing::InitGoogleTest(&argc, argv);
 	return RUN_ALL_TESTS();
 }
+

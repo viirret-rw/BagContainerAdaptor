@@ -29,11 +29,9 @@ public:
 
 		Node* m_next = nullptr;
 		Node* m_inverse = nullptr;
-
-		bool isActive = true;
 	};
 
-	class Iterator : public std::iterator<
+	class iterator : public std::iterator<
 						std::forward_iterator_tag, 
 						Node, 
 						std::ptrdiff_t, 
@@ -42,74 +40,73 @@ public:
 						>
 	{
 	public:
-		explicit Iterator(Node* node) :
-			currentNode(node)
+		explicit iterator(Node* node) : m_currentNode(node)
 		{
 		}
 
 		T& operator*() const
 		{
-			return currentNode->m_data;
+			return m_currentNode->m_data;
 		}
 
 		T* operator->() const
 		{
-			return &(currentNode->m_data);
+			return &(m_currentNode->m_data);
 		}
 
-		Iterator& operator++()
+		iterator& operator++()
 		{
-			currentNode = currentNode->m_next;
+			m_currentNode = m_currentNode->m_next;
 			return *this;
 		}
 
-		Iterator operator++(int)
+		iterator operator++(int)
 		{
-			Iterator temp = *this;
+			iterator temp = *this;
 			++(*this);
 			return temp;
 		}
 
-		bool operator==(const Iterator& other) const
+		bool operator==(const iterator& other) const
 		{
-			return currentNode == other.currentNode;
+			return m_currentNode == other.m_currentNode;
 		}
 
-		bool operator!=(const Iterator& other) const
+		bool operator!=(const iterator& other) const
 		{
-			return currentNode != other.currentNode;
+			return m_currentNode != other.m_currentNode;
 		}
 
 		// Copy constructibility
-		Iterator(const Iterator&) = default;
-		Iterator& operator=(const Iterator&) = default;
+		iterator(const iterator&) = default;
+		iterator& operator=(const iterator&) = default;
 
 		// Move constructibility
-		Iterator(Iterator&&) = default;
-		Iterator& operator=(Iterator&&) = default; 
+		iterator(iterator&&) = default;
+		iterator& operator=(iterator&&) = default; 
 
 	private:
-		Node* currentNode;
+		Node* m_currentNode;
 	};
 
-	Iterator begin()
+	iterator begin()
 	{
-		return Iterator(m_head);
+		return iterator(m_head);
 	}
 
-	Iterator cbegin() const
+	iterator cbegin() const
 	{
-		return Iterator(m_head);
+		return iterator(m_head);
 	}
 
-	Iterator end()
+	iterator end()
 	{
-		return Iterator(m_tail);
+		return iterator(m_tail);
 	}
 
-	Iterator cend() const
+	iterator cend() const
 	{
-		return Iterator(m_tail);
+		return iterator(m_tail);
 	}
 
 	~LinkedList()
@@ -221,44 +218,14 @@ public:
 		other.m_tail = tempTail;
 	}
 
-	Iterator find(const T& value) const
+	iterator find(const T& value) const
 	{
 		return std::find(cbegin(), cend(), value);
 	}
 
-	Iterator find(const T& value)
+	iterator find(const T& value)
 	{
 		return std::find(begin(), end(), value);
-	}
-
-	void activate(const T& value)
-	{
-		Node* travellerNode = m_head;
-
-		while (travellerNode)
-		{
-			if (travellerNode->m_inverse && travellerNode->m_inverse->m_data == value)
-			{
-				travellerNode->m_inverse->isActive = true;
-				break;
-			}
-			travellerNode = travellerNode->m_next;
-		}
-	}
-
-	void deactivate(const T& value)
-	{
-		Node* travellerNode = m_head;
-
-		while (travellerNode)
-		{
-			if (travellerNode->m_inverse && travellerNode->m_inverse->m_data == value)
-			{
-				travellerNode->m_inverse->isActive = false;
-				break;
-			}
-			travellerNode = travellerNode->m_next;
-		}
 	}
 
 	T& front()
@@ -305,7 +272,7 @@ public:
 				std::cout << "Tail ";
 			}
 
-			std::cout << "Node: " << (current->isActive ? "X" : "_") << " " << current->m_data << std::endl;
+			std::cout << "Node: " << current->m_data << std::endl;
 			std::cout << "Address: " << current << std::endl;
 			std::cout << "Inverse address: " << current->m_inverse << std::endl;
 			std::cout << "Next address: " << current->m_next << std::endl;
