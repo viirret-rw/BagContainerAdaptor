@@ -9,18 +9,6 @@
 #include <set>
 #include <unordered_set>
 
-template <typename T, typename U>
-struct is_same_type
-{
-	static constexpr bool value = false;
-};
-
-template <typename T>
-struct is_same_type<T, T>
-{
-	static constexpr bool value = true;
-};
-
 template <typename Container>
 class BagContainerAdaptor
 {
@@ -49,9 +37,9 @@ public:
 		return *this;
 	}
 
-	iterator insert(const_iterator pos, const value_type& value)
+	iterator insert(const value_type& value)
 	{
-		return insertImpl(m_container, pos, value);
+		return insertImpl(m_container, value);
 	}
 
 	iterator erase(iterator pos)
@@ -59,7 +47,8 @@ public:
 		return m_container.erase(pos);
 	}
 
-	iterator erase(const_iterator pos)
+	template <typename C = Container>
+	typename std::enable_if<std::is_const<C>::value, iterator>::type erase(const_iterator pos)
 	{
 		return m_container.erase(pos);
 	}
@@ -68,8 +57,9 @@ public:
 	{
 		return m_container.erase(first, last);
 	}
-
-	iterator erase(const_iterator first, const_iterator last)
+	
+	template <typename C = Container>
+	typename std::enable_if<std::is_const<C>::value, iterator>::type erase(const_iterator first, const_iterator last)
 	{
 		return m_container.erase(first, last);
 	}
@@ -121,7 +111,7 @@ public:
 
 	value_type& back()
 	{
-		return m_container.back();
+		return backImpl(m_container);
 	}
 
 	const value_type& back() const
@@ -131,7 +121,7 @@ public:
 
 	size_t size() const
 	{
-		return m_container.size();
+		return sizeImpl(m_container);
 	}
 
 	bool empty() const
@@ -209,44 +199,129 @@ private:
 	}
 
 private:
+
+	// FRONT IMPLEMENTATIONS
 	// Front implementation for containers with front() member function.
     template <typename C>
-    typename std::enable_if<!std::is_same<C, std::unordered_multiset<value_type>>::value, value_type&>::type
+    typename std::enable_if<!std::is_same<C, std::multiset<value_type>>::value &&
+							!std::is_same<C, std::unordered_multiset<value_type>>::value &&
+							!std::is_same<C, std::forward_list<value_type>>::value,
+							value_type&>::type
     frontImpl(C& container) 
 	{
         return container.front();
     }
 
-    // Front implementation for std::unordered_multiset.
+    // Front implementation for std::multiset and std::unordered_multiset.
     template <typename C>
-    typename std::enable_if<std::is_same<C, std::unordered_multiset<value_type>>::value, value_type&>::type
+    typename std::enable_if<std::is_same<C, std::multiset<value_type>>::value ||
+							std::is_same<C, std::unordered_multiset<value_type>>::value ||
+							std::is_same<C, std::forward_list<value_type>>::value,
+							value_type&>::type
     frontImpl(C& container) 
 	{
 		return const_cast<value_type&>(*container.begin());
     }
 
+private:
+	// BACK IMPLEMENTATIONS
+	// Back implementation for containers with back() member function.
+	template <typename C>
+	typename std::enable_if<!std::is_same<C, std::forward_list<value_type>>::value &&
+							!std::is_same<C, std::multiset<value_type>>::value &&
+							!std::is_same<C, std::unordered_multiset<value_type>>::value,
+							value_type&>::type
+	backImpl(C& container)
+	{
+		return container.back();
+	}
+	
+	// Back implementation for std::forward_list.
+	template <typename C>
+	typename std::enable_if<std::is_same<C, std::forward_list<value_type>>::value, value_type&>::type
+	backImpl(C& container)
+	{
+		auto itLast = container.begin();
+
+		while (std::next(itLast) != container.end())
+		{
+			++itLast;
+		}
+
+		return *itLast;
+	}
+
+	// Back implementation for std::multiset.
+	template <typename C>
+	typename std::enable_if<std::is_same<C, std::multiset<value_type>>::value, value_type&>::type
+	backImpl(C& container)
+	{
+		auto itLast = container.begin();
+		std::advance(itLast, container.size() - 1);
+
+		return const_cast<value_type&>(*itLast);
+	}
+
+	// Back implementation for std::unordered_multiset.
+	template <typename C>
+	typename std::enable_if<std::is_same<C, std::unordered_multiset<value_type>>::value, value_type&>::type
+	backImpl(C& container)
+	{
+		// TODO something is terribly wrong here. Fixing!
+		auto it = container.begin();
+		return const_cast<value_type&>(*it);
+	}
+
+private:
+	// INSERT IMPLEMENTATIONS
 	// Insert implementation for containers with insert() member function.
 	template <typename C>
-	typename std::enable_if<!std::is_same<C, std::forward_list<value_type>>::value, iterator>::type
-	insertImpl(C& container, const_iterator& pos, const value_type& value)
+	typename std::enable_if<!std::is_same<C, std::forward_list<value_type>>::value &&
+							!std::is_same<C, std::unordered_multiset<value_type>>::value, 
+							iterator>::type
+	insertImpl(C& container, const value_type& value)
 	{
-		return m_container.insert(pos, value);
+		return container.insert(container.end(), value);
 	}
 
 	// Insert implementation for std::forward_list.
 	template <typename C>
 	typename std::enable_if<std::is_same<C, std::forward_list<value_type>>::value, iterator>::type
-	insertImpl(C& container, const_iterator& pos, const value_type& value)
+	insertImpl(C& container, const value_type& value)
 	{
-		// TODO This will need more work, but it kinda works.
-		if(container.empty())
+		auto itPrev = container.before_begin();
+		for (auto it = container.begin(); it != container.end(); ++it)
 		{
-			return container.insert_after(container.before_begin(), value);
+			itPrev = it;
 		}
-		else
-		{
-			return container.insert_after(pos, value);
-		}
+
+		return container.insert_after(itPrev, value);
+	}
+
+	// Insert implementation for std::unordered_multiset.
+	template <typename C>
+	typename std::enable_if<std::is_same<C, std::unordered_multiset<value_type>>::value, iterator>::type
+	insertImpl(C& container, const value_type& value)
+	{
+		return container.insert(value);
+	}
+
+private:
+	// SIZE IMPLEMENTATIONS
+	template <typename C>
+	size_t sizeImpl(C& container) const
+	{
+		return container.size();
+	}
+
+	size_t sizeImpl(std::forward_list<value_type>& container) const
+	{
+		return std::distance(container.begin(), container.end());
+	}
+
+	size_t sizeImpl(const std::forward_list<value_type>& container) const
+	{
+		return std::distance(container.begin(), container.end());
 	}
 
 private:
