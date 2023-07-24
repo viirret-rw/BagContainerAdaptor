@@ -44,7 +44,12 @@ public:
 
 	iterator erase(iterator pos)
 	{
-		return m_container.erase(pos);
+		return eraseImpl(m_container, pos);
+	}
+
+	iterator erase(const value_type& value)
+	{
+		return eraseImpl(m_container, value);
 	}
 
 	template <typename C = Container>
@@ -55,7 +60,7 @@ public:
 
 	iterator erase(iterator first, iterator last)
 	{
-		return m_container.erase(first, last);
+		return eraseImpl(m_container, first, last);
 	}
 	
 	template <typename C = Container>
@@ -199,47 +204,60 @@ private:
 	}
 
 private:
-
 	// FRONT IMPLEMENTATIONS
-	// Front implementation for containers with front() member function.
-    template <typename C>
-    typename std::enable_if<!std::is_same<C, std::multiset<value_type>>::value &&
-							!std::is_same<C, std::unordered_multiset<value_type>>::value &&
-							!std::is_same<C, std::forward_list<value_type>>::value,
-							value_type&>::type
-    frontImpl(C& container) 
+	template <typename C>
+	value_type& frontImpl(C& container)
 	{
-        return container.front();
-    }
+		return container.front();
+	}
 
-    // Front implementation for std::multiset and std::unordered_multiset.
-    template <typename C>
-    typename std::enable_if<std::is_same<C, std::multiset<value_type>>::value ||
-							std::is_same<C, std::unordered_multiset<value_type>>::value ||
-							std::is_same<C, std::forward_list<value_type>>::value,
-							value_type&>::type
-    frontImpl(C& container) 
+	template <typename C>
+	const value_type& frontImpl(const C& container) const
+	{
+		return container.front();
+	}
+
+	value_type& frontImpl(std::forward_list<value_type>& container)
+	{
+		return *container.begin();
+	}
+
+	// These two functions use const_cast because the value_type of
+	// std::multiset and std::unordered_multiset is constant.
+	value_type& frontImpl(std::multiset<value_type>& container)
 	{
 		return const_cast<value_type&>(*container.begin());
-    }
+	}
+
+	value_type& frontImpl(std::unordered_multiset<value_type>& container)
+	{
+		return const_cast<value_type&>(*container.begin());
+	}
+
+	const value_type& frontImpl(const std::forward_list<value_type>& container) const
+	{
+		return *container.cbegin();
+	}
+
+	const value_type& frontImpl(const std::multiset<value_type>& container) const
+	{
+		return *container.cbegin();
+	}
+
+	const value_type& frontImpl(const std::unordered_multiset<value_type>& container) const
+	{
+		return *container.cbegin();
+	}
 
 private:
 	// BACK IMPLEMENTATIONS
-	// Back implementation for containers with back() member function.
 	template <typename C>
-	typename std::enable_if<!std::is_same<C, std::forward_list<value_type>>::value &&
-							!std::is_same<C, std::multiset<value_type>>::value &&
-							!std::is_same<C, std::unordered_multiset<value_type>>::value,
-							value_type&>::type
-	backImpl(C& container)
+	value_type& backImpl(C& container)
 	{
 		return container.back();
 	}
-	
-	// Back implementation for std::forward_list.
-	template <typename C>
-	typename std::enable_if<std::is_same<C, std::forward_list<value_type>>::value, value_type&>::type
-	backImpl(C& container)
+
+	value_type& backImpl(std::forward_list<value_type>& container)
 	{
 		auto itLast = container.begin();
 
@@ -247,63 +265,43 @@ private:
 		{
 			++itLast;
 		}
-
 		return *itLast;
 	}
 
-	// Back implementation for std::multiset.
-	template <typename C>
-	typename std::enable_if<std::is_same<C, std::multiset<value_type>>::value, value_type&>::type
-	backImpl(C& container)
+	value_type& backImpl(std::multiset<value_type>& container)
 	{
 		auto itLast = container.begin();
 		std::advance(itLast, container.size() - 1);
-
 		return const_cast<value_type&>(*itLast);
 	}
 
-	// Back implementation for std::unordered_multiset.
-	template <typename C>
-	typename std::enable_if<std::is_same<C, std::unordered_multiset<value_type>>::value, value_type&>::type
-	backImpl(C& container)
+	value_type& backImpl(std::unordered_multiset<value_type>& container)
 	{
-		// TODO something is terribly wrong here. Fixing!
-		auto it = container.begin();
-		return const_cast<value_type&>(*it);
+		auto itLast = container.begin();
+
+		while (std::next(itLast) != container.end())
+		{
+			++itLast;
+		}
+		return const_cast<value_type&>(*itLast);
 	}
 
 private:
 	// INSERT IMPLEMENTATIONS
-	// Insert implementation for containers with insert() member function.
 	template <typename C>
-	typename std::enable_if<!std::is_same<C, std::forward_list<value_type>>::value &&
-							!std::is_same<C, std::unordered_multiset<value_type>>::value, 
-							iterator>::type
-	insertImpl(C& container, const value_type& value)
+	iterator insertImpl(C& container, const value_type& value)
 	{
 		return container.insert(container.end(), value);
 	}
 
-	// Insert implementation for std::forward_list.
-	template <typename C>
-	typename std::enable_if<std::is_same<C, std::forward_list<value_type>>::value, iterator>::type
-	insertImpl(C& container, const value_type& value)
+	iterator insertImpl(std::forward_list<value_type>& container, const value_type& value)
 	{
 		auto itPrev = container.before_begin();
 		for (auto it = container.begin(); it != container.end(); ++it)
 		{
 			itPrev = it;
 		}
-
 		return container.insert_after(itPrev, value);
-	}
-
-	// Insert implementation for std::unordered_multiset.
-	template <typename C>
-	typename std::enable_if<std::is_same<C, std::unordered_multiset<value_type>>::value, iterator>::type
-	insertImpl(C& container, const value_type& value)
-	{
-		return container.insert(value);
 	}
 
 private:
@@ -322,6 +320,73 @@ private:
 	size_t sizeImpl(const std::forward_list<value_type>& container) const
 	{
 		return std::distance(container.begin(), container.end());
+	}
+
+private:
+	// ERASE IMPLEMENTATIONS
+	template <typename C>
+	iterator eraseImpl(C& container, iterator pos)
+	{
+		return container.erase(pos);
+	}
+
+	iterator eraseImpl(std::forward_list<value_type>& container, iterator pos)
+	{
+		auto itPrev = container.before_begin();
+
+		for (auto it = container.begin(); it != container.end();)
+		{
+			if (it == pos)
+			{
+				it = container.erase_after(itPrev);
+				return it;
+			}
+			else
+			{
+				++itPrev;
+				++it;
+			}
+		}
+
+		return container.end();
+	}
+
+	template <typename C>
+	iterator eraseImpl(C& container, const value_type& value)
+	{
+		return container.erase(find(value));
+	}
+
+	iterator eraseImpl(std::forward_list<value_type>& container, const value_type& value)
+	{
+		auto item = find(value);
+		auto itPrev = container.before_begin();
+
+		for (auto it = container.begin(); it != container.end();)
+		{
+			if (item == it)
+			{
+				it = container.erase_after(itPrev);
+				return it;
+			}
+			else
+			{
+				++itPrev;
+				++it;
+			}
+		}
+		return container.end();
+	}
+
+	template <typename C>
+	iterator eraseImpl(C& container, iterator first, iterator last)
+	{
+		return container.erase(first, last);
+	}
+
+	// TODO
+	iterator eraseImpl(std::forward_list<value_type>& container, iterator first, iterator last)
+	{
 	}
 
 private:

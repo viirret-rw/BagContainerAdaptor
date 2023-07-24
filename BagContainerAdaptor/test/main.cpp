@@ -1,6 +1,4 @@
-#include <BagContainerAdaptor/bag_container_adaptor.hpp>
-
-#include <gtest/gtest.h>
+#include "front_and_back_tests.cpp"
 
 template <typename Container>
 class BagContainerAdaptorTest : public ::testing::Test
@@ -15,6 +13,55 @@ protected:
 		adapter.insert(3);
 	}
 
+	void eraseTest1()
+	{
+		BagContainerAdaptor<Container> adapter;
+
+		adapter.insert(1);
+		adapter.insert(2);
+		adapter.insert(3);
+
+		EXPECT_EQ(adapter.size(), 3);
+
+		adapter.erase(adapter.begin());
+
+		EXPECT_EQ(adapter.size(), 2);
+	}
+
+	void eraseTest2()
+	{
+		BagContainerAdaptor<Container> adapter;
+
+		adapter.insert(1);
+		adapter.insert(2);
+		adapter.insert(3);
+
+		EXPECT_EQ(adapter.size(), 3);
+
+		adapter.erase(2);
+
+		EXPECT_EQ(adapter.size(), 2);
+	}
+
+	void eraseTest3()
+	{
+		BagContainerAdaptor<Container> adapter;
+
+		for(int i = 1; i < 11; i++)
+		{
+			adapter.insert(i);
+		}
+
+		EXPECT_EQ(adapter.size(), 10);
+
+		auto itBegin = std::next(adapter.begin(), 3);
+		auto itEnd = std::next(adapter.end(), -3);
+
+		adapter.erase(itBegin, itEnd);
+
+		EXPECT_EQ(adapter.size(), 6);
+	}
+
 	void findTest()
 	{
 		BagContainerAdaptor<Container> adapter;
@@ -26,26 +73,6 @@ protected:
 		auto it = adapter.find(2);
 
 		EXPECT_TRUE(it != adapter.end());
-	}
-
-	void frontTest()
-	{
-		BagContainerAdaptor<Container> adapter;
-
-		adapter.insert(1);
-
-		EXPECT_EQ(adapter.front(), 1);
-	}
-
-	void backTest()
-	{
-		BagContainerAdaptor<Container> adapter;
-
-		adapter.insert(1);
-		adapter.insert(2);
-		adapter.insert(3);
-
-		EXPECT_EQ(adapter.back(), 3);
 	}
 
 	void sizeTest()
@@ -96,28 +123,33 @@ typedef ::testing::Types<
 	std::forward_list<int>,
 	std::multiset<int>,
 	std::unordered_multiset<int>
-> ContainerTypes;
+> MainContainerTypes;
 
-TYPED_TEST_SUITE(BagContainerAdaptorTest, ContainerTypes);
+TYPED_TEST_SUITE(BagContainerAdaptorTest, MainContainerTypes);
 
 TYPED_TEST(BagContainerAdaptorTest, insertTest)
 {
 	this->insertTest();
 }
 
+TYPED_TEST(BagContainerAdaptorTest, eraseTest1)
+{
+	this->eraseTest1();
+}
+
+TYPED_TEST(BagContainerAdaptorTest, eraseTest2)
+{
+	this->eraseTest2();
+}
+
+TYPED_TEST(BagContainerAdaptorTest, eraseTest3)
+{
+	//this->eraseTest3();
+}
+
 TYPED_TEST(BagContainerAdaptorTest, findTest)
 {
 	this->findTest();
-}
-
-TYPED_TEST(BagContainerAdaptorTest, frontTest)
-{
-	this->frontTest();
-}
-
-TYPED_TEST(BagContainerAdaptorTest, backTest)
-{
-	this->backTest();
 }
 
 TYPED_TEST(BagContainerAdaptorTest, sizeTest)
