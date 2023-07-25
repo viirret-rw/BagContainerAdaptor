@@ -42,6 +42,11 @@ public:
 		return insertImpl(m_container, value);
 	}
 
+	iterator insert(const_iterator pos, const value_type& value)
+	{
+		return insertImpl(m_container, pos, value);
+	}
+
 	iterator erase(iterator pos)
 	{
 		return eraseImpl(m_container, pos);
@@ -287,6 +292,22 @@ private:
 	{
 		auto itPrev = container.before_begin();
 		for (auto it = container.begin(); it != container.end(); ++it)
+		{
+			itPrev = it;
+		}
+		return container.insert_after(itPrev, value);
+	}
+
+	template <typename C>
+	iterator insertImpl(C& container, const_iterator pos, const value_type& value)
+	{
+		return container.insert(pos, value);
+	}
+
+	iterator insertImpl(std::forward_list<value_type>& container, const_iterator pos, const value_type& value)
+	{
+		auto itPrev = container.before_begin();
+		for (auto it = container.begin(); it != pos; ++it)
 		{
 			itPrev = it;
 		}

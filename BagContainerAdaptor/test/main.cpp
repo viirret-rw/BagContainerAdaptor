@@ -4,13 +4,22 @@ template <typename Container>
 class BagContainerAdaptorTest : public ::testing::Test
 {
 protected:
-	void insertTest()
+	void insertTest1()
 	{
 		BagContainerAdaptor<Container> adapter;
 
 		adapter.insert(1);
 		adapter.insert(2);
 		adapter.insert(3);
+	}
+
+	void insertTest2()
+	{
+		BagContainerAdaptor<Container> adapter;
+
+		adapter.insert(adapter.begin(), 1);
+		adapter.insert(adapter.begin(), 2);
+		adapter.insert(adapter.begin(), 3);
 	}
 
 	void eraseTest1()
@@ -128,9 +137,14 @@ typedef ::testing::Types<
 
 TYPED_TEST_SUITE(BagContainerAdaptorTest, MainContainerTypes);
 
-TYPED_TEST(BagContainerAdaptorTest, insertTest)
+TYPED_TEST(BagContainerAdaptorTest, insertTest1)
 {
-	this->insertTest();
+	this->insertTest1();
+}
+
+TYPED_TEST(BagContainerAdaptorTest, insertTest2)
+{
+	this->insertTest2();
 }
 
 TYPED_TEST(BagContainerAdaptorTest, eraseTest1)
