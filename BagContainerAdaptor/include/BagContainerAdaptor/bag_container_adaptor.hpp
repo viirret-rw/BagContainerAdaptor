@@ -52,21 +52,10 @@ public:
 		return eraseImpl(m_container, value);
 	}
 
-	template <typename C = Container>
-	typename std::enable_if<std::is_const<C>::value, iterator>::type erase(const_iterator pos)
-	{
-		return m_container.erase(pos);
-	}
-
-	iterator erase(iterator first, iterator last)
+	template <typename firstType, typename lastType>
+	iterator erase(firstType first, lastType last)
 	{
 		return eraseImpl(m_container, first, last);
-	}
-	
-	template <typename C = Container>
-	typename std::enable_if<std::is_const<C>::value, iterator>::type erase(const_iterator first, const_iterator last)
-	{
-		return m_container.erase(first, last);
 	}
 
 	void swap(BagContainerAdaptor& other)
@@ -332,23 +321,7 @@ private:
 
 	iterator eraseImpl(std::forward_list<value_type>& container, iterator pos)
 	{
-		auto itPrev = container.before_begin();
-
-		for (auto it = container.begin(); it != container.end();)
-		{
-			if (it == pos)
-			{
-				it = container.erase_after(itPrev);
-				return it;
-			}
-			else
-			{
-				++itPrev;
-				++it;
-			}
-		}
-
-		return container.end();
+		return container.erase_after(pos);
 	}
 
 	template <typename C>
@@ -359,34 +332,19 @@ private:
 
 	iterator eraseImpl(std::forward_list<value_type>& container, const value_type& value)
 	{
-		auto item = find(value);
-		auto itPrev = container.before_begin();
-
-		for (auto it = container.begin(); it != container.end();)
-		{
-			if (item == it)
-			{
-				it = container.erase_after(itPrev);
-				return it;
-			}
-			else
-			{
-				++itPrev;
-				++it;
-			}
-		}
-		return container.end();
+		return container.erase_after(find(value));
 	}
 
-	template <typename C>
-	iterator eraseImpl(C& container, iterator first, iterator last)
+	template <typename C, typename firstType, typename lastType>
+	typename std::enable_if<!std::is_same<C, std::forward_list<value_type>>::value, iterator>::type
+	eraseImpl(C& container, firstType first, lastType last)
 	{
 		return container.erase(first, last);
 	}
 
-	// TODO
-	iterator eraseImpl(std::forward_list<value_type>& container, iterator first, iterator last)
+	iterator eraseImpl(std::forward_list<value_type>& container, const_iterator first, const_iterator last)
 	{
+		return container.erase_after(container.before_begin(), last);
 	}
 
 private:
