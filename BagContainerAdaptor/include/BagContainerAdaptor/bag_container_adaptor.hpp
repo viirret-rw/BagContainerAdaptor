@@ -145,56 +145,64 @@ private:
 	template <typename T>
 	void initializeContainer(BagContainerAdaptor<std::list<T>>& bag)
 	{
-		m_container = std::move(std::list<T>());
+		m_container = bag.m_container;
 	}
 
 	// Specialization for std::vector.
 	template <typename T>
 	void initializeContainer(BagContainerAdaptor<std::vector<T>>& bag)
 	{
-		m_container = std::move(std::vector<T>());
+		m_container = bag.m_container;
 	}
 
 	// Specialization for std::deque.
 	template <typename T>
 	void initializeContainer(BagContainerAdaptor<std::deque<T>>& bag)
 	{
-		m_container = std::move(std::deque<T>());
+		m_container = bag.m_container;
 	}
 
 	// Specialization for std::forward_list.
 	template <typename T>
 	void initializeContainer(BagContainerAdaptor<std::forward_list<T>>& bag)
 	{
-		m_container = std::move(std::forward_list<T>());
+		m_container = bag.m_container;
 	}
 	
 	// Specialization for std::multiset.
 	template <typename T>
 	void initializeContainer(BagContainerAdaptor<std::multiset<T>>& bag)
 	{
-		m_container = std::move(std::multiset<T>());
+		m_container = bag.m_container;
 	}
 
 	// Specialization for std::unordered_multiset.
 	template <typename T>
 	void initializeContainer(BagContainerAdaptor<std::unordered_multiset<T>>& bag)
 	{
-		m_container = std::move(std::unordered_multiset<T>());
+		m_container = bag.m_container;
+	}
+
+	// Specialization for BagContainerAdaptor.
+	// This needs proper testing but I think it works.
+	template <typename T>
+	void initializeContainer(BagContainerAdaptor<BagContainerAdaptor<T>>& bag)
+	{
+		m_container = std::move(bag.m_container);
 	}
 
 	// Specialization for LinkedList.
 	template <typename T>
 	void initializeContainer(BagContainerAdaptor<LinkedList<T>>& bag)
 	{
-		m_container = std::move(LinkedList<T>());
+		m_container = bag.m_container;
 	}
 
 	// Specialization for HashMap.
 	template <typename Key, typename Value>
 	void initializeContainer(BagContainerAdaptor<HashMap<Key, Value>>& bag)
 	{
-		m_container = HashMap<Key, Value>();
+		m_container = bag.m_container;
 	}
 
 private:
@@ -363,6 +371,7 @@ private:
 		return container.erase(first, last);
 	}
 
+	// TODO
 	iterator eraseImpl(std::forward_list<value_type>& container, const_iterator first, const_iterator last)
 	{
 		return container.erase_after(container.before_begin(), last);
