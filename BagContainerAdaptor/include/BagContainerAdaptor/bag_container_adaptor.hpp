@@ -17,6 +17,7 @@ public:
 	using iterator = typename Container::iterator;
 	using const_iterator = typename Container::const_iterator;
 
+	// Constructor.
 	BagContainerAdaptor()
 	{
 		initializeContainer(*this);
@@ -371,10 +372,9 @@ private:
 		return container.erase(first, last);
 	}
 
-	// TODO
 	iterator eraseImpl(std::forward_list<value_type>& container, const_iterator first, const_iterator last)
 	{
-		return container.erase_after(container.before_begin(), last);
+		return container.erase_after(first, last);
 	}
 
 private:

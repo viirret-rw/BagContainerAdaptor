@@ -56,20 +56,24 @@ protected:
 	{
 		BagContainerAdaptor<Container> adapter;
 
-		for(int i = 1; i < 11; i++)
+		for (int i = 1; i < 11; i++)
 		{
 			adapter.insert(i);
 		}
 
 		EXPECT_EQ(adapter.size(), 10);
 
-		//auto itBegin = std::next(adapter.begin(), 1);
-		//auto itEnd = std::next(adapter.end(), -1);
-
-		//adapter.erase(itBegin, itEnd);
 		adapter.erase(adapter.begin(), adapter.end());
-
-		EXPECT_EQ(adapter.size(), 0);
+		
+		// std::forward_list has always one extra element before the first element.
+		if (std::is_same<Container, std::forward_list<typename Container::value_type>>::value)
+		{
+			EXPECT_EQ(adapter.size(), 1);
+		}
+		else
+		{
+			EXPECT_EQ(adapter.size(), 0);
+		}
 	}
 
 	void findTest()
