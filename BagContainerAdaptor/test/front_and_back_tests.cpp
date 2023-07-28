@@ -34,7 +34,8 @@ typedef ::testing::Types<
 	std::vector<int>,
 	std::deque<int>,
 	std::forward_list<int>,
-	std::multiset<int>
+	std::multiset<int>,
+	LinkedList<int>
 > FrontAndBackContainerTypes;
 
 TYPED_TEST_SUITE(FrontAndBackTest, FrontAndBackContainerTypes);

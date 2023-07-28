@@ -72,72 +72,59 @@ public:
 	}
 };
 
+template <typename T>
+void runBenchmarks(size_t amount, const T& value, const T& target)
+{
+	std::cout << "std::vector\n";
+	BenchmarkRunner<std::vector<T>>::runTests(amount, value, target);
+	std::cout << "\n";
+
+	std::cout << "std::deque\n";
+	BenchmarkRunner<std::deque<T>>::runTests(amount, value, target);
+	std::cout << "\n";
+
+	std::cout << "std::list\n";
+	BenchmarkRunner<std::list<T>>::runTests(amount, value, target);
+	std::cout << "\n";
+
+	std::cout << "std::forward_list\n";
+	ForwardListRunner<T>::runTests(amount, value, target);
+	std::cout << "\n";
+
+	std::cout << "std::multiset\n";
+	BenchmarkRunner<std::multiset<T>>::runTests(amount, value, target);
+	std::cout << "\n";
+
+	std::cout << "unordered_multiset\n";
+	BenchmarkRunner<std::unordered_multiset<T>>::runTests(amount, value, target);
+	std::cout << "\n";
+	
+	std::cout << "LinkedList\n";
+	BenchmarkRunner<LinkedList<T>>::runTests(amount, value, target);
+	std::cout << "\n";
+}
+
 int main()
 {
-	std::cout << "std::vector<int>" << std::endl;
-	BenchmarkRunner<std::vector<int>>::runTests(100000, 3310, 323);
-	std::cout << std::endl;
+	// These runBenchmarks() calls are only made with primitives,
+	// because std::unordered_multiset sucks.
 
-	std::cout << "std::vector<CustomType>" << std::endl;
-	BenchmarkRunner<std::vector<CustomType>>::runTests(100, CustomType(), CustomType());
-	std::cout << std::endl;
+	std::cout << "int, 100000 iterations\n";
+	runBenchmarks<int>(100000, 5, 6);
+	std::cout << "\n";
 
-	std::cout << "std::vector<std::vector<std::string>>>" << std::endl;
-	BenchmarkRunner<std::vector<std::vector<std::string>>>::runTests(1000, std::vector<std::string> { "hello", "how", "are", "you"}, std::vector<std::string> { "hey" });
-	std::cout << std::endl;
+	std::cout << "double, 100000\n";
+	runBenchmarks<double>(100000, 0.2, 0.5);
+	std::cout << "\n";
 
-	std::cout << "std::list<int>" << std::endl;
-	BenchmarkRunner<std::list<int>>::runTests(100000, 323254, 311);
-	std::cout << std::endl;
-
-	std::cout << "std::list<std::unordered_map<int, std::string>>" << std::endl;
-	BenchmarkRunner<std::list<std::unordered_map<int, std::string>>>::runTests(100000, std::unordered_map<int, std::string> {{ 1, "one" }, { 2, "two" }, { 3, "three" }},
-	std::unordered_map<int, std::string> {{ 66, "moi" }});
-	std::cout << std::endl;
-
-	std::cout << "std::deque<size_t>" << std::endl;
-	BenchmarkRunner<std::deque<size_t>>::runTests(100000, std::numeric_limits<size_t>::max(), 543543);
-	std::cout << std::endl;
-
-	std::cout << "std::deque<std::vector<std::vector<int>>>" << std::endl;
-	BenchmarkRunner<std::deque<std::vector<std::vector<int>>>>::runTests(100000, std::vector<std::vector<int>> { std::vector<int> { 4, 2 }, std::vector<int> { 5, 8 }},
-	std::vector<std::vector<int>> { std::vector<int> { 363 }});
-	std::cout << std::endl;
-
-	std::cout << "std::multiset<int>" << std::endl;
-	BenchmarkRunner<std::multiset<int>>::runTests(1000000, 1, 65656);
-	std::cout << std::endl;
-
-	std::cout << "std::multiset<std::list<std::string>>" << std::endl;
-	BenchmarkRunner<std::multiset<std::list<std::string>>>::runTests(10000, std::list<std::string> { "hey" }, std::list<std::string> { "hey hey" });
-	std::cout << std::endl;
-
-	std::cout << "multiset<std::list<CustomType>>" << std::endl;
-	BenchmarkRunner<std::multiset<std::list<CustomType>>>::runTests(10000, std::list<CustomType> { CustomType() }, std::list<CustomType> { CustomType()});
-	std::cout << std::endl;
-
-	std::cout << "std::unordered_multiset<int>" << std::endl;
-	BenchmarkRunner<std::unordered_multiset<int>>::runTests(10000, 10, 54);
-	std::cout << std::endl;
-
-	std::cout << "std::unordered_multiset<char>" << std::endl;
-	BenchmarkRunner<std::unordered_multiset<char>>::runTests(10000, 'a', 'b');
-	std::cout << std::endl;
-
+	// This is also possible.
+	/*
 	{
 		std::cout << "BagContainerAdaptor<std::vector<int>>" << std::endl;
 		BagContainerAdaptor<std::vector<int>> adaptor;
 		BenchmarkRunner<BagContainerAdaptor<std::vector<int>>>::runTests(100000, 1, 2);
 		std::cout << std::endl;
 	}
-
-	std::cout << "std::forward_list<int>" << std::endl;
-	ForwardListRunner<int>::runTests(10000, 5, 2);
-	std::cout << std::endl;
-
-	std::cout << "std::forward_list<std::pair<int, std::string>" << std::endl;
-	ForwardListRunner<std::pair<int, std::string>>::runTests(100000, std::pair<int, std::string>{ 1, "moi"}, std::pair<int, std::string>{ 2, "two"});
-	std::cout << std::endl;
-
+	*/
 	return 0;
 }

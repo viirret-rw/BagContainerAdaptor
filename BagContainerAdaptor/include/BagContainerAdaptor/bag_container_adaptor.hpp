@@ -42,8 +42,9 @@ public:
 	{
 		return insertImpl(m_container, value);
 	}
-
-	iterator insert(const_iterator pos, const value_type& value)
+	
+	template <typename Iterator>
+	iterator insert(Iterator pos, const value_type& value)
 	{
 		return insertImpl(m_container, pos, value);
 	}
@@ -58,8 +59,8 @@ public:
 		return eraseImpl(m_container, value);
 	}
 
-	template <typename firstType, typename lastType>
-	iterator erase(firstType first, lastType last)
+	template <typename FirstType, typename LastType>
+	iterator erase(FirstType first, LastType last)
 	{
 		return eraseImpl(m_container, first, last);
 	}
@@ -196,7 +197,7 @@ private:
 	template <typename T>
 	void initializeContainer(BagContainerAdaptor<LinkedList<T>>& bag)
 	{
-		m_container = bag.m_container;
+		m_container = std::move(bag.m_container);
 	}
 
 	// Specialization for HashMap.
@@ -297,6 +298,11 @@ private:
 		return container.insert(container.end(), value);
 	}
 
+	iterator insertImpl(LinkedList<value_type>& container, const value_type& value)
+	{
+		return container.insert(value);
+	}
+
 	iterator insertImpl(std::forward_list<value_type>& container, const value_type& value)
 	{
 		auto itPrev = container.before_begin();
@@ -307,8 +313,9 @@ private:
 		return container.insert_after(itPrev, value);
 	}
 
-	template <typename C>
-	iterator insertImpl(C& container, const_iterator pos, const value_type& value)
+	template <typename C, typename Iterator>
+	typename std::enable_if<!std::is_same<C, std::forward_list<value_type>>::value, iterator>::type
+	insertImpl(C& container, Iterator pos, const value_type& value)
 	{
 		return container.insert(pos, value);
 	}
@@ -365,9 +372,9 @@ private:
 		return container.erase_after(find(value));
 	}
 
-	template <typename C, typename firstType, typename lastType>
+	template <typename C, typename FirstType, typename LastType>
 	typename std::enable_if<!std::is_same<C, std::forward_list<value_type>>::value, iterator>::type
-	eraseImpl(C& container, firstType first, lastType last)
+	eraseImpl(C& container, FirstType first, LastType last)
 	{
 		return container.erase(first, last);
 	}

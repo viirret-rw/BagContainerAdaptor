@@ -21,7 +21,7 @@ protected:
 		adapter.insert(adapter.begin(), 2);
 		adapter.insert(adapter.begin(), 3);
 	}
-
+	
 	void eraseTest1()
 	{
 		BagContainerAdaptor<Container> adapter;
@@ -136,7 +136,8 @@ typedef ::testing::Types<
 	std::deque<int>,
 	std::forward_list<int>,
 	std::multiset<int>,
-	std::unordered_multiset<int>
+	std::unordered_multiset<int>,
+	LinkedList<int>
 > MainContainerTypes;
 
 TYPED_TEST_SUITE(BagContainerAdaptorTest, MainContainerTypes);
