@@ -1,5 +1,7 @@
 #include "front_and_back_tests.cpp"
 
+#include "../dynamic/include/ring_buffer.hpp"
+
 template <typename Container>
 class BagContainerAdaptorTest : public ::testing::Test
 {
@@ -76,6 +78,23 @@ protected:
 		}
 	}
 
+	void eraseTestMultiple()
+	{
+		BagContainerAdaptor<Container> adapter;
+
+		adapter.insert(2);
+		adapter.insert(2);
+		adapter.insert(2);
+		adapter.insert(5);
+		adapter.insert(6);
+
+		EXPECT_EQ(adapter.size(), 5);
+
+		adapter.erase(2);
+
+		EXPECT_EQ(adapter.size(), 2);
+	}
+
 	void findTest()
 	{
 		BagContainerAdaptor<Container> adapter;
@@ -128,6 +147,28 @@ protected:
 		EXPECT_EQ(adapter1.size(), 1);
 		EXPECT_EQ(adapter2.size(), 4);
 	}
+
+	void moveConstructorTest()
+	{
+		Container container = Container{ 1, 2, 3 };
+		
+		BagContainerAdaptor<Container> adapter(std::move(container));
+
+		EXPECT_EQ(adapter.size(), 3);
+
+		// TODO not compile time so won't work
+		// std::forward_list does not have size() function
+		/*
+		if (std::is_same<Container, std::forward_list<typename Container::value_type>>::value)
+		{
+			EXPECT_EQ(std::distance(container.begin(), container.end()), 0);
+		}
+		else
+		{
+			EXPECT_EQ(container.size(), 0);
+		}
+		*/
+	}
 };
 
 typedef ::testing::Types<
@@ -137,7 +178,8 @@ typedef ::testing::Types<
 	std::forward_list<int>,
 	std::multiset<int>,
 	std::unordered_multiset<int>,
-	LinkedList<int>
+	LinkedList<int>,
+	ring_buffer<int>
 > MainContainerTypes;
 
 TYPED_TEST_SUITE(BagContainerAdaptorTest, MainContainerTypes);
@@ -167,6 +209,11 @@ TYPED_TEST(BagContainerAdaptorTest, eraseTest3)
 	this->eraseTest3();
 }
 
+TYPED_TEST(BagContainerAdaptorTest, eraseTestMultiple)
+{
+	this->eraseTestMultiple();
+}
+
 TYPED_TEST(BagContainerAdaptorTest, findTest)
 {
 	this->findTest();
@@ -185,6 +232,11 @@ TYPED_TEST(BagContainerAdaptorTest, emptyTest)
 TYPED_TEST(BagContainerAdaptorTest, swapTest)
 {
 	this->swapTest();
+}
+
+TYPED_TEST(BagContainerAdaptorTest, moveConstructorTest)
+{
+	this->moveConstructorTest();
 }
 
 int main(int argc, char** argv)

@@ -3,6 +3,8 @@
 
 #include <unordered_map>
 
+#include "../dynamic/include/ring_buffer.hpp"
+
 long memoryUsage = 0;
 
 void* operator new(size_t size)
@@ -102,6 +104,9 @@ void runBenchmarks(size_t amount, const T& value, const T& target)
 	std::cout << "LinkedList\n";
 	BenchmarkRunner<LinkedList<T>>::runTests(amount, value, target);
 	std::cout << "\n";
+
+	std::cout << "RingBuffer\n";
+	BenchmarkRunner<ring_buffer<T>>::runTests(amount, value, target);
 }
 
 int main()

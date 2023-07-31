@@ -1,0 +1,3 @@
+[submodule "BagContainerAdaptor/dynamic"]
+	path = BagContainerAdaptor/dynamic
+	url = https://github.com/Luhtaje/dynamic

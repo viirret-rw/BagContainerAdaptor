@@ -40,6 +40,8 @@ public:
 						>
 	{
 	public:
+		iterator(){}
+
 		explicit iterator(Node* node) : m_currentNode(node)
 		{
 		}
@@ -118,9 +120,29 @@ public:
 		return iterator(m_tail);
 	}
 
+	LinkedList()
+	{
+	}
+
 	~LinkedList()
 	{
 		clear();
+	}
+
+	LinkedList(std::initializer_list<value_type> list) 
+	{
+		for (const value_type& value : list)
+		{
+			insert(value);
+		}
+	}
+
+	LinkedList(LinkedList&& other) : 
+		m_head(other.m_head), m_tail(other.m_tail), m_count(other.m_count)
+	{
+		other.m_head = nullptr;
+		other.m_tail = nullptr;
+		other.m_count = 0;
 	}
 
 	LinkedList& operator=(LinkedList&& other)
@@ -149,7 +171,7 @@ public:
 		}
 	}
 
-	iterator insert(const T& value)
+	iterator insert(const T& value) noexcept
 	{
 		Node* newNode = new Node(value);
 
@@ -174,7 +196,7 @@ public:
 	}
 
 	// TODO there might be something wrong with this.
-	iterator insert(iterator pos, const T& value)
+	iterator insert(iterator pos, const T& value) noexcept
 	{
 		Node* newNode = new Node(value);
 
@@ -210,7 +232,7 @@ public:
 		return iterator(newNode);
 	}
 
-	iterator erase(const T& value)
+	iterator erase(const T& value) noexcept
 	{
 		Node* currentNode = m_head;
 		Node* previousNode = nullptr;
@@ -255,7 +277,7 @@ public:
 		}
 	}
 
-	iterator erase(iterator pos)
+	iterator erase(iterator pos) noexcept
 	{
 		Node* removable = pos.getNode();
 		Node* nextNode = removable->m_next;
@@ -294,7 +316,7 @@ public:
 		return iterator(nextNode);
 	}
 
-	iterator erase(iterator first, iterator last)
+	iterator erase(iterator first, iterator last) noexcept
 	{
 		Node* firstNode = first.getNode();
 		Node* lastNode = last.getNode();
