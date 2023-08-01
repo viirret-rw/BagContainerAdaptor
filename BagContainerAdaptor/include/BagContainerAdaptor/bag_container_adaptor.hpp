@@ -306,12 +306,6 @@ private:
 		return container.insert(container.end(), value);
 	}
 
-	// TODO I think this function should be removed from LinkedList
-	iterator insertImpl(LinkedList<value_type>& container, const value_type& value)
-	{
-		return container.insert(value);
-	}
-
 	/// Insert element to the last position specialized for std::forward_list.
 	/// \param container The underlying container type where the element is inserted.
 	/// \param value The value of the inserted element.

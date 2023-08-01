@@ -100,6 +100,50 @@ public:
 	{
 	};
 
+	/// Default constructor.
+	LinkedList()
+	{
+	}
+
+	/// Destructor.
+	~LinkedList()
+	{
+		clear();
+	}
+
+	/// Initializer list constructor.
+	LinkedList(std::initializer_list<value_type> list) 
+	{
+		for (const value_type& value : list)
+		{
+			insert(value);
+		}
+	}
+
+	/// Move constructor.
+	LinkedList(LinkedList&& other) : 
+		m_head(other.m_head), m_tail(other.m_tail), m_count(other.m_count)
+	{
+		other.m_head = nullptr;
+		other.m_tail = nullptr;
+		other.m_count = 0;
+	}
+
+	/// Move assingment operator.
+	LinkedList& operator=(LinkedList&& other)
+	{
+		if (this != &other)
+		{
+			m_head = other.m_head;
+			m_tail = other.m_tail;
+			m_count = other.m_count;
+
+			other.m_head = nullptr;
+			other.m_tail = nullptr;
+		}
+		return *this;
+	}
+
 	iterator begin()
 	{
 		return iterator(m_head);
@@ -118,45 +162,6 @@ public:
 	iterator cend() const
 	{
 		return iterator(m_tail);
-	}
-
-	LinkedList()
-	{
-	}
-
-	~LinkedList()
-	{
-		clear();
-	}
-
-	LinkedList(std::initializer_list<value_type> list) 
-	{
-		for (const value_type& value : list)
-		{
-			insert(value);
-		}
-	}
-
-	LinkedList(LinkedList&& other) : 
-		m_head(other.m_head), m_tail(other.m_tail), m_count(other.m_count)
-	{
-		other.m_head = nullptr;
-		other.m_tail = nullptr;
-		other.m_count = 0;
-	}
-
-	LinkedList& operator=(LinkedList&& other)
-	{
-		if (this != &other)
-		{
-			m_head = other.m_head;
-			m_tail = other.m_tail;
-			m_count = other.m_count;
-
-			other.m_head = nullptr;
-			other.m_tail = nullptr;
-		}
-		return *this;
 	}
 
 	void clear()
@@ -195,7 +200,6 @@ public:
 		return iterator(m_tail);
 	}
 
-	// TODO there might be something wrong with this.
 	iterator insert(iterator pos, const T& value) noexcept
 	{
 		Node* newNode = new Node(value);
@@ -206,18 +210,21 @@ public:
 			m_head = newNode;
 			m_tail = newNode;
 		}
-		else if (pos == begin())
+		// Inserting to beginning.
+		else if (pos == begin() && begin() != end())
 		{
 			newNode->m_next = m_head;
 			m_head->m_inverse = newNode;
 			m_head = newNode;
 		}
+		// Inserting to end.
 		else if (pos == end())
 		{
 			newNode->m_inverse = m_tail;
 			m_tail->m_next = newNode;
 			m_tail = newNode;
 		}
+		// Inserting to any other position.
 		else
 		{
 			Node* ogNode = pos.getNode();
