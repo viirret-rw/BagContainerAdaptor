@@ -1,48 +1,47 @@
 #ifndef LINKED_LIST_HPP
 #define LINKED_LIST_HPP
 
+#include <memory>
 #include <iostream>
 #include <algorithm>
 #include <cstddef>
 
+// I would this to be a nested class in the LinkedList but
+// with this implementation it doesn't seem possible.
 template <typename T>
+struct LinkedListNode
+{
+	/// Constructor.
+	explicit LinkedListNode(const T& value) :
+		m_data(value)
+	{
+	}
+
+	T m_data;
+
+	LinkedListNode<T>* m_next = nullptr;
+	LinkedListNode<T>* m_inverse = nullptr;
+};
+
+
+template <typename T, typename Allocator = std::allocator<LinkedListNode<T>>>
 class LinkedList
 {
 public:
 	using value_type = T;
 
-	struct Node
-	{
-		/// Constructor.
-		explicit Node(const T& value) :
-			m_data(value)
-		{
-		}
-
-		// Copy constructor.
-		explicit Node(const Node& node) :
-			m_data(node.m_data)
-		{
-		}
-
-		T m_data;
-
-		Node* m_next = nullptr;
-		Node* m_inverse = nullptr;
-	};
-
 	class iterator : public std::iterator<
 						std::forward_iterator_tag, 
-						Node, 
+						LinkedListNode<T>, 
 						std::ptrdiff_t, 
-						Node*, 
-						Node&
+						LinkedListNode<T>*, 
+						LinkedListNode<T>&
 						>
 	{
 	public:
 		iterator(){}
 
-		explicit iterator(Node* node) : m_currentNode(node)
+		explicit iterator(LinkedListNode<T>* node) : m_currentNode(node)
 		{
 		}
 
@@ -86,14 +85,14 @@ public:
 		// Move constructibility
 		iterator(iterator&&) = default;
 		iterator& operator=(iterator&&) = default; 
-
-		Node* getNode() const
+		
+		LinkedListNode<T>* getNode() const
 		{
 			return m_currentNode;
 		}
 
 	private:
-		Node* m_currentNode;
+		LinkedListNode<T>* m_currentNode;
 	};
 
 	class const_iterator
@@ -166,19 +165,13 @@ public:
 
 	void clear()
 	{
-		auto current = m_head;
-		Node* previous = nullptr;
-		while (current)
-		{
-			previous = current;
-			current = current->m_next;
-			delete previous;
-		}
+		m_allocator.deallocate(m_head, size());
 	}
 
 	iterator insert(const T& value) noexcept
 	{
-		Node* newNode = new Node(value);
+		auto* newNode = m_allocator.allocate(1);
+		m_allocator.construct(newNode, value);
 
 		// List is empty.
 		if (!m_head)
@@ -190,7 +183,7 @@ public:
 		// Adding a new Node to the linked list.
 		else
 		{
-			Node* prevNode = m_tail;
+			LinkedListNode<T>* prevNode = m_tail;
 			m_tail->m_next = newNode;
 			m_tail = newNode;
 			m_tail->m_inverse = prevNode;
@@ -202,7 +195,8 @@ public:
 
 	iterator insert(iterator pos, const T& value) noexcept
 	{
-		Node* newNode = new Node(value);
+		auto* newNode = m_allocator.allocate(1);
+		m_allocator.construct(newNode, value);
 
 		// List is empty.
 		if (!m_head)
@@ -227,7 +221,7 @@ public:
 		// Inserting to any other position.
 		else
 		{
-			Node* ogNode = pos.getNode();
+			LinkedListNode<T>* ogNode = pos.getNode();
 			ogNode->m_inverse->m_next = newNode;
 			ogNode->m_inverse = newNode;
 
@@ -241,8 +235,8 @@ public:
 
 	iterator erase(const T& value) noexcept
 	{
-		Node* currentNode = m_head;
-		Node* previousNode = nullptr;
+		auto* currentNode = m_head;
+		LinkedListNode<T>* previousNode = nullptr;
 
 		while (currentNode && currentNode->m_data != value)
 		{
@@ -273,8 +267,8 @@ public:
 				currentNode->m_next->m_inverse = previousNode;
 			}
 			
-			Node* returnNode = currentNode->m_next;		
-			delete currentNode;
+			LinkedListNode<T>* returnNode = currentNode->m_next;		
+			m_allocator.deallocate(currentNode, 1);
 			m_count--;
 			return iterator(returnNode);
 		}
@@ -286,8 +280,8 @@ public:
 
 	iterator erase(iterator pos) noexcept
 	{
-		Node* removable = pos.getNode();
-		Node* nextNode = removable->m_next;
+		auto* removable = pos.getNode();
+		auto* nextNode = removable->m_next;
 
 		if (removable == nullptr)
 		{
@@ -313,26 +307,26 @@ public:
 		}
 		else
 		{
-			Node* prevNode = removable->m_inverse;
+			LinkedListNode<T>* prevNode = removable->m_inverse;
 			prevNode->m_next = nextNode;
 			nextNode->m_inverse = prevNode;
 		}
 			
 		m_count--;
-		delete removable;
+		m_allocator.deallocate(removable, 1);
 		return iterator(nextNode);
 	}
 
 	iterator erase(iterator first, iterator last) noexcept
 	{
-		Node* firstNode = first.getNode();
-		Node* lastNode = last.getNode();
+		auto* firstNode = first.getNode();
+		auto* lastNode = last.getNode();
 
 		if (!firstNode || !lastNode || firstNode == lastNode)
 			return iterator(m_tail);
 
-		Node* prevNode = firstNode->m_inverse;
-		Node* nextNode = lastNode->m_next;
+		auto* prevNode = firstNode->m_inverse;
+		auto* nextNode = lastNode->m_next;
 
 		// Connect the Nodes before and after the range.
 		if (prevNode)
@@ -354,16 +348,16 @@ public:
 		}
 
 		// Delete the Nodes within the range.
-		Node* currentNode = firstNode;
+		LinkedListNode<T>* currentNode = firstNode;
 		while (currentNode != lastNode)
 		{
-			Node* next = currentNode->m_next;
-			delete currentNode;
+			auto* next = currentNode->m_next;
+			m_allocator.deallocate(currentNode, 1);
 			currentNode = next;
 			m_count--;
 		}
 
-		delete lastNode;
+		m_allocator.deallocate(lastNode, 1);
 		m_count--;
 
 		return iterator(nextNode);
@@ -452,14 +446,17 @@ public:
 
 private:
 
-	// Pointing always to the first element.
-	Node* m_head = nullptr;
+	/// Pointing always to the first element.
+	LinkedListNode<T>* m_head = nullptr;
 
-	// Pointing always to the last element.
-	Node* m_tail = nullptr;
+	/// Pointing always to the last element.
+	LinkedListNode<T>* m_tail = nullptr;
 
-	// Amount of Nodes in the linked list.
+	/// Amount of Nodes in the linked list.
 	size_t m_count = 0;
+
+	/// Allocator for memory management, default is std::allocator.
+	Allocator m_allocator;
 };
 
 #endif
