@@ -1,7 +1,5 @@
 #include "front_and_back_tests.cpp"
 
-#include "../dynamic/include/ring_buffer.hpp"
-
 template <typename Container>
 class BagContainerAdaptorTest : public ::testing::Test
 {

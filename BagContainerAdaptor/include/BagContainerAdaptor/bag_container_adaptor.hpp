@@ -4,11 +4,12 @@
 #include "../../dynamic/include/ring_buffer.hpp"
 
 #include "linked_list.hpp"
-#include "hash_map.hpp"
 
-#include <deque>
-#include <forward_list>
 #include <set>
+#include <list>
+#include <deque>
+#include <vector>
+#include <forward_list>
 #include <unordered_set>
 
 template <typename Container>
@@ -26,13 +27,13 @@ public:
 	}
 	
 	/// Move constructor.
-	/// \param container The underlying container where the BagContainerAdaptor is constructed.
+	/// \param container The underlying container from which the BagContainerAdaptor is constructed.
 	BagContainerAdaptor(Container&& container) : m_container(std::move(container))
 	{
 	}
 
 	// Move assignment operator.
-	/// \param other The underlying container where the BagContainerAdaptor is created.
+	/// \param other The underlying container from which the BagContainerAdaptor is created.
 	BagContainerAdaptor& operator=(BagContainerAdaptor&& other)
 	{
 		if (this != &other)
@@ -287,19 +288,6 @@ private:
 	/// \ingroup containerInitializations.
 	template <typename T>
 	void initializeContainer(BagContainerAdaptor<ring_buffer<T>>& bag)
-	{
-		m_container = bag.m_container;
-	}
-
-	// TODO This needs to work properly or be removed from the project.
-
-	/// Specialization for HashMap.
-	/// \param bag BagContainerAdaptor specialized for HashMap<Key, Value>.
-	/// \tparam Key The key argument for HashMap.
-	/// \tparam Value The value argument for HashMap.
-	/// \ingroup containerInitializations.
-	template <typename Key, typename Value>
-	void initializeContainer(BagContainerAdaptor<HashMap<Key, Value>>& bag)
 	{
 		m_container = bag.m_container;
 	}

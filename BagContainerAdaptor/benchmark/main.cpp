@@ -3,8 +3,6 @@
 
 #include <unordered_map>
 
-#include "../dynamic/include/ring_buffer.hpp"
-
 long memoryUsage = 0;
 
 void* operator new(size_t size)
