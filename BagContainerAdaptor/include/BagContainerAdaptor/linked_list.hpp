@@ -155,17 +155,23 @@ public:
 
 	iterator end()
 	{
-		return iterator(m_tail);
+		return iterator(nullptr);
 	}
 
 	iterator cend() const
 	{
-		return iterator(m_tail);
+		return iterator(nullptr);
 	}
 
 	void clear()
 	{
-		m_allocator.deallocate(m_head, size());
+		while (m_head) 
+		{
+        	auto* next = m_head->m_next;
+        	m_allocator.deallocate(m_head, 1);
+        	m_head = next;
+    	}
+    	m_count = 0;
 	}
 
 	iterator insert(const T& value) noexcept
@@ -319,44 +325,74 @@ public:
 
 	iterator erase(iterator first, iterator last) noexcept
 	{
+		// Get Node where the first iterator is pointing.
 		auto* firstNode = first.getNode();
-		auto* lastNode = last.getNode();
 
-		if (!firstNode || !lastNode || firstNode == lastNode)
-			return iterator(m_tail);
-
-		auto* prevNode = firstNode->m_inverse;
-		auto* nextNode = lastNode->m_next;
-
-		// Connect the Nodes before and after the range.
-		if (prevNode)
+		// Get Node where the last iterator is pointing.
+		LinkedListNode<T>* lastNode;
+		if (last == end())
 		{
-			prevNode->m_next = nextNode;
+			lastNode = m_tail;
 		}
 		else
+		{
+			lastNode = last.getNode();
+		}
+
+		if (!firstNode || !lastNode || firstNode == lastNode)
+		{
+			return iterator(nullptr);
+		}
+
+		// Get the Nodes before and after range.
+		LinkedListNode<T>* prevNode = nullptr;
+		LinkedListNode<T>* nextNode = nullptr;
+
+		if (first != begin())
+		{
+			prevNode = firstNode->m_inverse;
+		}
+		
+		if (last != end() || lastNode != m_tail)
+		{
+			nextNode = lastNode->m_next;
+		}
+
+		// Reset m_head and m_tail pointers, connect the Nodes after range if possible.
+		if (!prevNode && nextNode)
 		{
 			m_head = nextNode;
 		}
-
-		if (nextNode)
+		else if (prevNode && !nextNode)
 		{
-			nextNode->m_inverse = prevNode;
+			m_tail = prevNode;
+		}
+		else if (!prevNode && !nextNode)
+		{
+			m_head = nullptr;
+			m_tail = nullptr;
 		}
 		else
 		{
-			m_tail = prevNode;
+			m_head = prevNode;
+			m_tail = nextNode;
+			prevNode->m_next = nextNode;
+			nextNode->m_inverse = prevNode;
 		}
 
 		// Delete the Nodes within the range.
 		LinkedListNode<T>* currentNode = firstNode;
+		
 		while (currentNode != lastNode)
 		{
 			auto* next = currentNode->m_next;
+
 			m_allocator.deallocate(currentNode, 1);
 			currentNode = next;
 			m_count--;
 		}
 
+		// Deallocate the last element.
 		m_allocator.deallocate(lastNode, 1);
 		m_count--;
 
@@ -445,7 +481,6 @@ public:
 	}
 
 private:
-
 	/// Pointing always to the first element.
 	LinkedListNode<T>* m_head = nullptr;
 
