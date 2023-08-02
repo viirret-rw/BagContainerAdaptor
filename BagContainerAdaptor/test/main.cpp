@@ -1,4 +1,6 @@
-#include "front_and_back_tests.cpp"
+#include <gtest/gtest.h>
+
+#include <BagContainerAdaptor/bag_container_adaptor.hpp>
 
 template <typename Container>
 class BagContainerAdaptorTest : public ::testing::Test
@@ -11,6 +13,8 @@ protected:
 		adapter.insert(1);
 		adapter.insert(2);
 		adapter.insert(3);
+
+		EXPECT_EQ(adapter.size(), 3);
 	}
 
 	void insertTest2()
@@ -20,6 +24,8 @@ protected:
 		adapter.insert(adapter.begin(), 1);
 		adapter.insert(adapter.begin(), 2);
 		adapter.insert(adapter.begin(), 3);
+
+		EXPECT_EQ(adapter.size(), 3);
 	}
 	
 	void eraseTest1()
@@ -148,6 +154,7 @@ protected:
 
 	void moveConstructorTest()
 	{
+		// This can me initialized non explicitly when the ring buffer is updated.
 		Container container = Container{ 1, 2, 3 };
 		
 		BagContainerAdaptor<Container> adapter(std::move(container));
@@ -167,6 +174,43 @@ protected:
 		}
 		*/
 	}
+
+	void moveAssingmentTest()
+	{
+		{
+			BagContainerAdaptor<Container> adapter;
+
+			EXPECT_EQ(adapter.size(), 0);
+
+			adapter = Container{ 1, 2, 3 };
+
+			EXPECT_EQ(adapter.size(), 3);
+		}
+		
+		{
+			// std::deque leaking memory here. Why?
+			BagContainerAdaptor<Container> adapter = Container{ 1, 2, 3 };
+			EXPECT_EQ(adapter.size(), 3);
+		}
+	}
+
+	void nonConstIterationTest()
+	{
+		BagContainerAdaptor<Container> adapter;
+
+		adapter.insert(5);
+		adapter.insert(10);
+		adapter.insert(15);
+
+		int counter = 0;
+		for (auto i = adapter.begin(); i != adapter.end(); i++) 
+		{
+			counter++;
+		}
+
+		EXPECT_EQ(counter, adapter.size());
+	}
+
 };
 
 typedef ::testing::Types<
@@ -235,6 +279,11 @@ TYPED_TEST(BagContainerAdaptorTest, swapTest)
 TYPED_TEST(BagContainerAdaptorTest, moveConstructorTest)
 {
 	this->moveConstructorTest();
+}
+
+TYPED_TEST(BagContainerAdaptorTest, moveAssingmentTest)
+{
+	this->moveAssingmentTest();
 }
 
 int main(int argc, char** argv)

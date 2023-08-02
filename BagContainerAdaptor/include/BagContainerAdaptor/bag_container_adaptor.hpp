@@ -25,14 +25,14 @@ public:
 	{
 		initializeContainer(*this);
 	}
-	
+
 	/// Move constructor.
 	/// \param container The underlying container from which the BagContainerAdaptor is constructed.
 	BagContainerAdaptor(Container&& container) : m_container(std::move(container))
 	{
 	}
 
-	// Move assignment operator.
+    // Move assignment operator.
 	/// \param other The underlying container from which the BagContainerAdaptor is created.
 	BagContainerAdaptor& operator=(BagContainerAdaptor&& other)
 	{
@@ -42,6 +42,23 @@ public:
 		}
 		return *this;
 	}
+
+	/// Forwarding constructor for self-instantiation.
+	/// \param other The other BagContainerAdaptor from which we are initializing from.
+	/// \tparam OtherContainer The template argument for the other container.
+	template <typename OtherContainer, typename = std::enable_if<std::is_same<Container, OtherContainer>::value>>
+	BagContainerAdaptor(BagContainerAdaptor<OtherContainer>&& other) :
+		m_container(std::move(other.m_container))
+	{
+	}
+
+	/// Copy constructor.
+	/// \param other The other BagContainerAdaptor where we copy from.
+	BagContainerAdaptor(const BagContainerAdaptor& other) = delete;
+
+	/// Copy assignment operator.
+	/// \param other The other BagContainerAdaptor where we copy from.
+	BagContainerAdaptor& operator=(const BagContainerAdaptor& other) = delete;
 
 	/// Insert element to specified position of the underlying container.
 	/// \param pos The specified position where the element is inserted.
@@ -259,8 +276,6 @@ private:
 	{
 		m_container = bag.m_container;
 	}
-
-	// TODO This needs proper testing but I think it works.
 
 	/// Specialization for BagContainerAdaptor.
 	/// \param bag BagContainerAdaptor specialized for BagContainerAdaptor<T>.

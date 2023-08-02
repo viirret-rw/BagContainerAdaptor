@@ -120,14 +120,5 @@ int main()
 	runBenchmarks<double>(100000, 0.2, 0.5);
 	std::cout << "\n";
 
-	// This is also possible.
-	/*
-	{
-		std::cout << "BagContainerAdaptor<std::vector<int>>" << std::endl;
-		BagContainerAdaptor<std::vector<int>> adaptor;
-		BenchmarkRunner<BagContainerAdaptor<std::vector<int>>>::runTests(100000, 1, 2);
-		std::cout << std::endl;
-	}
-	*/
 	return 0;
 }

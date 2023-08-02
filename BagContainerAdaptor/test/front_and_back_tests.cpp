@@ -35,6 +35,7 @@ typedef ::testing::Types<
 	std::deque<int>,
 	std::forward_list<int>,
 	std::multiset<int>,
+	ring_buffer<int>,
 	LinkedList<int>
 > FrontAndBackContainerTypes;
 
