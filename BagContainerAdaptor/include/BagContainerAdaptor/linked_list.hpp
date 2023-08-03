@@ -12,14 +12,19 @@ template <typename T>
 struct LinkedListNode
 {
 	/// Constructor.
+	/// \param value The value of the data in the Node.
 	explicit LinkedListNode(const T& value) :
 		m_data(value)
 	{
 	}
 
+	/// The data inside the Node.
 	T m_data;
 
+	/// Pointing towards the next item in the linked list.
 	LinkedListNode<T>* m_next = nullptr;
+
+	/// Pointing towards the previous item in the linked list.
 	LinkedListNode<T>* m_inverse = nullptr;
 };
 
@@ -39,64 +44,257 @@ public:
 						>
 	{
 	public:
-		iterator(){}
+		/// Default constructor
+		iterator() noexcept {}
 
-		explicit iterator(LinkedListNode<T>* node) : m_currentNode(node)
+		/// Constructor.
+		/// \param node Pointer to the LinkedListNode to initialize the iterator with.
+		/// \post The iterator is constructed with the given LinkedListNode as the current node.
+		/// \exception No exceptions are thrown by this operation.
+		explicit iterator(LinkedListNode<T>* node) noexcept : m_currentNode(node)
 		{
 		}
-
-		T& operator*() const
+		
+		/// Dereference operator for the iterator.
+		/// \post Returns a reference to the data of the current node.
+		/// \exception No exceptions are thrown by this operation.
+		/// \return A reference to the data of the current node.
+		T& operator*() const noexcept
 		{
 			return m_currentNode->m_data;
 		}
-
-		T* operator->() const
+		
+		/// Arrow operator for the iterator.
+		/// \post Returns a pointer to the data of the current node.
+		/// \exception No exceptions are thrown by this operation.
+		/// \return A pointer to the data of the current node.
+		T* operator->() const noexcept
 		{
 			return &(m_currentNode->m_data);
 		}
 
-		iterator& operator++()
+		/// Pre-increment operator for the iterator.
+		/// \post Moves the iterator to the next node in the LinkedList.
+		/// \exception No exceptions are thrown by this operation.
+		/// \return A reference to the iterator after the increment.
+		iterator& operator++() noexcept
 		{
 			m_currentNode = m_currentNode->m_next;
 			return *this;
 		}
-
-		iterator operator++(int)
+		
+		/// Post-increment operator for the iterator.
+		/// \post Moves the iterator to the next node in the LinkedList.
+		/// \exception No exceptions are thrown by this operation.
+		/// \return An iterator pointing to the previous position before the increment.
+		iterator operator++(int) noexcept
 		{
 			iterator temp = *this;
 			++(*this);
 			return temp;
 		}
-
-		bool operator==(const iterator& other) const
+		
+		/// Equality comparison operator for the iterator.
+		/// \param other The iterator to compare with.
+		/// \post Checks if the current node of this iterator is equal to the current node of the other iterator.
+		/// \exception No exceptions are thrown by this operation.
+		/// \return True if both iterators point to the same node, otherwise false.
+		bool operator==(const iterator& other) const noexcept
 		{
 			return m_currentNode == other.m_currentNode;
 		}
-
-		bool operator!=(const iterator& other) const
+		
+		/// Inequality comparison operator for the iterator.
+		/// \param other The iterator to compare with.
+		/// \post Checks if the current node of this iterator is not equal to the current node of the other iterator.
+		/// \exception No exceptions are thrown by this operation.
+		/// \return True if both iterators do not point to the same node, otherwise false.
+		bool operator!=(const iterator& other) const noexcept
 		{
 			return m_currentNode != other.m_currentNode;
 		}
 
-		// Copy constructibility
-		iterator(const iterator&) = default;
+		/// Copy constructibility from const_iterator.
+		/// \param it The const_iterator to copy construct from.
+		/// \post The iterator is constructed with the same current node as the const_iterator.
+		/// \exception No exceptions are thrown by this operation.
+		iterator(const typename LinkedList<T>::const_iterator& it) noexcept :
+			m_currentNode(it.m_currentNode)
+		{
+		}
+
+		/// Copy assignment from const_iterator.
+		/// \param it The const_iterator to copy assign from.
+		/// \post The iterator is assigned with the same current node as the const_iterator.
+		/// \return A reference to the iterator after the assignment.
+		/// \exception No exceptions are thrown by this operation.
+		iterator& operator=(const typename LinkedList<T>::const_iterator& it) noexcept
+		{
+			m_currentNode = it.m_currentNode;
+			return *this;
+		}
+
+		/// Move constructibility from const_iterator.
+		/// \param it The const_iterator to move construct from.
+		/// \post The iterator is constructed with the same current node as the const_iterator.
+		/// \exception No exceptions are thrown by this operation.
+		iterator(typename LinkedList<T>::const_iterator&& it) noexcept :
+			m_currentNode(const_cast<LinkedListNode<T>*>(it.m_currentNode))
+		{
+		}
+
+		/// Move assignment from const_iterator.
+		/// \post The iterator is assigned with the same current node as the const_iterator.
+		/// \return A reference to the iterator after the assignment.
+		/// \exception No exceptions are thrown by this operation.
+		iterator& operator=(typename LinkedList<T>::const_iterator& it) noexcept
+		{
+			m_currentNode = const_cast<LinkedListNode<T>*>(it.currentNode);
+			return *this;
+		}
+
+		/// Copy constructor.
+		/// \return A reference to the iterator after the assignment.
+		/// \post The iterator is constructed as a copy of the other iterator.
+		/// \exception No exceptions are thrown by this operation.
+		iterator(const iterator&) noexcept = default;
+
+		/// Copy assignment operator.
+		/// \return A reference to the iterator after the assignment.
+		/// \post The iterator is assigned as a copy of the other iterator.
+		/// \exception No exceptions are thrown by this operation.
 		iterator& operator=(const iterator&) = default;
 
-		// Move constructibility
+		/// Move constructor.
+		/// \post The iterator is constructed by moving the other iterator.
+		/// \exception No exceptions are thrown by this operation.
 		iterator(iterator&&) = default;
+
+		/// Move assignment operator.
+		/// \return A reference to the iterator after the assignment.
+		/// \post The iterator is assigned by moving the other iterator.
+		/// \exception No exceptions are thrown by this operation.
 		iterator& operator=(iterator&&) = default; 
 		
-		LinkedListNode<T>* getNode() const
+		/// Get the Node where the iterator is pointing.
+		/// \return A pointer to the current node where the iterator is pointing.
+		/// \post Returns a pointer to the current node where the iterator is pointing.
+		/// \exception No exceptions are thrown by this operation.
+		LinkedListNode<T>* getNode() const noexcept
+		{
+			return m_currentNode;
+		}
+
+	private:
+		/// Pointer to the current node where the iterator is pointing.
+		/// \note The iterator should always point to a valid node in the linked list, 
+		/// 	or it should be nullptr if it has reached the end of the list.
+		LinkedListNode<T>* m_currentNode;
+	};
+
+	class const_iterator : public std::iterator<
+							std::forward_iterator_tag,
+							const LinkedListNode<T>,
+							std::ptrdiff_t,
+							const LinkedListNode<T>*,
+							const LinkedListNode<T>&
+							>
+	{
+	public:
+		const_iterator() noexcept {}
+
+		explicit const_iterator(const LinkedListNode<T>* node) noexcept : m_currentNode(node)
+		{
+		}
+
+		const T& operator*() const noexcept
+		{
+			return m_currentNode->m_data;
+		}
+
+		const T* operator->() const noexcept
+		{
+			return &(m_currentNode->m_data);
+		}
+
+		const_iterator& operator++() noexcept
+		{
+			m_currentNode = m_currentNode->m_next;
+			return *this;
+		}
+
+		const_iterator operator++(int) noexcept
+		{
+			const_iterator temp = *this;
+			++(*this);
+			return temp;
+		}
+
+		bool operator==(const const_iterator& other) const noexcept
+		{
+			return m_currentNode == other.m_currentNode;
+		}
+
+		bool operator!=(const const_iterator& other) const noexcept
+		{
+			return m_currentNode != other.m_currentNode;
+		}
+
+		/// Copy constructibility from non-const iterator.
+		const_iterator(const typename LinkedList<T>::iterator& it) noexcept :
+			m_currentNode(it.getNode())
+		{
+		}
+
+		/// Copy assignment from non-const iterator.
+		const_iterator& operator=(const typename LinkedList<T>::iterator& it) noexcept
+		{
+			m_currentNode = it.getNode();
+			return *this;
+		}
+
+		/// Move constructibility from non-const iterator.
+		/// \param it The non-const iterator to be moved from.
+		/// \post The const_iterator is constructed, taking ownership of the internal
+		/// 	pointer from the non-const iterator.
+		/// \exception No exceptions are thrown by this operation.
+		const_iterator(typename LinkedList<T>::iterator&& it) noexcept :
+			m_currentNode(it.getNode())
+		{
+		}
+
+		/// Move assingment from non-const iterator.
+		/// \param it The non-const iterator to be moved from.
+		/// \post The const_iterator is assigned the value of the non-const iterator, taking ownership of the internal pointer.
+		/// \exception No exceptions are thrown by this operation.
+		const_iterator& operator=(typename LinkedList<T>::iterator&& it) noexcept
+		{
+			m_currentNode = it.getNode();
+			return *this;
+		}
+
+		/// Copy constructor.
+		const_iterator(const const_iterator&) = default;
+
+		/// Copy assignment operator.
+		const_iterator& operator=(const const_iterator&) = default;
+
+		/// Move constructor.
+		const_iterator(const_iterator&&) = default;
+
+		/// Move assignment operator.
+		const_iterator& operator=(const_iterator&&) = default;
+
+		/// Get the Node where the iterator is pointing.
+		/// \return Node where the iterator is pointing.
+		const LinkedListNode<T>* getNode() const noexcept
 		{
 			return m_currentNode;
 		}
 
 	private:
 		LinkedListNode<T>* m_currentNode;
-	};
 
-	class const_iterator
-	{
 	};
 
 	/// Default constructor.
@@ -142,6 +340,10 @@ public:
 		}
 		return *this;
 	}
+
+	LinkedList(const LinkedList<T>& other) = delete;
+
+	LinkedList& operator=(const LinkedList<T>& other) = delete;
 
 	iterator begin()
 	{

@@ -113,11 +113,11 @@ int main()
 	// because std::unordered_multiset sucks.
 
 	std::cout << "int, 100000 iterations\n";
-	runBenchmarks<int>(100000, 5, 6);
+	runBenchmarks<int>(10000, 5, 6);
 	std::cout << "\n";
 
 	std::cout << "double, 100000\n";
-	runBenchmarks<double>(100000, 0.2, 0.5);
+	runBenchmarks<double>(10000, 0.2, 0.5);
 	std::cout << "\n";
 
 	return 0;

@@ -160,19 +160,6 @@ protected:
 		BagContainerAdaptor<Container> adapter(std::move(container));
 
 		EXPECT_EQ(adapter.size(), 3);
-
-		// TODO not compile time so won't work
-		// std::forward_list does not have size() function
-		/*
-		if (std::is_same<Container, std::forward_list<typename Container::value_type>>::value)
-		{
-			EXPECT_EQ(std::distance(container.begin(), container.end()), 0);
-		}
-		else
-		{
-			EXPECT_EQ(container.size(), 0);
-		}
-		*/
 	}
 
 	void moveAssingmentTest()
@@ -188,7 +175,6 @@ protected:
 		}
 		
 		{
-			// std::deque leaking memory here. Why?
 			BagContainerAdaptor<Container> adapter = Container{ 1, 2, 3 };
 			EXPECT_EQ(adapter.size(), 3);
 		}
@@ -196,11 +182,7 @@ protected:
 
 	void nonConstIterationTest()
 	{
-		BagContainerAdaptor<Container> adapter;
-
-		adapter.insert(5);
-		adapter.insert(10);
-		adapter.insert(15);
+		BagContainerAdaptor<Container> adapter = Container{ 5, 10, 15 };
 
 		int counter = 0;
 		for (auto i = adapter.begin(); i != adapter.end(); i++) 
@@ -208,6 +190,18 @@ protected:
 			counter++;
 		}
 
+		EXPECT_EQ(counter, adapter.size());
+	}
+
+	void constIterationTest()
+	{
+		BagContainerAdaptor<Container> adapter = Container{ 1, 2, 3, 4, 5 };
+
+		int counter = 0;
+		for (auto i = adapter.cbegin(); i != adapter.cend(); i++)
+		{
+			counter++;
+		}
 		EXPECT_EQ(counter, adapter.size());
 	}
 
@@ -284,6 +278,16 @@ TYPED_TEST(BagContainerAdaptorTest, moveConstructorTest)
 TYPED_TEST(BagContainerAdaptorTest, moveAssingmentTest)
 {
 	this->moveAssingmentTest();
+}
+
+TYPED_TEST(BagContainerAdaptorTest, nonConstIterationTest)
+{
+	this->nonConstIterationTest();
+}
+
+TYPED_TEST(BagContainerAdaptorTest, constIterationTest)
+{
+	this->constIterationTest();
 }
 
 int main(int argc, char** argv)
