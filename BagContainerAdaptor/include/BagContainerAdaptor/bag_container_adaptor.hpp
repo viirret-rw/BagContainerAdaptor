@@ -21,20 +21,26 @@ public:
 	using const_iterator = typename Container::const_iterator;
 
 	/// Constructor.
-	BagContainerAdaptor()
+	BagContainerAdaptor() noexcept
 	{
 		initializeContainer(*this);
 	}
 
+	/// Destructor.
+	~BagContainerAdaptor() noexcept
+	{
+		deallocateContainer(m_container);
+	}
+
 	/// Move constructor.
 	/// \param container The underlying container from which the BagContainerAdaptor is constructed.
-	BagContainerAdaptor(Container&& container) : m_container(std::move(container))
+	BagContainerAdaptor(Container&& container) noexcept : m_container(std::move(container))
 	{
 	}
 
     // Move assignment operator.
 	/// \param other The underlying container from which the BagContainerAdaptor is created.
-	BagContainerAdaptor& operator=(BagContainerAdaptor&& other)
+	BagContainerAdaptor& operator=(BagContainerAdaptor&& other) noexcept
 	{
 		if (this != &other)
 		{
@@ -47,7 +53,7 @@ public:
 	/// \param other The other BagContainerAdaptor from which we are initializing from.
 	/// \tparam OtherContainer The template argument for the other container.
 	template <typename OtherContainer, typename = std::enable_if<std::is_same<Container, OtherContainer>::value>>
-	BagContainerAdaptor(BagContainerAdaptor<OtherContainer>&& other) :
+	BagContainerAdaptor(BagContainerAdaptor<OtherContainer>&& other) noexcept :
 		m_container(std::move(other.m_container))
 	{
 	}
@@ -109,35 +115,35 @@ public:
 
 	/// Swap the contents of two BagContainerAdaptors.
 	/// \param other The other bag to be swapped with.
-	void swap(BagContainerAdaptor& other)
+	void swap(BagContainerAdaptor& other) noexcept
 	{
 		m_container.swap(other.m_container);
 	}
 
 	/// Get constant iterator pointing to the first element in the underlying container.
 	/// \return Constant iterator pointing to the first element in the underlying container.
-	const_iterator cbegin() const
+	const_iterator cbegin() const noexcept
 	{
 		return m_container.cbegin();
 	}
 
 	/// Get iterator pointing to the first element in the underlying container.
 	/// \return Iterator pointing to the first element in the underlying container.
-	iterator begin()
+	iterator begin() noexcept
 	{
 		return m_container.begin();
 	}
 
 	/// Get constant iterator pointing to the last element in the underlying container.
 	/// \return Contant iterator pointing to the last element in the underlying container.
-	const_iterator cend() const
+	const_iterator cend() const noexcept
 	{
 		return m_container.cend();
 	}
 
 	/// Get iterator pointing to the last element in the underlying container.
 	/// \return Iterator pointing to the last element in the underlying container.
-	iterator end()
+	iterator end() noexcept
 	{
 		return m_container.end();
 	}
@@ -160,42 +166,42 @@ public:
 
 	/// Get reference to the first element in the underlying container.
 	/// \return Reference to the first element in the underlying container.
-	value_type& front()
+	value_type& front() noexcept
 	{
 		return frontImpl(m_container);
 	}
 	
 	/// Get reference to the first element in the underlying container in const context.
 	/// \return Reference to the first element in the underlying container.
-	const value_type& front() const
+	const value_type& front() const noexcept
 	{
 		return frontImpl(m_container);
 	}
 
 	/// Get reference to the last element in the underlying container.
 	/// \return Reference to the last element in the underlying container.
-	value_type& back()
+	value_type& back() noexcept
 	{
 		return backImpl(m_container);
 	}
 
 	/// Get reference to the last element in the underlying container.	
 	/// \return Reference to the last element in the underlying container.
-	const value_type& back() const
+	const value_type& back() const noexcept
 	{
 		return m_container.back();
 	}
 
 	/// Get the amount of elements in the underlying container.
 	/// \return The amount of elements in the underlying container.
-	size_t size() const
+	size_t size() const noexcept
 	{
 		return sizeImpl(m_container);
 	}
 
 	/// Get boolean describing if the underlying container is empty or not.
 	/// \return Boolean describing if the underlying container is empty or not.
-	bool empty() const
+	bool empty() const noexcept
 	{
 		return m_container.empty();
 	}
@@ -222,7 +228,7 @@ private:
 	/// \tparam T The type of elements in std::list.
 	/// \ingroup containerInitializations
 	template <typename T>
-	void initializeContainer(BagContainerAdaptor<std::list<T>>& bag)
+	void initializeContainer(BagContainerAdaptor<std::list<T>>& bag) noexcept
 	{
 		m_container = bag.m_container;
 	}
@@ -232,7 +238,7 @@ private:
 	/// \tparam T The type of elements in std::vector.
 	/// \ingroup containerInitializations.
 	template <typename T>
-	void initializeContainer(BagContainerAdaptor<std::vector<T>>& bag)
+	void initializeContainer(BagContainerAdaptor<std::vector<T>>& bag) noexcept
 	{
 		m_container = bag.m_container;
 	}
@@ -242,7 +248,7 @@ private:
 	/// \tparam T The type of elements in std::deque.
 	/// \ingroup containerInitializations.
 	template <typename T>
-	void initializeContainer(BagContainerAdaptor<std::deque<T>>& bag)
+	void initializeContainer(BagContainerAdaptor<std::deque<T>>& bag) noexcept
 	{
 		m_container = bag.m_container;
 	}
@@ -252,7 +258,7 @@ private:
 	/// \tparam T The type of elements in std::forward_list.
 	/// \ingroup containerInitializations.
 	template <typename T>
-	void initializeContainer(BagContainerAdaptor<std::forward_list<T>>& bag)
+	void initializeContainer(BagContainerAdaptor<std::forward_list<T>>& bag) noexcept
 	{
 		m_container = bag.m_container;
 	}
@@ -262,7 +268,7 @@ private:
 	/// \tparam T The type of elements in std::multiset.
 	/// \ingroup containerInitializations.
 	template <typename T>
-	void initializeContainer(BagContainerAdaptor<std::multiset<T>>& bag)
+	void initializeContainer(BagContainerAdaptor<std::multiset<T>>& bag) noexcept
 	{
 		m_container = bag.m_container;
 	}
@@ -272,7 +278,7 @@ private:
 	/// \tparam T The type of elements in std::unordered_multiset.
 	/// \ingroup containerInitializations.
 	template <typename T>
-	void initializeContainer(BagContainerAdaptor<std::unordered_multiset<T>>& bag)
+	void initializeContainer(BagContainerAdaptor<std::unordered_multiset<T>>& bag) noexcept
 	{
 		m_container = bag.m_container;
 	}
@@ -282,7 +288,7 @@ private:
 	/// \tparam T The type of elements in BagContainerAdaptor argument.
 	/// \ingroup containerInitializations.
 	template <typename T>
-	void initializeContainer(BagContainerAdaptor<BagContainerAdaptor<T>>& bag)
+	void initializeContainer(BagContainerAdaptor<BagContainerAdaptor<T>>& bag) noexcept
 	{
 		m_container = std::move(bag.m_container);
 	}
@@ -292,7 +298,7 @@ private:
 	/// \tparam T The type of elements in LinkedList.
 	/// \ingroup containerInitializations.
 	template <typename T>
-	void initializeContainer(BagContainerAdaptor<LinkedList<T>>& bag)
+	void initializeContainer(BagContainerAdaptor<LinkedList<T>>& bag) noexcept
 	{
 		m_container = std::move(bag.m_container);
 	}
@@ -300,11 +306,30 @@ private:
 	/// Specialization for Ring buffer.
 	/// \param bag BagContainerAdapter specialized for ring_buffer<T>.
 	/// \tparam T The type of elements in Ring buffer.
-	/// \ingroup containerInitializations.
+	/// \ingroup containerInitializations
 	template <typename T>
-	void initializeContainer(BagContainerAdaptor<ring_buffer<T>>& bag)
+	void initializeContainer(BagContainerAdaptor<ring_buffer<T>>& bag) noexcept
 	{
 		m_container = bag.m_container;
+	}
+
+	/// \defgroup containerDestructors	
+
+	/// Default destructor implementation.
+	/// \param bag Default container type.
+	/// \tparam C The underlying container type.
+	/// \ingroup containerDestructors
+	template <typename C>
+	void deallocateContainer(C& bag) noexcept
+	{
+	}
+
+	/// Specialization for std::deque.
+	/// \param bag BagContainerAdapter specialized for std::deque.
+	/// \ingroup containerDestructors.
+	void deallocateContainer(BagContainerAdaptor<std::deque<value_type>> bag) noexcept
+	{
+        bag.clear();
 	}
 
 	/// \defgroup insertImplementations
@@ -470,7 +495,7 @@ private:
 	/// \return Reference to the first item in underlying container.
 	/// \ingroup frontImplementations
 	template <typename C>
-	value_type& frontImpl(C& container)
+	value_type& frontImpl(C& container) noexcept
 	{
 		return container.front();
 	}
@@ -481,7 +506,7 @@ private:
 	/// \return Reference to the first item in underlying container.
 	/// \ingroup frontImplementations
 	template <typename C>
-	const value_type& frontImpl(const C& container) const
+	const value_type& frontImpl(const C& container) const noexcept
 	{
 		return container.front();
 	}
@@ -490,7 +515,7 @@ private:
 	/// \param container The underlying container type for BagContainerAdaptor that is std::forward_list.
 	/// \return Reference to the first item in underlying container.
 	/// \ingroup frontImplementations
-	value_type& frontImpl(std::forward_list<value_type>& container)
+	value_type& frontImpl(std::forward_list<value_type>& container) noexcept
 	{
 		return *container.begin();
 	}
@@ -499,7 +524,7 @@ private:
 	/// \param container The underlying container type for BagContainerAdaptor that is std::forward_list.
 	/// \return Reference to the first item in underlying container.
 	/// \ingroup frontImplementations
-	const value_type& frontImpl(const std::forward_list<value_type>& container) const
+	const value_type& frontImpl(const std::forward_list<value_type>& container) const noexcept
 	{
 		return *container.cbegin();
 	}
@@ -508,7 +533,7 @@ private:
 	/// \param container The underlying container type for BagContainerAdaptor that is std::multiset.
 	/// \return Reference to the first item in underlying container.
 	/// \ingroup frontImplementations
-	value_type& frontImpl(std::multiset<value_type>& container)
+	value_type& frontImpl(std::multiset<value_type>& container) noexcept
 	{
 		// Using const_cast here because the value_type of std::multiset is constant.
 		return const_cast<value_type&>(*container.begin());
@@ -518,7 +543,7 @@ private:
 	/// \param container The underlying container type for BagContainerAdaptor that is std::multiset.
 	/// \return Reference to the first item in underlying container.
 	/// \ingroup frontImplementations
-	const value_type& frontImpl(const std::multiset<value_type>& container) const
+	const value_type& frontImpl(const std::multiset<value_type>& container) const noexcept
 	{
 		return *container.cbegin();
 	}
@@ -527,7 +552,7 @@ private:
 	/// \param container The underlying container type for BagContainerAdaptor that is std::unordered_multiset.
 	/// \return Reference to the first item in underlying container.
 	/// \ingroup frontImplementations
-	value_type& frontImpl(std::unordered_multiset<value_type>& container)
+	value_type& frontImpl(std::unordered_multiset<value_type>& container) noexcept
 	{
 		// Using const_cast here because the value_type of std::unordered_multiset is constant.
 		return const_cast<value_type&>(*container.begin());
@@ -537,7 +562,7 @@ private:
 	/// \param container The underlying container type for BagContainerAdaptor that is std::unordered_multiset.
 	/// \return Reference to the first item in underlying container.
 	/// \ingroup frontImplementations
-	const value_type& frontImpl(const std::unordered_multiset<value_type>& container) const
+	const value_type& frontImpl(const std::unordered_multiset<value_type>& container) const noexcept
 	{
 		return *container.cbegin();
 	}
@@ -550,7 +575,7 @@ private:
 	/// \return Reference to the last item in underlying container.
 	/// \ingroup backImplementations
 	template <typename C>
-	value_type& backImpl(C& container)
+	value_type& backImpl(C& container) noexcept
 	{
 		return container.back();
 	}
@@ -559,7 +584,7 @@ private:
 	/// \param container The underlying container type where the element is accessed.
 	/// \return Reference the the last item in underlying container.
 	/// \ingroup backImplementations
-	value_type& backImpl(std::forward_list<value_type>& container)
+	value_type& backImpl(std::forward_list<value_type>& container) noexcept
 	{
 		auto itLast = container.begin();
 
@@ -574,7 +599,7 @@ private:
 	/// \param container The underlying container type where the element is accessed.
 	/// \return Reference to the last item in underlying container.
 	/// \ingroup backImplementations
-	value_type& backImpl(std::multiset<value_type>& container)
+	value_type& backImpl(std::multiset<value_type>& container) noexcept
 	{
 		auto itLast = container.begin();
 		std::advance(itLast, container.size() - 1);
@@ -585,7 +610,7 @@ private:
 	/// \param container The underlying container type where the element is accessed.
 	/// \return Reference to the last item in underlying container.
 	/// \ingroup backImplementations
-	value_type& backImpl(std::unordered_multiset<value_type>& container)
+	value_type& backImpl(std::unordered_multiset<value_type>& container) noexcept
 	{
 		auto itLast = container.begin();
 
@@ -604,7 +629,7 @@ private:
 	/// \return The amount of elements in the underlying container type.
 	/// \ingroup sizeImplementations
 	template <typename C>
-	size_t sizeImpl(C& container) const
+	size_t sizeImpl(C& container) const noexcept
 	{
 		return container.size();
 	}
@@ -613,7 +638,7 @@ private:
 	/// \param container The underlying container that we get the amount of elements from.
 	/// \return The amount of elements in the underlying container type.
 	/// \ingroup sizeImplementations
-	size_t sizeImpl(std::forward_list<value_type>& container) const
+	size_t sizeImpl(std::forward_list<value_type>& container) const noexcept
 	{
 		return std::distance(container.begin(), container.end());
 	}
@@ -622,7 +647,7 @@ private:
 	/// \param container The underlying container that we get the amount of elements from.
 	/// \return The amount of elements in the underlying container type.
 	/// \ingroup sizeImplementations
-	size_t sizeImpl(const std::forward_list<value_type>& container) const
+	size_t sizeImpl(const std::forward_list<value_type>& container) const noexcept
 	{
 		return std::distance(container.begin(), container.end());
 	}
