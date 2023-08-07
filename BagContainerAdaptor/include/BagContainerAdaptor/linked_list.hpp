@@ -83,13 +83,34 @@ public:
 		}
 		
 		/// Post-increment operator for the iterator.
-		/// \return An iterator pointing to the previous position before the increment.
+		/// \return An iterator pointing to the previous position before the increment (this).
 		/// \post Moves the iterator to the next node in the linked list.
 		/// \exception No exceptions are thrown by this operation.
 		iterator operator++(int) noexcept
 		{
 			iterator temp = *this;
-			++(*this);
+			m_currentNode = m_currentNode->m_next;
+			return temp;
+		}
+
+		/// Pre-decrement operator for the iterator.
+		/// \return A reference to the iterator after the decrement.
+		/// \post Moves the iterator to the previous node in the linked list.
+		/// \exception No exceptions are thrown by this operation.
+		iterator& operator--() noexcept
+		{
+			m_currentNode = m_currentNode->m_inverse;
+			return *this;
+		}
+
+		/// Post-decrement operator for the iterator.
+		/// \return An iterator pointing to the previous position before the decrement (this).
+		/// \post Moves the iterator to the previous node in the linked list.
+		/// \exception No exceptions are thrown by this operation.
+		iterator operator--(int) noexcept
+		{
+			iterator temp = *this;
+			m_currentNode = m_currentNode->m_inverse;
 			return temp;
 		}
 		
@@ -118,7 +139,7 @@ public:
 		/// \post The iterator is constructed with the same current node as the const_iterator.
 		/// \exception No exceptions are thrown by this operation.
 		iterator(const typename LinkedList<T>::const_iterator& it) noexcept :
-			m_currentNode(it.m_currentNode)
+			m_currentNode(const_cast<LinkedListNode<T>*>(it.getNode()))
 		{
 		}
 
@@ -129,7 +150,7 @@ public:
 		/// \exception No exceptions are thrown by this operation.
 		iterator& operator=(const typename LinkedList<T>::const_iterator& it) noexcept
 		{
-			m_currentNode = it.m_currentNode;
+			m_currentNode = const_cast<LinkedListNode<T>*>(it.getNode());
 			return *this;
 		}
 
@@ -413,20 +434,35 @@ public:
 
 			other.m_head = nullptr;
 			other.m_tail = nullptr;
+			other.m_count = 0;
 		}
 		return *this;
 	}
 
-	/// Deleted copy constructor.
-	/// \param other The LinkedList to be copied from (not used).
-	/// \note Copy construction is deleted for this class to prevent unintentional copies.
-	LinkedList(const LinkedList<T>& other) = delete;
+	/// Copy constructor.
+	/// \param other The LinkedList to be copied from.
+	/// \post Constructs a new LinkedList by copying the content from the other LinkedList.
+	/// \exception No exceptions are thrown by this operation.
+	LinkedList(const LinkedList<T>& other) noexcept :
+		m_head(other.m_head), m_tail(other.m_tail), m_count(other.m_count)
+	{
+	}
 	
-	/// Deleted copy assignment operator.
-	/// \param other The LinkedList to be assigned from (not used).
-	/// \return A reference to the LinkedList after the attempted copy assignment (not used).
-	/// \note Copy assignment is deleted for this class to prevent unintentional copies.
-	LinkedList& operator=(const LinkedList<T>& other) = delete;
+	/// Copy assignment operator.
+	/// \param other The LinkedList to be assigned from.
+	/// \return A reference to the LinkedList after the attempted copy assignment.
+	/// \post Copies the content from the other LinkedList to this LinkedList.
+	/// \exception No exceptions are thrown by this operation.
+	LinkedList& operator=(const LinkedList<T>& other) noexcept
+	{
+		if (this != &other)
+		{
+			m_head = other.m_head;
+			m_tail = other.m_tail;
+			m_count = other.m_count;
+		}
+		return *this;
+	}
 
 	/// Get an iterator to the beginning of the linked list.
 	/// \return An iterator pointing to the first element in the linked list. If the linked list is empty, the iterator will be equal to the end iterator.
@@ -439,7 +475,7 @@ public:
 	/// Get a const iterator to the beginning of the linked list.
 	/// \return A const iterator pointing to the first element in the linked list. If the linked list is empty, the iterator will be equal to the end iterator.
 	/// \exception No exceptions are thrown by this operation.
-	iterator cbegin() const noexcept
+	const_iterator cbegin() const noexcept
 	{
 		return const_iterator(m_head);
 	}
@@ -455,7 +491,7 @@ public:
 	/// Get a const iterator to the end of the linked list.
 	/// \return A const iterator pointing to the position past the last element in the linked list. This iterator acts as a sentinel and should not be dereferenced.
 	/// \exception No exceptions are thrown by this operation.
-	iterator cend() const noexcept
+	const_iterator cend() const noexcept
 	{
 		return const_iterator(nullptr);
 	}
