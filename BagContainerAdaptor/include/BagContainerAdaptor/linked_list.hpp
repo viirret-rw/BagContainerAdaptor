@@ -35,7 +35,7 @@ public:
 	using value_type = T;
 
 	class iterator : public std::iterator<
-						std::forward_iterator_tag, 
+						std::bidirectional_iterator_tag, 
 						LinkedListNode<T>, 
 						std::ptrdiff_t, 
 						LinkedListNode<T>*, 
@@ -96,10 +96,17 @@ public:
 		/// Pre-decrement operator for the iterator.
 		/// \return A reference to the iterator after the decrement.
 		/// \post Moves the iterator to the previous node in the linked list.
-		/// \exception No exceptions are thrown by this operation.
-		iterator& operator--() noexcept
+		iterator& operator--()
 		{
-			m_currentNode = m_currentNode->m_inverse;
+			if (m_currentNode)
+			{
+				m_currentNode = m_currentNode->m_inverse;
+			}
+			else
+			{
+				std::cerr << "Cannot decrement iterator from end() iterator" << std::endl;
+				std::terminate();
+			}
 			return *this;
 		}
 
@@ -107,10 +114,19 @@ public:
 		/// \return An iterator pointing to the previous position before the decrement (this).
 		/// \post Moves the iterator to the previous node in the linked list.
 		/// \exception No exceptions are thrown by this operation.
-		iterator operator--(int) noexcept
+		iterator operator--(int)
 		{
 			iterator temp = *this;
-			m_currentNode = m_currentNode->m_inverse;
+
+			if (m_currentNode)
+			{
+				m_currentNode = m_currentNode->m_inverse;
+			}
+			else
+			{
+				std::cerr << "Cannot decrement iterator from end() iterator" << std::endl;
+				std::terminate();
+			}
 			return temp;
 		}
 		
@@ -216,7 +232,7 @@ public:
 	};
 
 	class const_iterator : public std::iterator<
-							std::forward_iterator_tag,
+							std::bidirectional_iterator_tag,
 							const LinkedListNode<T>,
 							std::ptrdiff_t,
 							const LinkedListNode<T>*,
@@ -270,7 +286,42 @@ public:
 		const_iterator operator++(int) noexcept
 		{
 			const_iterator temp = *this;
-			++(*this);
+			m_currentNode = m_currentNode->m_next;
+			return temp;
+		}
+
+		/// Pre-decrement operator for the constant iterator.
+		/// \return A reference to the constant iterator after the decrement.
+		/// \post Moves the iterator to the previous node in the linked list.
+		const_iterator& operator--()
+		{
+			if (m_currentNode)
+			{
+				m_currentNode = m_currentNode->m_inverse;
+			}
+			else
+			{
+				std::cerr << "Cannot decrement constant iterator from end() iterator" << std::endl;
+				std::terminate();
+			}
+			return *this;
+		}
+
+		/// Post-decrement operator for the constant iterator.
+		/// \return An iterator pointing to the previous position before the decrement (this).
+		/// \post Moves the iterator to the previous node in the linked list.
+		const_iterator operator--(int)
+		{
+			const_iterator temp = *this;
+			if (m_currentNode)
+			{
+				m_currentNode = m_currentNode->m_inverse;
+			}
+			else
+			{
+				std::cerr << "Cannot decrement constant iterator from end() iterator" << std::endl;
+				std::terminate();
+			}
 			return temp;
 		}
 
@@ -376,6 +427,222 @@ public:
 		/// 	or it should be nullptr if it has reached the end of the list.
 		LinkedListNode<T>* m_currentNode;
 
+	};
+
+	class reverse_iterator : public std::iterator<
+								std::bidirectional_iterator_tag,
+								const LinkedListNode<T>,
+								std::ptrdiff_t,
+								const LinkedListNode<T>*,
+								const LinkedListNode<T>&
+								>
+	{
+	public:
+		/// Default constructor.
+		reverse_iterator() noexcept {}
+
+		/// Constructor.
+		explicit reverse_iterator(LinkedListNode<T>* node) noexcept : m_currentNode(node)
+		{
+		}
+
+		T& operator*() const noexcept
+		{
+			return m_currentNode->m_data;
+		}
+
+		T* operator->() const noexcept
+		{
+			return &(m_currentNode->m_data);
+		}
+
+		reverse_iterator& operator++()
+		{
+			if (m_currentNode && m_currentNode->m_inverse)
+			{
+				m_currentNode = m_currentNode->m_inverse;
+			}
+			return *this;
+		}
+
+		reverse_iterator operator++(int)
+		{
+			reverse_iterator temp = *this;
+
+			if (m_currentNode && m_currentNode->m_inverse)
+			{
+				m_currentNode = m_currentNode->m_inverse;
+			}
+			return temp;
+		}
+
+		reverse_iterator& operator--()
+		{
+			if (m_currentNode)
+			{
+				m_currentNode = m_currentNode->m_next;
+			}
+			else
+			{
+				std::cerr << "Cannot decrement reverse iterator from rbegin iterator" << std::endl;
+				std::terminate();
+			}
+			return *this;
+		}
+		
+		reverse_iterator operator--(int) noexcept
+		{
+			reverse_iterator temp = *this;
+
+			if (m_currentNode)
+			{
+				m_currentNode = m_currentNode->m_next;
+			}
+			else
+			{
+				std::cerr << "Cannot decrement reverse iterator from rbegin iterator" << std::endl;
+				std::terminate();
+			}
+			return temp;
+		}
+
+		bool operator==(const reverse_iterator& other) const noexcept
+		{
+			return m_currentNode == other.m_currentNode;
+		}
+
+		bool operator!=(const reverse_iterator& other) const noexcept
+		{
+			return m_currentNode != other.m_currentNode;
+		}
+
+		/// Copy constructor.
+		reverse_iterator(const reverse_iterator& other) noexcept = default;
+
+		/// Copy assignment operator.
+		reverse_iterator& operator=(const reverse_iterator& other) noexcept = default;
+
+		/// Move constructor
+		reverse_iterator(reverse_iterator&& other) noexcept = default;
+
+		/// Move assignment operator.
+		reverse_iterator& operator=(reverse_iterator&& other) noexcept = default;
+
+		LinkedListNode<T>* getNode() const noexcept
+		{
+			return m_currentNode;
+		}
+
+	private:
+		LinkedListNode<T>* m_currentNode;
+	};
+
+	class const_reverse_iterator : public std::iterator<
+								std::bidirectional_iterator_tag,
+								const LinkedListNode<T>,
+								std::ptrdiff_t,
+								const LinkedListNode<T>*,
+								const LinkedListNode<T>&
+								>
+	{
+	public:
+		/// Default constructor.
+		const_reverse_iterator() noexcept {}
+
+		/// Constructor.
+		explicit const_reverse_iterator(LinkedListNode<T>* node) noexcept :
+			m_currentNode(node)
+		{
+		}
+		
+		T& operator*() const noexcept
+		{
+			return m_currentNode->m_data;
+		}
+
+		T* operator->() const noexcept
+		{
+			return &(m_currentNode->m_data);
+		}
+
+		reverse_iterator& operator++()
+		{
+			if (m_currentNode && m_currentNode->m_inverse)
+			{
+				m_currentNode = m_currentNode->m_inverse;
+			}
+			return *this;
+		}
+
+		reverse_iterator operator++(int)
+		{
+			const_reverse_iterator temp = *this;
+
+			if (m_currentNode && m_currentNode->m_inverse)
+			{
+				m_currentNode = m_currentNode->m_inverse;
+			}
+			return temp;
+		}
+
+		reverse_iterator& operator--()
+		{
+			if (m_currentNode)
+			{
+				m_currentNode = m_currentNode->m_next;
+			}
+			else
+			{
+				std::cerr << "Cannot decrement reverse iterator from rbegin iterator" << std::endl;
+				std::terminate();
+			}
+			return *this;
+		}
+		
+		reverse_iterator operator--(int) noexcept
+		{
+			const_reverse_iterator temp = *this;
+
+			if (m_currentNode)
+			{
+				m_currentNode = m_currentNode->m_next;
+			}
+			else
+			{
+				std::cerr << "Cannot decrement reverse iterator from rbegin iterator" << std::endl;
+				std::terminate();
+			}
+			return temp;
+		}
+
+		bool operator==(const reverse_iterator& other) const noexcept
+		{
+			return m_currentNode == other.m_currentNode;
+		}
+
+		bool operator!=(const reverse_iterator& other) const noexcept
+		{
+			return m_currentNode != other.m_currentNode;
+		}
+
+		/// Copy constructor.
+		const_reverse_iterator(const const_reverse_iterator& other) noexcept = default;
+
+		/// Copy assignment operator.
+		const_reverse_iterator& operator=(const const_reverse_iterator& other) noexcept = default;
+
+		/// Move constructor
+		const_reverse_iterator(const_reverse_iterator&& other) noexcept = default;
+
+		/// Move assignment operator.
+		const_reverse_iterator& operator=(const_reverse_iterator&& other) noexcept = default;
+
+		LinkedListNode<T>* getNode() const noexcept
+		{
+			return m_currentNode;
+		}
+	private:
+		LinkedListNode<T>* m_currentNode;
 	};
 
 	/// Default constructor.
@@ -494,6 +761,26 @@ public:
 	const_iterator cend() const noexcept
 	{
 		return const_iterator(nullptr);
+	}
+
+	reverse_iterator rbegin() noexcept
+	{
+		return reverse_iterator(nullptr);
+	}
+
+	reverse_iterator rend() noexcept
+	{
+		return reverse_iterator(m_tail);
+	}
+
+	const_reverse_iterator rcbegin() noexcept
+	{
+		return const_reverse_iterator(nullptr);
+	}
+
+	const_reverse_iterator crend() noexcept
+	{
+		return const_reverse_iterator(m_tail);
 	}
 
 	/// Clear the elements in the LinkedList and deallocate memory.
