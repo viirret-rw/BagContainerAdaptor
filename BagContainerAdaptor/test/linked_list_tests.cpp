@@ -173,39 +173,42 @@ TEST(TestIterators, Dereferenceable)
 	EXPECT_EQ(convertibleToThis, 5);
 }
 
-TEST(TestIterators, ConversionTest)
+template <typename List, typename From, typename To>
+static void conversionTest(List& list, From from)
 {
-	LinkedList<int> list { 1, 2, 3, 4, 5, 6 };
+	// Conversion constructor.
+	To constructed(from);
 
-	// Creating constant iterators from normal iterators.
-	{
-		auto it = list.begin();
+	// Conversion assigment.
+	To assigned = from;
 
-		// Conversion constructor.
-		LinkedList<int>::const_iterator constructed(it);
+	EXPECT_TRUE((std::is_same<decltype(constructed), To>::value));
+	EXPECT_TRUE((std::is_same<decltype(assigned), To>::value));
+	EXPECT_EQ(*constructed, *assigned);
+}
 
-		// Conversion assignment.
-		LinkedList<int>::const_iterator assigned = list.begin();
+TEST(TestIterators, ConversionIteratorToConstIterator)
+{
+	LinkedList<int> list { 1, 2, 3, 4, 5 };
+	conversionTest<LinkedList<int>, LinkedList<int>::iterator, LinkedList<int>::const_iterator>(list, list.begin());
+}
 
-		EXPECT_TRUE((std::is_same<decltype(constructed), typename LinkedList<int>::const_iterator>::value));
-		EXPECT_TRUE((std::is_same<decltype(assigned), typename LinkedList<int>::const_iterator>::value));
-		EXPECT_EQ(*constructed, *assigned);
-	}
-	
-	// Creating normal iterators from constant iterators.
-	{
-		auto cit = list.cbegin();
+TEST(TestIterators, ConversionConstIteratorToIterator)
+{
+	LinkedList<int> list { 1, 2, 3, 4, 5 };
+	conversionTest<LinkedList<int>, LinkedList<int>::const_iterator, LinkedList<int>::iterator>(list, list.cbegin());
+}
 
-		// Conversion constructor.
-		LinkedList<int>::iterator constructed(cit);
+TEST(TestIterators, ConversionReverseIteratorToConstantReverseIterator)
+{
+	LinkedList<int> list { 1, 2, 3, 4, 5 };
+	conversionTest<LinkedList<int>, LinkedList<int>::reverse_iterator, LinkedList<int>::const_reverse_iterator>(list, list.rend());
+}
 
-		// Conversion assignment.
-		LinkedList<int>::iterator assigned = list.cbegin();
-
-		EXPECT_TRUE((std::is_same<decltype(constructed), typename LinkedList<int>::iterator>::value));
-		EXPECT_TRUE((std::is_same<decltype(assigned), typename LinkedList<int>::iterator>::value));
-		EXPECT_EQ(*constructed, *assigned);
-	}
+TEST(TestIterators, ConversionConstantReverseIteratorToReverseIterator)
+{
+	LinkedList<int> list { 1, 2, 3, 4, 5 };
+	conversionTest<LinkedList<int>, LinkedList<int>::const_reverse_iterator, LinkedList<int>::reverse_iterator>(list, list.crend());
 }
 
 template <typename List, typename IteratorType>

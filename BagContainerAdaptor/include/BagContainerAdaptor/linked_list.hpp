@@ -183,7 +183,7 @@ public:
 		/// \return A reference to the iterator after the assignment.
 		/// \post The iterator is assigned with the same current node as the const_iterator.
 		/// \exception No exceptions are thrown by this operation.
-		iterator& operator=(typename LinkedList<T>::const_iterator& it) noexcept
+		iterator& operator=(typename LinkedList<T>::const_iterator&& it) noexcept
 		{
 			m_currentNode = const_cast<LinkedListNode<T>*>(it.getNode());
 			return *this;
@@ -509,6 +509,32 @@ public:
 			return m_currentNode != other.m_currentNode;
 		}
 
+		/// Copy constructibility from constant reverse iterator.
+		reverse_iterator(const typename LinkedList<T>::const_reverse_iterator& it) noexcept :
+			m_currentNode(const_cast<LinkedListNode<T>*>(it.getNode()))
+		{
+		}
+
+		/// Copy assignment from constant reverse iterator.
+		reverse_iterator& operator=(const typename LinkedList<T>::const_reverse_iterator& it) noexcept
+		{
+			m_currentNode = const_cast<LinkedListNode<T>*>(it.getNode());
+			return *this;
+		}
+
+		/// Move constructibility from constant reverse iterator.
+		reverse_iterator(typename LinkedList<T>::const_reverse_iterator&& it) noexcept :
+			m_currentNode(const_cast<LinkedListNode<T>*>(it.getNode()))
+		{
+		}
+
+		/// Move assignment from constant reverse iterator.
+		reverse_iterator& operator=(typename LinkedList<T>::const_reverse_iterator&& it) noexcept
+		{
+			m_currentNode = const_cast<LinkedListNode<T>*>(it.getNode());
+			return *this;
+		}
+
 		/// Copy constructor.
 		reverse_iterator(const reverse_iterator& other) noexcept = default;
 
@@ -609,6 +635,32 @@ public:
 		bool operator!=(const const_reverse_iterator& other) const noexcept
 		{
 			return m_currentNode != other.m_currentNode;
+		}
+		
+		/// Copy constructibility from non-const reverse iterator.
+		const_reverse_iterator(const typename LinkedList<T>::reverse_iterator& it) noexcept :
+			m_currentNode(it.getNode())
+		{
+		}
+
+		/// Copy assignment from non-const reverse iterator.
+		const_reverse_iterator& operator=(const typename LinkedList<T>::reverse_iterator& it) noexcept
+		{
+			m_currentNode = it.getNode();
+			return *this;
+		}
+
+		/// Move constructibility form non-const reverse iterator.
+		const_reverse_iterator(typename LinkedList<T>::reverse_iterator&& it) noexcept :
+			m_currentNode(it.getNode())
+		{
+		}
+
+		/// Move assignment from non-const reverse iterator.
+		const_reverse_iterator& operator=(typename LinkedList<T>::reverse_iterator&& it) noexcept
+		{
+			m_currentNode = it.getNode();
+			return *this;
 		}
 
 		/// Copy constructor.
