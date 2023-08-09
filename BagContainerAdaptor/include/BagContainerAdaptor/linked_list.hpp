@@ -458,21 +458,14 @@ public:
 
 		reverse_iterator& operator++()
 		{
-			if (m_currentNode && m_currentNode->m_inverse)
-			{
-				m_currentNode = m_currentNode->m_inverse;
-			}
+			m_currentNode = m_currentNode->m_inverse;
 			return *this;
 		}
 
 		reverse_iterator operator++(int)
 		{
 			reverse_iterator temp = *this;
-
-			if (m_currentNode && m_currentNode->m_inverse)
-			{
-				m_currentNode = m_currentNode->m_inverse;
-			}
+			m_currentNode = m_currentNode->m_inverse;
 			return temp;
 		}
 
@@ -565,27 +558,20 @@ public:
 			return &(m_currentNode->m_data);
 		}
 
-		reverse_iterator& operator++()
+		const_reverse_iterator& operator++()
 		{
-			if (m_currentNode && m_currentNode->m_inverse)
-			{
-				m_currentNode = m_currentNode->m_inverse;
-			}
+			m_currentNode = m_currentNode->m_inverse;
 			return *this;
 		}
 
-		reverse_iterator operator++(int)
+		const_reverse_iterator operator++(int)
 		{
 			const_reverse_iterator temp = *this;
-
-			if (m_currentNode && m_currentNode->m_inverse)
-			{
-				m_currentNode = m_currentNode->m_inverse;
-			}
+			m_currentNode = m_currentNode->m_inverse;
 			return temp;
 		}
 
-		reverse_iterator& operator--()
+		const_reverse_iterator& operator--()
 		{
 			if (m_currentNode)
 			{
@@ -599,7 +585,7 @@ public:
 			return *this;
 		}
 		
-		reverse_iterator operator--(int) noexcept
+		const_reverse_iterator operator--(int) noexcept
 		{
 			const_reverse_iterator temp = *this;
 
@@ -615,12 +601,12 @@ public:
 			return temp;
 		}
 
-		bool operator==(const reverse_iterator& other) const noexcept
+		bool operator==(const const_reverse_iterator& other) const noexcept
 		{
 			return m_currentNode == other.m_currentNode;
 		}
 
-		bool operator!=(const reverse_iterator& other) const noexcept
+		bool operator!=(const const_reverse_iterator& other) const noexcept
 		{
 			return m_currentNode != other.m_currentNode;
 		}
@@ -739,20 +725,20 @@ public:
 		return iterator(m_head);
 	}
 	
-	/// Get a const iterator to the beginning of the linked list.
-	/// \return A const iterator pointing to the first element in the linked list. If the linked list is empty, the iterator will be equal to the end iterator.
-	/// \exception No exceptions are thrown by this operation.
-	const_iterator cbegin() const noexcept
-	{
-		return const_iterator(m_head);
-	}
-	
 	/// Get an iterator to the end of the linked list.
 	/// \return An iterator pointing to the position past the last element in the linked list. This iterator acts as a sentinel and should not be dereferenced.
 	/// \exception No exceptions are thrown by this operation.
 	iterator end() noexcept
 	{
 		return iterator(nullptr);
+	}
+
+	/// Get a const iterator to the beginning of the linked list.
+	/// \return A const iterator pointing to the first element in the linked list. If the linked list is empty, the iterator will be equal to the end iterator.
+	/// \exception No exceptions are thrown by this operation.
+	const_iterator cbegin() const noexcept
+	{
+		return const_iterator(m_head);
 	}
 	
 	/// Get a const iterator to the end of the linked list.
@@ -773,12 +759,12 @@ public:
 		return reverse_iterator(m_tail);
 	}
 
-	const_reverse_iterator rcbegin() noexcept
+	const_reverse_iterator crbegin() const noexcept 
 	{
 		return const_reverse_iterator(nullptr);
 	}
 
-	const_reverse_iterator crend() noexcept
+	const_reverse_iterator crend() const noexcept
 	{
 		return const_reverse_iterator(m_tail);
 	}

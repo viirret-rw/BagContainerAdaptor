@@ -207,7 +207,7 @@ protected:
 
 };
 
-typedef ::testing::Types<
+using MainContainerTypes = ::testing::Types<
 	std::list<int>,
 	std::vector<int>,
 	std::deque<int>,
@@ -216,7 +216,7 @@ typedef ::testing::Types<
 	std::unordered_multiset<int>,
 	LinkedList<int>,
 	ring_buffer<int>
-> MainContainerTypes;
+>;
 
 TYPED_TEST_SUITE(BagContainerAdaptorTest, MainContainerTypes);
 

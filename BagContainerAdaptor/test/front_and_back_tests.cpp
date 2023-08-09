@@ -29,7 +29,7 @@ protected:
 	}
 };
 
-typedef ::testing::Types<
+using FrontAndBackContainerTypes = ::testing::Types<
 	std::list<int>,
 	std::vector<int>,
 	std::deque<int>,
@@ -37,7 +37,7 @@ typedef ::testing::Types<
 	std::multiset<int>,
 	ring_buffer<int>,
 	LinkedList<int>
-> FrontAndBackContainerTypes;
+>;
 
 TYPED_TEST_SUITE(FrontAndBackTest, FrontAndBackContainerTypes);
 

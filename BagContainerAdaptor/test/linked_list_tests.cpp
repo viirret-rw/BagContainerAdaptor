@@ -3,7 +3,7 @@
 #include <BagContainerAdaptor/bag_container_adaptor.hpp>
 
 template <typename IteratorType>
-class IteratorTest : public ::testing::Test
+class IteratorSTLTest : public ::testing::Test
 {
 protected:
 	void isCopyConstructible()
@@ -37,39 +37,41 @@ protected:
 	}
 };
 
-typedef ::testing::Types<
+using LinkedListIteratorTypes = ::testing::Types<
 	LinkedList<int>::iterator,
-	LinkedList<int>::const_iterator
-> LinkedListIteratorTypes;
+	LinkedList<int>::const_iterator,
+	LinkedList<int>::reverse_iterator,
+	LinkedList<int>::const_reverse_iterator
+>;
 
-TYPED_TEST_SUITE(IteratorTest, LinkedListIteratorTypes);
+TYPED_TEST_SUITE(IteratorSTLTest, LinkedListIteratorTypes);
 
-TYPED_TEST(IteratorTest, isCopyConstructible)
+TYPED_TEST(IteratorSTLTest, isCopyConstructible)
 {
 	this->isCopyConstructible();
 }
 
-TYPED_TEST(IteratorTest, isCopyAssignable)
+TYPED_TEST(IteratorSTLTest, isCopyAssignable)
 {
 	this->isCopyAssignable();
 }
 
-TYPED_TEST(IteratorTest, isMoveConstructible)
+TYPED_TEST(IteratorSTLTest, isMoveConstructible)
 {
 	this->isMoveConstructible();
 }
 
-TYPED_TEST(IteratorTest, isMoveAssignable)
+TYPED_TEST(IteratorSTLTest, isMoveAssignable)
 {
 	this->isMoveAssignable();
 }
 
-TYPED_TEST(IteratorTest, isDestructible)
+TYPED_TEST(IteratorSTLTest, isDestructible)
 {
 	this->isDestructible();
 }
 
-TYPED_TEST(IteratorTest, isDefaultConstructible)
+TYPED_TEST(IteratorSTLTest, isDefaultConstructible)
 {
 	this->isDefaultConstructible();
 }
@@ -206,27 +208,117 @@ TEST(TestIterators, ConversionTest)
 	}
 }
 
-TEST(TestIterators, IncrementOperators)
+template <typename List, typename IteratorType>
+class IteratorTest
 {
-	LinkedList<int> list { 1, 2, 3, 4, 5, 6 };
+public:
+	static void iterationTest(List& list, IteratorType first, IteratorType last)
+	{
+		int counter = 0;
+		auto f = first;
+		for (auto i = first; i != last; i++)
+		{
+			EXPECT_EQ(i, f);
+			counter++;
+			f++;
+		}
+		EXPECT_EQ(list.size(), counter);
+	}
 
-	auto begin = list.begin();
-	auto cbegin = list.cbegin();
+	static void incrementTest(List& list, IteratorType iterator)
+	{
+		const auto pre = ++iterator;
+		const auto post = iterator++;
 
-	const auto pre = ++begin;
-	const auto post = begin++;
+		EXPECT_EQ(pre, post);
 
-	EXPECT_EQ(pre, post);
+		auto controlIt = iterator;
+		++iterator;
+		EXPECT_NE(*controlIt++, *iterator);
+	}
 
-	// Same for constant iterators.
-	auto cpre = ++cbegin;
-	auto cpost = cbegin++;
+	static void decrementTest(List& list, IteratorType iterator)
+	{
+		auto next = std::next(iterator);
 
-	EXPECT_EQ(cpre, cpost);
+		const auto pre = --next;
+		const auto post = next--;
 
-	auto controlIt = begin;
-	++begin;
-	EXPECT_NE(*controlIt++, *begin);
-	EXPECT_EQ(*controlIt, *begin);
+		EXPECT_EQ(pre, post);
+		EXPECT_EQ(pre, iterator);
+		EXPECT_EQ(post, iterator);
+	}
+};
+
+TEST(IteratorTest, TestNormalIteratorIteration)
+{
+	LinkedList<int> list = { 1, 2, 3, 4, 5, 6 };
+	IteratorTest<LinkedList<int>, LinkedList<int>::iterator>::iterationTest(list, list.begin(), list.end());
+}
+
+TEST(IteratorTest, TestConstantIteratorIteration)
+{
+	LinkedList<int> list = { 5, 4, 2, 5, 2, 9 };
+	IteratorTest<LinkedList<int>, LinkedList<int>::const_iterator>::iterationTest(list, list.cbegin(), list.cend());
+}
+
+TEST(IteratorTest, TestReverseIteratorIteration)
+{
+	LinkedList<int> list = { 5, 554, 222, 22, 2, 9 };
+	IteratorTest<LinkedList<int>, LinkedList<int>::reverse_iterator>::iterationTest(list, list.rend(), list.rbegin());
+}
+
+TEST(IteratorTest, TestConstantReverseIteratorIteration)
+{
+	LinkedList<int> list = { 8, 54, 212, 82, 12, 29 };
+	IteratorTest<LinkedList<int>, LinkedList<int>::const_reverse_iterator>::iterationTest(list, list.crend(), list.crbegin());
+}
+
+TEST(IteratorTest, TestNormalIteratorIncrement)
+{
+	LinkedList<int> list = { 1, 2, 3, 4, 5 };
+	IteratorTest<LinkedList<int>, LinkedList<int>::iterator>::incrementTest(list, list.begin());
+}
+
+TEST(IteratorTest, TestConstantIteratorIncrement)
+{
+	LinkedList<int> list = { 1, 2, 3, 4, 5 };
+	IteratorTest<LinkedList<int>, LinkedList<int>::const_iterator>::incrementTest(list, list.cbegin());
+}
+
+TEST(IteratorTest, TestReverseIteratorIncrement)
+{
+	LinkedList<int> list = { 1, 2, 3, 4, 5 };
+	IteratorTest<LinkedList<int>, LinkedList<int>::reverse_iterator>::incrementTest(list, list.rend());
+}
+
+TEST(IteratorTest, TestConstantReverseIteratorIncrement)
+{
+	LinkedList<int> list = { 1, 2, 3, 4, 5 };
+	IteratorTest<LinkedList<int>, LinkedList<int>::const_reverse_iterator>::incrementTest(list, list.crend());
+}
+
+TEST(IteratorTest, TestNormalIteratorDecrement)
+{
+	LinkedList<int> list = { 1, 2, 3, 4, 5 };
+	IteratorTest<LinkedList<int>, LinkedList<int>::iterator>::decrementTest(list, list.begin());
+}
+
+TEST(IteratorTest, TestConstantIterationDecrement)
+{
+	LinkedList<int> list = { 1, 2, 3, 4, 5 };
+	IteratorTest<LinkedList<int>, LinkedList<int>::const_iterator>::decrementTest(list, list.cbegin());
+}
+
+TEST(IteratorTest, TestReverseIteratorDecrement)
+{
+	LinkedList<int> list = { 1, 2, 3, 4, 5 };
+	IteratorTest<LinkedList<int>, LinkedList<int>::reverse_iterator>::decrementTest(list, list.rend());
+}
+
+TEST(IteratorTest, TestConstantReverseIteratorDecrement)
+{
+	LinkedList<int> list = { 1, 2, 3, 4, 5 };
+	IteratorTest<LinkedList<int>, LinkedList<int>::const_reverse_iterator>::decrementTest(list, list.crend());
 }
 
