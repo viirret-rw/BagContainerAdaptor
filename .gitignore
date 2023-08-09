@@ -1,3 +1,7 @@
 **build
 **.cache
 **.swp
+**.log
+**.aux
+**.out
+**.toc

@@ -1,0 +1,709 @@
+\hypertarget{class_linked_list}{}\doxysection{Linked\+List$<$ T, Allocator $>$ Class Template Reference}
+\label{class_linked_list}\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_linked_list_1_1const__iterator}{const\+\_\+iterator}}
+\item 
+class \mbox{\hyperlink{class_linked_list_1_1const__reverse__iterator}{const\+\_\+reverse\+\_\+iterator}}
+\item 
+class \mbox{\hyperlink{class_linked_list_1_1iterator}{iterator}}
+\item 
+class \mbox{\hyperlink{class_linked_list_1_1reverse__iterator}{reverse\+\_\+iterator}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_linked_list_a97146315c2fbef456fa1d1dd2b83c1eb}\label{class_linked_list_a97146315c2fbef456fa1d1dd2b83c1eb}} 
+using {\bfseries value\+\_\+type} = T
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_linked_list_a86845b93e4dd7a25f57e863214017ce8}{Linked\+List}} () noexcept
+\item 
+\mbox{\hyperlink{class_linked_list_ac26f53d5b29ebc985fbe7218ad5534e9}{$\sim$\+Linked\+List}} () noexcept
+\item 
+\mbox{\hyperlink{class_linked_list_ab315176037da510be477b8fce6ec51f4}{Linked\+List}} (std\+::initializer\+\_\+list$<$ value\+\_\+type $>$ list)
+\item 
+\mbox{\hyperlink{class_linked_list_abb192938a97797e911a72399222802cd}{Linked\+List}} (\mbox{\hyperlink{class_linked_list}{Linked\+List}} \&\&other) noexcept
+\item 
+\mbox{\hyperlink{class_linked_list}{Linked\+List}} \& \mbox{\hyperlink{class_linked_list_a2ca8d409721cafd66fd9bd97e05ea4ad}{operator=}} (\mbox{\hyperlink{class_linked_list}{Linked\+List}} \&\&other) noexcept
+\item 
+\mbox{\hyperlink{class_linked_list_aa25551efee2983b71ce23d79da14bee3}{Linked\+List}} (const \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T $>$ \&other) noexcept
+\item 
+\mbox{\hyperlink{class_linked_list}{Linked\+List}} \& \mbox{\hyperlink{class_linked_list_aac0a3f0e78cc32a64e7584f7e94fb172}{operator=}} (const \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T $>$ \&other) noexcept
+\item 
+\mbox{\hyperlink{class_linked_list_1_1iterator}{iterator}} \mbox{\hyperlink{class_linked_list_a3e9dddc27f90e6d04d70a0a323079341}{begin}} () noexcept
+\item 
+\mbox{\hyperlink{class_linked_list_1_1iterator}{iterator}} \mbox{\hyperlink{class_linked_list_a4aba4897b41bb8a9dd3dfaeade3e38d2}{end}} () noexcept
+\item 
+\mbox{\hyperlink{class_linked_list_1_1const__iterator}{const\+\_\+iterator}} \mbox{\hyperlink{class_linked_list_ac3d5d82af27f2c86c4eecfc13562fe6b}{cbegin}} () const noexcept
+\item 
+\mbox{\hyperlink{class_linked_list_1_1const__iterator}{const\+\_\+iterator}} \mbox{\hyperlink{class_linked_list_a7dd11f92031e16c4431b21d15cb90d26}{cend}} () const noexcept
+\item 
+\mbox{\hyperlink{class_linked_list_1_1reverse__iterator}{reverse\+\_\+iterator}} \mbox{\hyperlink{class_linked_list_aefbb7844060129481bc21bab29e6c2a3}{rbegin}} () noexcept
+\item 
+\mbox{\hyperlink{class_linked_list_1_1reverse__iterator}{reverse\+\_\+iterator}} \mbox{\hyperlink{class_linked_list_a91a67c64988fce9b7be8664e89b39fc1}{rend}} () noexcept
+\item 
+\mbox{\hyperlink{class_linked_list_1_1const__reverse__iterator}{const\+\_\+reverse\+\_\+iterator}} \mbox{\hyperlink{class_linked_list_aa079ca290f4e0e85a6f9efaf49229e25}{crbegin}} () const noexcept
+\item 
+\mbox{\hyperlink{class_linked_list_1_1const__reverse__iterator}{const\+\_\+reverse\+\_\+iterator}} \mbox{\hyperlink{class_linked_list_a3a46daa703fa85d85cabef2110d96176}{crend}} () const noexcept
+\item 
+void \mbox{\hyperlink{class_linked_list_a35668ab5f969543b8b21ffc8a94925f7}{clear}} () noexcept
+\item 
+\mbox{\hyperlink{class_linked_list_1_1iterator}{iterator}} \mbox{\hyperlink{class_linked_list_a0148b3ceccb6d442777df573ac5bad8b}{insert}} (const T \&value)
+\item 
+\mbox{\hyperlink{class_linked_list_1_1iterator}{iterator}} \mbox{\hyperlink{class_linked_list_a0dd86eb152e1d6634a341f6d41a9368d}{insert}} (\mbox{\hyperlink{class_linked_list_1_1iterator}{iterator}} pos, const T \&value)
+\item 
+\mbox{\hyperlink{class_linked_list_1_1iterator}{iterator}} \mbox{\hyperlink{class_linked_list_a104ea4922eccc5071ee4e87e4ac9dd4e}{erase}} (const T \&value)
+\item 
+\mbox{\hyperlink{class_linked_list_1_1iterator}{iterator}} \mbox{\hyperlink{class_linked_list_aaa4a34f8db21a22d2ee72a846f7426ec}{erase}} (\mbox{\hyperlink{class_linked_list_1_1iterator}{iterator}} pos)
+\item 
+\mbox{\hyperlink{class_linked_list_1_1iterator}{iterator}} \mbox{\hyperlink{class_linked_list_acfac661f0012792b1869543e55ae3034}{erase}} (\mbox{\hyperlink{class_linked_list_1_1iterator}{iterator}} first, \mbox{\hyperlink{class_linked_list_1_1iterator}{iterator}} last)
+\item 
+void \mbox{\hyperlink{class_linked_list_ab010dafa19b2f33a93baaa9e6affea69}{swap}} (\mbox{\hyperlink{class_linked_list}{Linked\+List}} \&other) noexcept
+\item 
+\mbox{\hyperlink{class_linked_list_1_1iterator}{iterator}} \mbox{\hyperlink{class_linked_list_a1aa1c5c24fd5164aa540cc1abf498a80}{find}} (const T \&value) noexcept
+\item 
+\mbox{\hyperlink{class_linked_list_1_1iterator}{iterator}} \mbox{\hyperlink{class_linked_list_afa9428897b29cd9b662fc83c63dd3eea}{find}} (const T \&value) const noexcept
+\item 
+T \& \mbox{\hyperlink{class_linked_list_a9fd1e0d5790068e563916662a7416d9b}{front}} () noexcept
+\item 
+const T \& \mbox{\hyperlink{class_linked_list_a695788e5ef975d820781d785641bfb5c}{front}} () const noexcept
+\item 
+T \& \mbox{\hyperlink{class_linked_list_a5255dc39d8b92e0b27d41ae4bacecf50}{back}} () noexcept
+\item 
+const T \& \mbox{\hyperlink{class_linked_list_aaae2cbdb612c7e3e6b7aab8bb550fc7b}{back}} () const noexcept
+\item 
+size\+\_\+t \mbox{\hyperlink{class_linked_list_a1af71726533474b0e203b88cd724a75e}{size}} () const noexcept
+\item 
+bool \mbox{\hyperlink{class_linked_list_a12b8cbcec91807e243ef192ffd547416}{empty}} () const
+\item 
+\mbox{\Hypertarget{class_linked_list_ac237063d719a452470b0318021901573}\label{class_linked_list_ac237063d719a452470b0318021901573}} 
+void {\bfseries debug\+Info} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_linked_list_a86845b93e4dd7a25f57e863214017ce8}\label{class_linked_list_a86845b93e4dd7a25f57e863214017ce8}} 
+\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!LinkedList@{LinkedList}}
+\index{LinkedList@{LinkedList}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsubsection{\texorpdfstring{LinkedList()}{LinkedList()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
+\mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::\mbox{\hyperlink{class_linked_list}{Linked\+List}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Default constructor. \begin{DoxyPostcond}{Postcondition}
+Constructs a new {\ttfamily \mbox{\hyperlink{class_linked_list}{Linked\+List}}} object with no elements. 
+\end{DoxyPostcond}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No} & exceptions are thrown by this operation. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_linked_list_ac26f53d5b29ebc985fbe7218ad5534e9}\label{class_linked_list_ac26f53d5b29ebc985fbe7218ad5534e9}} 
+\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!````~LinkedList@{$\sim$LinkedList}}
+\index{````~LinkedList@{$\sim$LinkedList}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$LinkedList()}{~LinkedList()}}
+{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
+\mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::$\sim$\mbox{\hyperlink{class_linked_list}{Linked\+List}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Destructor. \begin{DoxyPostcond}{Postcondition}
+Destroys the {\ttfamily \mbox{\hyperlink{class_linked_list}{Linked\+List}}} object, freeing all associated resources. 
+\end{DoxyPostcond}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No} & exceptions are thrown by this operation. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_linked_list_ab315176037da510be477b8fce6ec51f4}\label{class_linked_list_ab315176037da510be477b8fce6ec51f4}} 
+\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!LinkedList@{LinkedList}}
+\index{LinkedList@{LinkedList}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsubsection{\texorpdfstring{LinkedList()}{LinkedList()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
+\mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::\mbox{\hyperlink{class_linked_list}{Linked\+List}} (\begin{DoxyParamCaption}\item[{std\+::initializer\+\_\+list$<$ value\+\_\+type $>$}]{list }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Initializer list constructor. 
+\begin{DoxyParams}{Parameters}
+{\em list} & An initializer list containing values to initialize the \mbox{\hyperlink{class_linked_list}{Linked\+List}} with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+Constructs a new \mbox{\hyperlink{class_linked_list}{Linked\+List}} object with elements from the initializer list. 
+\end{DoxyPostcond}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em The} & {\ttfamily insert} function may throw exceptions if memory allocation fails or if an exception is thrown by the element\textquotesingle{}s constructor. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_linked_list_abb192938a97797e911a72399222802cd}\label{class_linked_list_abb192938a97797e911a72399222802cd}} 
+\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!LinkedList@{LinkedList}}
+\index{LinkedList@{LinkedList}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsubsection{\texorpdfstring{LinkedList()}{LinkedList()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
+\mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::\mbox{\hyperlink{class_linked_list}{Linked\+List}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$ \&\&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Move constructor. 
+\begin{DoxyParams}{Parameters}
+{\em other} & The \mbox{\hyperlink{class_linked_list}{Linked\+List}} to be moved from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+Constructs a new \mbox{\hyperlink{class_linked_list}{Linked\+List}} by moving the content from the other \mbox{\hyperlink{class_linked_list}{Linked\+List}}. The other \mbox{\hyperlink{class_linked_list}{Linked\+List}} will be left in a valid but unspecified state. 
+\end{DoxyPostcond}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No} & exceptions are thrown by this operation. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_linked_list_aa25551efee2983b71ce23d79da14bee3}\label{class_linked_list_aa25551efee2983b71ce23d79da14bee3}} 
+\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!LinkedList@{LinkedList}}
+\index{LinkedList@{LinkedList}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsubsection{\texorpdfstring{LinkedList()}{LinkedList()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
+\mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::\mbox{\hyperlink{class_linked_list}{Linked\+List}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T $>$ \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Copy constructor. 
+\begin{DoxyParams}{Parameters}
+{\em other} & The \mbox{\hyperlink{class_linked_list}{Linked\+List}} to be copied from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+Constructs a new \mbox{\hyperlink{class_linked_list}{Linked\+List}} by copying the content from the other \mbox{\hyperlink{class_linked_list}{Linked\+List}}. 
+\end{DoxyPostcond}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No} & exceptions are thrown by this operation. \\
+\hline
+\end{DoxyExceptions}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_linked_list_aaae2cbdb612c7e3e6b7aab8bb550fc7b}\label{class_linked_list_aaae2cbdb612c7e3e6b7aab8bb550fc7b}} 
+\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!back@{back}}
+\index{back@{back}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsubsection{\texorpdfstring{back()}{back()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
+const T\& \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::back (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Returns a constant reference to the last element in the linked list in const context. \begin{DoxyReturn}{Returns}
+A constant reference to the last element. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+The linked list must not be empty. 
+\end{DoxyPrecond}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No} & exceptions are thrown by this operation. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_linked_list_a5255dc39d8b92e0b27d41ae4bacecf50}\label{class_linked_list_a5255dc39d8b92e0b27d41ae4bacecf50}} 
+\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!back@{back}}
+\index{back@{back}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsubsection{\texorpdfstring{back()}{back()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
+T\& \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::back (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Returns a reference to the last element in the linked list. \begin{DoxyReturn}{Returns}
+A reference to the last element. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+The linked list must not be empty. 
+\end{DoxyPrecond}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No} & exceptions are thrown by this operation. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_linked_list_a3e9dddc27f90e6d04d70a0a323079341}\label{class_linked_list_a3e9dddc27f90e6d04d70a0a323079341}} 
+\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!begin@{begin}}
+\index{begin@{begin}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
+\mbox{\hyperlink{class_linked_list_1_1iterator}{iterator}} \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Get an iterator to the beginning of the linked list. \begin{DoxyReturn}{Returns}
+An iterator pointing to the first element in the linked list. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+If the linked list is empty, the iterator will be equal to the end iterator. 
+\end{DoxyNote}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No} & exceptions are thrown by this operation. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_linked_list_ac3d5d82af27f2c86c4eecfc13562fe6b}\label{class_linked_list_ac3d5d82af27f2c86c4eecfc13562fe6b}} 
+\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!cbegin@{cbegin}}
+\index{cbegin@{cbegin}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsubsection{\texorpdfstring{cbegin()}{cbegin()}}
+{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
+\mbox{\hyperlink{class_linked_list_1_1const__iterator}{const\+\_\+iterator}} \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::cbegin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Get a const iterator to the beginning of the linked list. \begin{DoxyReturn}{Returns}
+A const iterator pointing to the first element in the linked list. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+If the linked list is empty, the iterator will be equal to the end iterator. 
+\end{DoxyNote}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No} & exceptions are thrown by this operation. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_linked_list_a7dd11f92031e16c4431b21d15cb90d26}\label{class_linked_list_a7dd11f92031e16c4431b21d15cb90d26}} 
+\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!cend@{cend}}
+\index{cend@{cend}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsubsection{\texorpdfstring{cend()}{cend()}}
+{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
+\mbox{\hyperlink{class_linked_list_1_1const__iterator}{const\+\_\+iterator}} \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::cend (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Get a const iterator to the end of the linked list. \begin{DoxyReturn}{Returns}
+A const iterator pointing to the position past the last element in the linked list. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This constant iterator acts as a sentinel and should not be dereferenced. 
+\end{DoxyNote}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No} & exceptions are thrown by this operation. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_linked_list_a35668ab5f969543b8b21ffc8a94925f7}\label{class_linked_list_a35668ab5f969543b8b21ffc8a94925f7}} 
+\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!clear@{clear}}
+\index{clear@{clear}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
+void \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Clear the elements in the \mbox{\hyperlink{class_linked_list}{Linked\+List}} and deallocate memory. \begin{DoxyPostcond}{Postcondition}
+Removes all elements from the \mbox{\hyperlink{class_linked_list}{Linked\+List}}, and deallocates the memory used by each element. 
+\end{DoxyPostcond}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No} & exceptions are thrown by this operation. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_linked_list_aa079ca290f4e0e85a6f9efaf49229e25}\label{class_linked_list_aa079ca290f4e0e85a6f9efaf49229e25}} 
+\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!crbegin@{crbegin}}
+\index{crbegin@{crbegin}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsubsection{\texorpdfstring{crbegin()}{crbegin()}}
+{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
+\mbox{\hyperlink{class_linked_list_1_1const__reverse__iterator}{const\+\_\+reverse\+\_\+iterator}} \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::crbegin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Get a constant reverse iterator to the beginning of the linked list. \begin{DoxyReturn}{Returns}
+A constant reverse iterator pointing past the first element in the linked list. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+If constant reverse iterator acts as a sentinel and should not be dereferenced. 
+\end{DoxyNote}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No} & exceptions are thrown by this operation. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_linked_list_a3a46daa703fa85d85cabef2110d96176}\label{class_linked_list_a3a46daa703fa85d85cabef2110d96176}} 
+\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!crend@{crend}}
+\index{crend@{crend}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsubsection{\texorpdfstring{crend()}{crend()}}
+{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
+\mbox{\hyperlink{class_linked_list_1_1const__reverse__iterator}{const\+\_\+reverse\+\_\+iterator}} \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::crend (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Get a constant reverse iterator to end of the linked list. \begin{DoxyReturn}{Returns}
+A constant reverse iterator pointing to the last element in the linked list. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+If linked list is empty, this constant reverse iterator will be equal to the crend iterator. 
+\end{DoxyNote}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No} & exceptions are thrown by this operation. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_linked_list_a12b8cbcec91807e243ef192ffd547416}\label{class_linked_list_a12b8cbcec91807e243ef192ffd547416}} 
+\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!empty@{empty}}
+\index{empty@{empty}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsubsection{\texorpdfstring{empty()}{empty()}}
+{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
+bool \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Checks whether the linked list is empty. \begin{DoxyReturn}{Returns}
+True if the linked list is empty, otherwise false. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No} & exceptions are thrown by this operation. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_linked_list_a4aba4897b41bb8a9dd3dfaeade3e38d2}\label{class_linked_list_a4aba4897b41bb8a9dd3dfaeade3e38d2}} 
+\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!end@{end}}
+\index{end@{end}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
+\mbox{\hyperlink{class_linked_list_1_1iterator}{iterator}} \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Get an iterator to the end of the linked list. \begin{DoxyReturn}{Returns}
+An iterator pointing to the position past the last element in the linked list. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This iterator acts as a sentinel and should not be dereferenced. 
+\end{DoxyNote}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No} & exceptions are thrown by this operation. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_linked_list_a104ea4922eccc5071ee4e87e4ac9dd4e}\label{class_linked_list_a104ea4922eccc5071ee4e87e4ac9dd4e}} 
+\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!erase@{erase}}
+\index{erase@{erase}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsubsection{\texorpdfstring{erase()}{erase()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
+\mbox{\hyperlink{class_linked_list_1_1iterator}{iterator}} \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::erase (\begin{DoxyParamCaption}\item[{const T \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Remove all occurrences of the specified value from the linked list. 
+\begin{DoxyParams}{Parameters}
+{\em value} & The value of the elements to be removed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An iterator that points to the element following the last removed element, or the \mbox{\hyperlink{class_linked_list_a4aba4897b41bb8a9dd3dfaeade3e38d2}{end()}} iterator if no element was removed. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+The value\+\_\+type of the linked list must support equality comparison. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+All elements with the specified value are removed from the linked list. 
+\end{DoxyPostcond}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em May} & throw an exception if memory deallocation fails (depends on the allocator). \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_linked_list_acfac661f0012792b1869543e55ae3034}\label{class_linked_list_acfac661f0012792b1869543e55ae3034}} 
+\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!erase@{erase}}
+\index{erase@{erase}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsubsection{\texorpdfstring{erase()}{erase()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
+\mbox{\hyperlink{class_linked_list_1_1iterator}{iterator}} \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::erase (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_linked_list_1_1iterator}{iterator}}}]{first,  }\item[{\mbox{\hyperlink{class_linked_list_1_1iterator}{iterator}}}]{last }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Remove the elements in the range \mbox{[}first, last\mbox{]} from the linked list. 
+\begin{DoxyParams}{Parameters}
+{\em first} & An iterator pointing to the first element of the range to be removed. \\
+\hline
+{\em last} & An iterator pointing to the element just beyond the last element of the range to be removed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An iterator that points to the element following the last removed element, or the \mbox{\hyperlink{class_linked_list_a4aba4897b41bb8a9dd3dfaeade3e38d2}{end()}} iterator if the last element was removed. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+The provided iterators must be valid and dereferenceable. 
+
+The range \mbox{[}first, last\mbox{]} must be a valid range within the linked list. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+The elements in the range \mbox{[}first, last\mbox{]} are removed from the linked list. 
+
+The iterator following the last removed element is returned. 
+\end{DoxyPostcond}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em May} & throw an exception if the deallocation of memory fails. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_linked_list_aaa4a34f8db21a22d2ee72a846f7426ec}\label{class_linked_list_aaa4a34f8db21a22d2ee72a846f7426ec}} 
+\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!erase@{erase}}
+\index{erase@{erase}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsubsection{\texorpdfstring{erase()}{erase()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
+\mbox{\hyperlink{class_linked_list_1_1iterator}{iterator}} \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::erase (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_linked_list_1_1iterator}{iterator}}}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Remove the element at the specified position in the linked list. 
+\begin{DoxyParams}{Parameters}
+{\em pos} & An iterator pointing to the element to be removed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An iterator that points to the element following the removed element, or the \mbox{\hyperlink{class_linked_list_a4aba4897b41bb8a9dd3dfaeade3e38d2}{end()}} iterator if the last element was removed. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+The provided iterator must be valid and dereferenceable. 
+
+The linked list must not be empty. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+The element at the position specified by the iterator is removed from the linked list. 
+
+The iterator following the removed element is returned. 
+\end{DoxyPostcond}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em May} & throw an exception if memory deallocation fails (depends on the allocator). \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_linked_list_afa9428897b29cd9b662fc83c63dd3eea}\label{class_linked_list_afa9428897b29cd9b662fc83c63dd3eea}} 
+\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!find@{find}}
+\index{find@{find}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsubsection{\texorpdfstring{find()}{find()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
+\mbox{\hyperlink{class_linked_list_1_1iterator}{iterator}} \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::find (\begin{DoxyParamCaption}\item[{const T \&}]{value }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Find the first occurrence of a value in the linked list in a constant context. 
+\begin{DoxyParams}{Parameters}
+{\em value} & The value to search for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An iterator to the first occurrence of the value in the linked list, or the \mbox{\hyperlink{class_linked_list_a4aba4897b41bb8a9dd3dfaeade3e38d2}{end()}} iterator if the value is not found. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+The linked list must not be empty. 
+\end{DoxyPrecond}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No} & exceptions are thrown by this operation. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_linked_list_a1aa1c5c24fd5164aa540cc1abf498a80}\label{class_linked_list_a1aa1c5c24fd5164aa540cc1abf498a80}} 
+\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!find@{find}}
+\index{find@{find}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsubsection{\texorpdfstring{find()}{find()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
+\mbox{\hyperlink{class_linked_list_1_1iterator}{iterator}} \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::find (\begin{DoxyParamCaption}\item[{const T \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Find the first occurrence of a value in the linked list. 
+\begin{DoxyParams}{Parameters}
+{\em value} & The value to search for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An iterator to the first occurrence of the value in the linked list, or the \mbox{\hyperlink{class_linked_list_a4aba4897b41bb8a9dd3dfaeade3e38d2}{end()}} iterator if the value is not found. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+The linked list must not be empty. 
+\end{DoxyPrecond}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No} & exceptions are thrown by this operation. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_linked_list_a695788e5ef975d820781d785641bfb5c}\label{class_linked_list_a695788e5ef975d820781d785641bfb5c}} 
+\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!front@{front}}
+\index{front@{front}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsubsection{\texorpdfstring{front()}{front()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
+const T\& \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::front (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Returns a constant reference to the first element in the linked list in const context. \begin{DoxyReturn}{Returns}
+A constant reference to the first element. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+The linked list must not be empty. 
+\end{DoxyPrecond}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No} & exceptions are thrown by this operation. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_linked_list_a9fd1e0d5790068e563916662a7416d9b}\label{class_linked_list_a9fd1e0d5790068e563916662a7416d9b}} 
+\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!front@{front}}
+\index{front@{front}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsubsection{\texorpdfstring{front()}{front()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
+T\& \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::front (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Returns a reference to the first element in the linked list. \begin{DoxyReturn}{Returns}
+A reference to the first element. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+The linked list must not be empty. 
+\end{DoxyPrecond}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No} & exceptions are thrown by this operation. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_linked_list_a0148b3ceccb6d442777df573ac5bad8b}\label{class_linked_list_a0148b3ceccb6d442777df573ac5bad8b}} 
+\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!insert@{insert}}
+\index{insert@{insert}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
+\mbox{\hyperlink{class_linked_list_1_1iterator}{iterator}} \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::insert (\begin{DoxyParamCaption}\item[{const T \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Insert a new element with the given value at the end of the linked list. 
+\begin{DoxyParams}{Parameters}
+{\em value} & The value of the element to be inserted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An iterator that points to the newly inserted element. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+The value\+\_\+type of the linked list must be copy constructible. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+The element with the specified value is inserted at the end of the linked list. 
+\end{DoxyPostcond}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em May} & throw std\+::bad\+\_\+alloc if memory allocation fails during the operation. \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyNote}{Note}
+If the value\+\_\+type of the linked list is not copy constructible, this function will not compile. 
+\end{DoxyNote}
+\mbox{\Hypertarget{class_linked_list_a0dd86eb152e1d6634a341f6d41a9368d}\label{class_linked_list_a0dd86eb152e1d6634a341f6d41a9368d}} 
+\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!insert@{insert}}
+\index{insert@{insert}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
+\mbox{\hyperlink{class_linked_list_1_1iterator}{iterator}} \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::insert (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_linked_list_1_1iterator}{iterator}}}]{pos,  }\item[{const T \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Insert a new element with the given value at the specified position in the linked list. 
+\begin{DoxyParams}{Parameters}
+{\em pos} & An iterator pointing to the position where the element is inserted. \\
+\hline
+{\em value} & The value of the element to be inserted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An iterator that points to the newly inserted element. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+The value\+\_\+type of the linked list must be copy constructible. 
+
+The iterator {\ttfamily pos} must be a valid iterator within the linked list. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+The element with the specified value is inserted at the position indicated by {\ttfamily pos}. 
+\end{DoxyPostcond}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em May} & throw std\+::bad\+\_\+alloc if memory allocation fails during the operation. \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyNote}{Note}
+If the value\+\_\+type of the linked list is not copy constructible, this function will not compile. 
+\end{DoxyNote}
+\mbox{\Hypertarget{class_linked_list_aac0a3f0e78cc32a64e7584f7e94fb172}\label{class_linked_list_aac0a3f0e78cc32a64e7584f7e94fb172}} 
+\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
+\mbox{\hyperlink{class_linked_list}{Linked\+List}}\& \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T $>$ \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Copy assignment operator. 
+\begin{DoxyParams}{Parameters}
+{\em other} & The \mbox{\hyperlink{class_linked_list}{Linked\+List}} to be assigned from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the \mbox{\hyperlink{class_linked_list}{Linked\+List}} after the attempted copy assignment. 
+\end{DoxyReturn}
+\begin{DoxyPostcond}{Postcondition}
+Copies the content from the other \mbox{\hyperlink{class_linked_list}{Linked\+List}} to this \mbox{\hyperlink{class_linked_list}{Linked\+List}}. 
+\end{DoxyPostcond}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No} & exceptions are thrown by this operation. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_linked_list_a2ca8d409721cafd66fd9bd97e05ea4ad}\label{class_linked_list_a2ca8d409721cafd66fd9bd97e05ea4ad}} 
+\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
+\mbox{\hyperlink{class_linked_list}{Linked\+List}}\& \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$ \&\&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Move assingment operator. 
+\begin{DoxyParams}{Parameters}
+{\em other} & The {\ttfamily \mbox{\hyperlink{class_linked_list}{Linked\+List}}} to be moved from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the \mbox{\hyperlink{class_linked_list}{Linked\+List}} after the move assignment. 
+\end{DoxyReturn}
+\begin{DoxyPostcond}{Postcondition}
+Moves the content from the other \mbox{\hyperlink{class_linked_list}{Linked\+List}} to this \mbox{\hyperlink{class_linked_list}{Linked\+List}}. The other \mbox{\hyperlink{class_linked_list}{Linked\+List}} will be left in a valid but unspecified state. 
+\end{DoxyPostcond}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No} & exceptions are thrown by this operation. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_linked_list_aefbb7844060129481bc21bab29e6c2a3}\label{class_linked_list_aefbb7844060129481bc21bab29e6c2a3}} 
+\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!rbegin@{rbegin}}
+\index{rbegin@{rbegin}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsubsection{\texorpdfstring{rbegin()}{rbegin()}}
+{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
+\mbox{\hyperlink{class_linked_list_1_1reverse__iterator}{reverse\+\_\+iterator}} \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::rbegin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Get a reverse iterator to the beginning of the linked list. \begin{DoxyReturn}{Returns}
+A reverse iterator pointing past the first element in the linked list. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This reverse iterator acts as a sentinel and should not be dereferenced. 
+\end{DoxyNote}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No} & exceptions are thrown by this operation. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_linked_list_a91a67c64988fce9b7be8664e89b39fc1}\label{class_linked_list_a91a67c64988fce9b7be8664e89b39fc1}} 
+\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!rend@{rend}}
+\index{rend@{rend}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsubsection{\texorpdfstring{rend()}{rend()}}
+{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
+\mbox{\hyperlink{class_linked_list_1_1reverse__iterator}{reverse\+\_\+iterator}} \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::rend (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Get a reverse iterator to the beginning of the linked list. \begin{DoxyReturn}{Returns}
+A reverse iterator pointing to the last element in the linked list. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+If linked list is empty, this reverse iterator will be equal to the crbegin iterator. 
+\end{DoxyNote}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No} & exceptions are thrown by this operation. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_linked_list_a1af71726533474b0e203b88cd724a75e}\label{class_linked_list_a1af71726533474b0e203b88cd724a75e}} 
+\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!size@{size}}
+\index{size@{size}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
+size\+\_\+t \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Returns the number of elements in the linked list. \begin{DoxyReturn}{Returns}
+The number of elements in the linked list. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No} & exceptions are thrown by this operation. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_linked_list_ab010dafa19b2f33a93baaa9e6affea69}\label{class_linked_list_ab010dafa19b2f33a93baaa9e6affea69}} 
+\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!swap@{swap}}
+\index{swap@{swap}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+\doxysubsubsection{\texorpdfstring{swap()}{swap()}}
+{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
+void \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::swap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$ \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Swap the contents of this linked list with another linked list. 
+\begin{DoxyParams}{Parameters}
+{\em other} & The other linked list to swap with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The contents of this linked list are exchanged with the contents of the other linked list. 
+\end{DoxyPostcond}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em No} & exceptions are thrown by this operation. \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Bag\+Container\+Adaptor/include/\+Bag\+Container\+Adaptor/linked\+\_\+list.\+hpp\end{DoxyCompactItemize}
