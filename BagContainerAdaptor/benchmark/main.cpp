@@ -5,6 +5,7 @@
 
 long memoryUsage = 0;
 
+// Overloading new and delete operators globally to track memory usage.
 void* operator new(size_t size)
 {
     void* ptr = malloc(size);
@@ -23,6 +24,7 @@ void operator delete(void* ptr) noexcept
     }
 }
 
+// Test runner function to track the time it takes to run the benchmarks.
 template <typename CallBackType, typename... Args>
 void run(const std::string& name, CallBackType callback, Args&&... args)
 {
@@ -35,6 +37,7 @@ void run(const std::string& name, CallBackType callback, Args&&... args)
     memoryUsage = 0;
 }
 
+// Run insert, remove and lookup for BagContainerAdapter and the underlying type.
 template <typename Container>
 class BenchmarkRunner
 {
@@ -54,6 +57,7 @@ public:
     }
 };
 
+// Run the same tests for std::forward_list.
 template <typename T>
 class ForwardListRunner
 {
@@ -72,6 +76,7 @@ public:
     }
 };
 
+// Run all the benchmarks for all the required types.
 template <typename T>
 void runBenchmarks(size_t amount, const T& value, const T& target)
 {
@@ -112,11 +117,11 @@ int main()
     // These runBenchmarks() calls are only made with primitives,
     // because std::unordered_multiset sucks.
 
-    std::cout << "int, 100000 iterations\n";
+    std::cout << "int, 10000 iterations\n";
     runBenchmarks<int>(10000, 5, 6);
     std::cout << "\n";
 
-    std::cout << "double, 100000\n";
+    std::cout << "double, 10000\n";
     runBenchmarks<double>(10000, 0.2, 0.5);
     std::cout << "\n";
 

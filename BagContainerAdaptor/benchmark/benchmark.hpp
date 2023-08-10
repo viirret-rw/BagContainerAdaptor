@@ -6,6 +6,7 @@
 #include <chrono>
 #include <functional>
 
+// Insert, remove and lookup functions for BagContainerAdaptor and the underlying type.
 template <typename Container>
 class Benchmark
 {
@@ -111,6 +112,7 @@ public:
     }
 };
 
+// Same functions but for std::forward_list.
 template <typename T>
 class ForwardListBenchmark
 {

@@ -2,6 +2,7 @@
 
 #include <BagContainerAdaptor/bag_container_adaptor.hpp>
 
+// Testing front() and back() member functions from BagContainerAdaptor.
 template <typename Container>
 class FrontAndBackTest : public ::testing::Test
 {
@@ -29,6 +30,7 @@ protected:
     }
 };
 
+// Note that we are missing std::unordered_multiset.
 using FrontAndBackContainerTypes = ::testing::Types<
     std::list<int>,
     std::vector<int>,
@@ -50,6 +52,8 @@ TYPED_TEST(FrontAndBackTest, backTest)
     this->backTest();
 }
 
+// Because std::unordered_multiset does not have front() or back() member
+// functions we have to create own tests for that type.
 TEST(FrontAndBackTests, FrontTestUnorderedMultiset)
 {
     std::unordered_multiset<int> testSet;

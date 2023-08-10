@@ -1,6 +1,7 @@
 #ifndef CUSTOM_TYPE_HPP
 #define CUSTOM_TYPE_HPP
 
+// Custom type used for benchmarking.
 class CustomType
 {
 public:

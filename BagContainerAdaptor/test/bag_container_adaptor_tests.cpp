@@ -8,7 +8,6 @@
 // is the template argument for the template argument BagContainerAdapter.
 
 // This is because the value_type of the BagContainerAdapter is always it's template argument.
-
 TEST(BagContainerAdaptor, InitializeBagContainerWithBagContainer)
 {
     {

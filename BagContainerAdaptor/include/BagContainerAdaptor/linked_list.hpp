@@ -1368,7 +1368,7 @@ private:
     /// Pointing always to the last element.
     LinkedListNode<T>* m_tail = nullptr;
 
-    /// Amount of Nodes in the linked list.
+    /// Amount of nodes in the linked list.
     size_t m_count = 0;
 
     /// Allocator for memory management, default is std::allocator.

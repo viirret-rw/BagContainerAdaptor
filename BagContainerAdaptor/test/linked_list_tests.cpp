@@ -172,18 +172,37 @@ TEST(TestIterators, Dereferenceable)
     EXPECT_EQ(convertibleToThis, 5);
 }
 
+// Testing conversion between iterator types.
 template <typename List, typename From, typename To>
 static void conversionTest(List& list, From from)
 {
-    // Conversion constructor.
-    To constructed(from);
+    // Create copies to test moving.
+    From copy1 = from;
+    From copy2 = from;
 
-    // Conversion assigment.
-    To assigned = from;
+    // Copy conversion constructor.
+    To copyConstructed(from);
 
-    EXPECT_TRUE((std::is_same<decltype(constructed), To>::value));
-    EXPECT_TRUE((std::is_same<decltype(assigned), To>::value));
-    EXPECT_EQ(*constructed, *assigned);
+    // Copy conversion assigment.
+    To copyAssigned = from;
+
+    // Move conversion constructor.
+    To moveConstructed(std::move(copy1));
+
+    // Move conversion assignment.
+    To moveAssigned = std::move(copy2);
+
+    // Check that all created elements are equal to "To" element.
+    EXPECT_TRUE((std::is_same<decltype(copyConstructed), To>::value));
+    EXPECT_TRUE((std::is_same<decltype(copyAssigned), To>::value));
+    EXPECT_TRUE((std::is_same<decltype(moveAssigned), To>::value));
+    EXPECT_TRUE((std::is_same<decltype(moveConstructed), To>::value));
+
+    // Check that all created elements are equal to each other.
+    EXPECT_EQ(*copyConstructed, *copyAssigned);
+    EXPECT_EQ(*moveConstructed, *moveAssigned);
+    EXPECT_EQ(*copyConstructed, *moveConstructed);
+    EXPECT_EQ(*copyAssigned, *moveAssigned);
 }
 
 TEST(TestIterators, ConversionIteratorToConstIterator)

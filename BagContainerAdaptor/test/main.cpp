@@ -2,6 +2,7 @@
 
 #include <BagContainerAdaptor/bag_container_adaptor.hpp>
 
+// Testing various functions of the BagContainerAdaptor class.
 template <typename Container>
 class BagContainerAdaptorTest : public ::testing::Test
 {
@@ -154,8 +155,7 @@ protected:
 
     void moveConstructorTest()
     {
-        // This can me initialized non explicitly when the ring buffer is updated.
-        Container container = Container{1, 2, 3};
+        Container container {1, 2, 3};
 
         BagContainerAdaptor<Container> adapter(std::move(container));
 
