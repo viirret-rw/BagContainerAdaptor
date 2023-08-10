@@ -12,7 +12,7 @@ struct LinkedListNode
     /// Constructor.
     /// \param value The value of the data in the Node.
     /// \post The `m_data` is initialized with value.
-    /// \exception No exceptions are thrown by this operation.
+    /// \exception noexcept No exceptions are thrown by this operation.
     explicit LinkedListNode(const T& value) noexcept
         : m_data(value)
     {
@@ -43,6 +43,7 @@ public:
     {
     public:
         /// Default constructor.
+        /// \exception noexcept No exceptions are thrown by this operation.
         iterator() noexcept
         {
         }
@@ -50,7 +51,7 @@ public:
         /// Constructor.
         /// \param node Pointer to the `LinkedListNode` to initialize the iterator with.
         /// \post The iterator is constructed with the given `LinkedListNode` as the current node.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         explicit iterator(LinkedListNode<T>* node) noexcept
             : m_currentNode(node)
         {
@@ -59,7 +60,7 @@ public:
         /// Dereference operator for the iterator.
         /// \return A reference to the data of the current node.
         /// \post Returns a reference to the data of the current node.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         T& operator*() const noexcept
         {
             return m_currentNode->m_data;
@@ -68,7 +69,7 @@ public:
         /// Arrow operator for the iterator.
         /// \return A pointer to the data of the current node.
         /// \post Returns a pointer to the data of the current node.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         T* operator->() const noexcept
         {
             return &(m_currentNode->m_data);
@@ -77,7 +78,7 @@ public:
         /// Pre-increment operator for the iterator.
         /// \return A reference to the iterator after the increment.
         /// \post Moves the iterator to the next node in the linked list.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         iterator& operator++() noexcept
         {
             m_currentNode = m_currentNode->m_next;
@@ -87,7 +88,7 @@ public:
         /// Post-increment operator for the iterator.
         /// \return An iterator pointing to the previous position before the increment (this).
         /// \post Moves the iterator to the next node in the linked list.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         iterator operator++(int) noexcept
         {
             iterator temp = *this;
@@ -115,7 +116,6 @@ public:
         /// Post-decrement operator for the iterator.
         /// \return An iterator pointing to the previous position before the decrement (this).
         /// \post Moves the iterator to the previous node in the linked list.
-        /// \exception No exceptions are thrown by this operation.
         iterator operator--(int)
         {
             iterator temp = *this;
@@ -136,7 +136,7 @@ public:
         /// \param other The iterator to compare with.
         /// \return True if both iterators point to the same node, otherwise false.
         /// \post Checks if the current node of this iterator is equal to the current node of the other iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         bool operator==(const iterator& other) const noexcept
         {
             return m_currentNode == other.m_currentNode;
@@ -146,7 +146,7 @@ public:
         /// \param other The iterator to compare with.
         /// \return True if both iterators do not point to the same node, otherwise false.
         /// \post Checks if the current node of this iterator is not equal to the current node of the other iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         bool operator!=(const iterator& other) const noexcept
         {
             return m_currentNode != other.m_currentNode;
@@ -155,7 +155,7 @@ public:
         /// Copy constructibility from const_iterator.
         /// \param it The constant iterator to copy construct from.
         /// \post The iterator is constructed with the same current node as the constant iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         iterator(const typename LinkedList<T>::const_iterator& it) noexcept
             : m_currentNode(const_cast<LinkedListNode<T>*>(it.getNode()))
         {
@@ -165,7 +165,7 @@ public:
         /// \param it The constant iterator to copy assign from.
         /// \return A reference to the iterator after the assignment.
         /// \post The iterator is assigned with the same current node as the constant iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         iterator& operator=(const typename LinkedList<T>::const_iterator& it) noexcept
         {
             m_currentNode = const_cast<LinkedListNode<T>*>(it.getNode());
@@ -175,7 +175,7 @@ public:
         /// Move constructibility from const_iterator.
         /// \param it The constant iterator to move construct from.
         /// \post The iterator is constructed with the same current node as the constant iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         iterator(typename LinkedList<T>::const_iterator&& it) noexcept
             : m_currentNode(const_cast<LinkedListNode<T>*>(it.getNode()))
         {
@@ -185,7 +185,7 @@ public:
         /// \param it The constant iterator to move assign from.
         /// \return A reference to the iterator after the assignment.
         /// \post The iterator is assigned with the same current node as the constant iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         iterator& operator=(typename LinkedList<T>::const_iterator&& it) noexcept
         {
             m_currentNode = const_cast<LinkedListNode<T>*>(it.getNode());
@@ -195,33 +195,33 @@ public:
         /// Copy constructor.
         /// \param other The iterator to be copied.
         /// \post The iterator is constructed as a copy of the other iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         iterator(const iterator& other) noexcept = default;
 
         /// Copy assignment operator.
         /// \param other The iterator to be copied.
         /// \return A reference to the iterator after the assignment.
         /// \post The iterator is assigned as a copy of the other iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         iterator& operator=(const iterator& other) noexcept = default;
 
         /// Move constructor.
         /// \param other The iterator to be moved.
         /// \post The iterator is constructed by moving the other iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         iterator(iterator&& other) noexcept = default;
 
         /// Move assignment operator.
         /// \param other The iterator to be moved.
         /// \return A reference to the iterator after the assignment.
         /// \post The iterator is assigned by moving the other iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         iterator& operator=(iterator&& other) noexcept = default;
 
         /// Get the Node where the iterator is pointing.
         /// \return A pointer to the current node where the iterator is pointing.
         /// \post Returns a pointer to the current node where the iterator is pointing.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         LinkedListNode<T>* getNode() const noexcept
         {
             return m_currentNode;
@@ -250,7 +250,7 @@ public:
         /// Constructor.
         /// \param node Pointer to the LinkedListNode to initialize constant iterator with.
         /// \post The iterator is constructed with the given LinkedListNode as the current node.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         explicit const_iterator(LinkedListNode<T>* node) noexcept
             : m_currentNode(node)
         {
@@ -259,7 +259,7 @@ public:
         /// Deference operator for the constant iterator.
         /// \return A constant reference to the data of the current node.
         /// \post Returns a constant reference to the data of the current node.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         const T& operator*() const noexcept
         {
             return m_currentNode->m_data;
@@ -268,7 +268,7 @@ public:
         /// Arrow operator for the constant iterator.
         /// \return A constant pointer to the data of the current node.
         /// \post Returns a constant pointer to the data of the current node.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         const T* operator->() const noexcept
         {
             return &(m_currentNode->m_data);
@@ -277,7 +277,7 @@ public:
         /// Pre-increment operator for the constant iterator.
         /// \return A reference to the constant iterator after the increment.
         /// \post Moves the constant iterator to the next node in the linked list.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         const_iterator& operator++() noexcept
         {
             m_currentNode = m_currentNode->m_next;
@@ -287,7 +287,7 @@ public:
         /// Post-increment operator for the constant iterator.
         /// \return An iterator pointing to the previous position before the increment.
         /// \post Moves the constant iterator to the next node in the linked list.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         const_iterator operator++(int) noexcept
         {
             const_iterator temp = *this;
@@ -334,7 +334,7 @@ public:
         /// \param other The constant iterator to compare with.
         /// \return True if both of the constant iterators point to the same node, otherwise false.
         /// \post Checks if the current node of this constant iterator is equal to the current node of the other iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         bool operator==(const const_iterator& other) const noexcept
         {
             return m_currentNode == other.m_currentNode;
@@ -344,7 +344,7 @@ public:
         /// \param other The constant iterator to compare with.
         /// \return True if both iterators do not point to the same node, otherwise false.
         /// \post Checks if the current node of this constant iterator is not equal to the current node of the other constant iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         bool operator!=(const const_iterator& other) const noexcept
         {
             return m_currentNode != other.m_currentNode;
@@ -353,7 +353,7 @@ public:
         /// Copy constructibility from non-const iterator.
         /// \param it The `iterator` to copy construct from.
         /// \post The constant iterator is constructed with the same current node as the `iterator`.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         const_iterator(const typename LinkedList<T>::iterator& it) noexcept
             : m_currentNode(it.getNode())
         {
@@ -363,7 +363,7 @@ public:
         /// \param it The `iterator` to copy assign from.
         /// \return A reference to the constant iterator after the assignment.
         /// \post The constant iterator is assigned with the same current node as the `iterator`.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         const_iterator& operator=(const typename LinkedList<T>::iterator& it) noexcept
         {
             m_currentNode = it.getNode();
@@ -374,7 +374,7 @@ public:
         /// \param it The non-const iterator to be moved from.
         /// \post The const_iterator is constructed, taking ownership of the internal
         /// 	pointer from the non-const iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         const_iterator(typename LinkedList<T>::iterator&& it) noexcept
             : m_currentNode(it.getNode())
         {
@@ -384,7 +384,7 @@ public:
         /// \param it The non-const iterator to be moved from.
         /// \return A reference to the constant iterator after the assignment.
         /// \post The const_iterator is assigned the value of the non-const iterator, taking ownership of the internal pointer.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         const_iterator& operator=(typename LinkedList<T>::iterator&& it) noexcept
         {
             m_currentNode = it.getNode();
@@ -394,33 +394,33 @@ public:
         /// Copy constructor.
         /// \param other The constant iterator to be copied.
         /// \post The iterator is constructed as a copy of the other constant iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         const_iterator(const const_iterator& other) noexcept = default;
 
         /// Copy assignment operator.
         /// \param other The constant iterator to be copied.
         /// \return A reference to the constant iterator after the assignment.
         /// \post The constant iterator as assigned as a copy of the other constant iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         const_iterator& operator=(const const_iterator& other) noexcept = default;
 
         /// Move constructor.
         /// \param other The constant iterator to be moved.
         /// \post The constant iterator is constructed by moving the other iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         const_iterator(const_iterator&& other) noexcept = default;
 
         /// Move assignment operator.
         /// \param other The constant iterator to be moved.
         /// \return A reference to the constant iterator after the assignment.
         /// \post The constant iterator is assigned by moving the other constant iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         const_iterator& operator=(const_iterator&& other) noexcept = default;
 
-        /// Get the Node where the iterator is pointing.
-        /// \return A pointer to the current node where the iterator is pointing.
-        /// \post Returns a pointer to the current node where the iterator is pointing.
-        /// \exception No exceptions are thrown by this operation.
+        /// Get the Node where the constant iterator is pointing.
+        /// \return A pointer to the current node where the constant iterator is pointing.
+        /// \post Returns a pointer to the current node where the constant iterator is pointing.
+        /// \exception noexcept No exceptions are thrown by this operation.
         const LinkedListNode<T>* getNode() const noexcept
         {
             return m_currentNode;
@@ -442,14 +442,15 @@ public:
     {
     public:
         /// Default constructor.
+        /// \exception noexcept No exceptions are thrown by this operation.
         reverse_iterator() noexcept
         {
         }
 
         /// Constructor.
-        /// \param node Pointer to the 'LinkedListNode' to initialize reverse iterator with.
-        /// \post The reverse iterator is constructed with the given 'LinkedListNode' as the current node.
-        /// \exception No exceptions are thrown by this operation.
+        /// \param node Pointer to the `LinkedListNode` to initialize reverse iterator with.
+        /// \post The reverse iterator is constructed with the given `LinkedListNode` as the current node.
+        /// \exception noexcept No exceptions are thrown by this operation.
         explicit reverse_iterator(LinkedListNode<T>* node) noexcept
             : m_currentNode(node)
         {
@@ -458,7 +459,7 @@ public:
         /// Dereference operator for the reverse iterator.
         /// \return A reference to the data of the current node.
         /// \post Returns a reference to the data of the current node.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         T& operator*() const noexcept
         {
             return m_currentNode->m_data;
@@ -467,16 +468,16 @@ public:
         /// Arrow operator for the reverse iterator.
         /// \return A pointer to the data of the current node.
         /// \post Returns a pointer to the data of the current node.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         T* operator->() const noexcept
         {
             return &(m_currentNode->m_data);
         }
 
         /// Pre-increment operator for the reverse iterator.
-        /// \return A reference to the iterator after the increment.
-        /// \post Moves the iterator to the next node in the linked list.
-        /// \exception No exceptions are thrown by this operation.
+        /// \return A reference to the reverse iterator after the increment.
+        /// \post Moves the reverse iterator to the previous node in the linked list.
+        /// \exception noexcept No exceptions are thrown by this operation.
         reverse_iterator& operator++()
         {
             m_currentNode = m_currentNode->m_inverse;
@@ -485,8 +486,8 @@ public:
 
         /// Post-increment operator for the reverse iterator.
         /// \return A reference to the iterator after the increment.
-        /// \post Moves the iterator to the next node in the linked list.
-        /// \exception No exceptions are thrown by this operation.
+        /// \post Moves the iterator to the previous node in the linked list.
+        /// \exception noexcept No exceptions are thrown by this operation.
         reverse_iterator operator++(int)
         {
             reverse_iterator temp = *this;
@@ -496,7 +497,7 @@ public:
 
         /// Pre-decrement operator for the reverse iterator.
         /// \return A reference to the reverse iterator after the decrement.
-        /// \post Moves the reverse iterator to the previous node in the linked list.
+        /// \post Moves the reverse iterator to the next node in the linked list.
         reverse_iterator& operator--()
         {
             if (m_currentNode)
@@ -513,7 +514,7 @@ public:
 
         /// Post decrement operator for the reverse linked list.
         /// \return A reference to the reverse iterator after the decrement.
-        /// \post Movesw the reverse iterator to the previous node in the linked list.
+        /// \post Moves the reverse iterator to the next node in the linked list.
         reverse_iterator operator--(int)
         {
             reverse_iterator temp = *this;
@@ -534,7 +535,7 @@ public:
         /// \param other The reverse iterator to compared with.
         /// \return True of both reverse iterators point to the same node, otherwise false.
         /// \post Checks if the current node of this reverse iterator is equal to the current node of the other reverse iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         bool operator==(const reverse_iterator& other) const noexcept
         {
             return m_currentNode == other.m_currentNode;
@@ -544,7 +545,7 @@ public:
         /// \param other The reverse iterator to compare with.
         /// \return True if both reverse iterators do not point to the same node, otherwise false.
         /// \post Checks if the current node of this reverse iterator is not equal to the current node of the other reverse iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         bool operator!=(const reverse_iterator& other) const noexcept
         {
             return m_currentNode != other.m_currentNode;
@@ -553,7 +554,7 @@ public:
         /// Copy constructibility from constant reverse iterator.
         /// \param it The constant reverse iterator to copy construct from.
         /// \post The reverse iterator is constructed with the same current node as the constant reverse iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         reverse_iterator(const typename LinkedList<T>::const_reverse_iterator& it) noexcept
             : m_currentNode(const_cast<LinkedListNode<T>*>(it.getNode()))
         {
@@ -563,7 +564,7 @@ public:
         /// \param it The constant reverse iterator to copy assign from.
         /// \return A reference to the reverse iterator after the assignment.
         /// \post The reverse iterator is assigned with the same current node as the constant reverse iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         reverse_iterator& operator=(const typename LinkedList<T>::const_reverse_iterator& it) noexcept
         {
             m_currentNode = const_cast<LinkedListNode<T>*>(it.getNode());
@@ -573,7 +574,7 @@ public:
         /// Move constructibility from constant reverse iterator.
         /// \param it The constant reverse iterator to move construct from.
         /// \post The reverse iterator is constructed with the same current node as the constant reverse iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         reverse_iterator(typename LinkedList<T>::const_reverse_iterator&& it) noexcept
             : m_currentNode(const_cast<LinkedListNode<T>*>(it.getNode()))
         {
@@ -583,7 +584,7 @@ public:
         /// \param it The constant reverse iterator to move assign from.
         /// \return A reference to the reverse iterator after the assignment.
         /// \post The reverse iterator is assigned with the same current node as the constant reverse iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         reverse_iterator& operator=(typename LinkedList<T>::const_reverse_iterator&& it) noexcept
         {
             m_currentNode = const_cast<LinkedListNode<T>*>(it.getNode());
@@ -593,33 +594,33 @@ public:
         /// Copy constructor.
         /// \param other The reverse iterator to be copied.
         /// \post The reverse iterator is constructed as a copy of the other reverse iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         reverse_iterator(const reverse_iterator& other) noexcept = default;
 
         /// Copy assignment operator.
         /// \param other The reverse iterator to be copied.
         /// \return A reference to the reverse iterator after the assignment.
         /// \post The reverse iterator is assigned as a copy of the other reverse iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         reverse_iterator& operator=(const reverse_iterator& other) noexcept = default;
 
         /// Move constructor
         /// \param other The reverse iterator to be moved.
         /// \post The reverse iterator is constructed by moving the other reverse iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         reverse_iterator(reverse_iterator&& other) noexcept = default;
 
         /// Move assignment operator.
         /// \param other The reverse iterator to be moved.
         /// \return A reference to the reverse iterator after the assignment.
         /// \post The reverse iterator is assigned by moving the other reverse iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         reverse_iterator& operator=(reverse_iterator&& other) noexcept = default;
 
         /// Get the node where the iterator is pointing.
         /// \return A pointer to the current node where the reverse iterator is pointing.
         /// \post Returns a pointer to the current node where the reverse iterator is pointing.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         LinkedListNode<T>* getNode() const noexcept
         {
             return m_currentNode;
@@ -627,6 +628,8 @@ public:
 
     private:
         /// Pointer to the current node where the reverse iterator is pointing.
+        /// \note The reverse iterator should always point to a valid node in the linked list,
+        /// 	or it should be nullptr if it has reached the end of the list.
         LinkedListNode<T>* m_currentNode;
     };
 
@@ -639,14 +642,15 @@ public:
     {
     public:
         /// Default constructor.
+        /// \exception noexcept No exceptions are thrown by this operation.
         const_reverse_iterator() noexcept
         {
         }
 
         /// Constructor.
-        /// \param node Pointer to the 'LinkedListNode' to initialize constant reverse iterator with.
-        /// \post The constant reverse iterator is constructed with the given 'LinkedListNode' as the current node.
-        /// \exception No exceptions are thrown by this operation.
+        /// \param node Pointer to the `LinkedListNode` to initialize constant reverse iterator with.
+        /// \post The constant reverse iterator is constructed with the given `LinkedListNode` as the current node.
+        /// \exception noexcept No exceptions are thrown by this operation.
         explicit const_reverse_iterator(LinkedListNode<T>* node) noexcept
             : m_currentNode(node)
         {
@@ -655,7 +659,7 @@ public:
         /// Dereference operator for the constant reverse iterator.
         /// \return A constant reference to the data of the current node.
         /// \post Returns a constant reference to the data of the current node.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         const T& operator*() const noexcept
         {
             return m_currentNode->m_data;
@@ -663,8 +667,8 @@ public:
 
         /// Arrow operator for the constant reverse iterator.
         /// \return A constant pointer to data of the current node.
-        /// \post Moves the constant reverse iterator to the next node in the linked list.
-        /// \exception No exceptions are thrown by this operation.
+        /// \post Returns a constant pointer to the data of the current node.
+        /// \exception noexcept No exceptions are thrown by this operation.
         const T* operator->() const noexcept
         {
             return &(m_currentNode->m_data);
@@ -672,8 +676,8 @@ public:
 
         /// Pre-increment operator for the constant reverse iterator.
         /// \return A reference to the constant reverse iterator after the increment.
-        /// \post Moves the constant reverse iterator to the next node in the linked list.
-        /// \exception No exceptions are thrown by this operation.
+        /// \post Moves the constant reverse iterator to the previous node in the linked list.
+        /// \exception noexcept No exceptions are thrown by this operation.
         const_reverse_iterator& operator++()
         {
             m_currentNode = m_currentNode->m_inverse;
@@ -682,8 +686,8 @@ public:
 
         /// Post-increment operator for the constant reverse iterator.
         /// \return A constant reverse iterator pointing to the previous position before the increment.
-        /// \post Moves the constant reverse iterator to the next node in the linked list.
-        /// \exception No exceptions are thrown by this operation.
+        /// \post Moves the constant reverse iterator to the previous node in the linked list.
+        /// \exception noexcept No exceptions are thrown by this operation.
         const_reverse_iterator operator++(int)
         {
             const_reverse_iterator temp = *this;
@@ -693,7 +697,7 @@ public:
 
         /// Pre-decrement operator for the constant iterator.
         /// \return A reference to the constant reverse iterator after the decrement.
-        /// \post Moves the constant reverse iterator to the previous node in the linked list.
+        /// \post Moves the constant reverse iterator to the next node in the linked list.
         const_reverse_iterator& operator--()
         {
             if (m_currentNode)
@@ -710,7 +714,7 @@ public:
 
         /// Post-decrement operator for the constant reverse iterator.
         /// \return A constant reverse iterator pointing to the previous position before the decrement.
-        /// \post Moves the constant reverse iterator to the previous node in the linked list.
+        /// \post Moves the constant reverse iterator to the next node in the linked list.
         const_reverse_iterator operator--(int) noexcept
         {
             const_reverse_iterator temp = *this;
@@ -731,7 +735,7 @@ public:
         /// \param other The constant reverse iterator to compare with.
         /// \return True if both of the constant reverse iterators point to the same node, otherwise false.
         /// \post Checks if the current node if this constant reverse iterator is equal to the current of the other iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         bool operator==(const const_reverse_iterator& other) const noexcept
         {
             return m_currentNode == other.m_currentNode;
@@ -740,7 +744,7 @@ public:
         /// Inequality comparison operator for the constant reverse iterator.
         /// \param other The constant reverse iterator to compare with.
         /// \return True of both constant reverse iterators do not point to the same node, otherwise false.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         bool operator!=(const const_reverse_iterator& other) const noexcept
         {
             return m_currentNode != other.m_currentNode;
@@ -749,7 +753,7 @@ public:
         /// Copy constructibility from non-const reverse iterator.
         /// \param it The reverse iterator to copy construct from.
         /// \post The constant reverse iterator is constructed with the same current node as the non-const reverse iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         const_reverse_iterator(const typename LinkedList<T>::reverse_iterator& it) noexcept
             : m_currentNode(it.getNode())
         {
@@ -759,18 +763,18 @@ public:
         /// \param it The reverse iterator to copy assign from.
         /// \return A reference to the constant reverse iterator after the assignment.
         /// \post The constant reverse iterator is assigned with the same current node as the non-const reverse iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         const_reverse_iterator& operator=(const typename LinkedList<T>::reverse_iterator& it) noexcept
         {
             m_currentNode = it.getNode();
             return *this;
         }
 
-        /// Move constructibility form non-const reverse iterator.
+        /// Move constructibility from non-const reverse iterator.
         /// \param it The reverse iterator to be moved from.
         /// \post The constant reverse iterator is constructed, taking ownership of the internal
         /// 	pointer from the non-const reverse iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         const_reverse_iterator(typename LinkedList<T>::reverse_iterator&& it) noexcept
             : m_currentNode(it.getNode())
         {
@@ -781,7 +785,7 @@ public:
         /// \return A reference to the constant reverse iterator after the assignment.
         /// \post The constant reverse iterator is assigned with the value of the reverse iterator,
         /// 	taking ownership of the internal pointer.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         const_reverse_iterator& operator=(typename LinkedList<T>::reverse_iterator&& it) noexcept
         {
             m_currentNode = it.getNode();
@@ -791,33 +795,33 @@ public:
         /// Copy constructor.
         /// \param other The constant reverse iterator to be copied.
         /// \post The constant reverse iterator is constructed as a copy of the other constant reverse iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         const_reverse_iterator(const const_reverse_iterator& other) noexcept = default;
 
         /// Copy assignment operator.
         /// \param other The constant reverse iterator to be copied.
         /// \return A reference to the constant reverse iterator after the assignment.
         /// \post The constant reverse iterator is assigned as a copy of the other constant reverse iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         const_reverse_iterator& operator=(const const_reverse_iterator& other) noexcept = default;
 
         /// Move constructor
         /// \param other The constant reverse iterator to be moved.
         /// \post The constant reverse iterator is constructed by moving the other constant reverse iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         const_reverse_iterator(const_reverse_iterator&& other) noexcept = default;
 
         /// Move assignment operator.
         /// \param other The constant reverse iterator to be moved.
         /// \return A reference to the constant reverse iterator after the assignment.
         /// \post The constant reverse iterator is assigned by moving the other constant reverse iterator.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         const_reverse_iterator& operator=(const_reverse_iterator&& other) noexcept = default;
 
         /// Get the node where the constant reverse iterator is pointing.
         /// \return A pointer to the current node where the constant reverse iterator is pointing.
         /// \post Returns a pointer to the current node where the iterator is pointing.
-        /// \exception No exceptions are thrown by this operation.
+        /// \exception noexcept No exceptions are thrown by this operation.
         LinkedListNode<T>* getNode() const noexcept
         {
             return m_currentNode;
@@ -825,19 +829,21 @@ public:
 
     private:
         /// Pointer to the node where the constant reverse iterator is pointing.
+        /// \note The constant reverse iterator should always point to a valid node in the linked list,
+        /// 	or it should be nullptr if it has reached the end of the list.
         LinkedListNode<T>* m_currentNode;
     };
 
     /// Default constructor.
     /// \post Constructs a new `LinkedList` object with no elements.
-    /// \exception No exceptions are thrown by this operation.
+    /// \exception noexcept No exceptions are thrown by this operation.
     LinkedList() noexcept
     {
     }
 
     /// Destructor.
     /// \post Destroys the `LinkedList` object, freeing all associated resources.
-    /// \exception No exceptions are thrown by this operation.
+    /// \exception noexcept No exceptions are thrown by this operation.
     ~LinkedList() noexcept
     {
         clear();
@@ -859,7 +865,7 @@ public:
     /// \param other The LinkedList to be moved from.
     /// \post Constructs a new LinkedList by moving the content from the other LinkedList.
     ///       The other LinkedList will be left in a valid but unspecified state.
-    /// \exception No exceptions are thrown by this operation.
+    /// \exception noexcept No exceptions are thrown by this operation.
     LinkedList(LinkedList&& other) noexcept
         : m_head(other.m_head), m_tail(other.m_tail), m_count(other.m_count)
     {
@@ -873,7 +879,7 @@ public:
     /// \return A reference to the LinkedList after the move assignment.
     /// \post Moves the content from the other LinkedList to this LinkedList.
     ///       The other LinkedList will be left in a valid but unspecified state.
-    /// \exception No exceptions are thrown by this operation.
+    /// \exception noexcept No exceptions are thrown by this operation.
     LinkedList& operator=(LinkedList&& other) noexcept
     {
         if (this != &other)
@@ -892,7 +898,7 @@ public:
     /// Copy constructor.
     /// \param other The LinkedList to be copied from.
     /// \post Constructs a new LinkedList by copying the content from the other LinkedList.
-    /// \exception No exceptions are thrown by this operation.
+    /// \exception noexcept No exceptions are thrown by this operation.
     LinkedList(const LinkedList<T>& other) noexcept
         : m_head(other.m_head), m_tail(other.m_tail), m_count(other.m_count)
     {
@@ -902,7 +908,7 @@ public:
     /// \param other The LinkedList to be assigned from.
     /// \return A reference to the LinkedList after the attempted copy assignment.
     /// \post Copies the content from the other LinkedList to this LinkedList.
-    /// \exception No exceptions are thrown by this operation.
+    /// \exception noexcept No exceptions are thrown by this operation.
     LinkedList& operator=(const LinkedList<T>& other) noexcept
     {
         if (this != &other)
@@ -917,7 +923,7 @@ public:
     /// Get an iterator to the beginning of the linked list.
     /// \return An iterator pointing to the first element in the linked list.
     /// \note If the linked list is empty, the iterator will be equal to the end iterator.
-    /// \exception No exceptions are thrown by this operation.
+    /// \exception noexcept No exceptions are thrown by this operation.
     iterator begin() noexcept
     {
         return iterator(m_head);
@@ -926,7 +932,7 @@ public:
     /// Get an iterator to the end of the linked list.
     /// \return An iterator pointing to the position past the last element in the linked list.
     /// \note This iterator acts as a sentinel and should not be dereferenced.
-    /// \exception No exceptions are thrown by this operation.
+    /// \exception noexcept No exceptions are thrown by this operation.
     iterator end() noexcept
     {
         return iterator(nullptr);
@@ -935,7 +941,7 @@ public:
     /// Get a const iterator to the beginning of the linked list.
     /// \return A const iterator pointing to the first element in the linked list.
     /// \note If the linked list is empty, the iterator will be equal to the end iterator.
-    /// \exception No exceptions are thrown by this operation.
+    /// \exception noexcept No exceptions are thrown by this operation.
     const_iterator cbegin() const noexcept
     {
         return const_iterator(m_head);
@@ -944,7 +950,7 @@ public:
     /// Get a const iterator to the end of the linked list.
     /// \return A const iterator pointing to the position past the last element in the linked list.
     /// \note This constant iterator acts as a sentinel and should not be dereferenced.
-    /// \exception No exceptions are thrown by this operation.
+    /// \exception noexcept No exceptions are thrown by this operation.
     const_iterator cend() const noexcept
     {
         return const_iterator(nullptr);
@@ -953,7 +959,7 @@ public:
     /// Get a reverse iterator to the beginning of the linked list.
     /// \return A reverse iterator pointing past the first element in the linked list.
     /// \note This reverse iterator acts as a sentinel and should not be dereferenced.
-    /// \exception No exceptions are thrown by this operation.
+    /// \exception noexcept No exceptions are thrown by this operation.
     reverse_iterator rbegin() noexcept
     {
         return reverse_iterator(nullptr);
@@ -962,7 +968,7 @@ public:
     /// Get a reverse iterator to the beginning of the linked list.
     /// \return A reverse iterator pointing to the last element in the linked list.
     /// \note If linked list is empty, this reverse iterator will be equal to the crbegin iterator.
-    /// \exception No exceptions are thrown by this operation.
+    /// \exception noexcept No exceptions are thrown by this operation.
     reverse_iterator rend() noexcept
     {
         return reverse_iterator(m_tail);
@@ -971,7 +977,7 @@ public:
     /// Get a constant reverse iterator to the beginning of the linked list.
     /// \return A constant reverse iterator pointing past the first element in the linked list.
     /// \note If constant reverse iterator acts as a sentinel and should not be dereferenced.
-    /// \exception No exceptions are thrown by this operation.
+    /// \exception noexcept No exceptions are thrown by this operation.
     const_reverse_iterator crbegin() const noexcept
     {
         return const_reverse_iterator(nullptr);
@@ -980,7 +986,7 @@ public:
     /// Get a constant reverse iterator to end of the linked list.
     /// \return A constant reverse iterator pointing to the last element in the linked list.
     /// \note If linked list is empty, this constant reverse iterator will be equal to the crend iterator.
-    /// \exception No exceptions are thrown by this operation.
+    /// \exception noexcept No exceptions are thrown by this operation.
     const_reverse_iterator crend() const noexcept
     {
         return const_reverse_iterator(m_tail);
@@ -988,7 +994,7 @@ public:
 
     /// Clear the elements in the LinkedList and deallocate memory.
     /// \post Removes all elements from the LinkedList, and deallocates the memory used by each element.
-    /// \exception No exceptions are thrown by this operation.
+    /// \exception noexcept No exceptions are thrown by this operation.
     void clear() noexcept
     {
         while (m_head)
@@ -1267,7 +1273,7 @@ public:
     /// Swap the contents of this linked list with another linked list.
     /// \param other The other linked list to swap with.
     /// \post The contents of this linked list are exchanged with the contents of the other linked list.
-    /// \exception No exceptions are thrown by this operation.
+    /// \exception noexcept No exceptions are thrown by this operation.
     void swap(LinkedList& other) noexcept
     {
         auto tempHead = m_head;
@@ -1287,7 +1293,7 @@ public:
     /// \param value The value to search for.
     /// \return An iterator to the first occurrence of the value in the linked list, or the end() iterator if the value is not found.
     /// \pre The linked list must not be empty.
-    /// \exception No exceptions are thrown by this operation.
+    /// \exception noexcept No exceptions are thrown by this operation.
     iterator find(const T& value) noexcept
     {
         return std::find(begin(), end(), value);
@@ -1297,7 +1303,7 @@ public:
     /// \param value The value to search for.
     /// \return An iterator to the first occurrence of the value in the linked list, or the end() iterator if the value is not found.
     /// \pre The linked list must not be empty.
-    /// \exception No exceptions are thrown by this operation.
+    /// \exception noexcept No exceptions are thrown by this operation.
     iterator find(const T& value) const noexcept
     {
         return std::find(cbegin(), cend(), value);
@@ -1306,7 +1312,7 @@ public:
     /// Returns a reference to the first element in the linked list.
     /// \return A reference to the first element.
     /// \pre The linked list must not be empty.
-    /// \exception No exceptions are thrown by this operation.
+    /// \exception noexcept No exceptions are thrown by this operation.
     T& front() noexcept
     {
         return m_head->m_data;
@@ -1315,7 +1321,7 @@ public:
     /// Returns a constant reference to the first element in the linked list in const context.
     /// \return A constant reference to the first element.
     /// \pre The linked list must not be empty.
-    /// \exception No exceptions are thrown by this operation.
+    /// \exception noexcept No exceptions are thrown by this operation.
     const T& front() const noexcept
     {
         return m_head->m_data;
@@ -1324,7 +1330,7 @@ public:
     /// Returns a reference to the last element in the linked list.
     /// \return A reference to the last element.
     /// \pre The linked list must not be empty.
-    /// \exception No exceptions are thrown by this operation.
+    /// \exception noexcept No exceptions are thrown by this operation.
     T& back() noexcept
     {
         return m_tail->m_data;
@@ -1333,7 +1339,7 @@ public:
     /// Returns a constant reference to the last element in the linked list in const context.
     /// \return A constant reference to the last element.
     /// \pre The linked list must not be empty.
-    /// \exception No exceptions are thrown by this operation.
+    /// \exception noexcept No exceptions are thrown by this operation.
     const T& back() const noexcept
     {
         return m_tail->m_data;
@@ -1341,7 +1347,7 @@ public:
 
     /// Returns the number of elements in the linked list.
     /// \return The number of elements in the linked list.
-    /// \exception No exceptions are thrown by this operation.
+    /// \exception noexcept No exceptions are thrown by this operation.
     size_t size() const noexcept
     {
         return m_count;
@@ -1349,36 +1355,10 @@ public:
 
     /// Checks whether the linked list is empty.
     /// \return True if the linked list is empty, otherwise false.
-    /// \exception No exceptions are thrown by this operation.
+    /// \exception noexcept No exceptions are thrown by this operation.
     bool empty() const
     {
         return !m_head;
-    }
-
-    // TODO remove me!
-    void debugInfo() const
-    {
-        auto current = m_head;
-        while (current)
-        {
-            if (current == m_head)
-            {
-                std::cout << "Head ";
-            }
-            if (current == m_tail)
-            {
-                std::cout << "Tail ";
-            }
-
-            std::cout << "Node: " << current->m_data << std::endl;
-            std::cout << "Address: " << current << std::endl;
-            std::cout << "Inverse address: " << current->m_inverse << std::endl;
-            std::cout << "Next address: " << current->m_next << std::endl;
-            std::cout << std::endl;
-
-            current = current->m_next;
-        }
-        std::cout << std::endl;
     }
 
 private:
