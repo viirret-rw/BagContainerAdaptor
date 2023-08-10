@@ -44,7 +44,7 @@ class BenchmarkRunner
 public:
     using value_type = typename Container::value_type;
 
-    static void runTests(size_t amount, const value_type& value, const value_type& target)
+    static void runBenchmarks(size_t amount, const value_type& value, const value_type& target)
     {
         Benchmark<Container> benchmark;
 
@@ -62,7 +62,7 @@ template <typename T>
 class ForwardListRunner
 {
 public:
-    static void runTests(size_t amount, const T& value, const T& target)
+    static void runBenchmarks(size_t amount, const T& value, const T& target)
     {
         ForwardListBenchmark<T> forwardListBenchmark;
         Benchmark<std::forward_list<T>> benchmark;
@@ -81,35 +81,76 @@ template <typename T>
 void runBenchmarks(size_t amount, const T& value, const T& target)
 {
     std::cout << "std::vector\n";
-    BenchmarkRunner<std::vector<T>>::runTests(amount, value, target);
+    BenchmarkRunner<std::vector<T>>::runBenchmarks(amount, value, target);
     std::cout << "\n";
 
     std::cout << "std::deque\n";
-    BenchmarkRunner<std::deque<T>>::runTests(amount, value, target);
+    BenchmarkRunner<std::deque<T>>::runBenchmarks(amount, value, target);
     std::cout << "\n";
 
     std::cout << "std::list\n";
-    BenchmarkRunner<std::list<T>>::runTests(amount, value, target);
+    BenchmarkRunner<std::list<T>>::runBenchmarks(amount, value, target);
     std::cout << "\n";
 
     std::cout << "std::forward_list\n";
-    ForwardListRunner<T>::runTests(amount, value, target);
+    ForwardListRunner<T>::runBenchmarks(amount, value, target);
     std::cout << "\n";
 
     std::cout << "std::multiset\n";
-    BenchmarkRunner<std::multiset<T>>::runTests(amount, value, target);
+    BenchmarkRunner<std::multiset<T>>::runBenchmarks(amount, value, target);
     std::cout << "\n";
 
     std::cout << "unordered_multiset\n";
-    BenchmarkRunner<std::unordered_multiset<T>>::runTests(amount, value, target);
+    BenchmarkRunner<std::unordered_multiset<T>>::runBenchmarks(amount, value, target);
     std::cout << "\n";
 
     std::cout << "LinkedList\n";
-    BenchmarkRunner<LinkedList<T>>::runTests(amount, value, target);
+    BenchmarkRunner<LinkedList<T>>::runBenchmarks(amount, value, target);
     std::cout << "\n";
 
     std::cout << "RingBuffer\n";
-    BenchmarkRunner<ring_buffer<T>>::runTests(amount, value, target);
+    BenchmarkRunner<ring_buffer<T>>::runBenchmarks(amount, value, target);
+}
+
+void runExtraBenchmarks()
+{
+	std::cout << "std::vector<int>" << std::endl;
+	BenchmarkRunner<std::vector<int>>::runBenchmarks(100000, 3310, 323);
+	std::cout << std::endl;
+
+	std::cout << "std::vector<CustomType>" << std::endl;
+	BenchmarkRunner<std::vector<CustomType>>::runBenchmarks(100, CustomType(), CustomType());
+	std::cout << std::endl;
+
+	std::cout << "std::vector<std::vector<std::string>>>" << std::endl;
+	BenchmarkRunner<std::vector<std::vector<std::string>>>::runBenchmarks(1000, std::vector<std::string> { "hello", "how", "are", "you"}, std::vector<std::string> { "hey" });
+	std::cout << std::endl;
+
+	std::cout << "std::list<int>" << std::endl;
+	BenchmarkRunner<std::list<int>>::runBenchmarks(100000, 323254, 311);
+	std::cout << std::endl;
+
+	std::cout << "std::list<std::unordered_map<int, std::string>>" << std::endl;
+	BenchmarkRunner<std::list<std::unordered_map<int, std::string>>>::runBenchmarks(100000, std::unordered_map<int, std::string> {{ 1, "one" }, { 2, "two" }, { 3, "three" }},
+	std::unordered_map<int, std::string> {{ 66, "moi" }});
+	std::cout << std::endl;
+
+	std::cout << "std::deque<size_t>" << std::endl;
+	BenchmarkRunner<std::deque<size_t>>::runBenchmarks(100000, std::numeric_limits<size_t>::max(), 543543);
+	std::cout << std::endl;
+
+	std::cout << "std::deque<std::vector<std::vector<int>>>" << std::endl;
+	BenchmarkRunner<std::deque<std::vector<std::vector<int>>>>::runBenchmarks(100000, std::vector<std::vector<int>> { std::vector<int> { 4, 2 }, std::vector<int> { 5, 8 }},
+	std::vector<std::vector<int>> { std::vector<int> { 363 }});
+	std::cout << std::endl;
+
+	std::cout << "std::multiset<int>" << std::endl;
+	BenchmarkRunner<std::multiset<int>>::runBenchmarks(1000000, 1, 65656);
+	std::cout << std::endl;
+
+	std::cout << "std::multiset<std::list<std::string>>" << std::endl;
+	BenchmarkRunner<std::multiset<std::list<std::string>>>::runBenchmarks(10000, std::list<std::string> { "hey" }, std::list<std::string> { "hey hey" });
+	std::cout << std::endl;
 }
 
 int main()
@@ -124,6 +165,8 @@ int main()
     std::cout << "double, 10000\n";
     runBenchmarks<double>(10000, 0.2, 0.5);
     std::cout << "\n";
+
+	runExtraBenchmarks();
 
     return 0;
 }
