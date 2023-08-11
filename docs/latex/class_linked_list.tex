@@ -79,9 +79,6 @@ const T \& \mbox{\hyperlink{class_linked_list_aaae2cbdb612c7e3e6b7aab8bb550fc7b}
 size\+\_\+t \mbox{\hyperlink{class_linked_list_a1af71726533474b0e203b88cd724a75e}{size}} () const noexcept
 \item 
 bool \mbox{\hyperlink{class_linked_list_a12b8cbcec91807e243ef192ffd547416}{empty}} () const
-\item 
-\mbox{\Hypertarget{class_linked_list_ac237063d719a452470b0318021901573}\label{class_linked_list_ac237063d719a452470b0318021901573}} 
-void {\bfseries debug\+Info} () const
 \end{DoxyCompactItemize}
 
 
@@ -98,7 +95,7 @@ Constructs a new {\ttfamily \mbox{\hyperlink{class_linked_list}{Linked\+List}}} 
 \end{DoxyPostcond}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_linked_list_ac26f53d5b29ebc985fbe7218ad5534e9}\label{class_linked_list_ac26f53d5b29ebc985fbe7218ad5534e9}} 
@@ -113,7 +110,7 @@ Destroys the {\ttfamily \mbox{\hyperlink{class_linked_list}{Linked\+List}}} obje
 \end{DoxyPostcond}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_linked_list_ab315176037da510be477b8fce6ec51f4}\label{class_linked_list_ab315176037da510be477b8fce6ec51f4}} 
@@ -153,7 +150,7 @@ Constructs a new \mbox{\hyperlink{class_linked_list}{Linked\+List}} by moving th
 \end{DoxyPostcond}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_linked_list_aa25551efee2983b71ce23d79da14bee3}\label{class_linked_list_aa25551efee2983b71ce23d79da14bee3}} 
@@ -173,7 +170,7 @@ Constructs a new \mbox{\hyperlink{class_linked_list}{Linked\+List}} by copying t
 \end{DoxyPostcond}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 
@@ -194,7 +191,7 @@ The linked list must not be empty.
 \end{DoxyPrecond}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_linked_list_a5255dc39d8b92e0b27d41ae4bacecf50}\label{class_linked_list_a5255dc39d8b92e0b27d41ae4bacecf50}} 
@@ -212,7 +209,7 @@ The linked list must not be empty.
 \end{DoxyPrecond}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_linked_list_a3e9dddc27f90e6d04d70a0a323079341}\label{class_linked_list_a3e9dddc27f90e6d04d70a0a323079341}} 
@@ -230,7 +227,7 @@ If the linked list is empty, the iterator will be equal to the end iterator.
 \end{DoxyNote}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_linked_list_ac3d5d82af27f2c86c4eecfc13562fe6b}\label{class_linked_list_ac3d5d82af27f2c86c4eecfc13562fe6b}} 
@@ -248,7 +245,7 @@ If the linked list is empty, the iterator will be equal to the end iterator.
 \end{DoxyNote}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_linked_list_a7dd11f92031e16c4431b21d15cb90d26}\label{class_linked_list_a7dd11f92031e16c4431b21d15cb90d26}} 
@@ -266,7 +263,7 @@ This constant iterator acts as a sentinel and should not be dereferenced.
 \end{DoxyNote}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_linked_list_a35668ab5f969543b8b21ffc8a94925f7}\label{class_linked_list_a35668ab5f969543b8b21ffc8a94925f7}} 
@@ -281,7 +278,7 @@ Removes all elements from the \mbox{\hyperlink{class_linked_list}{Linked\+List}}
 \end{DoxyPostcond}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_linked_list_aa079ca290f4e0e85a6f9efaf49229e25}\label{class_linked_list_aa079ca290f4e0e85a6f9efaf49229e25}} 
@@ -299,7 +296,7 @@ If constant reverse iterator acts as a sentinel and should not be dereferenced.
 \end{DoxyNote}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_linked_list_a3a46daa703fa85d85cabef2110d96176}\label{class_linked_list_a3a46daa703fa85d85cabef2110d96176}} 
@@ -317,7 +314,7 @@ If linked list is empty, this constant reverse iterator will be equal to the cre
 \end{DoxyNote}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_linked_list_a12b8cbcec91807e243ef192ffd547416}\label{class_linked_list_a12b8cbcec91807e243ef192ffd547416}} 
@@ -332,7 +329,7 @@ True if the linked list is empty, otherwise false.
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_linked_list_a4aba4897b41bb8a9dd3dfaeade3e38d2}\label{class_linked_list_a4aba4897b41bb8a9dd3dfaeade3e38d2}} 
@@ -350,7 +347,7 @@ This iterator acts as a sentinel and should not be dereferenced.
 \end{DoxyNote}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_linked_list_a104ea4922eccc5071ee4e87e4ac9dd4e}\label{class_linked_list_a104ea4922eccc5071ee4e87e4ac9dd4e}} 
@@ -461,7 +458,7 @@ The linked list must not be empty.
 \end{DoxyPrecond}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_linked_list_a1aa1c5c24fd5164aa540cc1abf498a80}\label{class_linked_list_a1aa1c5c24fd5164aa540cc1abf498a80}} 
@@ -484,7 +481,7 @@ The linked list must not be empty.
 \end{DoxyPrecond}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_linked_list_a695788e5ef975d820781d785641bfb5c}\label{class_linked_list_a695788e5ef975d820781d785641bfb5c}} 
@@ -502,7 +499,7 @@ The linked list must not be empty.
 \end{DoxyPrecond}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_linked_list_a9fd1e0d5790068e563916662a7416d9b}\label{class_linked_list_a9fd1e0d5790068e563916662a7416d9b}} 
@@ -520,7 +517,7 @@ The linked list must not be empty.
 \end{DoxyPrecond}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_linked_list_a0148b3ceccb6d442777df573ac5bad8b}\label{class_linked_list_a0148b3ceccb6d442777df573ac5bad8b}} 
@@ -605,7 +602,7 @@ Copies the content from the other \mbox{\hyperlink{class_linked_list}{Linked\+Li
 \end{DoxyPostcond}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_linked_list_a2ca8d409721cafd66fd9bd97e05ea4ad}\label{class_linked_list_a2ca8d409721cafd66fd9bd97e05ea4ad}} 
@@ -628,7 +625,7 @@ Moves the content from the other \mbox{\hyperlink{class_linked_list}{Linked\+Lis
 \end{DoxyPostcond}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_linked_list_aefbb7844060129481bc21bab29e6c2a3}\label{class_linked_list_aefbb7844060129481bc21bab29e6c2a3}} 
@@ -646,7 +643,7 @@ This reverse iterator acts as a sentinel and should not be dereferenced.
 \end{DoxyNote}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_linked_list_a91a67c64988fce9b7be8664e89b39fc1}\label{class_linked_list_a91a67c64988fce9b7be8664e89b39fc1}} 
@@ -664,7 +661,7 @@ If linked list is empty, this reverse iterator will be equal to the crbegin iter
 \end{DoxyNote}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_linked_list_a1af71726533474b0e203b88cd724a75e}\label{class_linked_list_a1af71726533474b0e203b88cd724a75e}} 
@@ -679,7 +676,7 @@ The number of elements in the linked list.
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_linked_list_ab010dafa19b2f33a93baaa9e6affea69}\label{class_linked_list_ab010dafa19b2f33a93baaa9e6affea69}} 
@@ -699,7 +696,7 @@ The contents of this linked list are exchanged with the contents of the other li
 \end{DoxyPostcond}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 

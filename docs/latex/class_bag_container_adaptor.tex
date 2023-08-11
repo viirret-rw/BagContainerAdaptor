@@ -41,13 +41,13 @@ iterator \mbox{\hyperlink{class_bag_container_adaptor_ac651b5789794ae47cb0aa7e3b
 \item 
 void \mbox{\hyperlink{class_bag_container_adaptor_a3e65bf0881af8152c2eef90b7e2da37d}{swap}} (\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} \&other) noexcept
 \item 
-const\+\_\+iterator \mbox{\hyperlink{class_bag_container_adaptor_acb414224c2ea8e85d939959d3adb4f31}{cbegin}} () const noexcept
-\item 
 iterator \mbox{\hyperlink{class_bag_container_adaptor_a8a79b23596a35b156a26b5742a35ae21}{begin}} () noexcept
 \item 
-const\+\_\+iterator \mbox{\hyperlink{class_bag_container_adaptor_a580f65540bd2edc8b947f72ae2aaa160}{cend}} () const noexcept
-\item 
 iterator \mbox{\hyperlink{class_bag_container_adaptor_a82fcc3624d673dad648aebd059f61443}{end}} () noexcept
+\item 
+const\+\_\+iterator \mbox{\hyperlink{class_bag_container_adaptor_acb414224c2ea8e85d939959d3adb4f31}{cbegin}} () const noexcept
+\item 
+const\+\_\+iterator \mbox{\hyperlink{class_bag_container_adaptor_a580f65540bd2edc8b947f72ae2aaa160}{cend}} () const noexcept
 \item 
 iterator \mbox{\hyperlink{class_bag_container_adaptor_a373dac416f69a05f12f7f821a7e45c19}{find}} (const value\+\_\+type \&value) noexcept
 \item 
@@ -64,9 +64,6 @@ const value\+\_\+type \& \mbox{\hyperlink{class_bag_container_adaptor_a40b2d5759
 size\+\_\+t \mbox{\hyperlink{class_bag_container_adaptor_a35e5ef7f0c4e00ff34ff58622e17ff08}{size}} () const noexcept
 \item 
 bool \mbox{\hyperlink{class_bag_container_adaptor_afb83cfb240c24966f22b9ca5b7868749}{empty}} () const noexcept
-\item 
-\mbox{\Hypertarget{class_bag_container_adaptor_ac0ecd636326c14138750d1333935b4eb}\label{class_bag_container_adaptor_ac0ecd636326c14138750d1333935b4eb}} 
-void {\bfseries debug\+Info} () const
 \end{DoxyCompactItemize}
 
 
@@ -114,10 +111,10 @@ Move constructor.
 \hline
 \end{DoxyParams}
 \begin{DoxyPrecond}{Precondition}
-The {\ttfamily Container} must have a move constructor to support moving its contents. 
+The underlying container must have a move constructor to support moving its contents. 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
-The {\ttfamily Bag\+Container\+Adapter} is constructed, taking ownership of the contents of the {\ttfamily Container}. 
+The {\ttfamily Bag\+Container\+Adapter} is constructed, taking ownership of the contents of the underlying container. 
 \end{DoxyPostcond}
 
 \begin{DoxyExceptions}{Exceptions}
@@ -134,7 +131,7 @@ template$<$typename Other\+Container , typename  = std\+::enable\+\_\+if$<$std\+
 
 Forwarding constructor for self-\/instantiation. 
 \begin{DoxyParams}{Parameters}
-{\em other} & The other \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} from which we are initializing from. \\
+{\em other} & The other {\ttfamily \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}} from which we are initializing from. \\
 \hline
 \end{DoxyParams}
 
@@ -143,10 +140,10 @@ Forwarding constructor for self-\/instantiation.
 \hline
 \end{DoxyTemplParams}
 \begin{DoxyPrecond}{Precondition}
-The \textquotesingle{}Other\+Container\textquotesingle{} type must be the same as the \textquotesingle{}Container\textquotesingle{} type to ensure valid instantiation. 
+The {\ttfamily Other\+Container} type must be the same as the {\ttfamily Container} type to ensure valid instantiation. 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
-The current \textquotesingle{}\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}\textquotesingle{} object takes ownership of the contents of the \textquotesingle{}other\textquotesingle{} \textquotesingle{}\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}\textquotesingle{}. The \textquotesingle{}other\textquotesingle{} \textquotesingle{}\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}\textquotesingle{} is left in a valid but unspecified state. 
+The current {\ttfamily \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}} object takes ownership of the contents of the other \textquotesingle{}\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}\textquotesingle{}. The other {\ttfamily \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}} is left in a valid but unspecified state. 
 \end{DoxyPostcond}
 
 \begin{DoxyExceptions}{Exceptions}
@@ -165,6 +162,9 @@ Copy constructor.
 {\em other} & The other \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} where we copy from. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyNote}{Note}
+This copy constructor has been explicitly deleted to prevent copying. 
+\end{DoxyNote}
 
 
 \doxysubsection{Member Function Documentation}
@@ -183,7 +183,7 @@ The container must not be empty.
 \end{DoxyPrecond}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_bag_container_adaptor_a31ff08193efd7de49d9a28a5aa642750}\label{class_bag_container_adaptor_a31ff08193efd7de49d9a28a5aa642750}} 
@@ -201,7 +201,7 @@ The container must not be empty.
 \end{DoxyPrecond}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_bag_container_adaptor_a8a79b23596a35b156a26b5742a35ae21}\label{class_bag_container_adaptor_a8a79b23596a35b156a26b5742a35ae21}} 
@@ -216,7 +216,7 @@ Iterator pointing to the first element in the underlying container.
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_bag_container_adaptor_acb414224c2ea8e85d939959d3adb4f31}\label{class_bag_container_adaptor_acb414224c2ea8e85d939959d3adb4f31}} 
@@ -231,7 +231,7 @@ Constant iterator pointing to the first element in the underlying container.
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_bag_container_adaptor_a580f65540bd2edc8b947f72ae2aaa160}\label{class_bag_container_adaptor_a580f65540bd2edc8b947f72ae2aaa160}} 
@@ -246,7 +246,7 @@ Contant iterator pointing to the last element in the underlying container.
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_bag_container_adaptor_afb83cfb240c24966f22b9ca5b7868749}\label{class_bag_container_adaptor_afb83cfb240c24966f22b9ca5b7868749}} 
@@ -261,7 +261,7 @@ Boolean describing if the underlying container is empty or not.
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_bag_container_adaptor_a82fcc3624d673dad648aebd059f61443}\label{class_bag_container_adaptor_a82fcc3624d673dad648aebd059f61443}} 
@@ -276,7 +276,7 @@ Iterator pointing to the last element in the underlying container.
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_bag_container_adaptor_ac651b5789794ae47cb0aa7e3b5687301}\label{class_bag_container_adaptor_ac651b5789794ae47cb0aa7e3b5687301}} 
@@ -388,7 +388,7 @@ The iterator returned points to the element that follows the erased element in t
 {\footnotesize\ttfamily template$<$typename Container $>$ \\
 const\+\_\+iterator \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::find (\begin{DoxyParamCaption}\item[{const value\+\_\+type \&}]{value }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
-Get iterator pointing to the first instance of element with specified value in const context. 
+Get constant iterator pointing to the first instance of element with specified value in const context. 
 \begin{DoxyParams}{Parameters}
 {\em value} & The value to compare elements to. \\
 \hline
@@ -398,7 +398,7 @@ An iterator pointing to the first instance of element with specified value.
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_bag_container_adaptor_a373dac416f69a05f12f7f821a7e45c19}\label{class_bag_container_adaptor_a373dac416f69a05f12f7f821a7e45c19}} 
@@ -418,7 +418,7 @@ An iterator pointing to the first instance of element with specified value.
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_bag_container_adaptor_a1d012fb0ee7378569b1babf3c8b44cdc}\label{class_bag_container_adaptor_a1d012fb0ee7378569b1babf3c8b44cdc}} 
@@ -436,7 +436,7 @@ The container must not be empty.
 \end{DoxyPrecond}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_bag_container_adaptor_ad97b2dddc32035ac263c093dc18d6f44}\label{class_bag_container_adaptor_ad97b2dddc32035ac263c093dc18d6f44}} 
@@ -454,7 +454,7 @@ The container must not be empty.
 \end{DoxyPrecond}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_bag_container_adaptor_a6e43659c3da245fdb215087d5ab09adc}\label{class_bag_container_adaptor_a6e43659c3da245fdb215087d5ab09adc}} 
@@ -533,7 +533,7 @@ Reference to the current {\ttfamily \mbox{\hyperlink{class_bag_container_adaptor
 The {\ttfamily Container} type must have a move assignment operator to support moving its contents. 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
-The current {\ttfamily \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}} object takes ownership of the contents of the \textquotesingle{}other\textquotesingle{} {\ttfamily \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}}. The {\ttfamily other} {\ttfamily \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}} is left in a valid but unspecified state. 
+The current {\ttfamily \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}} object takes ownership of the contents of the other {\ttfamily \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}}. The other {\ttfamily \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}} is left in a valid but unspecified state. 
 \end{DoxyPostcond}
 
 \begin{DoxyExceptions}{Exceptions}
@@ -552,6 +552,9 @@ Copy assignment operator.
 {\em other} & The other \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} where we copy from. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyNote}{Note}
+This copy assignment operator has been explicitly deleted to prevent copying. 
+\end{DoxyNote}
 \mbox{\Hypertarget{class_bag_container_adaptor_a35e5ef7f0c4e00ff34ff58622e17ff08}\label{class_bag_container_adaptor_a35e5ef7f0c4e00ff34ff58622e17ff08}} 
 \index{BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}!size@{size}}
 \index{size@{size}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
@@ -564,7 +567,7 @@ The amount of elements in the underlying container.
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \mbox{\Hypertarget{class_bag_container_adaptor_a3e65bf0881af8152c2eef90b7e2da37d}\label{class_bag_container_adaptor_a3e65bf0881af8152c2eef90b7e2da37d}} 
@@ -584,7 +587,7 @@ The contents of this \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Containe
 \end{DoxyPostcond}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em No} & exceptions are thrown by this operation. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
 \begin{DoxyNote}{Note}

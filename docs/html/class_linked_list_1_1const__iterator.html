@@ -169,7 +169,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>The iterator is constructed with the given <a class="el" href="struct_linked_list_node.html">LinkedListNode</a> as the current node. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -210,7 +210,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>The constant iterator is constructed with the same current node as the <code>iterator</code>. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -251,7 +251,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>The <a class="el" href="class_linked_list_1_1const__iterator.html">const_iterator</a> is constructed, taking ownership of the internal pointer from the non-const iterator. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -292,7 +292,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>The iterator is constructed as a copy of the other constant iterator. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -333,7 +333,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>The constant iterator is constructed by moving the other iterator. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -365,11 +365,11 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Get the Node where the iterator is pointing. </p><dl class="section return"><dt>Returns</dt><dd>A pointer to the current node where the iterator is pointing. </dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>Returns a pointer to the current node where the iterator is pointing. </dd></dl>
+<p>Get the Node where the constant iterator is pointing. </p><dl class="section return"><dt>Returns</dt><dd>A pointer to the current node where the constant iterator is pointing. </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Returns a pointer to the current node where the constant iterator is pointing. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -411,7 +411,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>Checks if the current node of this constant iterator is not equal to the current node of the other constant iterator. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -446,7 +446,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>Returns a constant reference to the data of the current node. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -481,7 +481,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>Moves the constant iterator to the next node in the linked list. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -517,7 +517,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>Moves the constant iterator to the next node in the linked list. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -611,7 +611,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>Returns a constant pointer to the data of the current node. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -653,7 +653,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>The constant iterator as assigned as a copy of the other constant iterator. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -695,7 +695,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>The constant iterator is assigned with the same current node as the <code>iterator</code>. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -737,7 +737,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>The constant iterator is assigned by moving the other constant iterator. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -779,7 +779,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>The <a class="el" href="class_linked_list_1_1const__iterator.html">const_iterator</a> is assigned the value of the non-const iterator, taking ownership of the internal pointer. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -821,7 +821,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>Checks if the current node of this constant iterator is equal to the current node of the other iterator. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>

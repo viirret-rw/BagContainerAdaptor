@@ -150,9 +150,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1af71726533474b0e203b88cd724a75e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12b8cbcec91807e243ef192ffd547416"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linked_list.html#a12b8cbcec91807e243ef192ffd547416">empty</a> () const</td></tr>
 <tr class="separator:a12b8cbcec91807e243ef192ffd547416"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac237063d719a452470b0318021901573"><td class="memItemLeft" align="right" valign="top"><a id="ac237063d719a452470b0318021901573"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>debugInfo</b> () const</td></tr>
-<tr class="separator:ac237063d719a452470b0318021901573"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a86845b93e4dd7a25f57e863214017ce8"></a>
@@ -182,7 +179,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <p>Default constructor. </p><dl class="section post"><dt>Postcondition</dt><dd>Constructs a new <code><a class="el" href="class_linked_list.html">LinkedList</a></code> object with no elements. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -216,7 +213,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <p>Destructor. </p><dl class="section post"><dt>Postcondition</dt><dd>Destroys the <code><a class="el" href="class_linked_list.html">LinkedList</a></code> object, freeing all associated resources. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -298,7 +295,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>Constructs a new <a class="el" href="class_linked_list.html">LinkedList</a> by moving the content from the other <a class="el" href="class_linked_list.html">LinkedList</a>. The other <a class="el" href="class_linked_list.html">LinkedList</a> will be left in a valid but unspecified state. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -339,7 +336,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>Constructs a new <a class="el" href="class_linked_list.html">LinkedList</a> by copying the content from the other <a class="el" href="class_linked_list.html">LinkedList</a>. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -375,7 +372,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section pre"><dt>Precondition</dt><dd>The linked list must not be empty. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -410,7 +407,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section pre"><dt>Precondition</dt><dd>The linked list must not be empty. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -445,7 +442,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section note"><dt>Note</dt><dd>If the linked list is empty, the iterator will be equal to the end iterator. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -480,7 +477,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section note"><dt>Note</dt><dd>If the linked list is empty, the iterator will be equal to the end iterator. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -515,7 +512,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section note"><dt>Note</dt><dd>This constant iterator acts as a sentinel and should not be dereferenced. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -549,7 +546,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <p>Clear the elements in the <a class="el" href="class_linked_list.html">LinkedList</a> and deallocate memory. </p><dl class="section post"><dt>Postcondition</dt><dd>Removes all elements from the <a class="el" href="class_linked_list.html">LinkedList</a>, and deallocates the memory used by each element. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -584,7 +581,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section note"><dt>Note</dt><dd>If constant reverse iterator acts as a sentinel and should not be dereferenced. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -619,7 +616,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section note"><dt>Note</dt><dd>If linked list is empty, this constant reverse iterator will be equal to the crend iterator. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -653,7 +650,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <p>Checks whether the linked list is empty. </p><dl class="section return"><dt>Returns</dt><dd>True if the linked list is empty, otherwise false. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -688,7 +685,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section note"><dt>Note</dt><dd>This iterator acts as a sentinel and should not be dereferenced. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -878,7 +875,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section pre"><dt>Precondition</dt><dd>The linked list must not be empty. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -920,7 +917,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section pre"><dt>Precondition</dt><dd>The linked list must not be empty. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -955,7 +952,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section pre"><dt>Precondition</dt><dd>The linked list must not be empty. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -990,7 +987,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section pre"><dt>Precondition</dt><dd>The linked list must not be empty. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1133,7 +1130,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>Copies the content from the other <a class="el" href="class_linked_list.html">LinkedList</a> to this <a class="el" href="class_linked_list.html">LinkedList</a>. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1175,7 +1172,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>Moves the content from the other <a class="el" href="class_linked_list.html">LinkedList</a> to this <a class="el" href="class_linked_list.html">LinkedList</a>. The other <a class="el" href="class_linked_list.html">LinkedList</a> will be left in a valid but unspecified state. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1210,7 +1207,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section note"><dt>Note</dt><dd>This reverse iterator acts as a sentinel and should not be dereferenced. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1245,7 +1242,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section note"><dt>Note</dt><dd>If linked list is empty, this reverse iterator will be equal to the crbegin iterator. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1279,7 +1276,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <p>Returns the number of elements in the linked list. </p><dl class="section return"><dt>Returns</dt><dd>The number of elements in the linked list. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1320,7 +1317,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>The contents of this linked list are exchanged with the contents of the other linked list. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>

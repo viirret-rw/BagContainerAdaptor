@@ -93,9 +93,7 @@ Collaboration diagram for LinkedList&lt; T, Allocator &gt;::const_reverse_iterat
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:afbaba142d58c25047320225e83a96dde"><td class="memItemLeft" align="right" valign="top"><a id="afbaba142d58c25047320225e83a96dde"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linked_list_1_1const__reverse__iterator.html#afbaba142d58c25047320225e83a96dde">const_reverse_iterator</a> () noexcept</td></tr>
-<tr class="memdesc:afbaba142d58c25047320225e83a96dde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor. <br /></td></tr>
+<tr class="memitem:afbaba142d58c25047320225e83a96dde"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linked_list_1_1const__reverse__iterator.html#afbaba142d58c25047320225e83a96dde">const_reverse_iterator</a> () noexcept</td></tr>
 <tr class="separator:afbaba142d58c25047320225e83a96dde"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32e329672170a7b56033d9deab579a38"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linked_list_1_1const__reverse__iterator.html#a32e329672170a7b56033d9deab579a38">const_reverse_iterator</a> (<a class="el" href="struct_linked_list_node.html">LinkedListNode</a>&lt; T &gt; *node) noexcept</td></tr>
 <tr class="separator:a32e329672170a7b56033d9deab579a38"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,8 +133,41 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a13c8ce15a38636a6b2f19c236e26b402"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="afbaba142d58c25047320225e83a96dde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbaba142d58c25047320225e83a96dde">&#9670;&nbsp;</a></span>const_reverse_iterator() <span class="overload">[1/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&lt;T&gt;&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_linked_list.html">LinkedList</a>&lt; T, Allocator &gt;::const_reverse_iterator::const_reverse_iterator </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Default constructor. </p><dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a32e329672170a7b56033d9deab579a38"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a32e329672170a7b56033d9deab579a38">&#9670;&nbsp;</a></span>const_reverse_iterator() <span class="overload">[1/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a32e329672170a7b56033d9deab579a38">&#9670;&nbsp;</a></span>const_reverse_iterator() <span class="overload">[2/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -162,14 +193,14 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 </div><div class="memdoc">
 <p>Constructor. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">node</td><td>Pointer to the '<a class="el" href="struct_linked_list_node.html">LinkedListNode</a>' to initialize constant reverse iterator with. </td></tr>
+    <tr><td class="paramname">node</td><td>Pointer to the <code><a class="el" href="struct_linked_list_node.html">LinkedListNode</a></code> to initialize constant reverse iterator with. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section post"><dt>Postcondition</dt><dd>The constant reverse iterator is constructed with the given '<a class="el" href="struct_linked_list_node.html">LinkedListNode</a>' as the current node. </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>The constant reverse iterator is constructed with the given <code><a class="el" href="struct_linked_list_node.html">LinkedListNode</a></code> as the current node. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -177,7 +208,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 </div>
 </div>
 <a id="a22b63ae94700f36ba8756b80606e8ef5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a22b63ae94700f36ba8756b80606e8ef5">&#9670;&nbsp;</a></span>const_reverse_iterator() <span class="overload">[2/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a22b63ae94700f36ba8756b80606e8ef5">&#9670;&nbsp;</a></span>const_reverse_iterator() <span class="overload">[3/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -210,7 +241,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>The constant reverse iterator is constructed with the same current node as the non-const reverse iterator. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -218,7 +249,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 </div>
 </div>
 <a id="af4dada2429f92db0cb21564229f787ad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af4dada2429f92db0cb21564229f787ad">&#9670;&nbsp;</a></span>const_reverse_iterator() <span class="overload">[3/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af4dada2429f92db0cb21564229f787ad">&#9670;&nbsp;</a></span>const_reverse_iterator() <span class="overload">[4/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -242,7 +273,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Move constructibility form non-const reverse iterator. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Move constructibility from non-const reverse iterator. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">it</td><td>The reverse iterator to be moved from. </td></tr>
   </table>
@@ -251,7 +282,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>The constant reverse iterator is constructed, taking ownership of the internal pointer from the non-const reverse iterator. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -259,7 +290,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 </div>
 </div>
 <a id="a8fbf9d93c729665d7bb6d246038fa8d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8fbf9d93c729665d7bb6d246038fa8d7">&#9670;&nbsp;</a></span>const_reverse_iterator() <span class="overload">[4/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fbf9d93c729665d7bb6d246038fa8d7">&#9670;&nbsp;</a></span>const_reverse_iterator() <span class="overload">[5/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -292,7 +323,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>The constant reverse iterator is constructed as a copy of the other constant reverse iterator. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -300,7 +331,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 </div>
 </div>
 <a id="a63f958215e0f8f0a650478352aeced6d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a63f958215e0f8f0a650478352aeced6d">&#9670;&nbsp;</a></span>const_reverse_iterator() <span class="overload">[5/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a63f958215e0f8f0a650478352aeced6d">&#9670;&nbsp;</a></span>const_reverse_iterator() <span class="overload">[6/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -333,7 +364,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>The constant reverse iterator is constructed by moving the other constant reverse iterator. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -369,7 +400,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>Returns a pointer to the current node where the iterator is pointing. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -410,7 +441,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section return"><dt>Returns</dt><dd>True of both constant reverse iterators do not point to the same node, otherwise false. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -445,7 +476,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>Returns a constant reference to the data of the current node. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -477,10 +508,10 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 </table>
 </div><div class="memdoc">
 <p>Pre-increment operator for the constant reverse iterator. </p><dl class="section return"><dt>Returns</dt><dd>A reference to the constant reverse iterator after the increment. </dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>Moves the constant reverse iterator to the next node in the linked list. </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Moves the constant reverse iterator to the previous node in the linked list. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -513,10 +544,10 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 </table>
 </div><div class="memdoc">
 <p>Post-increment operator for the constant reverse iterator. </p><dl class="section return"><dt>Returns</dt><dd>A constant reverse iterator pointing to the previous position before the increment. </dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>Moves the constant reverse iterator to the next node in the linked list. </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Moves the constant reverse iterator to the previous node in the linked list. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -548,7 +579,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 </table>
 </div><div class="memdoc">
 <p>Pre-decrement operator for the constant iterator. </p><dl class="section return"><dt>Returns</dt><dd>A reference to the constant reverse iterator after the decrement. </dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>Moves the constant reverse iterator to the previous node in the linked list. </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Moves the constant reverse iterator to the next node in the linked list. </dd></dl>
 
 </div>
 </div>
@@ -578,7 +609,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 </table>
 </div><div class="memdoc">
 <p>Post-decrement operator for the constant reverse iterator. </p><dl class="section return"><dt>Returns</dt><dd>A constant reverse iterator pointing to the previous position before the decrement. </dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>Moves the constant reverse iterator to the previous node in the linked list. </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Moves the constant reverse iterator to the next node in the linked list. </dd></dl>
 
 </div>
 </div>
@@ -607,10 +638,10 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 </table>
 </div><div class="memdoc">
 <p>Arrow operator for the constant reverse iterator. </p><dl class="section return"><dt>Returns</dt><dd>A constant pointer to data of the current node. </dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>Moves the constant reverse iterator to the next node in the linked list. </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Returns a constant pointer to the data of the current node. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -652,7 +683,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>The constant reverse iterator is assigned as a copy of the other constant reverse iterator. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -694,7 +725,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>The constant reverse iterator is assigned with the same current node as the non-const reverse iterator. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -736,7 +767,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>The constant reverse iterator is assigned by moving the other constant reverse iterator. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -778,7 +809,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>The constant reverse iterator is assigned with the value of the reverse iterator, taking ownership of the internal pointer. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
@@ -820,7 +851,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 <dl class="section post"><dt>Postcondition</dt><dd>Checks if the current node if this constant reverse iterator is equal to the current of the other iterator. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">No</td><td>exceptions are thrown by this operation. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
