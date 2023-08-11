@@ -27,8 +27,7 @@ struct LinkedListNode
     LinkedListNode<T>* m_inverse = nullptr;
 };
 
-/// This linked list is stl compatible a doubly linked list containing basic
-/// functionality for container and four different iterator types.
+/// This doubly linked list contains basic functionality for container and four different iterator types.
 /// \tparam T The type of elements stored in the linked list.
 /// \tparam Allocator The type of allocator used in this linked list,
 /// initialized as std::allocator by default.

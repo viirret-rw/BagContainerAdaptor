@@ -1,5 +1,5 @@
-#ifndef CONTAINER_ADAPTOR_HPP
-#define CONTAINER_ADAPTOR_HPP
+#ifndef BAG_CONTAINER_ADAPTOR_HPP
+#define BAG_CONTAINER_ADAPTOR_HPP
 
 #include "../../dynamic/include/ring_buffer.hpp"
 
@@ -61,7 +61,7 @@ public:
     {
     }
 
-    // Move assignment operator.
+    /// Move assignment operator.
     /// \param other The underlying container from which the `BagContainerAdaptor` is created.
     /// \return Reference to the current `BagContainerAdaptor` object after the move assignment.
     /// \pre The `Container` type must have a move assignment operator to support moving its contents.
