@@ -36,11 +36,11 @@ template <typename T, typename Allocator = std::allocator<LinkedListNode<T>>>
 class LinkedList
 {
 public:
-	/// The type of items stored in the linked list.
+    /// The type of items stored in the linked list.
     using value_type = T;
 
     /// A bidirectional iterator for traversing elements in the linked list.
-	class iterator : public std::iterator<
+    class iterator : public std::iterator<
                          std::bidirectional_iterator_tag,
                          LinkedListNode<T>,
                          std::ptrdiff_t,
@@ -240,7 +240,7 @@ public:
         LinkedListNode<T>* m_currentNode;
     };
 
-	/// A bidirectional constant iterator for traversing elements in the linked list.
+    /// A bidirectional constant iterator for traversing elements in the linked list.
     class const_iterator : public std::iterator<
                                std::bidirectional_iterator_tag,
                                const LinkedListNode<T>,
@@ -441,7 +441,7 @@ public:
     };
 
     /// A bidirectional reverse iterator for traversing items backwards in the linked list.
-	class reverse_iterator : public std::iterator<
+    class reverse_iterator : public std::iterator<
                                  std::bidirectional_iterator_tag,
                                  const LinkedListNode<T>,
                                  std::ptrdiff_t,
@@ -642,7 +642,7 @@ public:
     };
 
     /// A bidirectional constant reverse iterator for traversing items backwards in the linked list.
-	class const_reverse_iterator : public std::iterator<
+    class const_reverse_iterator : public std::iterator<
                                        std::bidirectional_iterator_tag,
                                        const LinkedListNode<T>,
                                        std::ptrdiff_t,

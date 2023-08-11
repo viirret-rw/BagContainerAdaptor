@@ -22,13 +22,13 @@ template <typename Container>
 class BagContainerAdaptor
 {
 public:
-	/// The value type of the underlying container.
+    /// The value type of the underlying container.
     using value_type = typename Container::value_type;
 
-	/// The iterator of the underlying container.
+    /// The iterator of the underlying container.
     using iterator = typename Container::iterator;
 
-	/// The constant iterator of the underlying container.
+    /// The constant iterator of the underlying container.
     using const_iterator = typename Container::const_iterator;
 
     /// Constructor.
@@ -476,7 +476,7 @@ private:
 
     /// Insert element to a specified position in the underlying container.
     /// \param container The underlying container type where the element is inserted.
-    /// \param pos The position in the underlying container where the element is inserted.
+    /// \param Iterator The position in the underlying container where the element is inserted.
     /// \param value The value of the inserted element.
     /// \tparam C The underlying container type used for BagContainerAdaptor.
     /// \tparam Iterator The iterator type of the underlying container.
@@ -488,23 +488,24 @@ private:
     /// \return An iterator that points to the inserted element.
     /// \ingroup insertImplementations
     template <typename C, typename Iterator>
-    typename std::enable_if<!std::is_same<C, std::forward_list<value_type>>::value, iterator>::type
-    insertImpl(C& container, Iterator pos, const value_type& value)
+    iterator insertImpl(C& container, Iterator pos, const value_type& value)
     {
         return container.insert(pos, value);
     }
 
     /// Insert element to a specified position specialized for std::forward_list.
     /// \param container The underlying container type where the element is inserted.
-    /// \param pos Constant iterator to the position in the underlying container where the element is inserted.
+    /// \param pos Iterator to the position in the underlying container where the element is inserted.
     /// \param value The value of the inserted element.
+    /// \tparam Iterator The position in the underlying container where the element is inserted.
     /// \return An iterator that points to the inserted element.
     /// \pre The `container` must be a valid instance of std::forward_list<value_type>.
     /// \pre The `pos` iterator must be a valid iterator within the `container`.
     /// \post The element `value` is inserted at the specified position in the `container`.
     /// \exception std::bad_alloc if memory allocation fails.
     /// \ingroup insertImplementations
-    iterator insertImpl(std::forward_list<value_type>& container, const_iterator pos, const value_type& value)
+    template <typename Iterator>
+    iterator insertImpl(std::forward_list<value_type>& container, Iterator pos, const value_type& value)
     {
         auto itPrev = container.before_begin();
         for (auto it = container.begin(); it != pos; ++it)
@@ -617,8 +618,7 @@ private:
     ///         This typically includes exceptions like those related to invalid iterators or invalid operations on the container.
     /// \ingroup eraseImplementations
     template <typename C, typename FirstType, typename LastType>
-    typename std::enable_if<!std::is_same<C, std::forward_list<value_type>>::value, iterator>::type
-    eraseImpl(C& container, FirstType first, LastType last)
+    iterator eraseImpl(C& container, FirstType first, LastType last)
     {
         return container.erase(first, last);
     }
@@ -627,6 +627,8 @@ private:
     /// \param container The underlying container type where the elements are erased.
     /// \param first The first element in the range of elements to be removed.
     /// \param last The last element in the range of elements to be removed.
+    /// \tparam FirstType The iterator type pointing to the first element to be removed.
+    /// \tparam LastType The iterator type pointing to the last element to be removed.
     /// \return An iterator following the last removed element.
     /// \pre The `container` must be a valid instance of std::forward_list<value_type> or a compatible type,
     ///      and the range defined by `first` and `last` must be valid within the container.
@@ -634,7 +636,8 @@ private:
     /// \exception Any exception that may be thrown by the underlying container's `erase_after` function.
     ///         This typically includes exceptions like those related to invalid iterators or invalid operations on the container.
     /// \ingroup eraseImplementations
-    iterator eraseImpl(std::forward_list<value_type>& container, const_iterator first, const_iterator last)
+    template <typename FirstType, typename LastType>
+    iterator eraseImpl(std::forward_list<value_type>& container, FirstType first, LastType last)
     {
         return container.erase_after(first, last);
     }
