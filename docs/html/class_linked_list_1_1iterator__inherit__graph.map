@@ -1,4 +1,4 @@
 <map id="LinkedList&lt; T, Allocator &gt;::iterator" name="LinkedList&lt; T, Allocator &gt;::iterator">
-<area shape="rect" id="node1" title=" " alt="" coords="299,27,475,69"/>
+<area shape="rect" id="node1" title="A bidirectional iterator for traversing elements in the linked list." alt="" coords="299,27,475,69"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,5,251,91"/>
 </map>

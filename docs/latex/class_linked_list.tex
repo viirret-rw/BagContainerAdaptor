@@ -1,22 +1,26 @@
 \hypertarget{class_linked_list}{}\doxysection{Linked\+List$<$ T, Allocator $>$ Class Template Reference}
 \label{class_linked_list}\index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
+
+
+{\ttfamily \#include $<$linked\+\_\+list.\+hpp$>$}
+
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{class_linked_list_1_1const__iterator}{const\+\_\+iterator}}
-\item 
+\begin{DoxyCompactList}\small\item\em A bidirectional constant iterator for traversing elements in the linked list. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_linked_list_1_1const__reverse__iterator}{const\+\_\+reverse\+\_\+iterator}}
-\item 
+\begin{DoxyCompactList}\small\item\em A bidirectional constant reverse iterator for traversing items backwards in the linked list. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_linked_list_1_1iterator}{iterator}}
-\item 
+\begin{DoxyCompactList}\small\item\em A bidirectional iterator for traversing elements in the linked list. \end{DoxyCompactList}\item 
 class \mbox{\hyperlink{class_linked_list_1_1reverse__iterator}{reverse\+\_\+iterator}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A bidirectional reverse iterator for traversing items backwards in the linked list. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{class_linked_list_a97146315c2fbef456fa1d1dd2b83c1eb}\label{class_linked_list_a97146315c2fbef456fa1d1dd2b83c1eb}} 
-using {\bfseries value\+\_\+type} = T
-\end{DoxyCompactItemize}
+using \mbox{\hyperlink{class_linked_list_a97146315c2fbef456fa1d1dd2b83c1eb}{value\+\_\+type}} = T
+\begin{DoxyCompactList}\small\item\em The type of items stored in the linked list. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -24,7 +28,7 @@ using {\bfseries value\+\_\+type} = T
 \item 
 \mbox{\hyperlink{class_linked_list_ac26f53d5b29ebc985fbe7218ad5534e9}{$\sim$\+Linked\+List}} () noexcept
 \item 
-\mbox{\hyperlink{class_linked_list_ab315176037da510be477b8fce6ec51f4}{Linked\+List}} (std\+::initializer\+\_\+list$<$ value\+\_\+type $>$ list)
+\mbox{\hyperlink{class_linked_list_ab315176037da510be477b8fce6ec51f4}{Linked\+List}} (std\+::initializer\+\_\+list$<$ \mbox{\hyperlink{class_linked_list_a97146315c2fbef456fa1d1dd2b83c1eb}{value\+\_\+type}} $>$ list)
 \item 
 \mbox{\hyperlink{class_linked_list_abb192938a97797e911a72399222802cd}{Linked\+List}} (\mbox{\hyperlink{class_linked_list}{Linked\+List}} \&\&other) noexcept
 \item 
@@ -82,6 +86,19 @@ bool \mbox{\hyperlink{class_linked_list_a12b8cbcec91807e243ef192ffd547416}{empty
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T, typename Allocator = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$\newline
+class Linked\+List$<$ T, Allocator $>$}
+
+This doubly linked list contains basic functionality for container and four different iterator types. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of elements stored in the linked list. \\
+\hline
+{\em Allocator} & The type of allocator used in this linked list, initialized as std\+::allocator by default. \\
+\hline
+\end{DoxyTemplParams}
+
+
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_linked_list_a86845b93e4dd7a25f57e863214017ce8}\label{class_linked_list_a86845b93e4dd7a25f57e863214017ce8}} 
 \index{LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}!LinkedList@{LinkedList}}
@@ -118,7 +135,7 @@ Destroys the {\ttfamily \mbox{\hyperlink{class_linked_list}{Linked\+List}}} obje
 \index{LinkedList@{LinkedList}!LinkedList$<$ T, Allocator $>$@{LinkedList$<$ T, Allocator $>$}}
 \doxysubsubsection{\texorpdfstring{LinkedList()}{LinkedList()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
 {\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
-\mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::\mbox{\hyperlink{class_linked_list}{Linked\+List}} (\begin{DoxyParamCaption}\item[{std\+::initializer\+\_\+list$<$ value\+\_\+type $>$}]{list }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::\mbox{\hyperlink{class_linked_list}{Linked\+List}} (\begin{DoxyParamCaption}\item[{std\+::initializer\+\_\+list$<$ \mbox{\hyperlink{class_linked_list_a97146315c2fbef456fa1d1dd2b83c1eb}{value\+\_\+type}} $>$}]{list }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 Initializer list constructor. 
 \begin{DoxyParams}{Parameters}

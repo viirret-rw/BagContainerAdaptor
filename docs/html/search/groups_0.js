@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['containerdestructors_87',['ContainerDestructors',['../group__container_destructors.html',1,'']]]
+  ['erase_20functionality_20for_20various_20underlying_20container_20types_2e_91',['Erase functionality for various underlying container types.',['../group__erase_implementations.html',1,'']]]
 ];

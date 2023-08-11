@@ -1,17 +1,21 @@
 \hypertarget{class_bag_container_adaptor}{}\doxysection{Bag\+Container\+Adaptor$<$ Container $>$ Class Template Reference}
 \label{class_bag_container_adaptor}\index{BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
+
+
+{\ttfamily \#include $<$bag\+\_\+container\+\_\+adaptor.\+hpp$>$}
+
 \doxysubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}\label{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}} 
-using {\bfseries value\+\_\+type} = typename Container\+::value\+\_\+type
-\item 
+using \mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}} = typename Container\+::value\+\_\+type
+\begin{DoxyCompactList}\small\item\em The value type of the underlying container. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}\label{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}} 
-using {\bfseries iterator} = typename Container\+::iterator
-\item 
+using \mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} = typename Container\+::iterator
+\begin{DoxyCompactList}\small\item\em The iterator of the underlying container. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_bag_container_adaptor_a5e6fc94ba89ed54bd22fe6c82fa333e4}\label{class_bag_container_adaptor_a5e6fc94ba89ed54bd22fe6c82fa333e4}} 
-using {\bfseries const\+\_\+iterator} = typename Container\+::const\+\_\+iterator
-\end{DoxyCompactItemize}
+using \mbox{\hyperlink{class_bag_container_adaptor_a5e6fc94ba89ed54bd22fe6c82fa333e4}{const\+\_\+iterator}} = typename Container\+::const\+\_\+iterator
+\begin{DoxyCompactList}\small\item\em The constant iterator of the underlying container. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -29,42 +33,53 @@ using {\bfseries const\+\_\+iterator} = typename Container\+::const\+\_\+iterato
 \item 
 \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} \& \mbox{\hyperlink{class_bag_container_adaptor_a0d4d2dfcfc685d3687dfbe38853c991a}{operator=}} (const \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} \&other)=delete
 \item 
-{\footnotesize template$<$typename Iterator $>$ }\\iterator \mbox{\hyperlink{class_bag_container_adaptor_abe723f32fa16f846137a09908cbde0c9}{insert}} (Iterator pos, const value\+\_\+type \&value)
+{\footnotesize template$<$typename Iterator $>$ }\\\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor_abe723f32fa16f846137a09908cbde0c9}{insert}} (Iterator pos, const \mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}} \&value)
 \item 
-iterator \mbox{\hyperlink{class_bag_container_adaptor_a6e43659c3da245fdb215087d5ab09adc}{insert}} (const value\+\_\+type \&value)
+\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor_a6e43659c3da245fdb215087d5ab09adc}{insert}} (const \mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}} \&value)
 \item 
-iterator \mbox{\hyperlink{class_bag_container_adaptor_afcfdfe080192e1fb449a7bb5472598f2}{erase}} (iterator pos)
+\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor_afcfdfe080192e1fb449a7bb5472598f2}{erase}} (\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} pos)
 \item 
-iterator \mbox{\hyperlink{class_bag_container_adaptor_ac651b5789794ae47cb0aa7e3b5687301}{erase}} (const value\+\_\+type \&value)
+\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor_ac651b5789794ae47cb0aa7e3b5687301}{erase}} (const \mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}} \&value)
 \item 
-{\footnotesize template$<$typename First\+Type , typename Last\+Type $>$ }\\iterator \mbox{\hyperlink{class_bag_container_adaptor_a2e76d5099f170459192711ebae01a4e7}{erase}} (First\+Type first, Last\+Type last)
+{\footnotesize template$<$typename First\+Type , typename Last\+Type $>$ }\\\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor_a2e76d5099f170459192711ebae01a4e7}{erase}} (First\+Type first, Last\+Type last)
 \item 
 void \mbox{\hyperlink{class_bag_container_adaptor_a3e65bf0881af8152c2eef90b7e2da37d}{swap}} (\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} \&other) noexcept
 \item 
-iterator \mbox{\hyperlink{class_bag_container_adaptor_a8a79b23596a35b156a26b5742a35ae21}{begin}} () noexcept
+\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor_a8a79b23596a35b156a26b5742a35ae21}{begin}} () noexcept
 \item 
-iterator \mbox{\hyperlink{class_bag_container_adaptor_a82fcc3624d673dad648aebd059f61443}{end}} () noexcept
+\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor_a82fcc3624d673dad648aebd059f61443}{end}} () noexcept
 \item 
-const\+\_\+iterator \mbox{\hyperlink{class_bag_container_adaptor_acb414224c2ea8e85d939959d3adb4f31}{cbegin}} () const noexcept
+\mbox{\hyperlink{class_bag_container_adaptor_a5e6fc94ba89ed54bd22fe6c82fa333e4}{const\+\_\+iterator}} \mbox{\hyperlink{class_bag_container_adaptor_acb414224c2ea8e85d939959d3adb4f31}{cbegin}} () const noexcept
 \item 
-const\+\_\+iterator \mbox{\hyperlink{class_bag_container_adaptor_a580f65540bd2edc8b947f72ae2aaa160}{cend}} () const noexcept
+\mbox{\hyperlink{class_bag_container_adaptor_a5e6fc94ba89ed54bd22fe6c82fa333e4}{const\+\_\+iterator}} \mbox{\hyperlink{class_bag_container_adaptor_a580f65540bd2edc8b947f72ae2aaa160}{cend}} () const noexcept
 \item 
-iterator \mbox{\hyperlink{class_bag_container_adaptor_a373dac416f69a05f12f7f821a7e45c19}{find}} (const value\+\_\+type \&value) noexcept
+\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor_a373dac416f69a05f12f7f821a7e45c19}{find}} (const \mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}} \&value) noexcept
 \item 
-const\+\_\+iterator \mbox{\hyperlink{class_bag_container_adaptor_a9cdc9cabd38a7be7613edda887c513dc}{find}} (const value\+\_\+type \&value) const noexcept
+\mbox{\hyperlink{class_bag_container_adaptor_a5e6fc94ba89ed54bd22fe6c82fa333e4}{const\+\_\+iterator}} \mbox{\hyperlink{class_bag_container_adaptor_a9cdc9cabd38a7be7613edda887c513dc}{find}} (const \mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}} \&value) const noexcept
 \item 
-value\+\_\+type \& \mbox{\hyperlink{class_bag_container_adaptor_ad97b2dddc32035ac263c093dc18d6f44}{front}} () noexcept
+\mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}} \& \mbox{\hyperlink{class_bag_container_adaptor_ad97b2dddc32035ac263c093dc18d6f44}{front}} () noexcept
 \item 
-const value\+\_\+type \& \mbox{\hyperlink{class_bag_container_adaptor_a1d012fb0ee7378569b1babf3c8b44cdc}{front}} () const noexcept
+const \mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}} \& \mbox{\hyperlink{class_bag_container_adaptor_a1d012fb0ee7378569b1babf3c8b44cdc}{front}} () const noexcept
 \item 
-value\+\_\+type \& \mbox{\hyperlink{class_bag_container_adaptor_a31ff08193efd7de49d9a28a5aa642750}{back}} () noexcept
+\mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}} \& \mbox{\hyperlink{class_bag_container_adaptor_a31ff08193efd7de49d9a28a5aa642750}{back}} () noexcept
 \item 
-const value\+\_\+type \& \mbox{\hyperlink{class_bag_container_adaptor_a40b2d5759a7f19de266df277ad7fc52d}{back}} () const noexcept
+const \mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}} \& \mbox{\hyperlink{class_bag_container_adaptor_a40b2d5759a7f19de266df277ad7fc52d}{back}} () const noexcept
 \item 
 size\+\_\+t \mbox{\hyperlink{class_bag_container_adaptor_a35e5ef7f0c4e00ff34ff58622e17ff08}{size}} () const noexcept
 \item 
 bool \mbox{\hyperlink{class_bag_container_adaptor_afb83cfb240c24966f22b9ca5b7868749}{empty}} () const noexcept
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename Container$>$\newline
+class Bag\+Container\+Adaptor$<$ Container $>$}
+
+Bag is an abstract data type that can store a collection of elements without regard to their order. Equal elements can appear multiple times in a bag. Although the elements container in a bag have no inherit order, iterating over the bag elements is guaranteed to visit each element exactly once. This bag takes in an stl container as a template argument and provides the same functionality for each container type following the design pattern of an adapter. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Container} & The underlying container type. \\
+\hline
+\end{DoxyTemplParams}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -173,7 +188,7 @@ This copy constructor has been explicitly deleted to prevent copying.
 \index{back@{back}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
 \doxysubsubsection{\texorpdfstring{back()}{back()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$typename Container $>$ \\
-const value\+\_\+type\& \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::back (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+const \mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}}\& \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::back (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 Get reference to the last element in the underlying container. \begin{DoxyReturn}{Returns}
 Reference to the last element in the underlying container. 
@@ -191,7 +206,7 @@ The container must not be empty.
 \index{back@{back}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
 \doxysubsubsection{\texorpdfstring{back()}{back()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily template$<$typename Container $>$ \\
-value\+\_\+type\& \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::back (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}}\& \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::back (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 Get reference to the last element in the underlying container. \begin{DoxyReturn}{Returns}
 Reference to the last element in the underlying container. 
@@ -209,7 +224,7 @@ The container must not be empty.
 \index{begin@{begin}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
 \doxysubsubsection{\texorpdfstring{begin()}{begin()}}
 {\footnotesize\ttfamily template$<$typename Container $>$ \\
-iterator \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 Get iterator pointing to the first element in the underlying container. \begin{DoxyReturn}{Returns}
 Iterator pointing to the first element in the underlying container. 
@@ -224,7 +239,7 @@ Iterator pointing to the first element in the underlying container.
 \index{cbegin@{cbegin}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
 \doxysubsubsection{\texorpdfstring{cbegin()}{cbegin()}}
 {\footnotesize\ttfamily template$<$typename Container $>$ \\
-const\+\_\+iterator \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::cbegin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\mbox{\hyperlink{class_bag_container_adaptor_a5e6fc94ba89ed54bd22fe6c82fa333e4}{const\+\_\+iterator}} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::cbegin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 Get constant iterator pointing to the first element in the underlying container. \begin{DoxyReturn}{Returns}
 Constant iterator pointing to the first element in the underlying container. 
@@ -239,7 +254,7 @@ Constant iterator pointing to the first element in the underlying container.
 \index{cend@{cend}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
 \doxysubsubsection{\texorpdfstring{cend()}{cend()}}
 {\footnotesize\ttfamily template$<$typename Container $>$ \\
-const\+\_\+iterator \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::cend (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\mbox{\hyperlink{class_bag_container_adaptor_a5e6fc94ba89ed54bd22fe6c82fa333e4}{const\+\_\+iterator}} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::cend (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 Get constant iterator pointing to the last element in the underlying container. \begin{DoxyReturn}{Returns}
 Contant iterator pointing to the last element in the underlying container. 
@@ -269,7 +284,7 @@ Boolean describing if the underlying container is empty or not.
 \index{end@{end}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
 \doxysubsubsection{\texorpdfstring{end()}{end()}}
 {\footnotesize\ttfamily template$<$typename Container $>$ \\
-iterator \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 Get iterator pointing to the last element in the underlying container. \begin{DoxyReturn}{Returns}
 Iterator pointing to the last element in the underlying container. 
@@ -284,7 +299,7 @@ Iterator pointing to the last element in the underlying container.
 \index{erase@{erase}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
 \doxysubsubsection{\texorpdfstring{erase()}{erase()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
 {\footnotesize\ttfamily template$<$typename Container $>$ \\
-iterator \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::erase (\begin{DoxyParamCaption}\item[{const value\+\_\+type \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::erase (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}} \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 Erase all elements that have the specified value in the underlying container. 
 \begin{DoxyParams}{Parameters}
@@ -315,7 +330,7 @@ The iterator returned points to the element that follows the last removed elemen
 \doxysubsubsection{\texorpdfstring{erase()}{erase()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
 {\footnotesize\ttfamily template$<$typename Container $>$ \\
 template$<$typename First\+Type , typename Last\+Type $>$ \\
-iterator \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::erase (\begin{DoxyParamCaption}\item[{First\+Type}]{first,  }\item[{Last\+Type}]{last }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::erase (\begin{DoxyParamCaption}\item[{First\+Type}]{first,  }\item[{Last\+Type}]{last }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 Erase all elements between two iterators from the underlying container. 
 \begin{DoxyParams}{Parameters}
@@ -354,7 +369,7 @@ The iterator returned points to the element that follows the last removed elemen
 \index{erase@{erase}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
 \doxysubsubsection{\texorpdfstring{erase()}{erase()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
 {\footnotesize\ttfamily template$<$typename Container $>$ \\
-iterator \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::erase (\begin{DoxyParamCaption}\item[{iterator}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::erase (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}}}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 Erase element from the specified position in the underlying container. 
 \begin{DoxyParams}{Parameters}
@@ -386,7 +401,7 @@ The iterator returned points to the element that follows the erased element in t
 \index{find@{find}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
 \doxysubsubsection{\texorpdfstring{find()}{find()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$typename Container $>$ \\
-const\+\_\+iterator \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::find (\begin{DoxyParamCaption}\item[{const value\+\_\+type \&}]{value }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\mbox{\hyperlink{class_bag_container_adaptor_a5e6fc94ba89ed54bd22fe6c82fa333e4}{const\+\_\+iterator}} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::find (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}} \&}]{value }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 Get constant iterator pointing to the first instance of element with specified value in const context. 
 \begin{DoxyParams}{Parameters}
@@ -406,7 +421,7 @@ An iterator pointing to the first instance of element with specified value.
 \index{find@{find}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
 \doxysubsubsection{\texorpdfstring{find()}{find()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily template$<$typename Container $>$ \\
-iterator \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::find (\begin{DoxyParamCaption}\item[{const value\+\_\+type \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::find (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}} \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 Get iterator pointing to the first instance of element with specified value. 
 \begin{DoxyParams}{Parameters}
@@ -426,7 +441,7 @@ An iterator pointing to the first instance of element with specified value.
 \index{front@{front}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
 \doxysubsubsection{\texorpdfstring{front()}{front()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$typename Container $>$ \\
-const value\+\_\+type\& \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::front (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+const \mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}}\& \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::front (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 Get reference to the first element in the underlying container in const context. \begin{DoxyReturn}{Returns}
 Reference to the first element in the underlying container. 
@@ -444,7 +459,7 @@ The container must not be empty.
 \index{front@{front}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
 \doxysubsubsection{\texorpdfstring{front()}{front()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily template$<$typename Container $>$ \\
-value\+\_\+type\& \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::front (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}}\& \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::front (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 Get reference to the first element in the underlying container. \begin{DoxyReturn}{Returns}
 Reference to the first element in the underlying container. 
@@ -462,7 +477,7 @@ The container must not be empty.
 \index{insert@{insert}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
 \doxysubsubsection{\texorpdfstring{insert()}{insert()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily template$<$typename Container $>$ \\
-iterator \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::insert (\begin{DoxyParamCaption}\item[{const value\+\_\+type \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::insert (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}} \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 Insert element to the last position of the underlying container. 
 \begin{DoxyParams}{Parameters}
@@ -486,7 +501,7 @@ The {\ttfamily value} is inserted at the last position of the underlying contain
 \doxysubsubsection{\texorpdfstring{insert()}{insert()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily template$<$typename Container $>$ \\
 template$<$typename Iterator $>$ \\
-iterator \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::insert (\begin{DoxyParamCaption}\item[{Iterator}]{pos,  }\item[{const value\+\_\+type \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::insert (\begin{DoxyParamCaption}\item[{Iterator}]{pos,  }\item[{const \mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}} \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 Insert element to specified position of the underlying container. 
 \begin{DoxyParams}{Parameters}
@@ -521,7 +536,7 @@ The {\ttfamily value} is inserted at the specified {\ttfamily pos} in the underl
 {\footnotesize\ttfamily template$<$typename Container $>$ \\
 \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}\& \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$ \&\&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
-
+Move assignment operator. 
 \begin{DoxyParams}{Parameters}
 {\em other} & The underlying container from which the {\ttfamily \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}} is created. \\
 \hline
