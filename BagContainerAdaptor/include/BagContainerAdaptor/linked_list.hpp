@@ -1,11 +1,10 @@
 #ifndef LINKED_LIST_HPP
 #define LINKED_LIST_HPP
 
-#include <algorithm>
-#include <cstddef>
 #include <iostream>
-#include <memory>
 
+/// LinkedListNode represents a single node in the linked list.
+/// \tparam T The type of data stored in the node.
 template <typename T>
 struct LinkedListNode
 {
@@ -28,13 +27,20 @@ struct LinkedListNode
     LinkedListNode<T>* m_inverse = nullptr;
 };
 
+/// This linked list is stl compatible a doubly linked list containing basic
+/// functionality for container and four different iterator types.
+/// \tparam T The type of elements stored in the linked list.
+/// \tparam Allocator The type of allocator used in this linked list,
+/// initialized as std::allocator by default.
 template <typename T, typename Allocator = std::allocator<LinkedListNode<T>>>
 class LinkedList
 {
 public:
+	/// The type of items stored in the linked list.
     using value_type = T;
 
-    class iterator : public std::iterator<
+    /// A bidirectional iterator for traversing elements in the linked list.
+	class iterator : public std::iterator<
                          std::bidirectional_iterator_tag,
                          LinkedListNode<T>,
                          std::ptrdiff_t,
@@ -234,6 +240,7 @@ public:
         LinkedListNode<T>* m_currentNode;
     };
 
+	/// A bidirectional constant iterator for traversing elements in the linked list.
     class const_iterator : public std::iterator<
                                std::bidirectional_iterator_tag,
                                const LinkedListNode<T>,
@@ -433,7 +440,8 @@ public:
         LinkedListNode<T>* m_currentNode;
     };
 
-    class reverse_iterator : public std::iterator<
+    /// A bidirectional reverse iterator for traversing items backwards in the linked list.
+	class reverse_iterator : public std::iterator<
                                  std::bidirectional_iterator_tag,
                                  const LinkedListNode<T>,
                                  std::ptrdiff_t,
@@ -633,7 +641,8 @@ public:
         LinkedListNode<T>* m_currentNode;
     };
 
-    class const_reverse_iterator : public std::iterator<
+    /// A bidirectional constant reverse iterator for traversing items backwards in the linked list.
+	class const_reverse_iterator : public std::iterator<
                                        std::bidirectional_iterator_tag,
                                        const LinkedListNode<T>,
                                        std::ptrdiff_t,

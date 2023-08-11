@@ -12,12 +12,23 @@
 #include <unordered_set>
 #include <vector>
 
+/// Bag is an abstract data type that can store a collection of elements without regard to their order.
+/// Equal elements can appear multiple times in a bag. Although the elements container in a bag have no inherit order,
+/// iterating over the bag elements is guaranteed to visit each element exactly once.
+/// This bag takes in an stl container as a template argument and provides the same functionality for each container type
+/// following the design pattern of an adapter.
+/// \tparam Container The underlying container type.
 template <typename Container>
 class BagContainerAdaptor
 {
 public:
+	/// The value type of the underlying container.
     using value_type = typename Container::value_type;
+
+	/// The iterator of the underlying container.
     using iterator = typename Container::iterator;
+
+	/// The constant iterator of the underlying container.
     using const_iterator = typename Container::const_iterator;
 
     /// Constructor.
@@ -404,7 +415,7 @@ private:
         m_container = bag.m_container;
     }
 
-    /// \defgroup containerDestructors
+    /// \defgroup containerDestructors Functions called by destructor for different underlying container types.
 
     /// Default destructor implementation.
     /// \param bag Default container type.
@@ -428,7 +439,7 @@ private:
         bag.clear();
     }
 
-    /// \defgroup insertImplementations
+    /// \defgroup insertImplementations Insert functionality for various underlying container types.
 
     /// Insert element to the last position of the underlying container type.
     /// \param container The underlying container type where the element is inserted.
@@ -503,7 +514,7 @@ private:
         return container.insert_after(itPrev, value);
     }
 
-    /// \defgroup eraseImplementations
+    /// \defgroup eraseImplementations Erase functionality for various underlying container types.
 
     /// Erase item from the underlying container in the position of the iterator.
     /// \param container The underlying container type where the element is erased.
@@ -628,7 +639,7 @@ private:
         return container.erase_after(first, last);
     }
 
-    /// \defgroup frontImplementations
+    /// \defgroup frontImplementations Functionality for getting the first element for various container types.
 
     /// Front function implementation for container types that have the front() member function.
     /// \param container The underlying container type where the element is accessed.
@@ -724,7 +735,7 @@ private:
         return *container.cbegin();
     }
 
-    // \defgroup backImplementations
+    // \defgroup backImplementations Functionality for getting the last element for various container types.
 
     /// Back function implementation for container types that have the back() member function.
     /// \param container The underlying container type where the element is accessed.
@@ -786,7 +797,7 @@ private:
         return const_cast<value_type&>(*itLast);
     }
 
-    /// \defgroup sizeImplementations
+    /// \defgroup sizeImplementations Funcionality for getting the amount of elements for various container types.
 
     /// Get the amount of elements in the underlying container type that has size() member function.
     /// \param container The underlying container that we get the amount of elements from.
