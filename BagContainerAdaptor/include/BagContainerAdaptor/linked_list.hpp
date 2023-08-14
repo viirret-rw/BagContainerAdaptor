@@ -27,7 +27,7 @@ struct LinkedListNode
     LinkedListNode<T>* m_inverse = nullptr;
 };
 
-/// This doubly linked list contains basic functionality for container and four different iterator types.
+/// This doubly linked list contains basic functionality for container and four different forward iterator types.
 /// \tparam T The type of elements stored in the linked list.
 /// \tparam Allocator The type of allocator used in this linked list,
 /// initialized as std::allocator by default.
@@ -38,9 +38,9 @@ public:
     /// The type of items stored in the linked list.
     using value_type = T;
 
-    /// A bidirectional iterator for traversing elements in the linked list.
+    /// A forward iterator for traversing elements in the linked list.
     class iterator : public std::iterator<
-                         std::bidirectional_iterator_tag,
+                         std::forward_iterator_tag,
                          LinkedListNode<T>,
                          std::ptrdiff_t,
                          LinkedListNode<T>*,
@@ -98,42 +98,6 @@ public:
         {
             iterator temp = *this;
             m_currentNode = m_currentNode->m_next;
-            return temp;
-        }
-
-        /// Pre-decrement operator for the iterator.
-        /// \return A reference to the iterator after the decrement.
-        /// \post Moves the iterator to the previous node in the linked list.
-        iterator& operator--()
-        {
-            if (m_currentNode)
-            {
-                m_currentNode = m_currentNode->m_inverse;
-            }
-            else
-            {
-                std::cerr << "Cannot decrement iterator from end() iterator" << std::endl;
-                std::terminate();
-            }
-            return *this;
-        }
-
-        /// Post-decrement operator for the iterator.
-        /// \return An iterator pointing to the previous position before the decrement (this).
-        /// \post Moves the iterator to the previous node in the linked list.
-        iterator operator--(int)
-        {
-            iterator temp = *this;
-
-            if (m_currentNode)
-            {
-                m_currentNode = m_currentNode->m_inverse;
-            }
-            else
-            {
-                std::cerr << "Cannot decrement iterator from end() iterator" << std::endl;
-                std::terminate();
-            }
             return temp;
         }
 
@@ -239,9 +203,9 @@ public:
         LinkedListNode<T>* m_currentNode;
     };
 
-    /// A bidirectional constant iterator for traversing elements in the linked list.
+    /// A forward constant iterator for traversing elements in the linked list.
     class const_iterator : public std::iterator<
-                               std::bidirectional_iterator_tag,
+                               std::forward_iterator_tag,
                                const LinkedListNode<T>,
                                std::ptrdiff_t,
                                const LinkedListNode<T>*,
@@ -298,41 +262,6 @@ public:
         {
             const_iterator temp = *this;
             m_currentNode = m_currentNode->m_next;
-            return temp;
-        }
-
-        /// Pre-decrement operator for the constant iterator.
-        /// \return A reference to the constant iterator after the decrement.
-        /// \post Moves the iterator to the previous node in the linked list.
-        const_iterator& operator--()
-        {
-            if (m_currentNode)
-            {
-                m_currentNode = m_currentNode->m_inverse;
-            }
-            else
-            {
-                std::cerr << "Cannot decrement constant iterator from end() iterator" << std::endl;
-                std::terminate();
-            }
-            return *this;
-        }
-
-        /// Post-decrement operator for the constant iterator.
-        /// \return An iterator pointing to the previous position before the decrement (this).
-        /// \post Moves the iterator to the previous node in the linked list.
-        const_iterator operator--(int)
-        {
-            const_iterator temp = *this;
-            if (m_currentNode)
-            {
-                m_currentNode = m_currentNode->m_inverse;
-            }
-            else
-            {
-                std::cerr << "Cannot decrement constant iterator from end() iterator" << std::endl;
-                std::terminate();
-            }
             return temp;
         }
 
@@ -439,9 +368,9 @@ public:
         LinkedListNode<T>* m_currentNode;
     };
 
-    /// A bidirectional reverse iterator for traversing items backwards in the linked list.
+    /// A forward reverse iterator for traversing items backwards in the linked list.
     class reverse_iterator : public std::iterator<
-                                 std::bidirectional_iterator_tag,
+                                 std::forward_iterator_tag,
                                  const LinkedListNode<T>,
                                  std::ptrdiff_t,
                                  const LinkedListNode<T>*,
@@ -499,42 +428,6 @@ public:
         {
             reverse_iterator temp = *this;
             m_currentNode = m_currentNode->m_inverse;
-            return temp;
-        }
-
-        /// Pre-decrement operator for the reverse iterator.
-        /// \return A reference to the reverse iterator after the decrement.
-        /// \post Moves the reverse iterator to the next node in the linked list.
-        reverse_iterator& operator--()
-        {
-            if (m_currentNode)
-            {
-                m_currentNode = m_currentNode->m_next;
-            }
-            else
-            {
-                std::cerr << "Cannot decrement reverse iterator from rbegin iterator" << std::endl;
-                std::terminate();
-            }
-            return *this;
-        }
-
-        /// Post decrement operator for the reverse linked list.
-        /// \return A reference to the reverse iterator after the decrement.
-        /// \post Moves the reverse iterator to the next node in the linked list.
-        reverse_iterator operator--(int)
-        {
-            reverse_iterator temp = *this;
-
-            if (m_currentNode)
-            {
-                m_currentNode = m_currentNode->m_next;
-            }
-            else
-            {
-                std::cerr << "Cannot decrement reverse iterator from rbegin iterator" << std::endl;
-                std::terminate();
-            }
             return temp;
         }
 
@@ -640,9 +533,9 @@ public:
         LinkedListNode<T>* m_currentNode;
     };
 
-    /// A bidirectional constant reverse iterator for traversing items backwards in the linked list.
+    /// A forward constant reverse iterator for traversing items backwards in the linked list.
     class const_reverse_iterator : public std::iterator<
-                                       std::bidirectional_iterator_tag,
+                                       std::forward_iterator_tag,
                                        const LinkedListNode<T>,
                                        std::ptrdiff_t,
                                        const LinkedListNode<T>*,
@@ -700,42 +593,6 @@ public:
         {
             const_reverse_iterator temp = *this;
             m_currentNode = m_currentNode->m_inverse;
-            return temp;
-        }
-
-        /// Pre-decrement operator for the constant iterator.
-        /// \return A reference to the constant reverse iterator after the decrement.
-        /// \post Moves the constant reverse iterator to the next node in the linked list.
-        const_reverse_iterator& operator--()
-        {
-            if (m_currentNode)
-            {
-                m_currentNode = m_currentNode->m_next;
-            }
-            else
-            {
-                std::cerr << "Cannot decrement reverse iterator from rbegin iterator" << std::endl;
-                std::terminate();
-            }
-            return *this;
-        }
-
-        /// Post-decrement operator for the constant reverse iterator.
-        /// \return A constant reverse iterator pointing to the previous position before the decrement.
-        /// \post Moves the constant reverse iterator to the next node in the linked list.
-        const_reverse_iterator operator--(int) noexcept
-        {
-            const_reverse_iterator temp = *this;
-
-            if (m_currentNode)
-            {
-                m_currentNode = m_currentNode->m_next;
-            }
-            else
-            {
-                std::cerr << "Cannot decrement reverse iterator from rbegin iterator" << std::endl;
-                std::terminate();
-            }
             return temp;
         }
 

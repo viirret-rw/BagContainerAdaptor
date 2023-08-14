@@ -257,18 +257,6 @@ public:
         ++iterator;
         EXPECT_NE(*controlIt++, *iterator);
     }
-
-    static void decrementTest(List& list, IteratorType iterator)
-    {
-        auto next = std::next(iterator);
-
-        const auto pre = --next;
-        const auto post = next--;
-
-        EXPECT_EQ(pre, post);
-        EXPECT_EQ(pre, iterator);
-        EXPECT_EQ(post, iterator);
-    }
 };
 
 TEST(IteratorTest, TestNormalIteratorIteration)
@@ -317,28 +305,4 @@ TEST(IteratorTest, TestConstantReverseIteratorIncrement)
 {
     LinkedList<int> list = {1, 2, 3, 4, 5};
     IteratorTest<LinkedList<int>, LinkedList<int>::const_reverse_iterator>::incrementTest(list, list.crend());
-}
-
-TEST(IteratorTest, TestNormalIteratorDecrement)
-{
-    LinkedList<int> list = {1, 2, 3, 4, 5};
-    IteratorTest<LinkedList<int>, LinkedList<int>::iterator>::decrementTest(list, list.begin());
-}
-
-TEST(IteratorTest, TestConstantIterationDecrement)
-{
-    LinkedList<int> list = {1, 2, 3, 4, 5};
-    IteratorTest<LinkedList<int>, LinkedList<int>::const_iterator>::decrementTest(list, list.cbegin());
-}
-
-TEST(IteratorTest, TestReverseIteratorDecrement)
-{
-    LinkedList<int> list = {1, 2, 3, 4, 5};
-    IteratorTest<LinkedList<int>, LinkedList<int>::reverse_iterator>::decrementTest(list, list.rend());
-}
-
-TEST(IteratorTest, TestConstantReverseIteratorDecrement)
-{
-    LinkedList<int> list = {1, 2, 3, 4, 5};
-    IteratorTest<LinkedList<int>, LinkedList<int>::const_reverse_iterator>::decrementTest(list, list.crend());
 }
