@@ -17,6 +17,14 @@ struct LinkedListNode
     {
     }
 
+	LinkedListNode(LinkedListNode&& other) :
+		m_data(std::move(other.m_data)),
+		m_next(std::move(other.m_next)),
+		m_inverse(std::move(other.m_inverse))
+	{
+	}
+
+
     /// The data inside the Node.
     T m_data;
 
@@ -450,18 +458,36 @@ public:
     public:
         /// Default constructor.
         /// \exception noexcept No exceptions are thrown by this operation.
+		/// TODO also add sentinel creation here
+		/*
         reverse_iterator() noexcept
         {
         }
+		*/
 
         /// Constructor.
         /// \param node Pointer to the `LinkedListNode` to initialize reverse iterator with.
         /// \post The reverse iterator is constructed with the given `LinkedListNode` as the current node.
         /// \exception noexcept No exceptions are thrown by this operation.
-        explicit reverse_iterator(LinkedListNode<T>* node) noexcept
-            : m_currentNode(node)
+        explicit reverse_iterator(LinkedListNode<T>* node, LinkedList<T>* list) noexcept :
+			m_linkedList(list)
         {
+			m_sentinel = createSentinel(m_linkedList);
+
+			if (node)
+			{
+				m_currentNode = node;
+			}
+			else
+			{
+				m_currentNode = m_sentinel;
+			}
         }
+
+		~reverse_iterator()
+		{
+			m_linkedList->m_allocator.deallocate(m_sentinel, 1);
+		}
 
         /// Dereference operator for the reverse iterator.
         /// \return A reference to the data of the current node.
@@ -558,13 +584,15 @@ public:
             return m_currentNode != other.m_currentNode;
         }
 
-        /// Copy constructibility from constant reverse iterator.
+		/// Copy constructibility from constant reverse iterator.
         /// \param it The constant reverse iterator to copy construct from.
         /// \post The reverse iterator is constructed with the same current node as the constant reverse iterator.
         /// \exception noexcept No exceptions are thrown by this operation.
         reverse_iterator(const typename LinkedList<T>::const_reverse_iterator& it) noexcept
-            : m_currentNode(const_cast<LinkedListNode<T>*>(it.getNode()))
+            : m_currentNode(const_cast<LinkedListNode<T>*>(it.getNode())),
+			m_linkedList(const_cast<LinkedList<T>*>(it.m_linkedList))
         {
+			m_sentinel = createSentinel(m_linkedList);
         }
 
         /// Copy assignment from constant reverse iterator.
@@ -575,6 +603,8 @@ public:
         reverse_iterator& operator=(const typename LinkedList<T>::const_reverse_iterator& it) noexcept
         {
             m_currentNode = const_cast<LinkedListNode<T>*>(it.getNode());
+			m_linkedList = const_cast<LinkedList<T>*>(it.m_linkedList);
+			m_sentinel = createSentinel(m_linkedList);
             return *this;
         }
 
@@ -583,8 +613,10 @@ public:
         /// \post The reverse iterator is constructed with the same current node as the constant reverse iterator.
         /// \exception noexcept No exceptions are thrown by this operation.
         reverse_iterator(typename LinkedList<T>::const_reverse_iterator&& it) noexcept
-            : m_currentNode(const_cast<LinkedListNode<T>*>(it.getNode()))
+            : m_currentNode(const_cast<LinkedListNode<T>*>(it.getNode())),
+			m_linkedList(const_cast<LinkedList<T>*>(it.m_linkedList))
         {
+			m_sentinel = createSentinel(m_linkedList);
         }
 
         /// Move assignment from constant reverse iterator.
@@ -595,6 +627,8 @@ public:
         reverse_iterator& operator=(typename LinkedList<T>::const_reverse_iterator&& it) noexcept
         {
             m_currentNode = const_cast<LinkedListNode<T>*>(it.getNode());
+			m_linkedList = const_cast<LinkedList<T>*>(it.m_linkedList);
+			m_sentinel = createSentinel(m_linkedList);
             return *this;
         }
 
@@ -602,27 +636,55 @@ public:
         /// \param other The reverse iterator to be copied.
         /// \post The reverse iterator is constructed as a copy of the other reverse iterator.
         /// \exception noexcept No exceptions are thrown by this operation.
-        reverse_iterator(const reverse_iterator& other) noexcept = default;
-
+        reverse_iterator(const reverse_iterator& other) noexcept :
+			m_currentNode(other.m_currentNode),
+			m_linkedList(other.m_linkedList)
+		{
+			m_sentinel = createSentinel(m_linkedList);
+		}
+		
         /// Copy assignment operator.
         /// \param other The reverse iterator to be copied.
         /// \return A reference to the reverse iterator after the assignment.
         /// \post The reverse iterator is assigned as a copy of the other reverse iterator.
         /// \exception noexcept No exceptions are thrown by this operation.
-        reverse_iterator& operator=(const reverse_iterator& other) noexcept = default;
+        reverse_iterator& operator=(const reverse_iterator& other) noexcept
+		{
+			if (this != &other)
+			{
+				m_currentNode = other.m_currentNode;
+				m_linkedList = other.m_linkedList;
+				m_sentinel = createSentinel(m_linkedList);
+			}
+			return *this;
+		}
 
         /// Move constructor
         /// \param other The reverse iterator to be moved.
         /// \post The reverse iterator is constructed by moving the other reverse iterator.
         /// \exception noexcept No exceptions are thrown by this operation.
-        reverse_iterator(reverse_iterator&& other) noexcept = default;
+        reverse_iterator(reverse_iterator&& other) noexcept :
+			m_currentNode(std::move(other.m_currentNode)),
+			m_linkedList(std::move(other.m_linkedList))
+		{
+			m_sentinel = createSentinel(m_linkedList);
+		}
 
         /// Move assignment operator.
         /// \param other The reverse iterator to be moved.
         /// \return A reference to the reverse iterator after the assignment.
         /// \post The reverse iterator is assigned by moving the other reverse iterator.
         /// \exception noexcept No exceptions are thrown by this operation.
-        reverse_iterator& operator=(reverse_iterator&& other) noexcept = default;
+        reverse_iterator& operator=(reverse_iterator&& other) noexcept
+		{
+			if (this != &other)
+			{
+				m_currentNode = std::move(other.m_currentNode);
+				m_linkedList = std::move(other.m_linkedList);
+				m_sentinel = createSentinel(m_linkedList);
+			}
+			return *this;
+		}
 
         /// Get the node where the iterator is pointing.
         /// \return A pointer to the current node where the reverse iterator is pointing.
@@ -634,10 +696,27 @@ public:
         }
 
     private:
+		
+		LinkedListNode<T>* createSentinel(LinkedList<T>* list)
+		{
+			if(!m_sentinel)
+			{
+				auto* newNode = list->m_allocator.allocate(1);
+				list->m_allocator.construct(newNode, T());
+				newNode->m_inverse = list->m_tail;
+				return newNode;
+			}
+			return nullptr;
+		}
+
         /// Pointer to the current node where the reverse iterator is pointing.
         /// \note The reverse iterator should always point to a valid node in the linked list,
         /// 	or it should be nullptr if it has reached the end of the list.
         LinkedListNode<T>* m_currentNode;
+		
+		LinkedList<T>* m_linkedList;
+
+		LinkedListNode<T>* m_sentinel = nullptr;
     };
 
     /// A bidirectional constant reverse iterator for traversing items backwards in the linked list.
@@ -840,6 +919,11 @@ public:
         /// \note The constant reverse iterator should always point to a valid node in the linked list,
         /// 	or it should be nullptr if it has reached the end of the list.
         LinkedListNode<T>* m_currentNode;
+
+		LinkedListNode<T>* m_sentinel;
+		
+		LinkedList<T>* m_linkedList;
+
     };
 
     /// Default constructor.
@@ -970,7 +1054,7 @@ public:
     /// \exception noexcept No exceptions are thrown by this operation.
     reverse_iterator rbegin() noexcept
     {
-        return reverse_iterator(nullptr);
+        return reverse_iterator(nullptr, this);
     }
 
     /// Get a reverse iterator to the beginning of the linked list.
@@ -979,7 +1063,7 @@ public:
     /// \exception noexcept No exceptions are thrown by this operation.
     reverse_iterator rend() noexcept
     {
-        return reverse_iterator(m_tail);
+        return reverse_iterator(m_tail, this);
     }
 
     /// Get a constant reverse iterator to the beginning of the linked list.
