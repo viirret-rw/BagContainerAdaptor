@@ -424,9 +424,8 @@ private:
     /// \exception noexcept No exceptions are thrown by this operation.
     /// \ingroup containerDestructors
     template <typename C>
-    void deallocateContainer(C& bag) noexcept
+    void deallocateContainer(C&) noexcept
     {
-        (void)bag;
     }
 
     /// Destructor specialization for std::deque.
