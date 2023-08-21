@@ -73,7 +73,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>A bidirectional iterator for traversing elements in the linked list.  
+<p>A forward iterator for traversing elements in the linked list.  
  <a href="class_linked_list_1_1iterator.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="linked__list_8hpp_source.html">linked_list.hpp</a>&gt;</code></p>
@@ -82,7 +82,7 @@ Inheritance diagram for LinkedList&lt; T, Allocator &gt;::iterator:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_linked_list_1_1iterator__inherit__graph.png" border="0" usemap="#a_linked_list_3_01_t_00_01_allocator_01_4_1_1iterator_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_linked_list_3_01_t_00_01_allocator_01_4_1_1iterator_inherit__map" id="a_linked_list_3_01_t_00_01_allocator_01_4_1_1iterator_inherit__map">
-<area shape="rect" title="A bidirectional iterator for traversing elements in the linked list." alt="" coords="299,27,475,69"/>
+<area shape="rect" title="A forward iterator for traversing elements in the linked list." alt="" coords="299,27,475,69"/>
 <area shape="rect" title=" " alt="" coords="5,5,251,91"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -91,7 +91,7 @@ Collaboration diagram for LinkedList&lt; T, Allocator &gt;::iterator:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_linked_list_1_1iterator__coll__graph.png" border="0" usemap="#a_linked_list_3_01_t_00_01_allocator_01_4_1_1iterator_coll__map" alt="Collaboration graph"/></div>
 <map name="a_linked_list_3_01_t_00_01_allocator_01_4_1_1iterator_coll__map" id="a_linked_list_3_01_t_00_01_allocator_01_4_1_1iterator_coll__map">
-<area shape="rect" title="A bidirectional iterator for traversing elements in the linked list." alt="" coords="299,27,475,69"/>
+<area shape="rect" title="A forward iterator for traversing elements in the linked list." alt="" coords="299,27,475,69"/>
 <area shape="rect" title=" " alt="" coords="5,5,251,91"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -110,10 +110,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af99fc8655519d7d5ea67bf63574bdf9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a69f7e14612205a458fc734de488e2ad5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_linked_list_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linked_list_1_1iterator.html#a69f7e14612205a458fc734de488e2ad5">operator++</a> (int) noexcept</td></tr>
 <tr class="separator:a69f7e14612205a458fc734de488e2ad5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b2549bff222bf0ff03647ec9b775bc8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_linked_list_1_1iterator.html">iterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linked_list_1_1iterator.html#a3b2549bff222bf0ff03647ec9b775bc8">operator--</a> ()</td></tr>
-<tr class="separator:a3b2549bff222bf0ff03647ec9b775bc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac99d900087c21fd46ea1c2b51d02c00f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_linked_list_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linked_list_1_1iterator.html#ac99d900087c21fd46ea1c2b51d02c00f">operator--</a> (int)</td></tr>
-<tr class="separator:ac99d900087c21fd46ea1c2b51d02c00f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9f1c166618e4b540c475444c75cc7f2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linked_list_1_1iterator.html#ad9f1c166618e4b540c475444c75cc7f2">operator==</a> (const <a class="el" href="class_linked_list_1_1iterator.html">iterator</a> &amp;other) const noexcept</td></tr>
 <tr class="separator:ad9f1c166618e4b540c475444c75cc7f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86e06fc5caa7cb48560bd424c8006082"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linked_list_1_1iterator.html#a86e06fc5caa7cb48560bd424c8006082">operator!=</a> (const <a class="el" href="class_linked_list_1_1iterator.html">iterator</a> &amp;other) const noexcept</td></tr>
@@ -141,7 +137,7 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><h3>template&lt;typename T, typename Allocator = std::allocator&lt;LinkedListNode&lt;T&gt;&gt;&gt;<br />
 class LinkedList&lt; T, Allocator &gt;::iterator</h3>
 
-<p>A bidirectional iterator for traversing elements in the linked list. </p>
+<p>A forward iterator for traversing elements in the linked list. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a45b29d378adc44a772e7b5bcece28975"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a45b29d378adc44a772e7b5bcece28975">&#9670;&nbsp;</a></span>iterator() <span class="overload">[1/6]</span></h2>
@@ -242,7 +238,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Copy constructibility from <a class="el" href="class_linked_list_1_1const__iterator.html" title="A bidirectional constant iterator for traversing elements in the linked list.">const_iterator</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Copy constructibility from <a class="el" href="class_linked_list_1_1const__iterator.html" title="A forward constant iterator for traversing elements in the linked list.">const_iterator</a>. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">it</td><td>The constant iterator to copy construct from. </td></tr>
   </table>
@@ -283,7 +279,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Move constructibility from <a class="el" href="class_linked_list_1_1const__iterator.html" title="A bidirectional constant iterator for traversing elements in the linked list.">const_iterator</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Move constructibility from <a class="el" href="class_linked_list_1_1const__iterator.html" title="A forward constant iterator for traversing elements in the linked list.">const_iterator</a>. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">it</td><td>The constant iterator to move construct from. </td></tr>
   </table>
@@ -565,65 +561,6 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
 
 </div>
 </div>
-<a id="a3b2549bff222bf0ff03647ec9b775bc8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3b2549bff222bf0ff03647ec9b775bc8">&#9670;&nbsp;</a></span>operator--() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&lt;T&gt;&gt;&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_linked_list_1_1iterator.html">iterator</a>&amp; <a class="el" href="class_linked_list.html">LinkedList</a>&lt; T, Allocator &gt;::iterator::operator-- </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Pre-decrement operator for the iterator. </p><dl class="section return"><dt>Returns</dt><dd>A reference to the iterator after the decrement. </dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>Moves the iterator to the previous node in the linked list. </dd></dl>
-
-</div>
-</div>
-<a id="ac99d900087c21fd46ea1c2b51d02c00f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac99d900087c21fd46ea1c2b51d02c00f">&#9670;&nbsp;</a></span>operator--() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&lt;T&gt;&gt;&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_linked_list_1_1iterator.html">iterator</a> <a class="el" href="class_linked_list.html">LinkedList</a>&lt; T, Allocator &gt;::iterator::operator-- </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Post-decrement operator for the iterator. </p><dl class="section return"><dt>Returns</dt><dd>An iterator pointing to the previous position before the decrement (this). </dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>Moves the iterator to the previous node in the linked list. </dd></dl>
-
-</div>
-</div>
 <a id="ab363705a1be7f8e9a8c8577e2aebeb94"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab363705a1be7f8e9a8c8577e2aebeb94">&#9670;&nbsp;</a></span>operator-&gt;()</h2>
 
@@ -726,7 +663,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Copy assignment from <a class="el" href="class_linked_list_1_1const__iterator.html" title="A bidirectional constant iterator for traversing elements in the linked list.">const_iterator</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Copy assignment from <a class="el" href="class_linked_list_1_1const__iterator.html" title="A forward constant iterator for traversing elements in the linked list.">const_iterator</a>. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">it</td><td>The constant iterator to copy assign from. </td></tr>
   </table>
@@ -810,7 +747,7 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Move assignment from <a class="el" href="class_linked_list_1_1const__iterator.html" title="A bidirectional constant iterator for traversing elements in the linked list.">const_iterator</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Move assignment from <a class="el" href="class_linked_list_1_1const__iterator.html" title="A forward constant iterator for traversing elements in the linked list.">const_iterator</a>. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">it</td><td>The constant iterator to move assign from. </td></tr>
   </table>

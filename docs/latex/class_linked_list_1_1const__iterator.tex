@@ -2,7 +2,7 @@
 \label{class_linked_list_1_1const__iterator}\index{LinkedList$<$ T, Allocator $>$::const\_iterator@{LinkedList$<$ T, Allocator $>$::const\_iterator}}
 
 
-A bidirectional constant iterator for traversing elements in the linked list.  
+A forward constant iterator for traversing elements in the linked list.  
 
 
 
@@ -11,7 +11,8 @@ A bidirectional constant iterator for traversing elements in the linked list.
 
 
 
-Inheritance diagram for Linked\+List$<$ T, Allocator $>$\+::const\+\_\+iterator\+:\nopagebreak
+Inheritance diagram for Linked\+List$<$ T, Allocator $>$\+::const\+\_\+iterator\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -20,7 +21,8 @@ Inheritance diagram for Linked\+List$<$ T, Allocator $>$\+::const\+\_\+iterator\
 \end{figure}
 
 
-Collaboration diagram for Linked\+List$<$ T, Allocator $>$\+::const\+\_\+iterator\+:\nopagebreak
+Collaboration diagram for Linked\+List$<$ T, Allocator $>$\+::const\+\_\+iterator\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -42,10 +44,6 @@ const T $\ast$ \mbox{\hyperlink{class_linked_list_1_1const__iterator_a6632a4380c
 \mbox{\hyperlink{class_linked_list_1_1const__iterator}{const\+\_\+iterator}} \& \mbox{\hyperlink{class_linked_list_1_1const__iterator_a12f84194c56a621660232cf786e6f19d}{operator++}} () noexcept
 \item 
 \mbox{\hyperlink{class_linked_list_1_1const__iterator}{const\+\_\+iterator}} \mbox{\hyperlink{class_linked_list_1_1const__iterator_a8dc286d1df8c144bed26471ca59f2625}{operator++}} (int) noexcept
-\item 
-\mbox{\hyperlink{class_linked_list_1_1const__iterator}{const\+\_\+iterator}} \& \mbox{\hyperlink{class_linked_list_1_1const__iterator_a3a0aab3533e3cdb4c511403148e204f4}{operator-\/-\/}} ()
-\item 
-\mbox{\hyperlink{class_linked_list_1_1const__iterator}{const\+\_\+iterator}} \mbox{\hyperlink{class_linked_list_1_1const__iterator_a265bc943f7867c672a202e71a01d45ac}{operator-\/-\/}} (int)
 \item 
 bool \mbox{\hyperlink{class_linked_list_1_1const__iterator_ae0c6c619ed0982374d0cdf13f86858fb}{operator==}} (const \mbox{\hyperlink{class_linked_list_1_1const__iterator}{const\+\_\+iterator}} \&other) const noexcept
 \item 
@@ -75,7 +73,7 @@ const \mbox{\hyperlink{struct_linked_list_node}{Linked\+List\+Node}}$<$ T $>$ $\
 \subsubsection*{template$<$typename T, typename Allocator = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$\newline
 class Linked\+List$<$ T, Allocator $>$\+::const\+\_\+iterator}
 
-A bidirectional constant iterator for traversing elements in the linked list. 
+A forward constant iterator for traversing elements in the linked list. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_linked_list_1_1const__iterator_a0ec78476255511d1bc40c08ba08c3fa6}\label{class_linked_list_1_1const__iterator_a0ec78476255511d1bc40c08ba08c3fa6}} 
@@ -276,32 +274,6 @@ Moves the constant iterator to the next node in the linked list.
 {\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{class_linked_list_1_1const__iterator_a3a0aab3533e3cdb4c511403148e204f4}\label{class_linked_list_1_1const__iterator_a3a0aab3533e3cdb4c511403148e204f4}} 
-\index{LinkedList$<$ T, Allocator $>$::const\_iterator@{LinkedList$<$ T, Allocator $>$::const\_iterator}!operator-\/-\/@{operator-\/-\/}}
-\index{operator-\/-\/@{operator-\/-\/}!LinkedList$<$ T, Allocator $>$::const\_iterator@{LinkedList$<$ T, Allocator $>$::const\_iterator}}
-\doxysubsubsection{\texorpdfstring{operator-\/-\/()}{operator--()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
-\mbox{\hyperlink{class_linked_list_1_1const__iterator}{const\+\_\+iterator}}\& \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::const\+\_\+iterator\+::operator-\/-\/ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-Pre-\/decrement operator for the constant iterator. \begin{DoxyReturn}{Returns}
-A reference to the constant iterator after the decrement. 
-\end{DoxyReturn}
-\begin{DoxyPostcond}{Postcondition}
-Moves the iterator to the previous node in the linked list. 
-\end{DoxyPostcond}
-\mbox{\Hypertarget{class_linked_list_1_1const__iterator_a265bc943f7867c672a202e71a01d45ac}\label{class_linked_list_1_1const__iterator_a265bc943f7867c672a202e71a01d45ac}} 
-\index{LinkedList$<$ T, Allocator $>$::const\_iterator@{LinkedList$<$ T, Allocator $>$::const\_iterator}!operator-\/-\/@{operator-\/-\/}}
-\index{operator-\/-\/@{operator-\/-\/}!LinkedList$<$ T, Allocator $>$::const\_iterator@{LinkedList$<$ T, Allocator $>$::const\_iterator}}
-\doxysubsubsection{\texorpdfstring{operator-\/-\/()}{operator--()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
-\mbox{\hyperlink{class_linked_list_1_1const__iterator}{const\+\_\+iterator}} \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::const\+\_\+iterator\+::operator-\/-\/ (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-Post-\/decrement operator for the constant iterator. \begin{DoxyReturn}{Returns}
-An iterator pointing to the previous position before the decrement (this). 
-\end{DoxyReturn}
-\begin{DoxyPostcond}{Postcondition}
-Moves the iterator to the previous node in the linked list. 
-\end{DoxyPostcond}
 \mbox{\Hypertarget{class_linked_list_1_1const__iterator_a6632a4380c344ff7a8ec24758ccccabc}\label{class_linked_list_1_1const__iterator_a6632a4380c344ff7a8ec24758ccccabc}} 
 \index{LinkedList$<$ T, Allocator $>$::const\_iterator@{LinkedList$<$ T, Allocator $>$::const\_iterator}!operator-\/$>$@{operator-\/$>$}}
 \index{operator-\/$>$@{operator-\/$>$}!LinkedList$<$ T, Allocator $>$::const\_iterator@{LinkedList$<$ T, Allocator $>$::const\_iterator}}

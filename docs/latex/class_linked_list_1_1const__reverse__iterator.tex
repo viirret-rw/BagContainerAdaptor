@@ -2,7 +2,7 @@
 \label{class_linked_list_1_1const__reverse__iterator}\index{LinkedList$<$ T, Allocator $>$::const\_reverse\_iterator@{LinkedList$<$ T, Allocator $>$::const\_reverse\_iterator}}
 
 
-A bidirectional constant reverse iterator for traversing items backwards in the linked list.  
+A forward constant reverse iterator for traversing items backwards in the linked list.  
 
 
 
@@ -11,7 +11,8 @@ A bidirectional constant reverse iterator for traversing items backwards in the 
 
 
 
-Inheritance diagram for Linked\+List$<$ T, Allocator $>$\+::const\+\_\+reverse\+\_\+iterator\+:\nopagebreak
+Inheritance diagram for Linked\+List$<$ T, Allocator $>$\+::const\+\_\+reverse\+\_\+iterator\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -20,7 +21,8 @@ Inheritance diagram for Linked\+List$<$ T, Allocator $>$\+::const\+\_\+reverse\+
 \end{figure}
 
 
-Collaboration diagram for Linked\+List$<$ T, Allocator $>$\+::const\+\_\+reverse\+\_\+iterator\+:\nopagebreak
+Collaboration diagram for Linked\+List$<$ T, Allocator $>$\+::const\+\_\+reverse\+\_\+iterator\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -41,10 +43,6 @@ const T $\ast$ \mbox{\hyperlink{class_linked_list_1_1const__reverse__iterator_ad
 \mbox{\hyperlink{class_linked_list_1_1const__reverse__iterator}{const\+\_\+reverse\+\_\+iterator}} \& \mbox{\hyperlink{class_linked_list_1_1const__reverse__iterator_a21666836188f6cf314cd6e75ff07458a}{operator++}} ()
 \item 
 \mbox{\hyperlink{class_linked_list_1_1const__reverse__iterator}{const\+\_\+reverse\+\_\+iterator}} \mbox{\hyperlink{class_linked_list_1_1const__reverse__iterator_a4598c9a625cf2d7cd0589ba634e014ec}{operator++}} (int)
-\item 
-\mbox{\hyperlink{class_linked_list_1_1const__reverse__iterator}{const\+\_\+reverse\+\_\+iterator}} \& \mbox{\hyperlink{class_linked_list_1_1const__reverse__iterator_a94720b126bbfde588a8a73135692bb3d}{operator-\/-\/}} ()
-\item 
-\mbox{\hyperlink{class_linked_list_1_1const__reverse__iterator}{const\+\_\+reverse\+\_\+iterator}} \mbox{\hyperlink{class_linked_list_1_1const__reverse__iterator_a000cd756ad916180bdc7f0e3046fcc92}{operator-\/-\/}} (int) noexcept
 \item 
 bool \mbox{\hyperlink{class_linked_list_1_1const__reverse__iterator_ac17de50137dd2ccb43c3bb920b3c802d}{operator==}} (const \mbox{\hyperlink{class_linked_list_1_1const__reverse__iterator}{const\+\_\+reverse\+\_\+iterator}} \&other) const noexcept
 \item 
@@ -74,7 +72,7 @@ bool \mbox{\hyperlink{class_linked_list_1_1const__reverse__iterator_a683fe8f5061
 \subsubsection*{template$<$typename T, typename Allocator = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$\newline
 class Linked\+List$<$ T, Allocator $>$\+::const\+\_\+reverse\+\_\+iterator}
 
-A bidirectional constant reverse iterator for traversing items backwards in the linked list. 
+A forward constant reverse iterator for traversing items backwards in the linked list. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_linked_list_1_1const__reverse__iterator_afbaba142d58c25047320225e83a96dde}\label{class_linked_list_1_1const__reverse__iterator_afbaba142d58c25047320225e83a96dde}} 
@@ -284,32 +282,6 @@ Moves the constant reverse iterator to the previous node in the linked list.
 {\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{class_linked_list_1_1const__reverse__iterator_a94720b126bbfde588a8a73135692bb3d}\label{class_linked_list_1_1const__reverse__iterator_a94720b126bbfde588a8a73135692bb3d}} 
-\index{LinkedList$<$ T, Allocator $>$::const\_reverse\_iterator@{LinkedList$<$ T, Allocator $>$::const\_reverse\_iterator}!operator-\/-\/@{operator-\/-\/}}
-\index{operator-\/-\/@{operator-\/-\/}!LinkedList$<$ T, Allocator $>$::const\_reverse\_iterator@{LinkedList$<$ T, Allocator $>$::const\_reverse\_iterator}}
-\doxysubsubsection{\texorpdfstring{operator-\/-\/()}{operator--()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
-\mbox{\hyperlink{class_linked_list_1_1const__reverse__iterator}{const\+\_\+reverse\+\_\+iterator}}\& \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::const\+\_\+reverse\+\_\+iterator\+::operator-\/-\/ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-Pre-\/decrement operator for the constant iterator. \begin{DoxyReturn}{Returns}
-A reference to the constant reverse iterator after the decrement. 
-\end{DoxyReturn}
-\begin{DoxyPostcond}{Postcondition}
-Moves the constant reverse iterator to the next node in the linked list. 
-\end{DoxyPostcond}
-\mbox{\Hypertarget{class_linked_list_1_1const__reverse__iterator_a000cd756ad916180bdc7f0e3046fcc92}\label{class_linked_list_1_1const__reverse__iterator_a000cd756ad916180bdc7f0e3046fcc92}} 
-\index{LinkedList$<$ T, Allocator $>$::const\_reverse\_iterator@{LinkedList$<$ T, Allocator $>$::const\_reverse\_iterator}!operator-\/-\/@{operator-\/-\/}}
-\index{operator-\/-\/@{operator-\/-\/}!LinkedList$<$ T, Allocator $>$::const\_reverse\_iterator@{LinkedList$<$ T, Allocator $>$::const\_reverse\_iterator}}
-\doxysubsubsection{\texorpdfstring{operator-\/-\/()}{operator--()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily template$<$typename T , typename Allocator  = std\+::allocator$<$\+Linked\+List\+Node$<$\+T$>$$>$$>$ \\
-\mbox{\hyperlink{class_linked_list_1_1const__reverse__iterator}{const\+\_\+reverse\+\_\+iterator}} \mbox{\hyperlink{class_linked_list}{Linked\+List}}$<$ T, Allocator $>$\+::const\+\_\+reverse\+\_\+iterator\+::operator-\/-\/ (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
-
-Post-\/decrement operator for the constant reverse iterator. \begin{DoxyReturn}{Returns}
-A constant reverse iterator pointing to the previous position before the decrement. 
-\end{DoxyReturn}
-\begin{DoxyPostcond}{Postcondition}
-Moves the constant reverse iterator to the next node in the linked list. 
-\end{DoxyPostcond}
 \mbox{\Hypertarget{class_linked_list_1_1const__reverse__iterator_ad1b5a05692d139dcbf7ef16cfbd8459f}\label{class_linked_list_1_1const__reverse__iterator_ad1b5a05692d139dcbf7ef16cfbd8459f}} 
 \index{LinkedList$<$ T, Allocator $>$::const\_reverse\_iterator@{LinkedList$<$ T, Allocator $>$::const\_reverse\_iterator}!operator-\/$>$@{operator-\/$>$}}
 \index{operator-\/$>$@{operator-\/$>$}!LinkedList$<$ T, Allocator $>$::const\_reverse\_iterator@{LinkedList$<$ T, Allocator $>$::const\_reverse\_iterator}}

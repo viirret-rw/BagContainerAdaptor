@@ -73,7 +73,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>A bidirectional constant reverse iterator for traversing items backwards in the linked list.  
+<p>A forward constant reverse iterator for traversing items backwards in the linked list.  
  <a href="class_linked_list_1_1const__reverse__iterator.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="linked__list_8hpp_source.html">linked_list.hpp</a>&gt;</code></p>
@@ -82,8 +82,8 @@ Inheritance diagram for LinkedList&lt; T, Allocator &gt;::const_reverse_iterator
 <div class="dyncontent">
 <div class="center"><img src="class_linked_list_1_1const__reverse__iterator__inherit__graph.png" border="0" usemap="#a_linked_list_3_01_t_00_01_allocator_01_4_1_1const__reverse__iterator_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_linked_list_3_01_t_00_01_allocator_01_4_1_1const__reverse__iterator_inherit__map" id="a_linked_list_3_01_t_00_01_allocator_01_4_1_1const__reverse__iterator_inherit__map">
-<area shape="rect" title="A bidirectional constant reverse iterator for traversing items backwards in the linked list." alt="" coords="271,35,461,76"/>
-<area shape="rect" title=" " alt="" coords="5,5,223,105"/>
+<area shape="rect" title="A forward constant reverse iterator for traversing items backwards in the linked list." alt="" coords="248,42,439,83"/>
+<area shape="rect" title=" " alt="" coords="5,5,200,120"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -91,8 +91,8 @@ Collaboration diagram for LinkedList&lt; T, Allocator &gt;::const_reverse_iterat
 <div class="dyncontent">
 <div class="center"><img src="class_linked_list_1_1const__reverse__iterator__coll__graph.png" border="0" usemap="#a_linked_list_3_01_t_00_01_allocator_01_4_1_1const__reverse__iterator_coll__map" alt="Collaboration graph"/></div>
 <map name="a_linked_list_3_01_t_00_01_allocator_01_4_1_1const__reverse__iterator_coll__map" id="a_linked_list_3_01_t_00_01_allocator_01_4_1_1const__reverse__iterator_coll__map">
-<area shape="rect" title="A bidirectional constant reverse iterator for traversing items backwards in the linked list." alt="" coords="271,35,461,76"/>
-<area shape="rect" title=" " alt="" coords="5,5,223,105"/>
+<area shape="rect" title="A forward constant reverse iterator for traversing items backwards in the linked list." alt="" coords="248,42,439,83"/>
+<area shape="rect" title=" " alt="" coords="5,5,200,120"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -110,10 +110,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a21666836188f6cf314cd6e75ff07458a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4598c9a625cf2d7cd0589ba634e014ec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_linked_list_1_1const__reverse__iterator.html">const_reverse_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linked_list_1_1const__reverse__iterator.html#a4598c9a625cf2d7cd0589ba634e014ec">operator++</a> (int)</td></tr>
 <tr class="separator:a4598c9a625cf2d7cd0589ba634e014ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94720b126bbfde588a8a73135692bb3d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_linked_list_1_1const__reverse__iterator.html">const_reverse_iterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linked_list_1_1const__reverse__iterator.html#a94720b126bbfde588a8a73135692bb3d">operator--</a> ()</td></tr>
-<tr class="separator:a94720b126bbfde588a8a73135692bb3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a000cd756ad916180bdc7f0e3046fcc92"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_linked_list_1_1const__reverse__iterator.html">const_reverse_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linked_list_1_1const__reverse__iterator.html#a000cd756ad916180bdc7f0e3046fcc92">operator--</a> (int) noexcept</td></tr>
-<tr class="separator:a000cd756ad916180bdc7f0e3046fcc92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac17de50137dd2ccb43c3bb920b3c802d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linked_list_1_1const__reverse__iterator.html#ac17de50137dd2ccb43c3bb920b3c802d">operator==</a> (const <a class="el" href="class_linked_list_1_1const__reverse__iterator.html">const_reverse_iterator</a> &amp;other) const noexcept</td></tr>
 <tr class="separator:ac17de50137dd2ccb43c3bb920b3c802d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a683fe8f5061484ca4242f0d2ce75a068"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linked_list_1_1const__reverse__iterator.html#a683fe8f5061484ca4242f0d2ce75a068">operator!=</a> (const <a class="el" href="class_linked_list_1_1const__reverse__iterator.html">const_reverse_iterator</a> &amp;other) const noexcept</td></tr>
@@ -141,7 +137,7 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><h3>template&lt;typename T, typename Allocator = std::allocator&lt;LinkedListNode&lt;T&gt;&gt;&gt;<br />
 class LinkedList&lt; T, Allocator &gt;::const_reverse_iterator</h3>
 
-<p>A bidirectional constant reverse iterator for traversing items backwards in the linked list. </p>
+<p>A forward constant reverse iterator for traversing items backwards in the linked list. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="afbaba142d58c25047320225e83a96dde"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afbaba142d58c25047320225e83a96dde">&#9670;&nbsp;</a></span>const_reverse_iterator() <span class="overload">[1/6]</span></h2>
@@ -561,65 +557,6 @@ template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="a94720b126bbfde588a8a73135692bb3d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a94720b126bbfde588a8a73135692bb3d">&#9670;&nbsp;</a></span>operator--() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&lt;T&gt;&gt;&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_linked_list_1_1const__reverse__iterator.html">const_reverse_iterator</a>&amp; <a class="el" href="class_linked_list.html">LinkedList</a>&lt; T, Allocator &gt;::const_reverse_iterator::operator-- </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Pre-decrement operator for the constant iterator. </p><dl class="section return"><dt>Returns</dt><dd>A reference to the constant reverse iterator after the decrement. </dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>Moves the constant reverse iterator to the next node in the linked list. </dd></dl>
-
-</div>
-</div>
-<a id="a000cd756ad916180bdc7f0e3046fcc92"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a000cd756ad916180bdc7f0e3046fcc92">&#9670;&nbsp;</a></span>operator--() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T , typename Allocator  = std::allocator&lt;LinkedListNode&lt;T&gt;&gt;&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_linked_list_1_1const__reverse__iterator.html">const_reverse_iterator</a> <a class="el" href="class_linked_list.html">LinkedList</a>&lt; T, Allocator &gt;::const_reverse_iterator::operator-- </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Post-decrement operator for the constant reverse iterator. </p><dl class="section return"><dt>Returns</dt><dd>A constant reverse iterator pointing to the previous position before the decrement. </dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>Moves the constant reverse iterator to the next node in the linked list. </dd></dl>
 
 </div>
 </div>
