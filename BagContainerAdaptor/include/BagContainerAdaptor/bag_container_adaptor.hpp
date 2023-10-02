@@ -1,13 +1,9 @@
 #ifndef BAG_CONTAINER_ADAPTOR_HPP
 #define BAG_CONTAINER_ADAPTOR_HPP
 
-#include "../../dynamic/include/ring_buffer.hpp"
-
-#include "linked_list.hpp"
-
+#include <algorithm>
 #include <deque>
 #include <forward_list>
-#include <list>
 #include <set>
 #include <unordered_set>
 #include <vector>
@@ -17,8 +13,9 @@
 /// iterating over the bag elements is guaranteed to visit each element exactly once.
 /// This bag takes in an stl container as a template argument and provides the same functionality for each container type
 /// following the design pattern of an adapter.
+/// \tparam Type the type of the items in the underlying type.
 /// \tparam Container The underlying container type.
-template <typename Container>
+template <typename Type, typename Container = std::vector<Type>>
 class BagContainerAdaptor
 {
 public:
@@ -31,13 +28,11 @@ public:
     /// The constant iterator of the underlying container.
     using const_iterator = typename Container::const_iterator;
 
-    /// Constructor.
-    /// \post The `BagContainerAdaptor` object is constructed, and the `m_container` is initialized to an empty state.
+    /// Default constructor.
     /// \exception noexcept The constructor is marked `noexcept` to guarantee no exceptions will be thrown during the
     ///                      construction, providing a strong exception safety guarantee.
     BagContainerAdaptor() noexcept
     {
-        initializeContainer(*this);
     }
 
     /// Destructor.
@@ -78,29 +73,23 @@ public:
         return *this;
     }
 
-    /// Forwarding constructor for self-instantiation.
-    /// \param other The other `BagContainerAdaptor` from which we are initializing from.
-    /// \tparam OtherContainer The template argument for the other container.
-    /// \pre The `OtherContainer` type must be the same as the `Container` type to ensure valid instantiation.
-    /// \post The current `BagContainerAdaptor` object takes ownership of the contents of the other
-    /// 	  'BagContainerAdaptor'. The other `BagContainerAdaptor` is left in a valid but unspecified state.
-    /// \exception noexcept The forwarding constructor is marked noexcept to guarantee no exceptions will be thrown
-    ///                      during the move operation, providing a strong exception safety guarantee.
-    template <typename OtherContainer, typename = std::enable_if<std::is_same<Container, OtherContainer>::value>>
-    BagContainerAdaptor(BagContainerAdaptor<OtherContainer>&& other) noexcept
-        : m_container(std::move(other.m_container))
-    {
-    }
-
     /// Copy constructor.
     /// \param other The other BagContainerAdaptor where we copy from.
-    /// \note This copy constructor has been explicitly deleted to prevent copying.
-    BagContainerAdaptor(const BagContainerAdaptor& other) = delete;
+    BagContainerAdaptor(const BagContainerAdaptor& other) noexcept
+		: m_container(other.m_container)
+	{
+	}
 
     /// Copy assignment operator.
     /// \param other The other BagContainerAdaptor where we copy from.
-    /// \note This copy assignment operator has been explicitly deleted to prevent copying.
-    BagContainerAdaptor& operator=(const BagContainerAdaptor& other) = delete;
+    BagContainerAdaptor& operator=(const BagContainerAdaptor& other) noexcept
+	{
+		if (this != &other)
+		{
+			m_container = other.m_container;
+		}
+		return *this;
+	}
 
     /// Insert element to specified position of the underlying container.
     /// \param pos The specified position where the element is inserted.
@@ -283,7 +272,7 @@ public:
     /// Get the amount of elements in the underlying container.
     /// \return The amount of elements in the underlying container.
     /// \exception noexcept No exceptions are thrown by this operation.
-    size_t size() const noexcept
+	std::size_t size() const noexcept
     {
         return sizeImpl(m_container);
     }
@@ -297,124 +286,6 @@ public:
     }
 
 private:
-    /// \defgroup containerInitializations Initializations for different container types.
-
-    /// Default initialization.
-    /// \param bag Undefined container type.
-    /// \tparam T The type of elements in undefined container type.
-    /// \note This function is deleted, and its usage is prohibited.
-    /// \ingroup containerInitializations
-    template <typename T>
-    void initializeContainer(BagContainerAdaptor<T>& bag) = delete;
-
-    /// Container initialization specialization for std::list.
-    /// \param bag BagContainerAdaptor specialized for std::list<T>.
-    /// \tparam T The type of elements in std::list.
-    /// \post The BagContainerAdaptor's internal container is initialized with a std::list.
-    /// \exception noexcept No exceptions are thrown by this operation.
-    /// \ingroup containerInitializations
-    template <typename T>
-    void initializeContainer(BagContainerAdaptor<std::list<T>>& bag) noexcept
-    {
-        m_container = bag.m_container;
-    }
-
-    /// Container initialization specialization for std::vector.
-    /// \param bag BagContainerAdaptor specialized for std::vector<T>.
-    /// \tparam T The type of elements in std::vector.
-    /// \post The BagContainerAdaptor's internal container is initialized with a std::vector.
-    /// \exception noexcept No exceptions are thrown by this operation.
-    /// \ingroup containerInitializations.
-    template <typename T>
-    void initializeContainer(BagContainerAdaptor<std::vector<T>>& bag) noexcept
-    {
-        m_container = bag.m_container;
-    }
-
-    /// Container initialization specialization for std::deque.
-    /// \param bag BagContainerAdaptor specialized for std::deque<T>.
-    /// \tparam T The type of elements in std::deque.
-    /// \post The BagContainerAdaptor's internal container is initialized with a std::deque.
-    /// \exception noexcept No exceptions are thrown by this operation.
-    /// \ingroup containerInitializations.
-    template <typename T>
-    void initializeContainer(BagContainerAdaptor<std::deque<T>>& bag) noexcept
-    {
-        m_container = bag.m_container;
-    }
-
-    /// Container initialization specialization for std::forward_list.
-    /// \param bag BagContainerAdaptor specialized for std::forward_list<T>.
-    /// \tparam T The type of elements in std::forward_list.
-    /// \post The BagContainerAdaptor's internal container is initialized with a std::forward_list.
-    /// \exception noexcept No exceptions are thrown by this operation.
-    /// \ingroup containerInitializations.
-    template <typename T>
-    void initializeContainer(BagContainerAdaptor<std::forward_list<T>>& bag) noexcept
-    {
-        m_container = bag.m_container;
-    }
-
-    /// Container initialization specialization for std::multiset.
-    /// \param bag BagContainerAdaptor specialized for std::multiset<T>.
-    /// \tparam T The type of elements in std::multiset.
-    /// \post The BagContainerAdaptor's internal container is initialized with a std::multiset.
-    /// \exception noexcept No exceptions are thrown by this operation.
-    /// \ingroup containerInitializations.
-    template <typename T>
-    void initializeContainer(BagContainerAdaptor<std::multiset<T>>& bag) noexcept
-    {
-        m_container = bag.m_container;
-    }
-
-    /// Container initialization specialization for std::unordered_multiset.
-    /// \param bag BagContainerAdaptor specialized for std::unordered_multiset<T>.
-    /// \tparam T The type of elements in std::unordered_multiset.
-    /// \post The BagContainerAdaptor's internal container is initialized with a std::unordered_multiset.
-    /// \exception noexcept No exceptions are thrown by this operation.
-    /// \ingroup containerInitializations.
-    template <typename T>
-    void initializeContainer(BagContainerAdaptor<std::unordered_multiset<T>>& bag) noexcept
-    {
-        m_container = bag.m_container;
-    }
-
-    /// Container initialization specialization for BagContainerAdaptor.
-    /// \param bag BagContainerAdaptor specialized for BagContainerAdaptor<T>.
-    /// \tparam T The type of elements in BagContainerAdaptor argument.
-    /// \post The BagContainerAdaptor's internal container is initialized by moving the container from the given BagContainerAdaptor.
-    /// \exception noexcept No exceptions are thrown by this operation.
-    /// \ingroup containerInitializations.
-    template <typename T>
-    void initializeContainer(BagContainerAdaptor<BagContainerAdaptor<T>>& bag) noexcept
-    {
-        m_container = std::move(bag.m_container);
-    }
-
-    /// Container initialization specialization for LinkedList.
-    /// \param bag BagContainerAdaptor specialized for LinkedList<T>.
-    /// \tparam T The type of elements in LinkedList.
-    /// \post The BagContainerAdaptor's internal container is initialized with a LinkedList.
-    /// \exception noexcept No exceptions are thrown by this operation.
-    /// \ingroup containerInitializations.
-    template <typename T>
-    void initializeContainer(BagContainerAdaptor<LinkedList<T>>& bag) noexcept
-    {
-        m_container = std::move(bag.m_container);
-    }
-
-    /// Container initialization specialization for ring buffer.
-    /// \param bag BagContainerAdapter specialized for ring_buffer<T>.
-    /// \tparam T The type of elements in Ring buffer.
-    /// \post The BagContainerAdaptor's internal container is initialized with a ring_buffer.
-    /// \exception noexcept No exceptions are thrown by this operation.
-    /// \ingroup containerInitializations
-    template <typename T>
-    void initializeContainer(BagContainerAdaptor<ring_buffer<T>>& bag) noexcept
-    {
-        m_container = bag.m_container;
-    }
-
     /// \defgroup containerDestructors Functions called by destructor for different underlying container types.
 
     /// Default destructor implementation.
@@ -809,7 +680,7 @@ private:
     /// \exception noexcept No exceptions are thrown by this operation.
     /// \ingroup sizeImplementations
     template <typename C>
-    size_t sizeImpl(C& container) const noexcept
+    std::size_t sizeImpl(C& container) const noexcept
     {
         return container.size();
     }
@@ -820,7 +691,7 @@ private:
     /// \pre The `container` must be a valid instance of std::forward_list.
     /// \exception noexcept No exceptions are thrown by this operation.
     /// \ingroup sizeImplementations
-    size_t sizeImpl(std::forward_list<value_type>& container) const noexcept
+	std::size_t sizeImpl(std::forward_list<value_type>& container) const noexcept
     {
         return std::distance(container.begin(), container.end());
     }
@@ -831,7 +702,7 @@ private:
     /// \pre The `container` must be a valid instance of std::forward_list.
     /// \exception noexcept No exceptions are thrown by this operation.
     /// \ingroup sizeImplementations
-    size_t sizeImpl(const std::forward_list<value_type>& container) const noexcept
+	std::size_t sizeImpl(const std::forward_list<value_type>& container) const noexcept
     {
         return std::distance(container.begin(), container.end());
     }
