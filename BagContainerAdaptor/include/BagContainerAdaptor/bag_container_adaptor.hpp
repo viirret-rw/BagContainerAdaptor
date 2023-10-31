@@ -76,20 +76,20 @@ public:
     /// Copy constructor.
     /// \param other The other BagContainerAdaptor where we copy from.
     BagContainerAdaptor(const BagContainerAdaptor& other) noexcept
-		: m_container(other.m_container)
-	{
-	}
+        : m_container(other.m_container)
+    {
+    }
 
     /// Copy assignment operator.
     /// \param other The other BagContainerAdaptor where we copy from.
     BagContainerAdaptor& operator=(const BagContainerAdaptor& other) noexcept
-	{
-		if (this != &other)
-		{
-			m_container = other.m_container;
-		}
-		return *this;
-	}
+    {
+        if (this != &other)
+        {
+            m_container = other.m_container;
+        }
+        return *this;
+    }
 
     /// Insert element to the underlying container.
     /// \param value The value to be inserted.
@@ -103,32 +103,28 @@ public:
         return insertImpl(m_container, value);
     }
 
-    /// TODO update docs, elements do not have positions.
-	/// Erase element from the specified position in the underlying container.
-    /// \param pos The specified position where the element is erased.
-    /// \return An iterator following the last removed element.
-    /// \pre The `pos` iterator must be a valid iterator that points to a position within the underlying container.
-    /// \post The element at the specified `pos` in the underlying container is removed, and the `BagContainerAdaptor` object
+    /// Removes a specified element from the underlying container.
+    /// \param elem An iterator pointing to the element to be removed from the underlying container.
+    /// \return Assumed next iteratator following the deleted element.
+    /// \pre The `elem` iterator must be a valid iterator that points to a position within the underlying container.
+    /// \post The element at the specified `elem` in the underlying container is removed, and the `BagContainerAdaptor` object
     ///       is modified accordingly.
     /// \exception Depending on the underlying container's erase operation, this function might throw exceptions like:
-    ///            - For std::vector: std::out_of_range if the pos iterator is invalid.
-    /// \note The iterator returned points to the element that follows the erased element in the underlying container. If `pos`
-    ///         points to the last element, the returned iterator is the `end()` iterator of the container.
-    iterator erase(iterator pos)
+    ///            - For std::vector: std::out_of_range if the `elem` iterator is invalid.
+    /// \note The iterator returned points to the element that follows the erased element in the underlying container. If `elem`
+    ///         points to the assumed last element, the returned iterator is the `end()` iterator of the container.
+    iterator erase(iterator elem)
     {
-        return eraseImpl(m_container, pos);
+        return eraseImpl(m_container, elem);
     }
 
-    /// TODO update docs
-	/// Erase all elements that have the specified value in the underlying container.
+    /// Erase all elements that have the specified value in the underlying container.
     /// \param value The value of the elements that are removed.
     /// \return An iterator following the last removed element.
     /// \post All elements equal to the specified value in the underlying container are removed, and the BagContainerAdaptor object
     ///       is modified accordingly.
-    /// \exception Depending on the underlying container's erase operation, this function might throw exceptions like:
-    ///            - For std::vector with move iterator: std::out_of_range if the pos iterator is invalid or if the move constructor
-    ///                                                of the contained type throws an exception.
-    ///            - For other containers: No exceptions are thrown by the erase operation itself unless specified by the container.
+    /// \exception Any exception that may be thrown by the underlying container's `erase` function.
+    ///         This typically includes exceptions like those related to invalid iterators or invalid operations on the container.
     /// \note The iterator returned points to the element that follows the last removed element in the underlying container. If no
     ///         element with the specified value is found or if all occurrences of the value are removed, the returned iterator is
     ///         the end() iterator of the container.
@@ -137,8 +133,10 @@ public:
         return eraseImpl(m_container, value);
     }
 
-	/// TODO this function does not manke much sense, as elements in bag don't have ranges.
-	/// Erase all elements between two iterators from the underlying container.
+    /// TODO this function does not manke much sense, as elements in bag don't have ranges.
+    /// maybe delete?
+
+    /// Erase all elements between two iterators from the underlying container.
     /// \param first The first element in the range of elements being removed.
     /// \param last The last element of the range of the elements being removed.
     /// \tparam FirstType The type of iterator for the first element in the range.
@@ -171,7 +169,7 @@ public:
     }
 
     /// Get iterator pointing to the first element in the underlying container.
-	/// "First" in reference to the implied iteration order withing the container.
+    /// "First" in reference to the implied iteration order withing the container.
     /// \return Iterator pointing to the first element in the underlying container.
     /// \exception noexcept No exceptions are thrown by this operation.
     iterator begin() noexcept
@@ -188,7 +186,7 @@ public:
     }
 
     /// Get constant iterator pointing to the first element in the underlying container.
-	/// "First" in reference to the implied iteration order withing the container.
+    /// "First" in reference to the implied iteration order withing the container.
     /// \return Constant iterator pointing to the first element in the underlying container.
     /// \exception noexcept No exceptions are thrown by this operation.
     const_iterator cbegin() const noexcept
@@ -206,24 +204,24 @@ public:
 
     /// Get iterator pointing to instance of element with specified value.
     /// \param value The value to compare elements to.
-    /// \return An iterator pointing to the first instance of element with specified value.
+    /// \return An iterator pointing to the instance of element with specified value.
     /// \exception noexcept No exceptions are thrown by this operation.
     iterator find(const value_type& value) noexcept
     {
-		return findImpl(m_container, value);
+        return findImpl(m_container, value);
     }
 
-	/// Get constant iterator pointing to instance of element with specified value in const context.
+    /// Get constant iterator pointing to instance of element with specified value in const context.
     /// \param value The value to compare elements to.
-    /// \return An iterator pointing to the first instance of element with specified value.
+    /// \return An iterator pointing to the instance of element with specified value.
     /// \exception noexcept No exceptions are thrown by this operation.
     const_iterator find(const value_type& value) const noexcept
     {
-		return findImpl(m_container, value);
+        return findImpl(m_container, value);
     }
 
-    /// Get reference to the first element in the underlying container.
-    /// \return Reference to the first element in the underlying container.
+    /// Get reference to the implied first element in the underlying container.
+    /// \return Reference to the implied first element in the underlying container.
     /// \pre The container must not be empty.
     /// \exception noexcept No exceptions are thrown by this operation.
     value_type& front() noexcept
@@ -240,8 +238,9 @@ public:
         return frontImpl(m_container);
     }
 
-    /// Get reference to the last element in the underlying container.
-    /// \return Reference to the last element in the underlying container.
+    /// TODO this function has non-intuitive time complexity, which should be documented.
+    /// Get reference to the implied last element in the underlying container.
+    /// \return Reference to the implied last element in the underlying container.
     /// \pre The container must not be empty.
     /// \exception noexcept No exceptions are thrown by this operation.
     value_type& back() noexcept
@@ -249,8 +248,9 @@ public:
         return backImpl(m_container);
     }
 
-    /// Get reference to the last element in the underlying container.
-    /// \return Reference to the last element in the underlying container.
+    /// TODO this implementation is incorrect for containers that don't support .back()
+    /// Get reference to the implied last element in the underlying container.
+    /// \return Reference to the implied last element in the underlying container.
     /// \pre The container must not be empty.
     /// \exception noexcept No exceptions are thrown by this operation.
     const value_type& back() const noexcept
@@ -258,10 +258,11 @@ public:
         return m_container.back();
     }
 
+    /// This function has non-intuitive time complexity, which should be documented.
     /// Get the amount of elements in the underlying container.
     /// \return The amount of elements in the underlying container.
     /// \exception noexcept No exceptions are thrown by this operation.
-	std::size_t size() const noexcept
+    std::size_t size() const noexcept
     {
         return sizeImpl(m_container);
     }
@@ -618,46 +619,76 @@ private:
         return const_cast<value_type&>(*itLast);
     }
 
-	/// \defgroup findImplementations Functionality for looking up elements in the underlying container
+    /// \defgroup findImplementations Functionality for looking up elements in the underlying container
 
-	/// Find element from the underlying container.
-	/// \param container The underlying container type where the element is looked up.
-	/// \param value The value that is looked up from the container.
-	/// \return Iterator to the found element if found or container.end().
+    /// Find element from the underlying container.
+    /// \param container The underlying container type where the element is looked up.
+    /// \param value The value that is looked up from the container.
+    /// \return Iterator to the found element if found or container.end().
     /// \exception noexcept No exceptions are thrown by this operation.
-	/// \ingroup findImplementations
-	template <typename C>
-	iterator findImpl(C& container, const value_type& value) noexcept
-	{
-		return std::find(container.begin(), container.end(), value);
-	}
+    /// \ingroup findImplementations
+    template <typename C>
+    iterator findImpl(C& container, const value_type& value) noexcept
+    {
+        return std::find(container.begin(), container.end(), value);
+    }
 
-	iterator findImpl(std::multiset<value_type>& container, const value_type& value) noexcept
-	{
-		return container.find(value);
-	}
+    /// Find element from the underlying container, when the container type is std::multiset.
+    /// \param container The underlying container type that is std::multiset.
+    /// \param value The value that is looked up from the container.
+    /// \return Iterator to the found element if found, or container.end().
+    /// \exception noexcept No exceptions are thrown by this operation.
+    /// \ingroup findImplementations
+    iterator findImpl(std::multiset<value_type>& container, const value_type& value) noexcept
+    {
+        return container.find(value);
+    }
 
-	iterator findImpl(std::unordered_multiset<value_type>& container, const value_type& value) noexcept
-	{
-		return container.find(value);
-	}
+    /// Find the element from the underlying container, when the container type is std::unordered_multiset.
+    /// \param container The undelying container type that is std::unordered_multiset.
+    /// \param value The value that is looked up from the container.
+    /// \return Iterator to the found element if found, or container.end().
+    /// \exception noexcept No exceptions are thrown by this operation.
+    /// \ingroup findImplementations
+    iterator findImpl(std::unordered_multiset<value_type>& container, const value_type& value) noexcept
+    {
+        return container.find(value);
+    }
 
-	// Find element from the underlying container in const context.
-	template <typename C>
-	const_iterator findImpl(C& container, const value_type& value) const noexcept
-	{
-		return std::find(container.cbegin(), container.cend(), value);
-	}
-	
-	const_iterator findImpl(const std::multiset<value_type>& container, const value_type& value) const noexcept
-	{
-		return container.find(value);
-	}
-	
-	const_iterator findImpl(const std::unordered_multiset<value_type>& container, const value_type& value) const noexcept
-	{
-		return container.find(value);
-	}
+    // Find element from the underlying container in const context.
+    /// \param container The underlying container type where the element is looked up.
+    /// \param value The value that is looked up from the container.
+    /// \return Constant iterator to the found element if found, or container.end().
+    /// \exception noexcept No exceptions are thrown by this operation.
+    /// \ingroup findImplementations
+    template <typename C>
+    const_iterator findImpl(C& container, const value_type& value) const noexcept
+    {
+        return std::find(container.cbegin(), container.cend(), value);
+    }
+
+    /// Find element from the underlying container that is std::multiset in const context.
+    /// \param container The underlying container type where the element is looked up.
+    /// \param value The value that is looked up from the container.
+    /// \return Constant iterator to the found element if found, or container.end().
+    /// \exception noexcept No exceptions are thrown by this operation.
+    /// \ingroup findImplementations
+    const_iterator findImpl(const std::multiset<value_type>& container, const value_type& value) const noexcept
+    {
+        return container.find(value);
+    }
+
+    /// Find element from the underlying container that is std::unordered_multiset in const context.
+    /// \param container The underlying container that is const std::unordered_multiset, where the element is looked up.
+    /// \param value The value that is looked up from the container.
+    /// \return Constant iterator to the found element if found, or container.end().
+    /// \exception noexcept No exceptions are thrown by this operation.
+    /// \ingroup findImplementations
+    const_iterator findImpl(const std::unordered_multiset<value_type>& container, const value_type& value) const noexcept
+    {
+        return container.find(value);
+    }
+
     /// \defgroup sizeImplementations Functionality for getting the amount of elements for various container types.
 
     /// Get the amount of elements in the underlying container type that has size() member function.
@@ -679,7 +710,7 @@ private:
     /// \pre The `container` must be a valid instance of std::forward_list.
     /// \exception noexcept No exceptions are thrown by this operation.
     /// \ingroup sizeImplementations
-	std::size_t sizeImpl(std::forward_list<value_type>& container) const noexcept
+    std::size_t sizeImpl(std::forward_list<value_type>& container) const noexcept
     {
         return std::distance(container.begin(), container.end());
     }
@@ -690,7 +721,7 @@ private:
     /// \pre The `container` must be a valid instance of std::forward_list.
     /// \exception noexcept No exceptions are thrown by this operation.
     /// \ingroup sizeImplementations
-	std::size_t sizeImpl(const std::forward_list<value_type>& container) const noexcept
+    std::size_t sizeImpl(const std::forward_list<value_type>& container) const noexcept
     {
         return std::distance(container.begin(), container.end());
     }
