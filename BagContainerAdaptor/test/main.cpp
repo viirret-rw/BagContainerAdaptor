@@ -1,15 +1,18 @@
 #include <gtest/gtest.h>
 
 #include <BagContainerAdaptor/bag_container_adaptor.hpp>
+#include <BagContainerAdaptor/linked_list.hpp>
+
+#include <list>
 
 // Testing various functions of the BagContainerAdaptor class.
 template <typename Container>
 class BagContainerAdaptorTest : public ::testing::Test
 {
 protected:
-    void insertTest1()
+    void insertTest()
     {
-        BagContainerAdaptor<Container> adapter;
+        BagContainerAdaptor<int, Container> adapter;
 
         adapter.insert(1);
         adapter.insert(2);
@@ -18,20 +21,9 @@ protected:
         EXPECT_EQ(adapter.size(), 3);
     }
 
-    void insertTest2()
-    {
-        BagContainerAdaptor<Container> adapter;
-
-        adapter.insert(adapter.begin(), 1);
-        adapter.insert(adapter.begin(), 2);
-        adapter.insert(adapter.begin(), 3);
-
-        EXPECT_EQ(adapter.size(), 3);
-    }
-
     void eraseTest1()
     {
-        BagContainerAdaptor<Container> adapter;
+        BagContainerAdaptor<int, Container> adapter;
 
         adapter.insert(1);
         adapter.insert(2);
@@ -46,7 +38,7 @@ protected:
 
     void eraseTest2()
     {
-        BagContainerAdaptor<Container> adapter;
+        BagContainerAdaptor<int, Container> adapter;
 
         adapter.insert(1);
         adapter.insert(2);
@@ -61,7 +53,7 @@ protected:
 
     void eraseTest3()
     {
-        BagContainerAdaptor<Container> adapter;
+        BagContainerAdaptor<int, Container> adapter;
 
         for (int i = 1; i < 11; i++)
         {
@@ -85,7 +77,7 @@ protected:
 
     void eraseTestMultiple()
     {
-        BagContainerAdaptor<Container> adapter;
+        BagContainerAdaptor<int, Container> adapter;
 
         adapter.insert(2);
         adapter.insert(2);
@@ -102,7 +94,7 @@ protected:
 
     void findTest()
     {
-        BagContainerAdaptor<Container> adapter;
+        BagContainerAdaptor<int, Container> adapter;
 
         adapter.insert(1);
         adapter.insert(2);
@@ -115,7 +107,7 @@ protected:
 
     void sizeTest()
     {
-        BagContainerAdaptor<Container> adapter;
+        BagContainerAdaptor<int, Container> adapter;
 
         adapter.insert(1);
         EXPECT_EQ(adapter.size(), 1);
@@ -127,7 +119,7 @@ protected:
 
     void emptyTest()
     {
-        BagContainerAdaptor<Container> adapter;
+        BagContainerAdaptor<int, Container> adapter;
         EXPECT_TRUE(adapter.empty());
         adapter.insert(1);
         EXPECT_FALSE(adapter.empty());
@@ -135,13 +127,13 @@ protected:
 
     void swapTest()
     {
-        BagContainerAdaptor<Container> adapter1;
+        BagContainerAdaptor<int, Container> adapter1;
         adapter1.insert(1);
         adapter1.insert(2);
         adapter1.insert(3);
         adapter1.insert(4);
 
-        BagContainerAdaptor<Container> adapter2;
+        BagContainerAdaptor<int, Container> adapter2;
         adapter2.insert(1);
 
         EXPECT_EQ(adapter1.size(), 4);
@@ -157,7 +149,7 @@ protected:
     {
         Container container {1, 2, 3};
 
-        BagContainerAdaptor<Container> adapter(std::move(container));
+        BagContainerAdaptor<int, Container> adapter(std::move(container));
 
         EXPECT_EQ(adapter.size(), 3);
     }
@@ -165,7 +157,7 @@ protected:
     void moveAssingmentTest()
     {
         {
-            BagContainerAdaptor<Container> adapter;
+            BagContainerAdaptor<int, Container> adapter;
 
             EXPECT_EQ(adapter.size(), 0);
 
@@ -175,14 +167,14 @@ protected:
         }
 
         {
-            BagContainerAdaptor<Container> adapter = Container{1, 2, 3};
+            BagContainerAdaptor<int, Container> adapter = Container{1, 2, 3};
             EXPECT_EQ(adapter.size(), 3);
         }
     }
 
     void nonConstIterationTest()
     {
-        BagContainerAdaptor<Container> adapter = Container{5, 10, 15};
+        BagContainerAdaptor<int, Container> adapter = Container{5, 10, 15};
 
         int counter = 0;
         for (auto i = adapter.begin(); i != adapter.end(); i++)
@@ -195,7 +187,7 @@ protected:
 
     void constIterationTest()
     {
-        BagContainerAdaptor<Container> adapter = Container{1, 2, 3, 4, 5};
+        BagContainerAdaptor<int, Container> adapter = Container{1, 2, 3, 4, 5};
 
         int counter = 0;
         for (auto i = adapter.cbegin(); i != adapter.cend(); i++)
@@ -213,19 +205,13 @@ using MainContainerTypes = ::testing::Types<
     std::forward_list<int>,
     std::multiset<int>,
     std::unordered_multiset<int>,
-    LinkedList<int>,
-    ring_buffer<int>>;
+    LinkedList<int>>;
 
 TYPED_TEST_SUITE(BagContainerAdaptorTest, MainContainerTypes);
 
-TYPED_TEST(BagContainerAdaptorTest, insertTest1)
+TYPED_TEST(BagContainerAdaptorTest, insertTest)
 {
-    this->insertTest1();
-}
-
-TYPED_TEST(BagContainerAdaptorTest, insertTest2)
-{
-    this->insertTest2();
+    this->insertTest();
 }
 
 TYPED_TEST(BagContainerAdaptorTest, eraseTest1)

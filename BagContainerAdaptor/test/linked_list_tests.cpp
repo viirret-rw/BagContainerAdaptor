@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 
 #include <BagContainerAdaptor/bag_container_adaptor.hpp>
+#include <BagContainerAdaptor/linked_list.hpp>
 
 template <typename IteratorType>
 class IteratorSTLTest : public ::testing::Test

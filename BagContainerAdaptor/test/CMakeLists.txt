@@ -8,8 +8,7 @@ set(CMAKE_STANDARD_REQUIRED ON)
 
 add_subdirectory(.. BagContainerAdaptorDir)
 
-#add_executable(ContainerAdaptorTests legacy_forward_iterator_tests.cpp bag_container_adaptor_tests.cpp linked_list_tests.cpp front_and_back_tests.cpp main.cpp)
-add_executable(ContainerAdaptorTests test.cpp)
+add_executable(ContainerAdaptorTests legacy_forward_iterator_tests.cpp bag_container_adaptor_tests.cpp linked_list_tests.cpp front_and_back_tests.cpp main.cpp)
 
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})

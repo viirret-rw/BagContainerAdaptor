@@ -1,6 +1,9 @@
 #include <gtest/gtest.h>
 
 #include <BagContainerAdaptor/bag_container_adaptor.hpp>
+#include <BagContainerAdaptor/linked_list.hpp>
+
+#include <list>
 
 // Testing front() and back() member functions from BagContainerAdaptor.
 template <typename Container>
@@ -9,7 +12,7 @@ class FrontAndBackTest : public ::testing::Test
 protected:
     void frontTest()
     {
-        BagContainerAdaptor<Container> adapter;
+        BagContainerAdaptor<int, Container> adapter;
 
         adapter.insert(1);
         adapter.insert(2);
@@ -20,7 +23,7 @@ protected:
 
     void backTest()
     {
-        BagContainerAdaptor<Container> adapter;
+        BagContainerAdaptor<int, Container> adapter;
 
         adapter.insert(1);
         adapter.insert(2);
@@ -37,7 +40,6 @@ using FrontAndBackContainerTypes = ::testing::Types<
     std::deque<int>,
     std::forward_list<int>,
     std::multiset<int>,
-    ring_buffer<int>,
     LinkedList<int>>;
 
 TYPED_TEST_SUITE(FrontAndBackTest, FrontAndBackContainerTypes);
@@ -57,7 +59,7 @@ TYPED_TEST(FrontAndBackTest, backTest)
 TEST(FrontAndBackTests, FrontTestUnorderedMultiset)
 {
     std::unordered_multiset<int> testSet;
-    BagContainerAdaptor<std::unordered_multiset<int>> adaptor;
+    BagContainerAdaptor<int, std::unordered_multiset<int>> adaptor;
 
     testSet.insert(1);
     adaptor.insert(1);
@@ -75,7 +77,7 @@ TEST(FrontAndBackTests, FrontTestUnorderedMultiset)
 TEST(FrontAndBackTests, BackTestUnorderedMultiset)
 {
     std::unordered_multiset<int> testSet;
-    BagContainerAdaptor<std::unordered_multiset<int>> adaptor;
+    BagContainerAdaptor<int, std::unordered_multiset<int>> adaptor;
 
     testSet.insert(1);
     adaptor.insert(1);

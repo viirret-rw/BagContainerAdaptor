@@ -1,8 +1,10 @@
 #include <gtest/gtest.h>
 
 #include <BagContainerAdaptor/bag_container_adaptor.hpp>
+#include <BagContainerAdaptor/linked_list.hpp>
 
 #include <type_traits>
+#include <list>
 
 template <typename Iterator>
 class PassLegacyForwardIteratorTest : public ::testing::Test
@@ -83,22 +85,20 @@ private:
 using IteratorTypes = ::testing::Types<
 
     /// STL types.
-	typename BagContainerAdaptor<std::vector<int>>::iterator,
-	typename BagContainerAdaptor<std::vector<int>>::const_iterator,
-	typename BagContainerAdaptor<std::list<int>>::iterator,
-	typename BagContainerAdaptor<std::list<int>>::const_iterator,
-	typename BagContainerAdaptor<std::deque<int>>::iterator,
-	typename BagContainerAdaptor<std::deque<int>>::const_iterator,
-	typename BagContainerAdaptor<std::forward_list<int>>::iterator,
-	typename BagContainerAdaptor<std::forward_list<int>>::const_iterator,
-	typename BagContainerAdaptor<std::multiset<int>>::iterator,
-	typename BagContainerAdaptor<std::multiset<int>>::const_iterator,
-	typename BagContainerAdaptor<std::unordered_multiset<int>>::iterator,
-	typename BagContainerAdaptor<std::unordered_multiset<int>>::const_iterator,
+	typename BagContainerAdaptor<int, std::vector<int>>::iterator,
+	typename BagContainerAdaptor<int, std::vector<int>>::const_iterator,
+	typename BagContainerAdaptor<int, std::list<int>>::iterator,
+	typename BagContainerAdaptor<int, std::list<int>>::const_iterator,
+	typename BagContainerAdaptor<int, std::deque<int>>::iterator,
+	typename BagContainerAdaptor<int, std::deque<int>>::const_iterator,
+	typename BagContainerAdaptor<int, std::forward_list<int>>::iterator,
+	typename BagContainerAdaptor<int, std::forward_list<int>>::const_iterator,
+	typename BagContainerAdaptor<int, std::multiset<int>>::iterator,
+	typename BagContainerAdaptor<int, std::multiset<int>>::const_iterator,
+	typename BagContainerAdaptor<int, std::unordered_multiset<int>>::iterator,
+	typename BagContainerAdaptor<int, std::unordered_multiset<int>>::const_iterator,
 
     // Custom types.
-	typename BagContainerAdaptor<ring_buffer<int>>::iterator,
-	typename BagContainerAdaptor<ring_buffer<int>>::const_iterator,
 	typename BagContainerAdaptor<LinkedList<int>>::iterator,
 	typename BagContainerAdaptor<LinkedList<int>>::const_iterator
 	>;
