@@ -62,17 +62,18 @@ protected:
 
         EXPECT_EQ(adapter.size(), 10);
 
-        adapter.erase(adapter.begin(), adapter.end());
+        adapter.erase(std::next(adapter.begin()));
 
-        // std::forward_list has always one extra element before the first element.
-        if (std::is_same<Container, std::forward_list<typename Container::value_type>>::value)
+        for (auto it = adapter.begin(); it != adapter.end(); it = std::next(it))
         {
-            EXPECT_EQ(adapter.size(), 1);
+            /// std::unordered_multiset stores the elements in different order.
+            if (!std::is_same<Container, std::unordered_multiset<typename Container::value_type>>::value)
+            {
+                EXPECT_TRUE(*it != 2);
+            }
         }
-        else
-        {
-            EXPECT_EQ(adapter.size(), 0);
-        }
+
+        EXPECT_EQ(adapter.size(), 9);
     }
 
     void eraseTestMultiple()
@@ -147,7 +148,7 @@ protected:
 
     void moveConstructorTest()
     {
-        Container container {1, 2, 3};
+        Container container{1, 2, 3};
 
         BagContainerAdaptor<int, Container> adapter(std::move(container));
 
@@ -224,7 +225,7 @@ TYPED_TEST(BagContainerAdaptorTest, eraseTest2)
     this->eraseTest2();
 }
 
-TYPED_TEST(BagContainerAdaptorTest, eraseTest3)
+TYPED_TEST(BagContainerAdaptorTest, eraseTest4)
 {
     this->eraseTest3();
 }

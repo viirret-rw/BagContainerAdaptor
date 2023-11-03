@@ -11,7 +11,7 @@
 /// Bag is an abstract data type that can store a collection of elements without regard to their order.
 /// Equal elements can appear multiple times in a bag. Although the elements container in a bag have no inherit order,
 /// iterating over the bag elements is guaranteed to visit each element exactly once.
-/// This bag takes in an stl container as a template argument and provides the same functionality for each container type
+/// This bag takes in a type and an stl container as a template arguments and provides the same functionality for each container type
 /// following the design pattern of an adapter.
 /// \tparam Type the type of the items in the underlying type.
 /// \tparam Container The underlying container type.
@@ -33,16 +33,6 @@ public:
     ///                      construction, providing a strong exception safety guarantee.
     BagContainerAdaptor() noexcept
     {
-    }
-
-    /// Destructor.
-    /// \post The `BagContainerAdaptor` object is destructed, and the `m_container` is deallocated, releasing any resources
-    ///       held by the container.
-    /// \exception noexcept The destructor is marked `noexcept` to guarantee no exceptions will be thrown during the
-    ///                      destruction, providing a strong exception safety guarantee.
-    ~BagContainerAdaptor() noexcept
-    {
-        deallocateContainer(m_container);
     }
 
     /// Move constructor.
@@ -105,7 +95,7 @@ public:
 
     /// Removes a specified element from the underlying container.
     /// \param elem An iterator pointing to the element to be removed from the underlying container.
-    /// \return Assumed next iteratator following the deleted element.
+    /// \return Assumed next iterator following the deleted element.
     /// \pre The `elem` iterator must be a valid iterator that points to a position within the underlying container.
     /// \post The element at the specified `elem` in the underlying container is removed, and the `BagContainerAdaptor` object
     ///       is modified accordingly.
@@ -113,6 +103,9 @@ public:
     ///            - For std::vector: std::out_of_range if the `elem` iterator is invalid.
     /// \note The iterator returned points to the element that follows the erased element in the underlying container. If `elem`
     ///         points to the assumed last element, the returned iterator is the `end()` iterator of the container.
+    /// \par Time complexity:
+    /// - O(1) For containers with constant-time erase operation (e.g., std::vector, std::unordered_set, std::unordered_map).
+    /// - O(n) For containers with linear-time erase operation (e.g., std::list, std::forward_list) where n is the number of elements.
     iterator erase(iterator elem)
     {
         return eraseImpl(m_container, elem);
@@ -120,7 +113,7 @@ public:
 
     /// Erase all elements that have the specified value in the underlying container.
     /// \param value The value of the elements that are removed.
-    /// \return An iterator following the last removed element.
+    /// \return The assumed next iterator following the last removed element.
     /// \post All elements equal to the specified value in the underlying container are removed, and the BagContainerAdaptor object
     ///       is modified accordingly.
     /// \exception Any exception that may be thrown by the underlying container's `erase` function.
@@ -131,29 +124,6 @@ public:
     iterator erase(const value_type& value)
     {
         return eraseImpl(m_container, value);
-    }
-
-    /// TODO this function does not manke much sense, as elements in bag don't have ranges.
-    /// maybe delete?
-
-    /// Erase all elements between two iterators from the underlying container.
-    /// \param first The first element in the range of elements being removed.
-    /// \param last The last element of the range of the elements being removed.
-    /// \tparam FirstType The type of iterator for the first element in the range.
-    /// \tparam LastType The type of iterator for the last element in the range.
-    /// \return An iterator following the last removed element.
-    /// \post All elements between the specified range [first, last] in the underlying container are removed, and the
-    ///       `BagContainerAdaptor` object is modified accordingly.
-    /// \exception Depending on the underlying container's erase operation, this function might throw exceptions like:
-    ///            - For std::vector with move iterator: std::out_of_range if the iterators are invalid or if the move constructor
-    ///                                                of the contained type throws an exception.
-    ///            - For other containers: No exceptions are thrown by the erase operation itself unless specified by the container.
-    /// \note The iterator returned points to the element that follows the last removed element in the underlying container. If no
-    ///       elements are removed, the returned iterator is the one pointed to by the "last" iterator parameter.
-    template <typename FirstType, typename LastType>
-    iterator erase(FirstType first, LastType last)
-    {
-        return eraseImpl(m_container, first, last);
     }
 
     /// Swap the contents of two BagContainerAdaptors.
@@ -178,6 +148,7 @@ public:
     }
 
     /// Get iterator pointing to the one past the last element in the underlying container.
+    /// "Last" in reference to the implied iteration order withing the container.
     /// \return Iterator pointing one past the last element in the underlying container.
     /// \exception noexcept No exceptions are thrown by this operation.
     iterator end() noexcept
@@ -195,6 +166,7 @@ public:
     }
 
     /// Get constant iterator pointing one past the last element in the underlying container.
+    /// "Last" in reference to the implied iteration order withing the container.
     /// \return Contant iterator pointing one past the last element in the underlying container.
     /// \exception noexcept No exceptions are thrown by this operation.
     const_iterator cend() const noexcept
@@ -229,8 +201,8 @@ public:
         return frontImpl(m_container);
     }
 
-    /// Get reference to the first element in the underlying container in const context.
-    /// \return Reference to the first element in the underlying container.
+    /// Get reference to the implied first element in the underlying container in const context.
+    /// \return Reference to the implied first element in the underlying container.
     /// \pre The container must not be empty.
     /// \exception noexcept No exceptions are thrown by this operation.
     const value_type& front() const noexcept
@@ -238,30 +210,39 @@ public:
         return frontImpl(m_container);
     }
 
-    /// TODO this function has non-intuitive time complexity, which should be documented.
     /// Get reference to the implied last element in the underlying container.
     /// \return Reference to the implied last element in the underlying container.
     /// \pre The container must not be empty.
     /// \exception noexcept No exceptions are thrown by this operation.
+    /// \par Time complexity:
+    /// - 0(1) For containers that support the .back() member function, and std::multiset.
+    /// - 0(n) For std::forward_list and std::unordered_multiset.
     value_type& back() noexcept
     {
         return backImpl(m_container);
     }
 
-    /// TODO this implementation is incorrect for containers that don't support .back()
     /// Get reference to the implied last element in the underlying container.
     /// \return Reference to the implied last element in the underlying container.
     /// \pre The container must not be empty.
     /// \exception noexcept No exceptions are thrown by this operation.
+    /// \par Time complexity:
+    /// - 0(1) For containers that support the .back() member function, and std::multiset.
+    /// - 0(n) For std::forward_list and std::unordered_multiset.
     const value_type& back() const noexcept
     {
-        return m_container.back();
+        return backImpl(m_container);
     }
 
-    /// This function has non-intuitive time complexity, which should be documented.
     /// Get the amount of elements in the underlying container.
     /// \return The amount of elements in the underlying container.
     /// \exception noexcept No exceptions are thrown by this operation.
+    /// \par Time complexity:
+    /// - O(1) For containers with constant-time size retrieval, such as std::unordered_multiset and std::queue.
+    /// These containers maintain an internal count of elements, allowing direct and constant-time access to the size.
+    /// - O(n) For containers with linear-time size retrieval, such as std::vector, std::deque, std::list and std::multiset.
+    /// These containers do not maintain an internal count of elements, requiring iteration through the elements
+    /// to determine the size, resulting in linear time complexity.
     std::size_t size() const noexcept
     {
         return sizeImpl(m_container);
@@ -276,29 +257,6 @@ public:
     }
 
 private:
-    /// \defgroup containerDestructors Functions called by destructor for different underlying container types.
-
-    /// Default destructor implementation.
-    /// \param bag Default container type.
-    /// \tparam C The underlying container type.
-    /// \post The function does nothing as the default implementation for deallocation.
-    /// \exception noexcept No exceptions are thrown by this operation.
-    /// \ingroup containerDestructors
-    template <typename C>
-    void deallocateContainer(C&) noexcept
-    {
-    }
-
-    /// Destructor specialization for std::deque.
-    /// \param bag BagContainerAdapter specialized for std::deque.
-    /// \post The internal container of BagContainerAdaptor (std::deque) is cleared.
-    /// \exception noexcept No exceptions are thrown by this operation.
-    /// \ingroup containerDestructors.
-    void deallocateContainer(BagContainerAdaptor<std::deque<value_type>>& bag) noexcept
-    {
-        bag.clear();
-    }
-
     /// \defgroup insertImplementations Insert functionality for various underlying container types.
 
     /// Insert element to the last position of the underlying container type.
@@ -336,11 +294,11 @@ private:
 
     /// \defgroup eraseImplementations Erase functionality for various underlying container types.
 
-    /// Erase item from the underlying container in the position of the iterator.
+    /// Erase item from the underlying container at the implied position of the iterator.
     /// \param container The underlying container type where the element is erased.
-    /// \param pos The position where the item is removed from the container.
+    /// \param pos The implied position where the item is removed from the container.
     /// \tparam C The underlying container type used for BagContainerAdaptor.
-    /// \return An iterator following the removed element.
+    /// \return Assumed next iterator following the deleted element.
     /// \pre The `container` must be a valid instance of the specified container type.
     /// \pre The `pos` iterator must be a valid iterator within the `container`.
     /// \post The element at the position specified by `pos` is removed from the `container`.
@@ -354,10 +312,10 @@ private:
         return container.erase(pos);
     }
 
-    /// Erase item from the underlying container in the position of the iterator specialized for std::forward_list.
+    /// Erase item from the underlying container at the implied position of the iterator specialized for std::forward_list.
     /// \param container The underlying container type where the element is erased.
     /// \param pos The position where the element is erased.
-    /// \return An iterator following the removed element.
+    /// \return Assumed next iterator following the removed element.
     /// \pre The `container` must be a valid instance of std::forward_list.
     /// \pre The `pos` iterator must be a valid iterator within the `container`.
     /// \post The element after the `pos` iterator is removed from the `container`.
@@ -367,14 +325,32 @@ private:
     /// \ingroup eraseImplementations
     iterator eraseImpl(std::forward_list<value_type>& container, iterator pos)
     {
-        return container.erase_after(pos);
+        if (pos == container.begin())
+        {
+            container.pop_front();
+            return container.begin();
+        }
+        else
+        {
+            auto prev = container.before_begin();
+            for (auto it = container.begin(); it != container.end(); ++it)
+            {
+                if (it == pos)
+                {
+                    return container.erase_after(prev);
+                }
+                prev = it;
+            }
+        }
+
+        return container.end();
     }
 
     /// Erase items from the underlying container that have specified value.
     /// \param container The underlying container type where the elements are erased.
     /// \param value The value of the removed elements.
     /// \tparam C The underlying container type used for BagContainerAdaptor.
-    /// \return An iterator following the last removed element.
+    /// \return An assumed next iterator of the last removed element.
     /// \pre The `container` must be a valid instance of the specified container type.
     /// \post All elements with the specified value are removed from the `container`.
     /// \exception Any exception that may be thrown by the underlying container's `erase` function.
@@ -383,12 +359,18 @@ private:
     template <typename C>
     iterator eraseImpl(C& container, const value_type& value)
     {
-        auto it = find(value);
+        auto it = container.begin();
 
         while (it != container.end())
         {
-            it = container.erase(it);
-            it = find(value);
+            if (*it == value)
+            {
+                it = container.erase(it);
+            }
+            else
+            {
+                ++it;
+            }
         }
         return it;
     }
@@ -422,45 +404,6 @@ private:
         return current;
     }
 
-    /// Erase items from the underlying container type between two iterators.
-    /// \param container The underlying container type where the elements are erased.
-    /// \param first The first element in the range of elements to be removed.
-    /// \param last The last element in the range of elements to be removed.
-    /// \tparam C The underlying container type used for BagContainerAdaptor.
-    /// \tparam FirstType The type of iterator for the first removed element.
-    /// \tparam LastType The type of iterator for the last removed element.
-    /// \return An iterator following the last removed element.
-    /// \pre The `container` must be a valid instance of a container type that supports range erasure,
-    ///      and the range defined by `first` and `last` must be valid within the container.
-    /// \post All elements within the specified range are removed from the `container`.
-    /// \exception Any exception that may be thrown by the underlying container's `erase` function.
-    ///         This typically includes exceptions like those related to invalid iterators or invalid operations on the container.
-    /// \ingroup eraseImplementations
-    template <typename C, typename FirstType, typename LastType>
-    iterator eraseImpl(C& container, FirstType first, LastType last)
-    {
-        return container.erase(first, last);
-    }
-
-    /// Erase items from the underlying container type between two iterator specialized for std::forward_list.
-    /// \param container The underlying container type where the elements are erased.
-    /// \param first The first element in the range of elements to be removed.
-    /// \param last The last element in the range of elements to be removed.
-    /// \tparam FirstType The iterator type pointing to the first element to be removed.
-    /// \tparam LastType The iterator type pointing to the last element to be removed.
-    /// \return An iterator following the last removed element.
-    /// \pre The `container` must be a valid instance of std::forward_list<value_type> or a compatible type,
-    ///      and the range defined by `first` and `last` must be valid within the container.
-    /// \post All elements within the specified range are removed from the `container`.
-    /// \exception Any exception that may be thrown by the underlying container's `erase_after` function.
-    ///         This typically includes exceptions like those related to invalid iterators or invalid operations on the container.
-    /// \ingroup eraseImplementations
-    template <typename FirstType, typename LastType>
-    iterator eraseImpl(std::forward_list<value_type>& container, FirstType first, LastType last)
-    {
-        return container.erase_after(first, last);
-    }
-
     /// \defgroup frontImplementations Functionality for getting the first element for various container types.
 
     /// Front function implementation for container types that have the front() member function.
@@ -468,7 +411,7 @@ private:
     /// \tparam C The underlying container type used for BagContainerAdaptor.
     /// \pre The `container` must be a valid instance of the specified container type, and the container must not be empty.
     /// \exception noexcept No exceptions are thrown by this operation.
-    /// \return Reference to the first item in underlying container.
+    /// \return Reference to the implied first item in underlying container.
     /// \ingroup frontImplementations
     template <typename C>
     value_type& frontImpl(C& container) noexcept
@@ -479,7 +422,7 @@ private:
     /// Front function implementation for container types that have the front() member function in const context.
     /// \param container The underlying container type where the element is accessed.
     /// \tparam C The underlying container type used for BagContainerAdaptor.
-    /// \return Reference to the first item in underlying container.
+    /// \return Reference to the implied first item in underlying container.
     /// \pre The `container` must be a valid instance of the specified container type, and the container must not be empty.
     /// \exception noexcept No exceptions are thrown by this operation.
     /// \ingroup frontImplementations
@@ -519,7 +462,7 @@ private:
     /// \ingroup frontImplementations
     value_type& frontImpl(std::multiset<value_type>& container) noexcept
     {
-        // Using const_cast here because the value_type of std::multiset is constant.
+        // Using const_cast here because the iterator of std::multiset is constant.
         return const_cast<value_type&>(*container.begin());
     }
 
@@ -542,7 +485,7 @@ private:
     /// \ingroup frontImplementations
     value_type& frontImpl(std::unordered_multiset<value_type>& container) noexcept
     {
-        // Using const_cast here because the value_type of std::unordered_multiset is constant.
+        // Using const_cast here because the iterator std::unordered_multiset is constant.
         return const_cast<value_type&>(*container.begin());
     }
 
@@ -702,17 +645,6 @@ private:
     std::size_t sizeImpl(C& container) const noexcept
     {
         return container.size();
-    }
-
-    /// Get the amount of elements specialized for std::forward_list.
-    /// \param container The underlying container that we get the amount of elements from.
-    /// \return The amount of elements in the underlying container type.
-    /// \pre The `container` must be a valid instance of std::forward_list.
-    /// \exception noexcept No exceptions are thrown by this operation.
-    /// \ingroup sizeImplementations
-    std::size_t sizeImpl(std::forward_list<value_type>& container) const noexcept
-    {
-        return std::distance(container.begin(), container.end());
     }
 
     /// Get the amount of elements specialized for const std::forward_list.
