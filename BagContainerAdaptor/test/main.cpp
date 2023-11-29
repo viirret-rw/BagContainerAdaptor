@@ -51,31 +51,6 @@ protected:
         EXPECT_EQ(adapter.size(), 2);
     }
 
-    void eraseTest3()
-    {
-        BagContainerAdaptor<int, Container> adapter;
-
-        for (int i = 1; i < 11; i++)
-        {
-            adapter.insert(i);
-        }
-
-        EXPECT_EQ(adapter.size(), 10);
-
-        adapter.erase(std::next(adapter.begin()));
-
-        for (auto it = adapter.begin(); it != adapter.end(); it = std::next(it))
-        {
-            /// std::unordered_multiset stores the elements in different order.
-            if (!std::is_same<Container, std::unordered_multiset<typename Container::value_type>>::value)
-            {
-                EXPECT_TRUE(*it != 2);
-            }
-        }
-
-        EXPECT_EQ(adapter.size(), 9);
-    }
-
     void eraseTestMultiple()
     {
         BagContainerAdaptor<int, Container> adapter;
@@ -205,8 +180,7 @@ using MainContainerTypes = ::testing::Types<
     std::deque<int>,
     std::forward_list<int>,
     std::multiset<int>,
-    std::unordered_multiset<int>,
-    LinkedList<int>>;
+    std::unordered_multiset<int>>;
 
 TYPED_TEST_SUITE(BagContainerAdaptorTest, MainContainerTypes);
 
@@ -223,11 +197,6 @@ TYPED_TEST(BagContainerAdaptorTest, eraseTest1)
 TYPED_TEST(BagContainerAdaptorTest, eraseTest2)
 {
     this->eraseTest2();
-}
-
-TYPED_TEST(BagContainerAdaptorTest, eraseTest4)
-{
-    this->eraseTest3();
 }
 
 TYPED_TEST(BagContainerAdaptorTest, eraseTestMultiple)

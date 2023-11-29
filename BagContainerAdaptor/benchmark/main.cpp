@@ -103,13 +103,6 @@ void runBenchmarks(size_t amount, const T& value, const T& target)
     std::cout << "unordered_multiset\n";
     BenchmarkRunner<std::unordered_multiset<T>>::runBenchmarks(amount, value, target);
     std::cout << "\n";
-
-    std::cout << "LinkedList\n";
-    BenchmarkRunner<LinkedList<T>>::runBenchmarks(amount, value, target);
-    std::cout << "\n";
-
-    std::cout << "RingBuffer\n";
-    BenchmarkRunner<ring_buffer<T>>::runBenchmarks(amount, value, target);
 }
 
 void runExtraBenchmarks()
@@ -155,9 +148,6 @@ void runExtraBenchmarks()
 
 int main()
 {
-    // These runBenchmarks() calls are only made with primitives,
-    // because std::unordered_multiset sucks.
-
     std::cout << "int, 10000 iterations\n";
     runBenchmarks<int>(10000, 5, 6);
     std::cout << "\n";
@@ -166,7 +156,7 @@ int main()
     runBenchmarks<double>(10000, 0.2, 0.5);
     std::cout << "\n";
 
-	runExtraBenchmarks();
+	//runExtraBenchmarks();
 
     return 0;
 }

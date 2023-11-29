@@ -3,9 +3,8 @@
 #include <BagContainerAdaptor/bag_container_adaptor.hpp>
 #include <BagContainerAdaptor/linked_list.hpp>
 
-#include <list>
-
-// Testing front() and back() member functions from BagContainerAdaptor.
+// Testing front() and back() member functions for types in bag container adaptor that
+// have normal order for items in the container.
 template <typename Container>
 class FrontAndBackTest : public ::testing::Test
 {
@@ -38,9 +37,7 @@ using FrontAndBackContainerTypes = ::testing::Types<
     std::list<int>,
     std::vector<int>,
     std::deque<int>,
-    std::forward_list<int>,
-    std::multiset<int>,
-    LinkedList<int>>;
+    std::multiset<int>>;
 
 TYPED_TEST_SUITE(FrontAndBackTest, FrontAndBackContainerTypes);
 
@@ -54,46 +51,77 @@ TYPED_TEST(FrontAndBackTest, backTest)
     this->backTest();
 }
 
-// Because std::unordered_multiset does not have front() or back() member
-// functions we have to create own tests for that type.
-TEST(FrontAndBackTests, FrontTestUnorderedMultiset)
+// Testing front() and back() member functions for types in bag container adaptor that
+// have reversed order for items in the container.
+template <typename Container>
+class FrontAndBackTestReversed : public ::testing::Test
 {
-    std::unordered_multiset<int> testSet;
-    BagContainerAdaptor<int, std::unordered_multiset<int>> adaptor;
+protected:
+	void frontTest()
+	{
+		Container testSet;
+		BagContainerAdaptor<int, Container> adaptor;
 
-    testSet.insert(1);
-    adaptor.insert(1);
+		for (int i = 1; i < 4; i++)
+		{
+			insertValues(testSet, i);
+			adaptor.insert(i);
+		}
 
-    testSet.insert(2);
-    adaptor.insert(2);
+		EXPECT_EQ(*testSet.begin(), adaptor.front());
+		EXPECT_EQ(3, adaptor.front());
+	}
 
-    testSet.insert(3);
-    adaptor.insert(3);
+	void backTest()
+	{
+		Container testSet;
+		BagContainerAdaptor<int, Container> adaptor;
 
-    EXPECT_EQ(*testSet.begin(), adaptor.front());
-    EXPECT_EQ(3, adaptor.front());
+		for (int i = 1; i < 4; i++)
+		{
+			insertValues(testSet, i);
+			adaptor.insert(i);
+		}
+		
+		auto testSetLast = testSet.begin();
+		for (auto it = testSetLast; it != testSet.end(); it++)
+		{
+			testSetLast = it;
+		}
+
+		EXPECT_EQ(*testSetLast, adaptor.back());
+		EXPECT_EQ(1, adaptor.back());
+	}
+
+private:
+	template <typename C = Container>
+	typename std::enable_if<std::is_same<C, std::forward_list<typename C::value_type>>::value>::type
+	insertValues(Container& testSet, typename C::value_type value) 
+	{
+		testSet.insert_after(testSet.before_begin(), value);
+	}
+
+	template <typename C = Container>
+	typename std::enable_if<!std::is_same<C, std::forward_list<typename C::value_type>>::value>::type
+	insertValues(Container& testSet, typename C::value_type value) 
+	{
+		testSet.insert(value);
+	}
+};
+
+using FrontAndBackReverseContainerTypes = ::testing::Types<
+    std::forward_list<int>,
+    std::unordered_multiset<int>>;
+
+TYPED_TEST_SUITE(FrontAndBackTestReversed, FrontAndBackReverseContainerTypes);
+
+TYPED_TEST(FrontAndBackTestReversed, frontTest)
+{
+    this->frontTest();
 }
 
-TEST(FrontAndBackTests, BackTestUnorderedMultiset)
+TYPED_TEST(FrontAndBackTestReversed, backTest)
 {
-    std::unordered_multiset<int> testSet;
-    BagContainerAdaptor<int, std::unordered_multiset<int>> adaptor;
-
-    testSet.insert(1);
-    adaptor.insert(1);
-
-    testSet.insert(2);
-    adaptor.insert(2);
-
-    testSet.insert(3);
-    adaptor.insert(3);
-
-    auto testSetLast = testSet.begin();
-    for (auto it = testSetLast; it != testSet.end(); it++)
-    {
-        testSetLast = it;
-    }
-
-    EXPECT_EQ(*testSetLast, adaptor.back());
-    EXPECT_EQ(1, adaptor.back());
+    this->backTest();
 }
+

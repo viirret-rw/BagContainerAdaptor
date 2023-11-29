@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <deque>
 #include <forward_list>
+#include <list>
 #include <set>
 #include <unordered_set>
 #include <vector>
@@ -11,7 +12,7 @@
 /// Bag is an abstract data type that can store a collection of elements without regard to their order.
 /// Equal elements can appear multiple times in a bag. Although the elements container in a bag have no inherit order,
 /// iterating over the bag elements is guaranteed to visit each element exactly once.
-/// This bag takes in a type and an stl container as a template arguments and provides the same functionality for each container type
+/// This bag takes in a type and an STL-compatible container as a template arguments and provides the same functionality for each container type
 /// following the design pattern of an adapter.
 /// \tparam Type the type of the items in the underlying type.
 /// \tparam Container The underlying container type.
@@ -29,18 +30,14 @@ public:
     using const_iterator = typename Container::const_iterator;
 
     /// Default constructor.
-    /// \exception noexcept The constructor is marked `noexcept` to guarantee no exceptions will be thrown during the
-    ///                      construction, providing a strong exception safety guarantee.
-    BagContainerAdaptor() noexcept
-    {
-    }
+    /// \exception noexcept No exceptions are thrown by this operation.
+    BagContainerAdaptor() noexcept = default;
 
     /// Move constructor.
     /// \param container The underlying container from which the `BagContainerAdaptor` is constructed.
     /// \pre The underlying container must have a move constructor to support moving its contents.
     /// \post The `BagContainerAdapter` is constructed, taking ownership of the contents of the underlying container.
-    /// \exception noexcept The move constructor is marked noexcept to guarantee no exceptions will be
-    /// 					thrown during the move operation, providing strong exception safety.
+    /// \exception noexcept No exceptions are thrown by this operation.
     BagContainerAdaptor(Container&& container) noexcept
         : m_container(std::move(container))
     {
@@ -52,8 +49,7 @@ public:
     /// \pre The `Container` type must have a move assignment operator to support moving its contents.
     /// \post The current `BagContainerAdaptor` object takes ownership of the contents of the other
     ///		  `BagContainerAdaptor`. The other `BagContainerAdaptor` is left in a valid but unspecified state.
-    /// \exception noexcept The move assignment operator is marked noexcept to guarantee no exceptions will be
-    /// 					thrown during the move assignment, providing a string exception safety.
+    /// \exception noexcept No exceptions are thrown by this operation.
     BagContainerAdaptor& operator=(BagContainerAdaptor&& other) noexcept
     {
         if (this != &other)
@@ -65,6 +61,9 @@ public:
 
     /// Copy constructor.
     /// \param other The other BagContainerAdaptor where we copy from.
+    /// \pre Assumes the `other` BagContainerAdaptor is a valid instance
+    /// \post Creates a new BagContainerAdaptor instance that is a copy of `other`.
+    /// \exception noexcept No exceptions are thrown by this operation.
     BagContainerAdaptor(const BagContainerAdaptor& other) noexcept
         : m_container(other.m_container)
     {
@@ -72,6 +71,9 @@ public:
 
     /// Copy assignment operator.
     /// \param other The other BagContainerAdaptor where we copy from.
+    /// \pre Assumes that both `this` and `other` BagContainerAdaptors are valid instances.
+    /// \post Copies the content of `other` into `this` BagContainerAdaptor.
+    /// \exception noexcept No exceptions are thrown by this operation.
     BagContainerAdaptor& operator=(const BagContainerAdaptor& other) noexcept
     {
         if (this != &other)
@@ -95,7 +97,6 @@ public:
 
     /// Removes a specified element from the underlying container.
     /// \param elem An iterator pointing to the element to be removed from the underlying container.
-    /// \return Assumed next iterator following the deleted element.
     /// \pre The `elem` iterator must be a valid iterator that points to a position within the underlying container.
     /// \post The element at the specified `elem` in the underlying container is removed, and the `BagContainerAdaptor` object
     ///       is modified accordingly.
@@ -106,14 +107,13 @@ public:
     /// \par Time complexity:
     /// - O(1) For containers with constant-time erase operation (e.g., std::vector, std::unordered_set, std::unordered_map).
     /// - O(n) For containers with linear-time erase operation (e.g., std::list, std::forward_list) where n is the number of elements.
-    iterator erase(iterator elem)
+    void erase(iterator elem)
     {
         return eraseImpl(m_container, elem);
     }
 
     /// Erase all elements that have the specified value in the underlying container.
     /// \param value The value of the elements that are removed.
-    /// \return The assumed next iterator following the last removed element.
     /// \post All elements equal to the specified value in the underlying container are removed, and the BagContainerAdaptor object
     ///       is modified accordingly.
     /// \exception Any exception that may be thrown by the underlying container's `erase` function.
@@ -121,7 +121,7 @@ public:
     /// \note The iterator returned points to the element that follows the last removed element in the underlying container. If no
     ///         element with the specified value is found or if all occurrences of the value are removed, the returned iterator is
     ///         the end() iterator of the container.
-    iterator erase(const value_type& value)
+    void erase(const value_type& value)
     {
         return eraseImpl(m_container, value);
     }
@@ -192,15 +192,6 @@ public:
         return findImpl(m_container, value);
     }
 
-    /// Get reference to the implied first element in the underlying container.
-    /// \return Reference to the implied first element in the underlying container.
-    /// \pre The container must not be empty.
-    /// \exception noexcept No exceptions are thrown by this operation.
-    value_type& front() noexcept
-    {
-        return frontImpl(m_container);
-    }
-
     /// Get reference to the implied first element in the underlying container in const context.
     /// \return Reference to the implied first element in the underlying container.
     /// \pre The container must not be empty.
@@ -208,18 +199,6 @@ public:
     const value_type& front() const noexcept
     {
         return frontImpl(m_container);
-    }
-
-    /// Get reference to the implied last element in the underlying container.
-    /// \return Reference to the implied last element in the underlying container.
-    /// \pre The container must not be empty.
-    /// \exception noexcept No exceptions are thrown by this operation.
-    /// \par Time complexity:
-    /// - 0(1) For containers that support the .back() member function, and std::multiset.
-    /// - 0(n) For std::forward_list and std::unordered_multiset.
-    value_type& back() noexcept
-    {
-        return backImpl(m_container);
     }
 
     /// Get reference to the implied last element in the underlying container.
@@ -284,12 +263,7 @@ private:
     /// \ingroup insertImplementations
     iterator insertImpl(std::forward_list<value_type>& container, const value_type& value)
     {
-        auto itPrev = container.before_begin();
-        for (auto it = container.begin(); it != container.end(); ++it)
-        {
-            itPrev = it;
-        }
-        return container.insert_after(itPrev, value);
+        return container.insert_after(container.before_begin(), value);
     }
 
     /// \defgroup eraseImplementations Erase functionality for various underlying container types.
@@ -307,15 +281,14 @@ private:
     /// 		   This includes exceptions such as `std::bad_alloc` when memory allocation fails.
     /// \ingroup eraseImplementations
     template <typename C>
-    iterator eraseImpl(C& container, iterator pos)
+    void eraseImpl(C& container, iterator pos)
     {
-        return container.erase(pos);
+        container.erase(pos);
     }
 
     /// Erase item from the underlying container at the implied position of the iterator specialized for std::forward_list.
     /// \param container The underlying container type where the element is erased.
     /// \param pos The position where the element is erased.
-    /// \return Assumed next iterator following the removed element.
     /// \pre The `container` must be a valid instance of std::forward_list.
     /// \pre The `pos` iterator must be a valid iterator within the `container`.
     /// \post The element after the `pos` iterator is removed from the `container`.
@@ -323,12 +296,12 @@ private:
     /// \exception Any exception that may be thrown by the underlying container's `erase_after` function.
     ///         This typically includes exceptions like those related to invalid iterators or invalid operations on the container.
     /// \ingroup eraseImplementations
-    iterator eraseImpl(std::forward_list<value_type>& container, iterator pos)
+    void eraseImpl(std::forward_list<value_type>& container, iterator pos)
     {
         if (pos == container.begin())
         {
             container.pop_front();
-            return container.begin();
+            container.begin();
         }
         else
         {
@@ -337,54 +310,38 @@ private:
             {
                 if (it == pos)
                 {
-                    return container.erase_after(prev);
+                    container.erase_after(prev);
                 }
                 prev = it;
             }
         }
-
-        return container.end();
     }
 
     /// Erase items from the underlying container that have specified value.
     /// \param container The underlying container type where the elements are erased.
     /// \param value The value of the removed elements.
     /// \tparam C The underlying container type used for BagContainerAdaptor.
-    /// \return An assumed next iterator of the last removed element.
     /// \pre The `container` must be a valid instance of the specified container type.
+    /// \pre The `container` must have a member function erase.
     /// \post All elements with the specified value are removed from the `container`.
     /// \exception Any exception that may be thrown by the underlying container's `erase` function.
     ///         This typically includes exceptions like those related to invalid iterators or invalid operations on the container.
     /// \ingroup eraseImplementations
     template <typename C>
-    iterator eraseImpl(C& container, const value_type& value)
+    void eraseImpl(C& container, const value_type& value)
     {
-        auto it = container.begin();
-
-        while (it != container.end())
-        {
-            if (*it == value)
-            {
-                it = container.erase(it);
-            }
-            else
-            {
-                ++it;
-            }
-        }
-        return it;
+        container.erase(value);
     }
 
-    /// Erase items from the underlying container type that have specified value specialized for std::forward_list.
+    /// Erase items from the underlying container specialized for std::forward_list.
     /// \param container The underlying container type where the elements are erased.
     /// \param value The value of the removed elements.
-    /// \return An iterator following the last removed element.
     /// \pre The `container` must be a valid instance of std::forward_list.
-    /// \post All elements with the specified value are removed from the `container`.
+    /// \post All elements with the specified `value` are removed from the `container`.
     /// \exception Any exception that may be thrown by the underlying container's `erase` function.
     ///         This typically includes exceptions like those related to invalid iterators or invalid operations on the container.
     /// \ingroup eraseImplementations
-    iterator eraseImpl(std::forward_list<value_type>& container, const value_type& value)
+    void eraseImpl(std::forward_list<value_type>& container, const value_type& value)
     {
         auto previous = container.before_begin();
         auto current = container.begin();
@@ -401,23 +358,133 @@ private:
                 ++current;
             }
         }
-        return current;
+    }
+
+    /// Erase items from the underlying container type specialized for std::deque.
+    /// \param container The underlying container type where the elements are erased.
+    /// \param value The value of the to be removed elements.
+    /// \pre The `container` must be a valid instance of std::deque.
+    /// \pre The `container` must not be in an invalid state or uninitialized.
+    /// \post All elements with the specified value are removed from the `container`.
+    /// \exception Any exception that may be thrown by the underlying container's `erase` function.
+    ///         This typically includes exceptions like those related to invalid iterators or invalid operations on the container.
+    /// \ingroup eraseImplementations
+    void eraseImpl(std::deque<value_type>& container, const value_type& value)
+    {
+        for (auto it = container.begin(); it != container.end();)
+        {
+            if (*it == value)
+            {
+                while (it != container.end() - 1 && container.back() == value)
+                {
+                    container.pop_back();
+                }
+                if (it != container.end() - 1)
+                {
+                    std::iter_swap(it, container.end() - 1);
+                    container.pop_back();
+                }
+                else
+                {
+                    container.pop_back();
+                }
+            }
+            else
+            {
+                ++it;
+            }
+        }
+    }
+
+    /// Removes all occurrences of a specified value specialized for std::list.
+    /// \param container The underlying container type where the elements are erased.
+    /// \param value The value of the to be removed elements.
+    /// \pre The `container` must be a valid instance of std::list.
+    /// \pre The `container` must not be in an invalid state or uninitialized.
+    /// \post All elements with the specified value are removed from the `container`.
+    /// \exception Any exception that may be thrown by the underlying container's `erase` function.
+    ///         This typically includes exceptions like those related to invalid iterators or invalid operations on the container.
+    /// \ingroup eraseImplementations
+    void eraseImpl(std::list<value_type>& container, const value_type& value)
+    {
+        for (auto it = container.begin(); it != container.end();)
+        {
+            if (*it == value)
+            {
+                it = container.erase(it);
+            }
+            else
+            {
+                ++it;
+            }
+        }
+    }
+
+    /// Removes all occurrences of a specified value specialized for std::multiset.
+    /// \param container The underlying container type where the elements are erased.
+    /// \param value The value of the to be removed elements.
+    /// \pre The `container` must be a valid instance of std::multiset.
+    /// \pre The `container` must not be in an invalid state or uninitialized.
+    /// \post All elements with the specified value are removed from the `container`.
+    /// \exception Any exception that may be thrown by the underlying container's `erase` function.
+    ///         This typically includes exceptions like those related to invalid iterators or invalid operations on the container.
+    /// \ingroup eraseImplementations
+    void eraseImpl(std::multiset<value_type>& container, const value_type& value)
+    {
+        container.erase(container.equal_range(value).first, container.equal_range(value).second);
+    }
+
+    /// Removes all occurrences of a specified value specialized for std::unordered_multiset.
+    /// \param container The underlying container type where the elements are erased.
+    /// \param value The value of the to be removed elements.
+    /// \pre The `container` must be a valid instance of std::unordered_multiset.
+    /// \pre The `container` must not be in an invalid state or uninitialized.
+    /// \post All elements with the specified value are removed from the `container`.
+    /// \exception Any exception that may be thrown by the underlying container's `erase` function.
+    ///         This typically includes exceptions like those related to invalid iterators or invalid operations on the container.
+    /// \ingroup eraseImplementations
+    void eraseImpl(std::unordered_multiset<value_type>& container, const value_type& value)
+    {
+        container.erase(container.equal_range(value).first, container.equal_range(value).second);
+    }
+
+    /// Removes all occurrences of a specified value specialized for std::vector.
+    /// \param container The underlying container type where the elements are erased.
+    /// \param value The value of the to be removed elements.
+    /// \pre The `container` must be a valid instance of std::vector.
+    /// \pre The `container` must not be in an invalid state or uninitialized.
+    /// \post All elements with the specified value are removed from the `container`.
+    /// \exception Any exception that may be thrown by the underlying container's `erase` function.
+    ///         This typically includes exceptions like those related to invalid iterators or invalid operations on the container.
+    /// \ingroup eraseImplementations
+    void eraseImpl(std::vector<value_type>& container, const value_type& value)
+    {
+        for (auto it = container.begin(); it != container.end();)
+        {
+            if (*it == value)
+            {
+                while (it != container.end() - 1 && container.back() == value)
+                {
+                    container.pop_back();
+                }
+                if (it != container.end() - 1)
+                {
+                    std::iter_swap(it, container.end() - 1);
+                    container.pop_back();
+                }
+                else
+                {
+                    container.pop_back();
+                }
+            }
+            else
+            {
+                ++it;
+            }
+        }
     }
 
     /// \defgroup frontImplementations Functionality for getting the first element for various container types.
-
-    /// Front function implementation for container types that have the front() member function.
-    /// \param container The underlying container type where the element is accessed.
-    /// \tparam C The underlying container type used for BagContainerAdaptor.
-    /// \pre The `container` must be a valid instance of the specified container type, and the container must not be empty.
-    /// \exception noexcept No exceptions are thrown by this operation.
-    /// \return Reference to the implied first item in underlying container.
-    /// \ingroup frontImplementations
-    template <typename C>
-    value_type& frontImpl(C& container) noexcept
-    {
-        return container.front();
-    }
 
     /// Front function implementation for container types that have the front() member function in const context.
     /// \param container The underlying container type where the element is accessed.
@@ -432,20 +499,9 @@ private:
         return container.front();
     }
 
-    /// Front function specialization for std::forward_list.
-    /// \param container The underlying container type for BagContainerAdaptor that is std::forward_list.
-    /// \return Reference to the first item in underlying container.
-    /// \pre The `container` must be a valid instance of std::forward_list, and the container must not be empty.
-    /// \exception noexcept No exceptions are thrown by this operation.
-    /// \ingroup frontImplementations
-    value_type& frontImpl(std::forward_list<value_type>& container) noexcept
-    {
-        return *container.begin();
-    }
-
     /// Front function specialization for std::forward_list in const context.
     /// \param container The underlying container type for BagContainerAdaptor that is std::forward_list.
-    /// \return Reference to the first item in underlying container.
+    /// \return Reference to the assumed first item in underlying container.
     /// \pre The `container` must be a valid instance of const std::forward_list, and the container must not be empty.
     /// \exception noexcept No exceptions are thrown by this operation.
     /// \ingroup frontImplementations
@@ -454,21 +510,9 @@ private:
         return *container.cbegin();
     }
 
-    /// Front function specialization for std::multiset.
-    /// \param container The underlying container type for BagContainerAdaptor that is std::multiset.
-    /// \return Reference to the first item in underlying container.
-    /// \pre The `container` must be a valid instance of std::multiset, and the container must not be empty.
-    /// \exception noexcept No exceptions are thrown by this operation.
-    /// \ingroup frontImplementations
-    value_type& frontImpl(std::multiset<value_type>& container) noexcept
-    {
-        // Using const_cast here because the iterator of std::multiset is constant.
-        return const_cast<value_type&>(*container.begin());
-    }
-
     /// Front function specialization for std::multiset in const context.
     /// \param container The underlying container type for BagContainerAdaptor that is std::multiset.
-    /// \return Reference to the first item in underlying container.
+    /// \return Reference to the assumed first item in underlying container.
     /// \pre The `container` must be a valid instance of const std::multiset, and the container must not be empty.
     /// \exception noexcept No exceptions are thrown by this operation.
     /// \ingroup frontImplementations
@@ -477,21 +521,9 @@ private:
         return *container.cbegin();
     }
 
-    /// Front function specialization for std::unordered_multiset.
-    /// \param container The underlying container type for BagContainerAdaptor that is std::unordered_multiset.
-    /// \return Reference to the first item in underlying container.
-    /// \pre The `container` must be a valid instance of std::unordered_multiset, and the container must not be empty.
-    /// \exception noexcept No exceptions are thrown by this operation.
-    /// \ingroup frontImplementations
-    value_type& frontImpl(std::unordered_multiset<value_type>& container) noexcept
-    {
-        // Using const_cast here because the iterator std::unordered_multiset is constant.
-        return const_cast<value_type&>(*container.begin());
-    }
-
     /// Front function specialization for std::unordered_multiset in const context.
     /// \param container The underlying container type for BagContainerAdaptor that is std::unordered_multiset.
-    /// \return Reference to the first item in underlying container.
+    /// \return Reference to the assumed first item in underlying container.
     /// \pre The `container` must be a valid instance of const std::unordered_multiset, and the container must not be empty.
     /// \exception noexcept No exceptions are thrown by this operation.
     /// \ingroup frontImplementations
@@ -510,7 +542,7 @@ private:
     /// \exception noexcept No exceptions are thrown by this operation.
     /// \ingroup backImplementations
     template <typename C>
-    value_type& backImpl(C& container) noexcept
+    const value_type& backImpl(const C& container) const noexcept
     {
         return container.back();
     }
@@ -521,7 +553,7 @@ private:
     /// \pre The `container` must be a valid instance of std::forward_list, and the container must not be empty.
     /// \exception noexcept No exceptions are thrown by this operation.
     /// \ingroup backImplementations
-    value_type& backImpl(std::forward_list<value_type>& container) noexcept
+    const value_type& backImpl(const std::forward_list<value_type>& container) const noexcept
     {
         auto itLast = container.begin();
 
@@ -538,11 +570,9 @@ private:
     /// \pre The `container` must be a valid instance of std::multiset, and the container must not be empty.
     /// \exception noexcept No exceptions are thrown by this operation.
     /// \ingroup backImplementations
-    value_type& backImpl(std::multiset<value_type>& container) noexcept
+    const value_type& backImpl(const std::multiset<value_type>& container) const noexcept
     {
-        auto itLast = container.begin();
-        std::advance(itLast, container.size() - 1);
-        return const_cast<value_type&>(*itLast);
+        return const_cast<value_type&>(*container.rbegin());
     }
 
     /// Back function specialization for std::unordered_multiset.
@@ -551,7 +581,7 @@ private:
     /// \pre The `container` must be a valid instance of std::unordered_multiset, and the container must not be empty.
     /// \exception noexcept No exceptions are thrown by this operation.
     /// \ingroup backImplementations
-    value_type& backImpl(std::unordered_multiset<value_type>& container) noexcept
+    const value_type& backImpl(const std::unordered_multiset<value_type>& container) const noexcept
     {
         auto itLast = container.begin();
 
@@ -598,14 +628,14 @@ private:
         return container.find(value);
     }
 
-    // Find element from the underlying container in const context.
+    /// Find element from the underlying container in const context.
     /// \param container The underlying container type where the element is looked up.
     /// \param value The value that is looked up from the container.
     /// \return Constant iterator to the found element if found, or container.end().
     /// \exception noexcept No exceptions are thrown by this operation.
     /// \ingroup findImplementations
     template <typename C>
-    const_iterator findImpl(C& container, const value_type& value) const noexcept
+    const_iterator findImpl(const C& container, const value_type& value) const noexcept
     {
         return std::find(container.cbegin(), container.cend(), value);
     }
@@ -659,7 +689,7 @@ private:
     }
 
 private:
-    /// The underlying container type as member.
+    /// The underlying container type.
     Container m_container;
 };
 

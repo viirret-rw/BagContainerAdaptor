@@ -5,6 +5,7 @@
 
 #include <chrono>
 #include <functional>
+#include <iostream>
 
 // Insert, remove and lookup functions for BagContainerAdaptor and the underlying type.
 template <typename Container>
@@ -13,7 +14,7 @@ class Benchmark
 public:
     using value_type = typename Container::value_type;
 
-    static void containerInsert(size_t amount, value_type value)
+    static void containerInsert(size_t amount, const value_type& value)
     {
         Container container;
 
@@ -23,13 +24,13 @@ public:
         }
     }
 
-    static void bagInsert(size_t amount, value_type value)
+    static void bagInsert(size_t amount, const value_type& value)
     {
         BagContainerAdaptor<Container> adapter;
 
         for (size_t i = 0; i < amount; i++)
         {
-            adapter.insert(adapter.begin(), value);
+            adapter.insert(value);
         }
     }
 
@@ -42,7 +43,10 @@ public:
             container.insert(container.begin(), value);
         }
 
-        container.erase(container.begin(), container.end());
+		for (size_t i = 0; i < amount; i++)
+		{
+			container.erase(container.begin());
+		}
     }
 
     static void bagErase(size_t amount, const value_type& value)
@@ -51,13 +55,16 @@ public:
 
         for (size_t i = 0; i < amount; i++)
         {
-            adapter.insert(adapter.begin(), value);
+            adapter.insert(value);
         }
 
-        adapter.erase(adapter.begin(), adapter.end());
+		for (size_t i = 0; i < amount; i++)
+		{
+			adapter.erase(adapter.begin());
+		}
     }
 
-    static void containerLookup(size_t amount, value_type target)
+    static void containerLookup(size_t amount, const value_type& target)
     {
         Container container;
 
@@ -72,7 +79,7 @@ public:
             else
             {
                 typename Container::value_type temp = {};
-                container.insert(container.begin(), temp);
+                container.insert(temp);
             }
         }
 
@@ -84,7 +91,7 @@ public:
         }
     }
 
-    static void bagLookup(size_t amount, value_type target)
+    static void bagLookup(size_t amount, const value_type& target)
     {
         BagContainerAdaptor<Container> adapter;
 
@@ -94,12 +101,12 @@ public:
         {
             if (i == half)
             {
-                adapter.insert(adapter.begin(), target);
+                adapter.insert(target);
             }
             else
             {
                 typename Container::value_type temp = {};
-                adapter.insert(adapter.begin(), temp);
+                adapter.insert(temp);
             }
         }
 
