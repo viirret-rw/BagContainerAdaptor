@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>BagContainerAdapter: BagContainerAdaptor&lt; Container &gt; Class Template Reference</title>
+<title>BagContainerAdapter: BagContainerAdaptor&lt; Type, Container &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -66,7 +66,7 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="class_bag_container_adaptor-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">BagContainerAdaptor&lt; Container &gt; Class Template Reference</div>  </div>
+<div class="title">BagContainerAdaptor&lt; Type, Container &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -74,99 +74,85 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:ad24c8ff633fe1fc67a6932d484171e64"><td class="memItemLeft" align="right" valign="top"><a id="ad24c8ff633fe1fc67a6932d484171e64"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#ad24c8ff633fe1fc67a6932d484171e64">value_type</a> = typename Container::value_type</td></tr>
-<tr class="memdesc:ad24c8ff633fe1fc67a6932d484171e64"><td class="mdescLeft">&#160;</td><td class="mdescRight">The value type of the underlying container. <br /></td></tr>
-<tr class="separator:ad24c8ff633fe1fc67a6932d484171e64"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f128eb5ba209399e3d50c759265556d"><td class="memItemLeft" align="right" valign="top"><a id="a6f128eb5ba209399e3d50c759265556d"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a6f128eb5ba209399e3d50c759265556d">iterator</a> = typename Container::iterator</td></tr>
-<tr class="memdesc:a6f128eb5ba209399e3d50c759265556d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The iterator of the underlying container. <br /></td></tr>
-<tr class="separator:a6f128eb5ba209399e3d50c759265556d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e6fc94ba89ed54bd22fe6c82fa333e4"><td class="memItemLeft" align="right" valign="top"><a id="a5e6fc94ba89ed54bd22fe6c82fa333e4"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a5e6fc94ba89ed54bd22fe6c82fa333e4">const_iterator</a> = typename Container::const_iterator</td></tr>
-<tr class="memdesc:a5e6fc94ba89ed54bd22fe6c82fa333e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constant iterator of the underlying container. <br /></td></tr>
-<tr class="separator:a5e6fc94ba89ed54bd22fe6c82fa333e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada48418fde55d629869746bf6393ed29"><td class="memItemLeft" align="right" valign="top"><a id="ada48418fde55d629869746bf6393ed29"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#ada48418fde55d629869746bf6393ed29">value_type</a> = typename Container::value_type</td></tr>
+<tr class="memdesc:ada48418fde55d629869746bf6393ed29"><td class="mdescLeft">&#160;</td><td class="mdescRight">The value type of the underlying container. <br /></td></tr>
+<tr class="separator:ada48418fde55d629869746bf6393ed29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5a50af33c5d0540cfbd05ea531b677b"><td class="memItemLeft" align="right" valign="top"><a id="ac5a50af33c5d0540cfbd05ea531b677b"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#ac5a50af33c5d0540cfbd05ea531b677b">iterator</a> = typename Container::iterator</td></tr>
+<tr class="memdesc:ac5a50af33c5d0540cfbd05ea531b677b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The iterator of the underlying container. <br /></td></tr>
+<tr class="separator:ac5a50af33c5d0540cfbd05ea531b677b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a7b3b6c10f021b1021e343830d61bc0"><td class="memItemLeft" align="right" valign="top"><a id="a4a7b3b6c10f021b1021e343830d61bc0"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a4a7b3b6c10f021b1021e343830d61bc0">const_iterator</a> = typename Container::const_iterator</td></tr>
+<tr class="memdesc:a4a7b3b6c10f021b1021e343830d61bc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constant iterator of the underlying container. <br /></td></tr>
+<tr class="separator:a4a7b3b6c10f021b1021e343830d61bc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2cf060197bbd12173c3d024d4cd9340c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a2cf060197bbd12173c3d024d4cd9340c">BagContainerAdaptor</a> () noexcept</td></tr>
-<tr class="separator:a2cf060197bbd12173c3d024d4cd9340c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a097d36b7aa7498c5b05eaca8e0c022f4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a097d36b7aa7498c5b05eaca8e0c022f4">~BagContainerAdaptor</a> () noexcept</td></tr>
-<tr class="separator:a097d36b7aa7498c5b05eaca8e0c022f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a834d64da523993fd9cb0065b8c9b189e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a834d64da523993fd9cb0065b8c9b189e">BagContainerAdaptor</a> (Container &amp;&amp;container) noexcept</td></tr>
-<tr class="separator:a834d64da523993fd9cb0065b8c9b189e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6dabc10ce1ca996e156740f4cc94d70b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a6dabc10ce1ca996e156740f4cc94d70b">operator=</a> (<a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a> &amp;&amp;other) noexcept</td></tr>
-<tr class="separator:a6dabc10ce1ca996e156740f4cc94d70b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a898a6ba42681a9a69c941b82eac980ff"><td class="memTemplParams" colspan="2">template&lt;typename OtherContainer , typename  = std::enable_if&lt;std::is_same&lt;Container, OtherContainer&gt;::value&gt;&gt; </td></tr>
-<tr class="memitem:a898a6ba42681a9a69c941b82eac980ff"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a898a6ba42681a9a69c941b82eac980ff">BagContainerAdaptor</a> (<a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; OtherContainer &gt; &amp;&amp;other) noexcept</td></tr>
-<tr class="separator:a898a6ba42681a9a69c941b82eac980ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af18064390bf993205680d92b15e4e441"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#af18064390bf993205680d92b15e4e441">BagContainerAdaptor</a> (const <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a> &amp;other)=delete</td></tr>
-<tr class="separator:af18064390bf993205680d92b15e4e441"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d4d2dfcfc685d3687dfbe38853c991a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a0d4d2dfcfc685d3687dfbe38853c991a">operator=</a> (const <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a> &amp;other)=delete</td></tr>
-<tr class="separator:a0d4d2dfcfc685d3687dfbe38853c991a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe723f32fa16f846137a09908cbde0c9"><td class="memTemplParams" colspan="2">template&lt;typename Iterator &gt; </td></tr>
-<tr class="memitem:abe723f32fa16f846137a09908cbde0c9"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_bag_container_adaptor.html#a6f128eb5ba209399e3d50c759265556d">iterator</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#abe723f32fa16f846137a09908cbde0c9">insert</a> (Iterator pos, const <a class="el" href="class_bag_container_adaptor.html#ad24c8ff633fe1fc67a6932d484171e64">value_type</a> &amp;value)</td></tr>
-<tr class="separator:abe723f32fa16f846137a09908cbde0c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e43659c3da245fdb215087d5ab09adc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_bag_container_adaptor.html#a6f128eb5ba209399e3d50c759265556d">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a6e43659c3da245fdb215087d5ab09adc">insert</a> (const <a class="el" href="class_bag_container_adaptor.html#ad24c8ff633fe1fc67a6932d484171e64">value_type</a> &amp;value)</td></tr>
-<tr class="separator:a6e43659c3da245fdb215087d5ab09adc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afcfdfe080192e1fb449a7bb5472598f2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_bag_container_adaptor.html#a6f128eb5ba209399e3d50c759265556d">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#afcfdfe080192e1fb449a7bb5472598f2">erase</a> (<a class="el" href="class_bag_container_adaptor.html#a6f128eb5ba209399e3d50c759265556d">iterator</a> pos)</td></tr>
-<tr class="separator:afcfdfe080192e1fb449a7bb5472598f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac651b5789794ae47cb0aa7e3b5687301"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_bag_container_adaptor.html#a6f128eb5ba209399e3d50c759265556d">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#ac651b5789794ae47cb0aa7e3b5687301">erase</a> (const <a class="el" href="class_bag_container_adaptor.html#ad24c8ff633fe1fc67a6932d484171e64">value_type</a> &amp;value)</td></tr>
-<tr class="separator:ac651b5789794ae47cb0aa7e3b5687301"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e76d5099f170459192711ebae01a4e7"><td class="memTemplParams" colspan="2">template&lt;typename FirstType , typename LastType &gt; </td></tr>
-<tr class="memitem:a2e76d5099f170459192711ebae01a4e7"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_bag_container_adaptor.html#a6f128eb5ba209399e3d50c759265556d">iterator</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a2e76d5099f170459192711ebae01a4e7">erase</a> (FirstType first, LastType last)</td></tr>
-<tr class="separator:a2e76d5099f170459192711ebae01a4e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e65bf0881af8152c2eef90b7e2da37d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a3e65bf0881af8152c2eef90b7e2da37d">swap</a> (<a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a> &amp;other) noexcept</td></tr>
-<tr class="separator:a3e65bf0881af8152c2eef90b7e2da37d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a79b23596a35b156a26b5742a35ae21"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_bag_container_adaptor.html#a6f128eb5ba209399e3d50c759265556d">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a8a79b23596a35b156a26b5742a35ae21">begin</a> () noexcept</td></tr>
-<tr class="separator:a8a79b23596a35b156a26b5742a35ae21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82fcc3624d673dad648aebd059f61443"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_bag_container_adaptor.html#a6f128eb5ba209399e3d50c759265556d">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a82fcc3624d673dad648aebd059f61443">end</a> () noexcept</td></tr>
-<tr class="separator:a82fcc3624d673dad648aebd059f61443"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb414224c2ea8e85d939959d3adb4f31"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_bag_container_adaptor.html#a5e6fc94ba89ed54bd22fe6c82fa333e4">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#acb414224c2ea8e85d939959d3adb4f31">cbegin</a> () const noexcept</td></tr>
-<tr class="separator:acb414224c2ea8e85d939959d3adb4f31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a580f65540bd2edc8b947f72ae2aaa160"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_bag_container_adaptor.html#a5e6fc94ba89ed54bd22fe6c82fa333e4">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a580f65540bd2edc8b947f72ae2aaa160">cend</a> () const noexcept</td></tr>
-<tr class="separator:a580f65540bd2edc8b947f72ae2aaa160"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a373dac416f69a05f12f7f821a7e45c19"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_bag_container_adaptor.html#a6f128eb5ba209399e3d50c759265556d">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a373dac416f69a05f12f7f821a7e45c19">find</a> (const <a class="el" href="class_bag_container_adaptor.html#ad24c8ff633fe1fc67a6932d484171e64">value_type</a> &amp;value) noexcept</td></tr>
-<tr class="separator:a373dac416f69a05f12f7f821a7e45c19"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9cdc9cabd38a7be7613edda887c513dc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_bag_container_adaptor.html#a5e6fc94ba89ed54bd22fe6c82fa333e4">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a9cdc9cabd38a7be7613edda887c513dc">find</a> (const <a class="el" href="class_bag_container_adaptor.html#ad24c8ff633fe1fc67a6932d484171e64">value_type</a> &amp;value) const noexcept</td></tr>
-<tr class="separator:a9cdc9cabd38a7be7613edda887c513dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad97b2dddc32035ac263c093dc18d6f44"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_bag_container_adaptor.html#ad24c8ff633fe1fc67a6932d484171e64">value_type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#ad97b2dddc32035ac263c093dc18d6f44">front</a> () noexcept</td></tr>
-<tr class="separator:ad97b2dddc32035ac263c093dc18d6f44"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d012fb0ee7378569b1babf3c8b44cdc"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_bag_container_adaptor.html#ad24c8ff633fe1fc67a6932d484171e64">value_type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a1d012fb0ee7378569b1babf3c8b44cdc">front</a> () const noexcept</td></tr>
-<tr class="separator:a1d012fb0ee7378569b1babf3c8b44cdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a31ff08193efd7de49d9a28a5aa642750"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_bag_container_adaptor.html#ad24c8ff633fe1fc67a6932d484171e64">value_type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a31ff08193efd7de49d9a28a5aa642750">back</a> () noexcept</td></tr>
-<tr class="separator:a31ff08193efd7de49d9a28a5aa642750"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40b2d5759a7f19de266df277ad7fc52d"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_bag_container_adaptor.html#ad24c8ff633fe1fc67a6932d484171e64">value_type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a40b2d5759a7f19de266df277ad7fc52d">back</a> () const noexcept</td></tr>
-<tr class="separator:a40b2d5759a7f19de266df277ad7fc52d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35e5ef7f0c4e00ff34ff58622e17ff08"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a35e5ef7f0c4e00ff34ff58622e17ff08">size</a> () const noexcept</td></tr>
-<tr class="separator:a35e5ef7f0c4e00ff34ff58622e17ff08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb83cfb240c24966f22b9ca5b7868749"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#afb83cfb240c24966f22b9ca5b7868749">empty</a> () const noexcept</td></tr>
-<tr class="separator:afb83cfb240c24966f22b9ca5b7868749"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d6616809e7ffd66f4b74538fdb17ae3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a0d6616809e7ffd66f4b74538fdb17ae3">BagContainerAdaptor</a> () noexcept=default</td></tr>
+<tr class="separator:a0d6616809e7ffd66f4b74538fdb17ae3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13888e5071deea22832a4d5749ef73f2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a13888e5071deea22832a4d5749ef73f2">BagContainerAdaptor</a> (Container &amp;&amp;container) noexcept</td></tr>
+<tr class="separator:a13888e5071deea22832a4d5749ef73f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c8666fb6bbfcf9010419e1f5332d37e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a0c8666fb6bbfcf9010419e1f5332d37e">operator=</a> (<a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a> &amp;&amp;other) noexcept</td></tr>
+<tr class="separator:a0c8666fb6bbfcf9010419e1f5332d37e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6a2a1425e4c5261b2e8639ec55d8a3f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#ac6a2a1425e4c5261b2e8639ec55d8a3f">BagContainerAdaptor</a> (const <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a> &amp;other) noexcept</td></tr>
+<tr class="separator:ac6a2a1425e4c5261b2e8639ec55d8a3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70adbb42ef84524beecddeb9b0731d8b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a70adbb42ef84524beecddeb9b0731d8b">operator=</a> (const <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a> &amp;other) noexcept</td></tr>
+<tr class="separator:a70adbb42ef84524beecddeb9b0731d8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace485f3913c95fca47441e148279a7ad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_bag_container_adaptor.html#ac5a50af33c5d0540cfbd05ea531b677b">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#ace485f3913c95fca47441e148279a7ad">insert</a> (const <a class="el" href="class_bag_container_adaptor.html#ada48418fde55d629869746bf6393ed29">value_type</a> &amp;value)</td></tr>
+<tr class="separator:ace485f3913c95fca47441e148279a7ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afaa77eaf2a6d1f5b401162116033ad75"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#afaa77eaf2a6d1f5b401162116033ad75">erase</a> (<a class="el" href="class_bag_container_adaptor.html#ac5a50af33c5d0540cfbd05ea531b677b">iterator</a> elem)</td></tr>
+<tr class="separator:afaa77eaf2a6d1f5b401162116033ad75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52c29ae7c2aa3e78ae7f0684f923e7d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a52c29ae7c2aa3e78ae7f0684f923e7d0">erase</a> (const <a class="el" href="class_bag_container_adaptor.html#ada48418fde55d629869746bf6393ed29">value_type</a> &amp;value)</td></tr>
+<tr class="separator:a52c29ae7c2aa3e78ae7f0684f923e7d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01e0ba62c25cac875c927a92f2c53820"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a01e0ba62c25cac875c927a92f2c53820">swap</a> (<a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a> &amp;other) noexcept</td></tr>
+<tr class="separator:a01e0ba62c25cac875c927a92f2c53820"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53a7da26316c02ed6711487dbf686b24"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_bag_container_adaptor.html#ac5a50af33c5d0540cfbd05ea531b677b">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a53a7da26316c02ed6711487dbf686b24">begin</a> () noexcept</td></tr>
+<tr class="separator:a53a7da26316c02ed6711487dbf686b24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2465ce68ddb1a4c0dfff31b7470f8429"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_bag_container_adaptor.html#ac5a50af33c5d0540cfbd05ea531b677b">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a2465ce68ddb1a4c0dfff31b7470f8429">end</a> () noexcept</td></tr>
+<tr class="separator:a2465ce68ddb1a4c0dfff31b7470f8429"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa174ae23b5c4a859f62732a6bb3a50f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_bag_container_adaptor.html#a4a7b3b6c10f021b1021e343830d61bc0">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#aa174ae23b5c4a859f62732a6bb3a50f7">cbegin</a> () const noexcept</td></tr>
+<tr class="separator:aa174ae23b5c4a859f62732a6bb3a50f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13a7cf8217b5cb417ba1918d57794ac3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_bag_container_adaptor.html#a4a7b3b6c10f021b1021e343830d61bc0">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a13a7cf8217b5cb417ba1918d57794ac3">cend</a> () const noexcept</td></tr>
+<tr class="separator:a13a7cf8217b5cb417ba1918d57794ac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac68467f3439fac96de1a981fdce91be4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_bag_container_adaptor.html#ac5a50af33c5d0540cfbd05ea531b677b">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#ac68467f3439fac96de1a981fdce91be4">find</a> (const <a class="el" href="class_bag_container_adaptor.html#ada48418fde55d629869746bf6393ed29">value_type</a> &amp;value) noexcept</td></tr>
+<tr class="separator:ac68467f3439fac96de1a981fdce91be4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb4605b2b455b2d5b7910a1c19fcfe3f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_bag_container_adaptor.html#a4a7b3b6c10f021b1021e343830d61bc0">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#aeb4605b2b455b2d5b7910a1c19fcfe3f">find</a> (const <a class="el" href="class_bag_container_adaptor.html#ada48418fde55d629869746bf6393ed29">value_type</a> &amp;value) const noexcept</td></tr>
+<tr class="separator:aeb4605b2b455b2d5b7910a1c19fcfe3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92e924e8e2591d83a4b60dc52ee70106"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_bag_container_adaptor.html#ada48418fde55d629869746bf6393ed29">value_type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a92e924e8e2591d83a4b60dc52ee70106">front</a> () const noexcept</td></tr>
+<tr class="separator:a92e924e8e2591d83a4b60dc52ee70106"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7ce54a2190aa7802b72a6f492921721"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_bag_container_adaptor.html#ada48418fde55d629869746bf6393ed29">value_type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#aa7ce54a2190aa7802b72a6f492921721">back</a> () const noexcept</td></tr>
+<tr class="separator:aa7ce54a2190aa7802b72a6f492921721"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1510540a7df22c9946d17b22f8ed1a14"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a1510540a7df22c9946d17b22f8ed1a14">size</a> () const noexcept</td></tr>
+<tr class="separator:a1510540a7df22c9946d17b22f8ed1a14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a934a74e918ec494e2f85634350637c3f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bag_container_adaptor.html#a934a74e918ec494e2f85634350637c3f">empty</a> () const noexcept</td></tr>
+<tr class="separator:a934a74e918ec494e2f85634350637c3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;typename Container&gt;<br />
-class BagContainerAdaptor&lt; Container &gt;</h3>
+<div class="textblock"><h3>template&lt;typename Type, typename Container = std::vector&lt;Type&gt;&gt;<br />
+class BagContainerAdaptor&lt; Type, Container &gt;</h3>
 
-<p>Bag is an abstract data type that can store a collection of elements without regard to their order. Equal elements can appear multiple times in a bag. Although the elements container in a bag have no inherit order, iterating over the bag elements is guaranteed to visit each element exactly once. This bag takes in an stl container as a template argument and provides the same functionality for each container type following the design pattern of an adapter. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+<p>Bag is an abstract data type that can store a collection of elements without regard to their order. Equal elements can appear multiple times in a bag. Although the elements container in a bag have no inherit order, iterating over the bag elements is guaranteed to visit each element exactly once. This bag takes in a type and an STL-compatible container as a template arguments and provides the same functionality for each container type following the design pattern of an adapter. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
+    <tr><td class="paramname">Type</td><td>the type of the items in the underlying type. </td></tr>
     <tr><td class="paramname">Container</td><td>The underlying container type. </td></tr>
   </table>
   </dd>
 </dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a2cf060197bbd12173c3d024d4cd9340c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2cf060197bbd12173c3d024d4cd9340c">&#9670;&nbsp;</a></span>BagContainerAdaptor() <span class="overload">[1/4]</span></h2>
+<a id="a0d6616809e7ffd66f4b74538fdb17ae3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d6616809e7ffd66f4b74538fdb17ae3">&#9670;&nbsp;</a></span>BagContainerAdaptor() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Container &gt; </div>
+template&lt;typename Type , typename Container  = std::vector&lt;Type&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Container &gt;::<a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a> </td>
+          <td class="memname"><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Type, Container &gt;::<a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -174,67 +160,32 @@ template&lt;typename Container &gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Constructor. </p><dl class="section post"><dt>Postcondition</dt><dd>The <code><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a></code> object is constructed, and the <code>m_container</code> is initialized to an empty state. </dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
+<p>Default constructor. </p><dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">noexcept</td><td>The constructor is marked <code>noexcept</code> to guarantee no exceptions will be thrown during the construction, providing a strong exception safety guarantee. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a097d36b7aa7498c5b05eaca8e0c022f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a097d36b7aa7498c5b05eaca8e0c022f4">&#9670;&nbsp;</a></span>~BagContainerAdaptor()</h2>
+<a id="a13888e5071deea22832a4d5749ef73f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13888e5071deea22832a4d5749ef73f2">&#9670;&nbsp;</a></span>BagContainerAdaptor() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Container &gt; </div>
+template&lt;typename Type , typename Container  = std::vector&lt;Type&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Container &gt;::~<a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Destructor. </p><dl class="section post"><dt>Postcondition</dt><dd>The <code><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a></code> object is destructed, and the <code>m_container</code> is deallocated, releasing any resources held by the container. </dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">noexcept</td><td>The destructor is marked <code>noexcept</code> to guarantee no exceptions will be thrown during the destruction, providing a strong exception safety guarantee. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a834d64da523993fd9cb0065b8c9b189e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a834d64da523993fd9cb0065b8c9b189e">&#9670;&nbsp;</a></span>BagContainerAdaptor() <span class="overload">[2/4]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Container &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Container &gt;::<a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a> </td>
+          <td class="memname"><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Type, Container &gt;::<a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a> </td>
           <td>(</td>
           <td class="paramtype">Container &amp;&amp;&#160;</td>
           <td class="paramname"><em>container</em></td><td>)</td>
@@ -257,30 +208,28 @@ template&lt;typename Container &gt; </div>
 <dl class="section post"><dt>Postcondition</dt><dd>The <code>BagContainerAdapter</code> is constructed, taking ownership of the contents of the underlying container. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">noexcept</td><td>The move constructor is marked noexcept to guarantee no exceptions will be thrown during the move operation, providing strong exception safety. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a898a6ba42681a9a69c941b82eac980ff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a898a6ba42681a9a69c941b82eac980ff">&#9670;&nbsp;</a></span>BagContainerAdaptor() <span class="overload">[3/4]</span></h2>
+<a id="ac6a2a1425e4c5261b2e8639ec55d8a3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6a2a1425e4c5261b2e8639ec55d8a3f">&#9670;&nbsp;</a></span>BagContainerAdaptor() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Container &gt; </div>
-<div class="memtemplate">
-template&lt;typename OtherContainer , typename  = std::enable_if&lt;std::is_same&lt;Container, OtherContainer&gt;::value&gt;&gt; </div>
+template&lt;typename Type , typename Container  = std::vector&lt;Type&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Container &gt;::<a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a> </td>
+          <td class="memname"><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Type, Container &gt;::<a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; OtherContainer &gt; &amp;&amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Type, Container &gt; &amp;&#160;</td>
           <td class="paramname"><em>other</em></td><td>)</td>
           <td></td>
         </tr>
@@ -288,54 +237,6 @@ template&lt;typename OtherContainer , typename  = std::enable_if&lt;std::is_same
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Forwarding constructor for self-instantiation. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">other</td><td>The other <code><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a></code> from which we are initializing from. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">OtherContainer</td><td>The template argument for the other container. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section pre"><dt>Precondition</dt><dd>The <code>OtherContainer</code> type must be the same as the <code>Container</code> type to ensure valid instantiation. </dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>The current <code><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a></code> object takes ownership of the contents of the other '<a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>'. The other <code><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a></code> is left in a valid but unspecified state. </dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">noexcept</td><td>The forwarding constructor is marked noexcept to guarantee no exceptions will be thrown during the move operation, providing a strong exception safety guarantee. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="af18064390bf993205680d92b15e4e441"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af18064390bf993205680d92b15e4e441">&#9670;&nbsp;</a></span>BagContainerAdaptor() <span class="overload">[4/4]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Container &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Container &gt;::<a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a> </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Container &gt; &amp;&#160;</td>
-          <td class="paramname"><em>other</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -345,24 +246,31 @@ template&lt;typename Container &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>This copy constructor has been explicitly deleted to prevent copying. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>Assumes the <code>other</code> <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a> is a valid instance </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Creates a new <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a> instance that is a copy of <code>other</code>. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a40b2d5759a7f19de266df277ad7fc52d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a40b2d5759a7f19de266df277ad7fc52d">&#9670;&nbsp;</a></span>back() <span class="overload">[1/2]</span></h2>
+<a id="aa7ce54a2190aa7802b72a6f492921721"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7ce54a2190aa7802b72a6f492921721">&#9670;&nbsp;</a></span>back()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Container &gt; </div>
+template&lt;typename Type , typename Container  = std::vector&lt;Type&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="class_bag_container_adaptor.html#ad24c8ff633fe1fc67a6932d484171e64">value_type</a>&amp; <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Container &gt;::back </td>
+          <td class="memname">const <a class="el" href="class_bag_container_adaptor.html#ada48418fde55d629869746bf6393ed29">value_type</a>&amp; <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Type, Container &gt;::back </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -374,7 +282,7 @@ template&lt;typename Container &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Get reference to the last element in the underlying container. </p><dl class="section return"><dt>Returns</dt><dd>Reference to the last element in the underlying container. </dd></dl>
+<p>Get reference to the implied last element in the underlying container. </p><dl class="section return"><dt>Returns</dt><dd>Reference to the implied last element in the underlying container. </dd></dl>
 <dl class="section pre"><dt>Precondition</dt><dd>The container must not be empty. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
@@ -382,22 +290,27 @@ template&lt;typename Container &gt; </div>
   </table>
   </dd>
 </dl>
+<dl class="section user"><dt>Time complexity:</dt><dd><ul>
+<li>0(1) For containers that support the .<a class="el" href="class_bag_container_adaptor.html#aa7ce54a2190aa7802b72a6f492921721">back()</a> member function, and std::multiset.</li>
+<li>0(n) For std::forward_list and std::unordered_multiset. </li>
+</ul>
+</dd></dl>
 
 </div>
 </div>
-<a id="a31ff08193efd7de49d9a28a5aa642750"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a31ff08193efd7de49d9a28a5aa642750">&#9670;&nbsp;</a></span>back() <span class="overload">[2/2]</span></h2>
+<a id="a53a7da26316c02ed6711487dbf686b24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53a7da26316c02ed6711487dbf686b24">&#9670;&nbsp;</a></span>begin()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Container &gt; </div>
+template&lt;typename Type , typename Container  = std::vector&lt;Type&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_bag_container_adaptor.html#ad24c8ff633fe1fc67a6932d484171e64">value_type</a>&amp; <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Container &gt;::back </td>
+          <td class="memname"><a class="el" href="class_bag_container_adaptor.html#ac5a50af33c5d0540cfbd05ea531b677b">iterator</a> <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Type, Container &gt;::begin </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -409,8 +322,7 @@ template&lt;typename Container &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Get reference to the last element in the underlying container. </p><dl class="section return"><dt>Returns</dt><dd>Reference to the last element in the underlying container. </dd></dl>
-<dl class="section pre"><dt>Precondition</dt><dd>The container must not be empty. </dd></dl>
+<p>Get iterator pointing to the first element in the underlying container. "First" in reference to the implied iteration order withing the container. </p><dl class="section return"><dt>Returns</dt><dd>An iterator pointing to the first element in the underlying container. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
@@ -420,53 +332,19 @@ template&lt;typename Container &gt; </div>
 
 </div>
 </div>
-<a id="a8a79b23596a35b156a26b5742a35ae21"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a79b23596a35b156a26b5742a35ae21">&#9670;&nbsp;</a></span>begin()</h2>
+<a id="aa174ae23b5c4a859f62732a6bb3a50f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa174ae23b5c4a859f62732a6bb3a50f7">&#9670;&nbsp;</a></span>cbegin()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Container &gt; </div>
+template&lt;typename Type , typename Container  = std::vector&lt;Type&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_bag_container_adaptor.html#a6f128eb5ba209399e3d50c759265556d">iterator</a> <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Container &gt;::begin </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Get iterator pointing to the first element in the underlying container. </p><dl class="section return"><dt>Returns</dt><dd>Iterator pointing to the first element in the underlying container. </dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="acb414224c2ea8e85d939959d3adb4f31"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acb414224c2ea8e85d939959d3adb4f31">&#9670;&nbsp;</a></span>cbegin()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Container &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_bag_container_adaptor.html#a5e6fc94ba89ed54bd22fe6c82fa333e4">const_iterator</a> <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Container &gt;::cbegin </td>
+          <td class="memname"><a class="el" href="class_bag_container_adaptor.html#a4a7b3b6c10f021b1021e343830d61bc0">const_iterator</a> <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Type, Container &gt;::cbegin </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -478,7 +356,7 @@ template&lt;typename Container &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Get constant iterator pointing to the first element in the underlying container. </p><dl class="section return"><dt>Returns</dt><dd>Constant iterator pointing to the first element in the underlying container. </dd></dl>
+<p>Get a constant iterator pointing to the first element in the underlying container. "First" in reference to the implied iteration order withing the container. </p><dl class="section return"><dt>Returns</dt><dd>A constant iterator pointing to the first element in the underlying container. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
@@ -488,19 +366,19 @@ template&lt;typename Container &gt; </div>
 
 </div>
 </div>
-<a id="a580f65540bd2edc8b947f72ae2aaa160"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a580f65540bd2edc8b947f72ae2aaa160">&#9670;&nbsp;</a></span>cend()</h2>
+<a id="a13a7cf8217b5cb417ba1918d57794ac3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13a7cf8217b5cb417ba1918d57794ac3">&#9670;&nbsp;</a></span>cend()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Container &gt; </div>
+template&lt;typename Type , typename Container  = std::vector&lt;Type&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_bag_container_adaptor.html#a5e6fc94ba89ed54bd22fe6c82fa333e4">const_iterator</a> <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Container &gt;::cend </td>
+          <td class="memname"><a class="el" href="class_bag_container_adaptor.html#a4a7b3b6c10f021b1021e343830d61bc0">const_iterator</a> <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Type, Container &gt;::cend </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -512,7 +390,7 @@ template&lt;typename Container &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Get constant iterator pointing to the last element in the underlying container. </p><dl class="section return"><dt>Returns</dt><dd>Contant iterator pointing to the last element in the underlying container. </dd></dl>
+<p>Get a constant iterator pointing one past the last element in the underlying container. "Last" in reference to the implied iteration order withing the container. </p><dl class="section return"><dt>Returns</dt><dd>A contant iterator pointing one past the last element in the underlying container. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
@@ -522,19 +400,19 @@ template&lt;typename Container &gt; </div>
 
 </div>
 </div>
-<a id="afb83cfb240c24966f22b9ca5b7868749"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb83cfb240c24966f22b9ca5b7868749">&#9670;&nbsp;</a></span>empty()</h2>
+<a id="a934a74e918ec494e2f85634350637c3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a934a74e918ec494e2f85634350637c3f">&#9670;&nbsp;</a></span>empty()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Container &gt; </div>
+template&lt;typename Type , typename Container  = std::vector&lt;Type&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Container &gt;::empty </td>
+          <td class="memname">bool <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Type, Container &gt;::empty </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -556,19 +434,19 @@ template&lt;typename Container &gt; </div>
 
 </div>
 </div>
-<a id="a82fcc3624d673dad648aebd059f61443"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a82fcc3624d673dad648aebd059f61443">&#9670;&nbsp;</a></span>end()</h2>
+<a id="a2465ce68ddb1a4c0dfff31b7470f8429"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2465ce68ddb1a4c0dfff31b7470f8429">&#9670;&nbsp;</a></span>end()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Container &gt; </div>
+template&lt;typename Type , typename Container  = std::vector&lt;Type&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_bag_container_adaptor.html#a6f128eb5ba209399e3d50c759265556d">iterator</a> <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Container &gt;::end </td>
+          <td class="memname"><a class="el" href="class_bag_container_adaptor.html#ac5a50af33c5d0540cfbd05ea531b677b">iterator</a> <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Type, Container &gt;::end </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -580,7 +458,7 @@ template&lt;typename Container &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Get iterator pointing to the last element in the underlying container. </p><dl class="section return"><dt>Returns</dt><dd>Iterator pointing to the last element in the underlying container. </dd></dl>
+<p>Get iterator pointing to the one past the last element in the underlying container. "Last" in reference to the implied iteration order withing the container. </p><dl class="section return"><dt>Returns</dt><dd>An iterator pointing one past the last element in the underlying container. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
@@ -590,21 +468,21 @@ template&lt;typename Container &gt; </div>
 
 </div>
 </div>
-<a id="ac651b5789794ae47cb0aa7e3b5687301"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac651b5789794ae47cb0aa7e3b5687301">&#9670;&nbsp;</a></span>erase() <span class="overload">[1/3]</span></h2>
+<a id="a52c29ae7c2aa3e78ae7f0684f923e7d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52c29ae7c2aa3e78ae7f0684f923e7d0">&#9670;&nbsp;</a></span>erase() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Container &gt; </div>
+template&lt;typename Type , typename Container  = std::vector&lt;Type&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_bag_container_adaptor.html#a6f128eb5ba209399e3d50c759265556d">iterator</a> <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Container &gt;::erase </td>
+          <td class="memname">void <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Type, Container &gt;::erase </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="class_bag_container_adaptor.html#ad24c8ff633fe1fc67a6932d484171e64">value_type</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="class_bag_container_adaptor.html#ada48418fde55d629869746bf6393ed29">value_type</a> &amp;&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
           <td></td>
         </tr>
@@ -621,105 +499,32 @@ template&lt;typename Container &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>An iterator following the last removed element. </dd></dl>
 <dl class="section post"><dt>Postcondition</dt><dd>All elements equal to the specified value in the underlying container are removed, and the <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a> object is modified accordingly. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">Depending</td><td>on the underlying container's erase operation, this function might throw exceptions like:<ul>
-<li>For std::vector with move iterator: std::out_of_range if the pos iterator is invalid or if the move constructor of the contained type throws an exception.</li>
-<li>For other containers: No exceptions are thrown by the erase operation itself unless specified by the container. </li>
-</ul>
-</td></tr>
+    <tr><td class="paramname">Any</td><td>exception that may be thrown by the underlying container's <code>erase</code> function. This typically includes exceptions like those related to invalid iterators or invalid operations on the container. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>The iterator returned points to the element that follows the last removed element in the underlying container. If no element with the specified value is found or if all occurrences of the value are removed, the returned iterator is the <a class="el" href="class_bag_container_adaptor.html#a82fcc3624d673dad648aebd059f61443">end()</a> iterator of the container. </dd></dl>
 
 </div>
 </div>
-<a id="a2e76d5099f170459192711ebae01a4e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2e76d5099f170459192711ebae01a4e7">&#9670;&nbsp;</a></span>erase() <span class="overload">[2/3]</span></h2>
+<a id="afaa77eaf2a6d1f5b401162116033ad75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afaa77eaf2a6d1f5b401162116033ad75">&#9670;&nbsp;</a></span>erase() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Container &gt; </div>
-<div class="memtemplate">
-template&lt;typename FirstType , typename LastType &gt; </div>
+template&lt;typename Type , typename Container  = std::vector&lt;Type&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_bag_container_adaptor.html#a6f128eb5ba209399e3d50c759265556d">iterator</a> <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Container &gt;::erase </td>
+          <td class="memname">void <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Type, Container &gt;::erase </td>
           <td>(</td>
-          <td class="paramtype">FirstType&#160;</td>
-          <td class="paramname"><em>first</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">LastType&#160;</td>
-          <td class="paramname"><em>last</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Erase all elements between two iterators from the underlying container. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">first</td><td>The first element in the range of elements being removed. </td></tr>
-    <tr><td class="paramname">last</td><td>The last element of the range of the elements being removed. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">FirstType</td><td>The type of iterator for the first element in the range. </td></tr>
-    <tr><td class="paramname">LastType</td><td>The type of iterator for the last element in the range. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>An iterator following the last removed element. </dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>All elements between the specified range [first, last] in the underlying container are removed, and the <code><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a></code> object is modified accordingly. </dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">Depending</td><td>on the underlying container's erase operation, this function might throw exceptions like:<ul>
-<li>For std::vector with move iterator: std::out_of_range if the iterators are invalid or if the move constructor of the contained type throws an exception.</li>
-<li>For other containers: No exceptions are thrown by the erase operation itself unless specified by the container. </li>
-</ul>
-</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section note"><dt>Note</dt><dd>The iterator returned points to the element that follows the last removed element in the underlying container. If no elements are removed, the returned iterator is the one pointed to by the "last" iterator parameter. </dd></dl>
-
-</div>
-</div>
-<a id="afcfdfe080192e1fb449a7bb5472598f2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afcfdfe080192e1fb449a7bb5472598f2">&#9670;&nbsp;</a></span>erase() <span class="overload">[3/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Container &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_bag_container_adaptor.html#a6f128eb5ba209399e3d50c759265556d">iterator</a> <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Container &gt;::erase </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_bag_container_adaptor.html#a6f128eb5ba209399e3d50c759265556d">iterator</a>&#160;</td>
-          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="class_bag_container_adaptor.html#ac5a50af33c5d0540cfbd05ea531b677b">iterator</a>&#160;</td>
+          <td class="paramname"><em>elem</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -729,43 +534,46 @@ template&lt;typename Container &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Erase element from the specified position in the underlying container. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Removes a specified element from the underlying container. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pos</td><td>The specified position where the element is erased. </td></tr>
+    <tr><td class="paramname">elem</td><td>An iterator pointing to the element to be removed from the underlying container. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>An iterator following the last removed element. </dd></dl>
-<dl class="section pre"><dt>Precondition</dt><dd>The <code>pos</code> iterator must be a valid iterator that points to a position within the underlying container. </dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>The element at the specified <code>pos</code> in the underlying container is removed, and the <code><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a></code> object is modified accordingly. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>The <code>elem</code> iterator must be a valid iterator that points to a position within the underlying container. </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>The element at the specified <code>elem</code> in the underlying container is removed, and the <code><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a></code> object is modified accordingly. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">Depending</td><td>on the underlying container's erase operation, this function might throw exceptions like:<ul>
-<li>For std::vector: std::out_of_range if the pos iterator is invalid. </li>
+<li>For std::vector: std::out_of_range if the <code>elem</code> iterator is invalid. </li>
 </ul>
 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>The iterator returned points to the element that follows the erased element in the underlying container. If <code>pos</code> points to the last element, the returned iterator is the <code><a class="el" href="class_bag_container_adaptor.html#a82fcc3624d673dad648aebd059f61443">end()</a></code> iterator of the container. </dd></dl>
+<dl class="section user"><dt>Time complexity:</dt><dd><ul>
+<li>O(1) For containers with constant-time erase operation (e.g., std::vector, std::unordered_set, std::unordered_map).</li>
+<li>O(n) For containers with linear-time erase operation (e.g., std::list, std::forward_list) where n is the number of elements. </li>
+</ul>
+</dd></dl>
 
 </div>
 </div>
-<a id="a9cdc9cabd38a7be7613edda887c513dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9cdc9cabd38a7be7613edda887c513dc">&#9670;&nbsp;</a></span>find() <span class="overload">[1/2]</span></h2>
+<a id="aeb4605b2b455b2d5b7910a1c19fcfe3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb4605b2b455b2d5b7910a1c19fcfe3f">&#9670;&nbsp;</a></span>find() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Container &gt; </div>
+template&lt;typename Type , typename Container  = std::vector&lt;Type&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_bag_container_adaptor.html#a5e6fc94ba89ed54bd22fe6c82fa333e4">const_iterator</a> <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Container &gt;::find </td>
+          <td class="memname"><a class="el" href="class_bag_container_adaptor.html#a4a7b3b6c10f021b1021e343830d61bc0">const_iterator</a> <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Type, Container &gt;::find </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="class_bag_container_adaptor.html#ad24c8ff633fe1fc67a6932d484171e64">value_type</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="class_bag_container_adaptor.html#ada48418fde55d629869746bf6393ed29">value_type</a> &amp;&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -776,13 +584,13 @@ template&lt;typename Container &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Get constant iterator pointing to the first instance of element with specified value in const context. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Get constant iterator pointing to instance of element with specified value in const context. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">value</td><td>The value to compare elements to. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>An iterator pointing to the first instance of element with specified value. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>An iterator pointing to the instance of element with specified value. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
@@ -792,21 +600,21 @@ template&lt;typename Container &gt; </div>
 
 </div>
 </div>
-<a id="a373dac416f69a05f12f7f821a7e45c19"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a373dac416f69a05f12f7f821a7e45c19">&#9670;&nbsp;</a></span>find() <span class="overload">[2/2]</span></h2>
+<a id="ac68467f3439fac96de1a981fdce91be4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac68467f3439fac96de1a981fdce91be4">&#9670;&nbsp;</a></span>find() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Container &gt; </div>
+template&lt;typename Type , typename Container  = std::vector&lt;Type&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_bag_container_adaptor.html#a6f128eb5ba209399e3d50c759265556d">iterator</a> <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Container &gt;::find </td>
+          <td class="memname"><a class="el" href="class_bag_container_adaptor.html#ac5a50af33c5d0540cfbd05ea531b677b">iterator</a> <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Type, Container &gt;::find </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="class_bag_container_adaptor.html#ad24c8ff633fe1fc67a6932d484171e64">value_type</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="class_bag_container_adaptor.html#ada48418fde55d629869746bf6393ed29">value_type</a> &amp;&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
           <td></td>
         </tr>
@@ -817,13 +625,13 @@ template&lt;typename Container &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Get iterator pointing to the first instance of element with specified value. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Get iterator pointing to instance of element with specified value. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">value</td><td>The value to compare elements to. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>An iterator pointing to the first instance of element with specified value. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>An iterator pointing to the instance of element with specified value. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
@@ -833,19 +641,19 @@ template&lt;typename Container &gt; </div>
 
 </div>
 </div>
-<a id="a1d012fb0ee7378569b1babf3c8b44cdc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1d012fb0ee7378569b1babf3c8b44cdc">&#9670;&nbsp;</a></span>front() <span class="overload">[1/2]</span></h2>
+<a id="a92e924e8e2591d83a4b60dc52ee70106"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92e924e8e2591d83a4b60dc52ee70106">&#9670;&nbsp;</a></span>front()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Container &gt; </div>
+template&lt;typename Type , typename Container  = std::vector&lt;Type&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="class_bag_container_adaptor.html#ad24c8ff633fe1fc67a6932d484171e64">value_type</a>&amp; <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Container &gt;::front </td>
+          <td class="memname">const <a class="el" href="class_bag_container_adaptor.html#ada48418fde55d629869746bf6393ed29">value_type</a>&amp; <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Type, Container &gt;::front </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -857,7 +665,7 @@ template&lt;typename Container &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Get reference to the first element in the underlying container in const context. </p><dl class="section return"><dt>Returns</dt><dd>Reference to the first element in the underlying container. </dd></dl>
+<p>Get reference to the implied first element in the underlying container in const context. </p><dl class="section return"><dt>Returns</dt><dd>Reference to the implied first element in the underlying container. </dd></dl>
 <dl class="section pre"><dt>Precondition</dt><dd>The container must not be empty. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
@@ -868,56 +676,21 @@ template&lt;typename Container &gt; </div>
 
 </div>
 </div>
-<a id="ad97b2dddc32035ac263c093dc18d6f44"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad97b2dddc32035ac263c093dc18d6f44">&#9670;&nbsp;</a></span>front() <span class="overload">[2/2]</span></h2>
+<a id="ace485f3913c95fca47441e148279a7ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace485f3913c95fca47441e148279a7ad">&#9670;&nbsp;</a></span>insert()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Container &gt; </div>
+template&lt;typename Type , typename Container  = std::vector&lt;Type&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_bag_container_adaptor.html#ad24c8ff633fe1fc67a6932d484171e64">value_type</a>&amp; <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Container &gt;::front </td>
+          <td class="memname"><a class="el" href="class_bag_container_adaptor.html#ac5a50af33c5d0540cfbd05ea531b677b">iterator</a> <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Type, Container &gt;::insert </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Get reference to the first element in the underlying container. </p><dl class="section return"><dt>Returns</dt><dd>Reference to the first element in the underlying container. </dd></dl>
-<dl class="section pre"><dt>Precondition</dt><dd>The container must not be empty. </dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a6e43659c3da245fdb215087d5ab09adc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6e43659c3da245fdb215087d5ab09adc">&#9670;&nbsp;</a></span>insert() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Container &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_bag_container_adaptor.html#a6f128eb5ba209399e3d50c759265556d">iterator</a> <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Container &gt;::insert </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="class_bag_container_adaptor.html#ad24c8ff633fe1fc67a6932d484171e64">value_type</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="class_bag_container_adaptor.html#ada48418fde55d629869746bf6393ed29">value_type</a> &amp;&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
           <td></td>
         </tr>
@@ -928,14 +701,14 @@ template&lt;typename Container &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Insert element to the last position of the underlying container. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Insert element to the underlying container. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">value</td><td>The value to be inserted. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>An iterator that points to the inserted element. </dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>The <code>value</code> is inserted at the last position of the underlying container, and the <code><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a></code> object is modified accordingly. </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>The <code>value</code> is inserted to the underlying container, and the <code><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a></code> object is modified accordingly. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">Depending</td><td>on the underlying container's insertion operations, this function might throw exceptions like <code>std::bad_alloc</code> if memory allocation fails. </td></tr>
@@ -945,83 +718,21 @@ template&lt;typename Container &gt; </div>
 
 </div>
 </div>
-<a id="abe723f32fa16f846137a09908cbde0c9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abe723f32fa16f846137a09908cbde0c9">&#9670;&nbsp;</a></span>insert() <span class="overload">[2/2]</span></h2>
+<a id="a0c8666fb6bbfcf9010419e1f5332d37e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c8666fb6bbfcf9010419e1f5332d37e">&#9670;&nbsp;</a></span>operator=() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Container &gt; </div>
-<div class="memtemplate">
-template&lt;typename Iterator &gt; </div>
+template&lt;typename Type , typename Container  = std::vector&lt;Type&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_bag_container_adaptor.html#a6f128eb5ba209399e3d50c759265556d">iterator</a> <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Container &gt;::insert </td>
+          <td class="memname"><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&amp; <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Type, Container &gt;::operator= </td>
           <td>(</td>
-          <td class="paramtype">Iterator&#160;</td>
-          <td class="paramname"><em>pos</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="class_bag_container_adaptor.html#ad24c8ff633fe1fc67a6932d484171e64">value_type</a> &amp;&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Insert element to specified position of the underlying container. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pos</td><td>The specified position where the element is inserted. </td></tr>
-    <tr><td class="paramname">value</td><td>The value to be inserted. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">Iterator</td><td>The iterator type of the underlying container. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>An iterator that points to the inserted element. </dd></dl>
-<dl class="section pre"><dt>Precondition</dt><dd>The <code>pos</code> iterator must be a valid iterator that points to a position within the underlying container. </dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>The <code>value</code> is inserted at the specified <code>pos</code> in the underlying container, and the <code><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a></code> object is modified accordingly. </dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">Depending</td><td>on the underlying container's insertion operations, this function might throw exceptions like <code>std::bad_alloc</code> if memory allocation fails. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a6dabc10ce1ca996e156740f4cc94d70b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6dabc10ce1ca996e156740f4cc94d70b">&#9670;&nbsp;</a></span>operator=() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Container &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&amp; <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Container &gt;::operator= </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Container &gt; &amp;&amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Type, Container &gt; &amp;&amp;&#160;</td>
           <td class="paramname"><em>other</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1043,35 +754,35 @@ template&lt;typename Container &gt; </div>
 <dl class="section post"><dt>Postcondition</dt><dd>The current <code><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a></code> object takes ownership of the contents of the other <code><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a></code>. The other <code><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a></code> is left in a valid but unspecified state. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">noexcept</td><td>The move assignment operator is marked noexcept to guarantee no exceptions will be thrown during the move assignment, providing a string exception safety. </td></tr>
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a0d4d2dfcfc685d3687dfbe38853c991a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0d4d2dfcfc685d3687dfbe38853c991a">&#9670;&nbsp;</a></span>operator=() <span class="overload">[2/2]</span></h2>
+<a id="a70adbb42ef84524beecddeb9b0731d8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70adbb42ef84524beecddeb9b0731d8b">&#9670;&nbsp;</a></span>operator=() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Container &gt; </div>
+template&lt;typename Type , typename Container  = std::vector&lt;Type&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&amp; <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Container &gt;::operator= </td>
+          <td class="memname"><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&amp; <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Type, Container &gt;::operator= </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Container &gt; &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Type, Container &gt; &amp;&#160;</td>
           <td class="paramname"><em>other</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1081,23 +792,30 @@ template&lt;typename Container &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>This copy assignment operator has been explicitly deleted to prevent copying. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>Assumes that both <code>this</code> and <code>other</code> BagContainerAdaptors are valid instances. </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>Copies the content of <code>other</code> into <code>this</code> <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="a35e5ef7f0c4e00ff34ff58622e17ff08"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a35e5ef7f0c4e00ff34ff58622e17ff08">&#9670;&nbsp;</a></span>size()</h2>
+<a id="a1510540a7df22c9946d17b22f8ed1a14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1510540a7df22c9946d17b22f8ed1a14">&#9670;&nbsp;</a></span>size()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Container &gt; </div>
+template&lt;typename Type , typename Container  = std::vector&lt;Type&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">size_t <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Container &gt;::size </td>
+          <td class="memname">std::size_t <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Type, Container &gt;::size </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -1116,24 +834,29 @@ template&lt;typename Container &gt; </div>
   </table>
   </dd>
 </dl>
+<dl class="section user"><dt>Time complexity:</dt><dd><ul>
+<li>O(1) For containers with constant-time size retrieval, such as std::unordered_multiset and std::queue. These containers maintain an internal count of elements, allowing direct and constant-time access to the size.</li>
+<li>O(n) For containers with linear-time size retrieval, such as std::vector, std::deque, std::list and std::multiset. These containers do not maintain an internal count of elements, requiring iteration through the elements to determine the size, resulting in linear time complexity. </li>
+</ul>
+</dd></dl>
 
 </div>
 </div>
-<a id="a3e65bf0881af8152c2eef90b7e2da37d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3e65bf0881af8152c2eef90b7e2da37d">&#9670;&nbsp;</a></span>swap()</h2>
+<a id="a01e0ba62c25cac875c927a92f2c53820"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01e0ba62c25cac875c927a92f2c53820">&#9670;&nbsp;</a></span>swap()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Container &gt; </div>
+template&lt;typename Type , typename Container  = std::vector&lt;Type&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Container &gt;::swap </td>
+          <td class="memname">void <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Type, Container &gt;::swap </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Container &gt; &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>&lt; Type, Container &gt; &amp;&#160;</td>
           <td class="paramname"><em>other</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1150,7 +873,7 @@ template&lt;typename Container &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section post"><dt>Postcondition</dt><dd>The contents of this <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a> are swapped with the contents of the "other" <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>. </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>The contents of this <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a> are swapped with the contents of the <code>other</code> <a class="el" href="class_bag_container_adaptor.html">BagContainerAdaptor</a>. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">noexcept</td><td>No exceptions are thrown by this operation. </td></tr>

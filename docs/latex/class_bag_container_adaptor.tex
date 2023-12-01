@@ -1,5 +1,5 @@
-\hypertarget{class_bag_container_adaptor}{}\doxysection{Bag\+Container\+Adaptor$<$ Container $>$ Class Template Reference}
-\label{class_bag_container_adaptor}\index{BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
+\hypertarget{class_bag_container_adaptor}{}\doxysection{Bag\+Container\+Adaptor$<$ Type, Container $>$ Class Template Reference}
+\label{class_bag_container_adaptor}\index{BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}}
 
 
 {\ttfamily \#include $<$bag\+\_\+container\+\_\+adaptor.\+hpp$>$}
@@ -7,118 +7,90 @@
 \doxysubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}\label{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}} 
-using \mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}} = typename Container\+::value\+\_\+type
+\mbox{\Hypertarget{class_bag_container_adaptor_ada48418fde55d629869746bf6393ed29}\label{class_bag_container_adaptor_ada48418fde55d629869746bf6393ed29}} 
+using \mbox{\hyperlink{class_bag_container_adaptor_ada48418fde55d629869746bf6393ed29}{value\+\_\+type}} = typename Container\+::value\+\_\+type
 \begin{DoxyCompactList}\small\item\em The value type of the underlying container. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}\label{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}} 
-using \mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} = typename Container\+::iterator
+\mbox{\Hypertarget{class_bag_container_adaptor_ac5a50af33c5d0540cfbd05ea531b677b}\label{class_bag_container_adaptor_ac5a50af33c5d0540cfbd05ea531b677b}} 
+using \mbox{\hyperlink{class_bag_container_adaptor_ac5a50af33c5d0540cfbd05ea531b677b}{iterator}} = typename Container\+::iterator
 \begin{DoxyCompactList}\small\item\em The iterator of the underlying container. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_bag_container_adaptor_a5e6fc94ba89ed54bd22fe6c82fa333e4}\label{class_bag_container_adaptor_a5e6fc94ba89ed54bd22fe6c82fa333e4}} 
-using \mbox{\hyperlink{class_bag_container_adaptor_a5e6fc94ba89ed54bd22fe6c82fa333e4}{const\+\_\+iterator}} = typename Container\+::const\+\_\+iterator
+\mbox{\Hypertarget{class_bag_container_adaptor_a4a7b3b6c10f021b1021e343830d61bc0}\label{class_bag_container_adaptor_a4a7b3b6c10f021b1021e343830d61bc0}} 
+using \mbox{\hyperlink{class_bag_container_adaptor_a4a7b3b6c10f021b1021e343830d61bc0}{const\+\_\+iterator}} = typename Container\+::const\+\_\+iterator
 \begin{DoxyCompactList}\small\item\em The constant iterator of the underlying container. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_bag_container_adaptor_a2cf060197bbd12173c3d024d4cd9340c}{Bag\+Container\+Adaptor}} () noexcept
+\mbox{\hyperlink{class_bag_container_adaptor_a0d6616809e7ffd66f4b74538fdb17ae3}{Bag\+Container\+Adaptor}} () noexcept=default
 \item 
-\mbox{\hyperlink{class_bag_container_adaptor_a097d36b7aa7498c5b05eaca8e0c022f4}{$\sim$\+Bag\+Container\+Adaptor}} () noexcept
+\mbox{\hyperlink{class_bag_container_adaptor_a13888e5071deea22832a4d5749ef73f2}{Bag\+Container\+Adaptor}} (Container \&\&container) noexcept
 \item 
-\mbox{\hyperlink{class_bag_container_adaptor_a834d64da523993fd9cb0065b8c9b189e}{Bag\+Container\+Adaptor}} (Container \&\&container) noexcept
+\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} \& \mbox{\hyperlink{class_bag_container_adaptor_a0c8666fb6bbfcf9010419e1f5332d37e}{operator=}} (\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} \&\&other) noexcept
 \item 
-\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} \& \mbox{\hyperlink{class_bag_container_adaptor_a6dabc10ce1ca996e156740f4cc94d70b}{operator=}} (\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} \&\&other) noexcept
+\mbox{\hyperlink{class_bag_container_adaptor_ac6a2a1425e4c5261b2e8639ec55d8a3f}{Bag\+Container\+Adaptor}} (const \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} \&other) noexcept
 \item 
-{\footnotesize template$<$typename Other\+Container , typename  = std\+::enable\+\_\+if$<$std\+::is\+\_\+same$<$\+Container, Other\+Container$>$\+::value$>$$>$ }\\\mbox{\hyperlink{class_bag_container_adaptor_a898a6ba42681a9a69c941b82eac980ff}{Bag\+Container\+Adaptor}} (\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Other\+Container $>$ \&\&other) noexcept
+\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} \& \mbox{\hyperlink{class_bag_container_adaptor_a70adbb42ef84524beecddeb9b0731d8b}{operator=}} (const \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} \&other) noexcept
 \item 
-\mbox{\hyperlink{class_bag_container_adaptor_af18064390bf993205680d92b15e4e441}{Bag\+Container\+Adaptor}} (const \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} \&other)=delete
+\mbox{\hyperlink{class_bag_container_adaptor_ac5a50af33c5d0540cfbd05ea531b677b}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor_ace485f3913c95fca47441e148279a7ad}{insert}} (const \mbox{\hyperlink{class_bag_container_adaptor_ada48418fde55d629869746bf6393ed29}{value\+\_\+type}} \&value)
 \item 
-\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} \& \mbox{\hyperlink{class_bag_container_adaptor_a0d4d2dfcfc685d3687dfbe38853c991a}{operator=}} (const \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} \&other)=delete
+void \mbox{\hyperlink{class_bag_container_adaptor_afaa77eaf2a6d1f5b401162116033ad75}{erase}} (\mbox{\hyperlink{class_bag_container_adaptor_ac5a50af33c5d0540cfbd05ea531b677b}{iterator}} elem)
 \item 
-{\footnotesize template$<$typename Iterator $>$ }\\\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor_abe723f32fa16f846137a09908cbde0c9}{insert}} (Iterator pos, const \mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}} \&value)
+void \mbox{\hyperlink{class_bag_container_adaptor_a52c29ae7c2aa3e78ae7f0684f923e7d0}{erase}} (const \mbox{\hyperlink{class_bag_container_adaptor_ada48418fde55d629869746bf6393ed29}{value\+\_\+type}} \&value)
 \item 
-\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor_a6e43659c3da245fdb215087d5ab09adc}{insert}} (const \mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}} \&value)
+void \mbox{\hyperlink{class_bag_container_adaptor_a01e0ba62c25cac875c927a92f2c53820}{swap}} (\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} \&other) noexcept
 \item 
-\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor_afcfdfe080192e1fb449a7bb5472598f2}{erase}} (\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} pos)
+\mbox{\hyperlink{class_bag_container_adaptor_ac5a50af33c5d0540cfbd05ea531b677b}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor_a53a7da26316c02ed6711487dbf686b24}{begin}} () noexcept
 \item 
-\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor_ac651b5789794ae47cb0aa7e3b5687301}{erase}} (const \mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}} \&value)
+\mbox{\hyperlink{class_bag_container_adaptor_ac5a50af33c5d0540cfbd05ea531b677b}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor_a2465ce68ddb1a4c0dfff31b7470f8429}{end}} () noexcept
 \item 
-{\footnotesize template$<$typename First\+Type , typename Last\+Type $>$ }\\\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor_a2e76d5099f170459192711ebae01a4e7}{erase}} (First\+Type first, Last\+Type last)
+\mbox{\hyperlink{class_bag_container_adaptor_a4a7b3b6c10f021b1021e343830d61bc0}{const\+\_\+iterator}} \mbox{\hyperlink{class_bag_container_adaptor_aa174ae23b5c4a859f62732a6bb3a50f7}{cbegin}} () const noexcept
 \item 
-void \mbox{\hyperlink{class_bag_container_adaptor_a3e65bf0881af8152c2eef90b7e2da37d}{swap}} (\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} \&other) noexcept
+\mbox{\hyperlink{class_bag_container_adaptor_a4a7b3b6c10f021b1021e343830d61bc0}{const\+\_\+iterator}} \mbox{\hyperlink{class_bag_container_adaptor_a13a7cf8217b5cb417ba1918d57794ac3}{cend}} () const noexcept
 \item 
-\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor_a8a79b23596a35b156a26b5742a35ae21}{begin}} () noexcept
+\mbox{\hyperlink{class_bag_container_adaptor_ac5a50af33c5d0540cfbd05ea531b677b}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor_ac68467f3439fac96de1a981fdce91be4}{find}} (const \mbox{\hyperlink{class_bag_container_adaptor_ada48418fde55d629869746bf6393ed29}{value\+\_\+type}} \&value) noexcept
 \item 
-\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor_a82fcc3624d673dad648aebd059f61443}{end}} () noexcept
+\mbox{\hyperlink{class_bag_container_adaptor_a4a7b3b6c10f021b1021e343830d61bc0}{const\+\_\+iterator}} \mbox{\hyperlink{class_bag_container_adaptor_aeb4605b2b455b2d5b7910a1c19fcfe3f}{find}} (const \mbox{\hyperlink{class_bag_container_adaptor_ada48418fde55d629869746bf6393ed29}{value\+\_\+type}} \&value) const noexcept
 \item 
-\mbox{\hyperlink{class_bag_container_adaptor_a5e6fc94ba89ed54bd22fe6c82fa333e4}{const\+\_\+iterator}} \mbox{\hyperlink{class_bag_container_adaptor_acb414224c2ea8e85d939959d3adb4f31}{cbegin}} () const noexcept
+const \mbox{\hyperlink{class_bag_container_adaptor_ada48418fde55d629869746bf6393ed29}{value\+\_\+type}} \& \mbox{\hyperlink{class_bag_container_adaptor_a92e924e8e2591d83a4b60dc52ee70106}{front}} () const noexcept
 \item 
-\mbox{\hyperlink{class_bag_container_adaptor_a5e6fc94ba89ed54bd22fe6c82fa333e4}{const\+\_\+iterator}} \mbox{\hyperlink{class_bag_container_adaptor_a580f65540bd2edc8b947f72ae2aaa160}{cend}} () const noexcept
+const \mbox{\hyperlink{class_bag_container_adaptor_ada48418fde55d629869746bf6393ed29}{value\+\_\+type}} \& \mbox{\hyperlink{class_bag_container_adaptor_aa7ce54a2190aa7802b72a6f492921721}{back}} () const noexcept
 \item 
-\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor_a373dac416f69a05f12f7f821a7e45c19}{find}} (const \mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}} \&value) noexcept
+std\+::size\+\_\+t \mbox{\hyperlink{class_bag_container_adaptor_a1510540a7df22c9946d17b22f8ed1a14}{size}} () const noexcept
 \item 
-\mbox{\hyperlink{class_bag_container_adaptor_a5e6fc94ba89ed54bd22fe6c82fa333e4}{const\+\_\+iterator}} \mbox{\hyperlink{class_bag_container_adaptor_a9cdc9cabd38a7be7613edda887c513dc}{find}} (const \mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}} \&value) const noexcept
-\item 
-\mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}} \& \mbox{\hyperlink{class_bag_container_adaptor_ad97b2dddc32035ac263c093dc18d6f44}{front}} () noexcept
-\item 
-const \mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}} \& \mbox{\hyperlink{class_bag_container_adaptor_a1d012fb0ee7378569b1babf3c8b44cdc}{front}} () const noexcept
-\item 
-\mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}} \& \mbox{\hyperlink{class_bag_container_adaptor_a31ff08193efd7de49d9a28a5aa642750}{back}} () noexcept
-\item 
-const \mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}} \& \mbox{\hyperlink{class_bag_container_adaptor_a40b2d5759a7f19de266df277ad7fc52d}{back}} () const noexcept
-\item 
-size\+\_\+t \mbox{\hyperlink{class_bag_container_adaptor_a35e5ef7f0c4e00ff34ff58622e17ff08}{size}} () const noexcept
-\item 
-bool \mbox{\hyperlink{class_bag_container_adaptor_afb83cfb240c24966f22b9ca5b7868749}{empty}} () const noexcept
+bool \mbox{\hyperlink{class_bag_container_adaptor_a934a74e918ec494e2f85634350637c3f}{empty}} () const noexcept
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-\subsubsection*{template$<$typename Container$>$\newline
-class Bag\+Container\+Adaptor$<$ Container $>$}
+\subsubsection*{template$<$typename Type, typename Container = std\+::vector$<$\+Type$>$$>$\newline
+class Bag\+Container\+Adaptor$<$ Type, Container $>$}
 
-Bag is an abstract data type that can store a collection of elements without regard to their order. Equal elements can appear multiple times in a bag. Although the elements container in a bag have no inherit order, iterating over the bag elements is guaranteed to visit each element exactly once. This bag takes in an stl container as a template argument and provides the same functionality for each container type following the design pattern of an adapter. 
+Bag is an abstract data type that can store a collection of elements without regard to their order. Equal elements can appear multiple times in a bag. Although the elements container in a bag have no inherit order, iterating over the bag elements is guaranteed to visit each element exactly once. This bag takes in a type and an STL-\/compatible container as a template arguments and provides the same functionality for each container type following the design pattern of an adapter. 
 \begin{DoxyTemplParams}{Template Parameters}
+{\em Type} & the type of the items in the underlying type. \\
+\hline
 {\em Container} & The underlying container type. \\
 \hline
 \end{DoxyTemplParams}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_bag_container_adaptor_a2cf060197bbd12173c3d024d4cd9340c}\label{class_bag_container_adaptor_a2cf060197bbd12173c3d024d4cd9340c}} 
-\index{BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}!BagContainerAdaptor@{BagContainerAdaptor}}
-\index{BagContainerAdaptor@{BagContainerAdaptor}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
-\doxysubsubsection{\texorpdfstring{BagContainerAdaptor()}{BagContainerAdaptor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
-{\footnotesize\ttfamily template$<$typename Container $>$ \\
-\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\mbox{\Hypertarget{class_bag_container_adaptor_a0d6616809e7ffd66f4b74538fdb17ae3}\label{class_bag_container_adaptor_a0d6616809e7ffd66f4b74538fdb17ae3}} 
+\index{BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}!BagContainerAdaptor@{BagContainerAdaptor}}
+\index{BagContainerAdaptor@{BagContainerAdaptor}!BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}}
+\doxysubsubsection{\texorpdfstring{BagContainerAdaptor()}{BagContainerAdaptor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename Type , typename Container  = std\+::vector$<$\+Type$>$$>$ \\
+\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Type, Container $>$\+::\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}, {\ttfamily [noexcept]}}
 
-Constructor. \begin{DoxyPostcond}{Postcondition}
-The {\ttfamily \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}} object is constructed, and the {\ttfamily m\+\_\+container} is initialized to an empty state. 
-\end{DoxyPostcond}
-
+Default constructor. 
 \begin{DoxyExceptions}{Exceptions}
-{\em noexcept} & The constructor is marked {\ttfamily noexcept} to guarantee no exceptions will be thrown during the construction, providing a strong exception safety guarantee. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{class_bag_container_adaptor_a097d36b7aa7498c5b05eaca8e0c022f4}\label{class_bag_container_adaptor_a097d36b7aa7498c5b05eaca8e0c022f4}} 
-\index{BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}!````~BagContainerAdaptor@{$\sim$BagContainerAdaptor}}
-\index{````~BagContainerAdaptor@{$\sim$BagContainerAdaptor}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
-\doxysubsubsection{\texorpdfstring{$\sim$BagContainerAdaptor()}{~BagContainerAdaptor()}}
-{\footnotesize\ttfamily template$<$typename Container $>$ \\
-\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::$\sim$\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
-
-Destructor. \begin{DoxyPostcond}{Postcondition}
-The {\ttfamily \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}} object is destructed, and the {\ttfamily m\+\_\+container} is deallocated, releasing any resources held by the container. 
-\end{DoxyPostcond}
-
-\begin{DoxyExceptions}{Exceptions}
-{\em noexcept} & The destructor is marked {\ttfamily noexcept} to guarantee no exceptions will be thrown during the destruction, providing a strong exception safety guarantee. \\
-\hline
-\end{DoxyExceptions}
-\mbox{\Hypertarget{class_bag_container_adaptor_a834d64da523993fd9cb0065b8c9b189e}\label{class_bag_container_adaptor_a834d64da523993fd9cb0065b8c9b189e}} 
-\index{BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}!BagContainerAdaptor@{BagContainerAdaptor}}
-\index{BagContainerAdaptor@{BagContainerAdaptor}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
-\doxysubsubsection{\texorpdfstring{BagContainerAdaptor()}{BagContainerAdaptor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
-{\footnotesize\ttfamily template$<$typename Container $>$ \\
-\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} (\begin{DoxyParamCaption}\item[{Container \&\&}]{container }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\mbox{\Hypertarget{class_bag_container_adaptor_a13888e5071deea22832a4d5749ef73f2}\label{class_bag_container_adaptor_a13888e5071deea22832a4d5749ef73f2}} 
+\index{BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}!BagContainerAdaptor@{BagContainerAdaptor}}
+\index{BagContainerAdaptor@{BagContainerAdaptor}!BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}}
+\doxysubsubsection{\texorpdfstring{BagContainerAdaptor()}{BagContainerAdaptor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename Type , typename Container  = std\+::vector$<$\+Type$>$$>$ \\
+\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Type, Container $>$\+::\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} (\begin{DoxyParamCaption}\item[{Container \&\&}]{container }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 Move constructor. 
 \begin{DoxyParams}{Parameters}
@@ -133,65 +105,44 @@ The {\ttfamily Bag\+Container\+Adapter} is constructed, taking ownership of the 
 \end{DoxyPostcond}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em noexcept} & The move constructor is marked noexcept to guarantee no exceptions will be thrown during the move operation, providing strong exception safety. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{class_bag_container_adaptor_a898a6ba42681a9a69c941b82eac980ff}\label{class_bag_container_adaptor_a898a6ba42681a9a69c941b82eac980ff}} 
-\index{BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}!BagContainerAdaptor@{BagContainerAdaptor}}
-\index{BagContainerAdaptor@{BagContainerAdaptor}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
-\doxysubsubsection{\texorpdfstring{BagContainerAdaptor()}{BagContainerAdaptor()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
-{\footnotesize\ttfamily template$<$typename Container $>$ \\
-template$<$typename Other\+Container , typename  = std\+::enable\+\_\+if$<$std\+::is\+\_\+same$<$\+Container, Other\+Container$>$\+::value$>$$>$ \\
-\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Other\+Container $>$ \&\&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
-
-Forwarding constructor for self-\/instantiation. 
-\begin{DoxyParams}{Parameters}
-{\em other} & The other {\ttfamily \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}} from which we are initializing from. \\
-\hline
-\end{DoxyParams}
-
-\begin{DoxyTemplParams}{Template Parameters}
-{\em Other\+Container} & The template argument for the other container. \\
-\hline
-\end{DoxyTemplParams}
-\begin{DoxyPrecond}{Precondition}
-The {\ttfamily Other\+Container} type must be the same as the {\ttfamily Container} type to ensure valid instantiation. 
-\end{DoxyPrecond}
-\begin{DoxyPostcond}{Postcondition}
-The current {\ttfamily \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}} object takes ownership of the contents of the other \textquotesingle{}\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}\textquotesingle{}. The other {\ttfamily \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}} is left in a valid but unspecified state. 
-\end{DoxyPostcond}
-
-\begin{DoxyExceptions}{Exceptions}
-{\em noexcept} & The forwarding constructor is marked noexcept to guarantee no exceptions will be thrown during the move operation, providing a strong exception safety guarantee. \\
-\hline
-\end{DoxyExceptions}
-\mbox{\Hypertarget{class_bag_container_adaptor_af18064390bf993205680d92b15e4e441}\label{class_bag_container_adaptor_af18064390bf993205680d92b15e4e441}} 
-\index{BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}!BagContainerAdaptor@{BagContainerAdaptor}}
-\index{BagContainerAdaptor@{BagContainerAdaptor}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
-\doxysubsubsection{\texorpdfstring{BagContainerAdaptor()}{BagContainerAdaptor()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
-{\footnotesize\ttfamily template$<$typename Container $>$ \\
-\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$ \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+\mbox{\Hypertarget{class_bag_container_adaptor_ac6a2a1425e4c5261b2e8639ec55d8a3f}\label{class_bag_container_adaptor_ac6a2a1425e4c5261b2e8639ec55d8a3f}} 
+\index{BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}!BagContainerAdaptor@{BagContainerAdaptor}}
+\index{BagContainerAdaptor@{BagContainerAdaptor}!BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}}
+\doxysubsubsection{\texorpdfstring{BagContainerAdaptor()}{BagContainerAdaptor()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename Type , typename Container  = std\+::vector$<$\+Type$>$$>$ \\
+\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Type, Container $>$\+::\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Type, Container $>$ \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 Copy constructor. 
 \begin{DoxyParams}{Parameters}
 {\em other} & The other \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} where we copy from. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyNote}{Note}
-This copy constructor has been explicitly deleted to prevent copying. 
-\end{DoxyNote}
+\begin{DoxyPrecond}{Precondition}
+Assumes the {\ttfamily other} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} is a valid instance 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Creates a new \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} instance that is a copy of {\ttfamily other}. 
+\end{DoxyPostcond}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em noexcept} & No exceptions are thrown by this operation. \\
+\hline
+\end{DoxyExceptions}
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_bag_container_adaptor_a40b2d5759a7f19de266df277ad7fc52d}\label{class_bag_container_adaptor_a40b2d5759a7f19de266df277ad7fc52d}} 
-\index{BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}!back@{back}}
-\index{back@{back}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
-\doxysubsubsection{\texorpdfstring{back()}{back()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily template$<$typename Container $>$ \\
-const \mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}}\& \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::back (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\mbox{\Hypertarget{class_bag_container_adaptor_aa7ce54a2190aa7802b72a6f492921721}\label{class_bag_container_adaptor_aa7ce54a2190aa7802b72a6f492921721}} 
+\index{BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}!back@{back}}
+\index{back@{back}!BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}}
+\doxysubsubsection{\texorpdfstring{back()}{back()}}
+{\footnotesize\ttfamily template$<$typename Type , typename Container  = std\+::vector$<$\+Type$>$$>$ \\
+const \mbox{\hyperlink{class_bag_container_adaptor_ada48418fde55d629869746bf6393ed29}{value\+\_\+type}}\& \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Type, Container $>$\+::back (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
-Get reference to the last element in the underlying container. \begin{DoxyReturn}{Returns}
-Reference to the last element in the underlying container. 
+Get reference to the implied last element in the underlying container. \begin{DoxyReturn}{Returns}
+Reference to the implied last element in the underlying container. 
 \end{DoxyReturn}
 \begin{DoxyPrecond}{Precondition}
 The container must not be empty. 
@@ -201,75 +152,64 @@ The container must not be empty.
 {\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{class_bag_container_adaptor_a31ff08193efd7de49d9a28a5aa642750}\label{class_bag_container_adaptor_a31ff08193efd7de49d9a28a5aa642750}} 
-\index{BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}!back@{back}}
-\index{back@{back}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
-\doxysubsubsection{\texorpdfstring{back()}{back()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily template$<$typename Container $>$ \\
-\mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}}\& \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::back (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\begin{DoxyParagraph}{Time complexity\+:}
 
-Get reference to the last element in the underlying container. \begin{DoxyReturn}{Returns}
-Reference to the last element in the underlying container. 
-\end{DoxyReturn}
-\begin{DoxyPrecond}{Precondition}
-The container must not be empty. 
-\end{DoxyPrecond}
-
-\begin{DoxyExceptions}{Exceptions}
-{\em noexcept} & No exceptions are thrown by this operation. \\
-\hline
-\end{DoxyExceptions}
-\mbox{\Hypertarget{class_bag_container_adaptor_a8a79b23596a35b156a26b5742a35ae21}\label{class_bag_container_adaptor_a8a79b23596a35b156a26b5742a35ae21}} 
-\index{BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}!begin@{begin}}
-\index{begin@{begin}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
+\begin{DoxyItemize}
+\item 0(1) For containers that support the .\mbox{\hyperlink{class_bag_container_adaptor_aa7ce54a2190aa7802b72a6f492921721}{back()}} member function, and std\+::multiset.
+\item 0(n) For std\+::forward\+\_\+list and std\+::unordered\+\_\+multiset. 
+\end{DoxyItemize}
+\end{DoxyParagraph}
+\mbox{\Hypertarget{class_bag_container_adaptor_a53a7da26316c02ed6711487dbf686b24}\label{class_bag_container_adaptor_a53a7da26316c02ed6711487dbf686b24}} 
+\index{BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}!begin@{begin}}
+\index{begin@{begin}!BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}}
 \doxysubsubsection{\texorpdfstring{begin()}{begin()}}
-{\footnotesize\ttfamily template$<$typename Container $>$ \\
-\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+{\footnotesize\ttfamily template$<$typename Type , typename Container  = std\+::vector$<$\+Type$>$$>$ \\
+\mbox{\hyperlink{class_bag_container_adaptor_ac5a50af33c5d0540cfbd05ea531b677b}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Type, Container $>$\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
-Get iterator pointing to the first element in the underlying container. \begin{DoxyReturn}{Returns}
-Iterator pointing to the first element in the underlying container. 
+Get iterator pointing to the first element in the underlying container. \char`\"{}\+First\char`\"{} in reference to the implied iteration order withing the container. \begin{DoxyReturn}{Returns}
+An iterator pointing to the first element in the underlying container. 
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
 {\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{class_bag_container_adaptor_acb414224c2ea8e85d939959d3adb4f31}\label{class_bag_container_adaptor_acb414224c2ea8e85d939959d3adb4f31}} 
-\index{BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}!cbegin@{cbegin}}
-\index{cbegin@{cbegin}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
+\mbox{\Hypertarget{class_bag_container_adaptor_aa174ae23b5c4a859f62732a6bb3a50f7}\label{class_bag_container_adaptor_aa174ae23b5c4a859f62732a6bb3a50f7}} 
+\index{BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}!cbegin@{cbegin}}
+\index{cbegin@{cbegin}!BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}}
 \doxysubsubsection{\texorpdfstring{cbegin()}{cbegin()}}
-{\footnotesize\ttfamily template$<$typename Container $>$ \\
-\mbox{\hyperlink{class_bag_container_adaptor_a5e6fc94ba89ed54bd22fe6c82fa333e4}{const\+\_\+iterator}} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::cbegin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+{\footnotesize\ttfamily template$<$typename Type , typename Container  = std\+::vector$<$\+Type$>$$>$ \\
+\mbox{\hyperlink{class_bag_container_adaptor_a4a7b3b6c10f021b1021e343830d61bc0}{const\+\_\+iterator}} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Type, Container $>$\+::cbegin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
-Get constant iterator pointing to the first element in the underlying container. \begin{DoxyReturn}{Returns}
-Constant iterator pointing to the first element in the underlying container. 
+Get a constant iterator pointing to the first element in the underlying container. \char`\"{}\+First\char`\"{} in reference to the implied iteration order withing the container. \begin{DoxyReturn}{Returns}
+A constant iterator pointing to the first element in the underlying container. 
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
 {\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{class_bag_container_adaptor_a580f65540bd2edc8b947f72ae2aaa160}\label{class_bag_container_adaptor_a580f65540bd2edc8b947f72ae2aaa160}} 
-\index{BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}!cend@{cend}}
-\index{cend@{cend}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
+\mbox{\Hypertarget{class_bag_container_adaptor_a13a7cf8217b5cb417ba1918d57794ac3}\label{class_bag_container_adaptor_a13a7cf8217b5cb417ba1918d57794ac3}} 
+\index{BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}!cend@{cend}}
+\index{cend@{cend}!BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}}
 \doxysubsubsection{\texorpdfstring{cend()}{cend()}}
-{\footnotesize\ttfamily template$<$typename Container $>$ \\
-\mbox{\hyperlink{class_bag_container_adaptor_a5e6fc94ba89ed54bd22fe6c82fa333e4}{const\+\_\+iterator}} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::cend (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+{\footnotesize\ttfamily template$<$typename Type , typename Container  = std\+::vector$<$\+Type$>$$>$ \\
+\mbox{\hyperlink{class_bag_container_adaptor_a4a7b3b6c10f021b1021e343830d61bc0}{const\+\_\+iterator}} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Type, Container $>$\+::cend (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
-Get constant iterator pointing to the last element in the underlying container. \begin{DoxyReturn}{Returns}
-Contant iterator pointing to the last element in the underlying container. 
+Get a constant iterator pointing one past the last element in the underlying container. \char`\"{}\+Last\char`\"{} in reference to the implied iteration order withing the container. \begin{DoxyReturn}{Returns}
+A contant iterator pointing one past the last element in the underlying container. 
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
 {\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{class_bag_container_adaptor_afb83cfb240c24966f22b9ca5b7868749}\label{class_bag_container_adaptor_afb83cfb240c24966f22b9ca5b7868749}} 
-\index{BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}!empty@{empty}}
-\index{empty@{empty}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
+\mbox{\Hypertarget{class_bag_container_adaptor_a934a74e918ec494e2f85634350637c3f}\label{class_bag_container_adaptor_a934a74e918ec494e2f85634350637c3f}} 
+\index{BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}!empty@{empty}}
+\index{empty@{empty}!BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}}
 \doxysubsubsection{\texorpdfstring{empty()}{empty()}}
-{\footnotesize\ttfamily template$<$typename Container $>$ \\
-bool \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+{\footnotesize\ttfamily template$<$typename Type , typename Container  = std\+::vector$<$\+Type$>$$>$ \\
+bool \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Type, Container $>$\+::empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 Get boolean describing if the underlying container is empty or not. \begin{DoxyReturn}{Returns}
 Boolean describing if the underlying container is empty or not. 
@@ -279,172 +219,123 @@ Boolean describing if the underlying container is empty or not.
 {\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{class_bag_container_adaptor_a82fcc3624d673dad648aebd059f61443}\label{class_bag_container_adaptor_a82fcc3624d673dad648aebd059f61443}} 
-\index{BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}!end@{end}}
-\index{end@{end}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
+\mbox{\Hypertarget{class_bag_container_adaptor_a2465ce68ddb1a4c0dfff31b7470f8429}\label{class_bag_container_adaptor_a2465ce68ddb1a4c0dfff31b7470f8429}} 
+\index{BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}!end@{end}}
+\index{end@{end}!BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}}
 \doxysubsubsection{\texorpdfstring{end()}{end()}}
-{\footnotesize\ttfamily template$<$typename Container $>$ \\
-\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+{\footnotesize\ttfamily template$<$typename Type , typename Container  = std\+::vector$<$\+Type$>$$>$ \\
+\mbox{\hyperlink{class_bag_container_adaptor_ac5a50af33c5d0540cfbd05ea531b677b}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Type, Container $>$\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
-Get iterator pointing to the last element in the underlying container. \begin{DoxyReturn}{Returns}
-Iterator pointing to the last element in the underlying container. 
+Get iterator pointing to the one past the last element in the underlying container. \char`\"{}\+Last\char`\"{} in reference to the implied iteration order withing the container. \begin{DoxyReturn}{Returns}
+An iterator pointing one past the last element in the underlying container. 
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
 {\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{class_bag_container_adaptor_ac651b5789794ae47cb0aa7e3b5687301}\label{class_bag_container_adaptor_ac651b5789794ae47cb0aa7e3b5687301}} 
-\index{BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}!erase@{erase}}
-\index{erase@{erase}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
-\doxysubsubsection{\texorpdfstring{erase()}{erase()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
-{\footnotesize\ttfamily template$<$typename Container $>$ \\
-\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::erase (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}} \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\Hypertarget{class_bag_container_adaptor_a52c29ae7c2aa3e78ae7f0684f923e7d0}\label{class_bag_container_adaptor_a52c29ae7c2aa3e78ae7f0684f923e7d0}} 
+\index{BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}!erase@{erase}}
+\index{erase@{erase}!BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}}
+\doxysubsubsection{\texorpdfstring{erase()}{erase()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename Type , typename Container  = std\+::vector$<$\+Type$>$$>$ \\
+void \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Type, Container $>$\+::erase (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_bag_container_adaptor_ada48418fde55d629869746bf6393ed29}{value\+\_\+type}} \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 Erase all elements that have the specified value in the underlying container. 
 \begin{DoxyParams}{Parameters}
 {\em value} & The value of the elements that are removed. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-An iterator following the last removed element. 
-\end{DoxyReturn}
 \begin{DoxyPostcond}{Postcondition}
 All elements equal to the specified value in the underlying container are removed, and the \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} object is modified accordingly. 
 \end{DoxyPostcond}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em Depending} & on the underlying container\textquotesingle{}s erase operation, this function might throw exceptions like\+:
-\begin{DoxyItemize}
-\item For std\+::vector with move iterator\+: std\+::out\+\_\+of\+\_\+range if the pos iterator is invalid or if the move constructor of the contained type throws an exception.
-\item For other containers\+: No exceptions are thrown by the erase operation itself unless specified by the container. 
-\end{DoxyItemize}\\
+{\em Any} & exception that may be thrown by the underlying container\textquotesingle{}s {\ttfamily erase} function. This typically includes exceptions like those related to invalid iterators or invalid operations on the container. \\
 \hline
 \end{DoxyExceptions}
-\begin{DoxyNote}{Note}
-The iterator returned points to the element that follows the last removed element in the underlying container. If no element with the specified value is found or if all occurrences of the value are removed, the returned iterator is the \mbox{\hyperlink{class_bag_container_adaptor_a82fcc3624d673dad648aebd059f61443}{end()}} iterator of the container. 
-\end{DoxyNote}
-\mbox{\Hypertarget{class_bag_container_adaptor_a2e76d5099f170459192711ebae01a4e7}\label{class_bag_container_adaptor_a2e76d5099f170459192711ebae01a4e7}} 
-\index{BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}!erase@{erase}}
-\index{erase@{erase}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
-\doxysubsubsection{\texorpdfstring{erase()}{erase()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
-{\footnotesize\ttfamily template$<$typename Container $>$ \\
-template$<$typename First\+Type , typename Last\+Type $>$ \\
-\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::erase (\begin{DoxyParamCaption}\item[{First\+Type}]{first,  }\item[{Last\+Type}]{last }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\Hypertarget{class_bag_container_adaptor_afaa77eaf2a6d1f5b401162116033ad75}\label{class_bag_container_adaptor_afaa77eaf2a6d1f5b401162116033ad75}} 
+\index{BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}!erase@{erase}}
+\index{erase@{erase}!BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}}
+\doxysubsubsection{\texorpdfstring{erase()}{erase()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Type , typename Container  = std\+::vector$<$\+Type$>$$>$ \\
+void \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Type, Container $>$\+::erase (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_bag_container_adaptor_ac5a50af33c5d0540cfbd05ea531b677b}{iterator}}}]{elem }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-Erase all elements between two iterators from the underlying container. 
+Removes a specified element from the underlying container. 
 \begin{DoxyParams}{Parameters}
-{\em first} & The first element in the range of elements being removed. \\
-\hline
-{\em last} & The last element of the range of the elements being removed. \\
+{\em elem} & An iterator pointing to the element to be removed from the underlying container. \\
 \hline
 \end{DoxyParams}
-
-\begin{DoxyTemplParams}{Template Parameters}
-{\em First\+Type} & The type of iterator for the first element in the range. \\
-\hline
-{\em Last\+Type} & The type of iterator for the last element in the range. \\
-\hline
-\end{DoxyTemplParams}
-\begin{DoxyReturn}{Returns}
-An iterator following the last removed element. 
-\end{DoxyReturn}
-\begin{DoxyPostcond}{Postcondition}
-All elements between the specified range \mbox{[}first, last\mbox{]} in the underlying container are removed, and the {\ttfamily \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}} object is modified accordingly. 
-\end{DoxyPostcond}
-
-\begin{DoxyExceptions}{Exceptions}
-{\em Depending} & on the underlying container\textquotesingle{}s erase operation, this function might throw exceptions like\+:
-\begin{DoxyItemize}
-\item For std\+::vector with move iterator\+: std\+::out\+\_\+of\+\_\+range if the iterators are invalid or if the move constructor of the contained type throws an exception.
-\item For other containers\+: No exceptions are thrown by the erase operation itself unless specified by the container. 
-\end{DoxyItemize}\\
-\hline
-\end{DoxyExceptions}
-\begin{DoxyNote}{Note}
-The iterator returned points to the element that follows the last removed element in the underlying container. If no elements are removed, the returned iterator is the one pointed to by the \char`\"{}last\char`\"{} iterator parameter. 
-\end{DoxyNote}
-\mbox{\Hypertarget{class_bag_container_adaptor_afcfdfe080192e1fb449a7bb5472598f2}\label{class_bag_container_adaptor_afcfdfe080192e1fb449a7bb5472598f2}} 
-\index{BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}!erase@{erase}}
-\index{erase@{erase}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
-\doxysubsubsection{\texorpdfstring{erase()}{erase()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
-{\footnotesize\ttfamily template$<$typename Container $>$ \\
-\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::erase (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}}}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-Erase element from the specified position in the underlying container. 
-\begin{DoxyParams}{Parameters}
-{\em pos} & The specified position where the element is erased. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-An iterator following the last removed element. 
-\end{DoxyReturn}
 \begin{DoxyPrecond}{Precondition}
-The {\ttfamily pos} iterator must be a valid iterator that points to a position within the underlying container. 
+The {\ttfamily elem} iterator must be a valid iterator that points to a position within the underlying container. 
 \end{DoxyPrecond}
 \begin{DoxyPostcond}{Postcondition}
-The element at the specified {\ttfamily pos} in the underlying container is removed, and the {\ttfamily \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}} object is modified accordingly. 
+The element at the specified {\ttfamily elem} in the underlying container is removed, and the {\ttfamily \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}} object is modified accordingly. 
 \end{DoxyPostcond}
 
 \begin{DoxyExceptions}{Exceptions}
 {\em Depending} & on the underlying container\textquotesingle{}s erase operation, this function might throw exceptions like\+:
 \begin{DoxyItemize}
-\item For std\+::vector\+: std\+::out\+\_\+of\+\_\+range if the pos iterator is invalid. 
+\item For std\+::vector\+: std\+::out\+\_\+of\+\_\+range if the {\ttfamily elem} iterator is invalid. 
 \end{DoxyItemize}\\
 \hline
 \end{DoxyExceptions}
-\begin{DoxyNote}{Note}
-The iterator returned points to the element that follows the erased element in the underlying container. If {\ttfamily pos} points to the last element, the returned iterator is the {\ttfamily \mbox{\hyperlink{class_bag_container_adaptor_a82fcc3624d673dad648aebd059f61443}{end()}}} iterator of the container. 
-\end{DoxyNote}
-\mbox{\Hypertarget{class_bag_container_adaptor_a9cdc9cabd38a7be7613edda887c513dc}\label{class_bag_container_adaptor_a9cdc9cabd38a7be7613edda887c513dc}} 
-\index{BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}!find@{find}}
-\index{find@{find}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
+\begin{DoxyParagraph}{Time complexity\+:}
+
+\begin{DoxyItemize}
+\item O(1) For containers with constant-\/time erase operation (e.\+g., std\+::vector, std\+::unordered\+\_\+set, std\+::unordered\+\_\+map).
+\item O(n) For containers with linear-\/time erase operation (e.\+g., std\+::list, std\+::forward\+\_\+list) where n is the number of elements. 
+\end{DoxyItemize}
+\end{DoxyParagraph}
+\mbox{\Hypertarget{class_bag_container_adaptor_aeb4605b2b455b2d5b7910a1c19fcfe3f}\label{class_bag_container_adaptor_aeb4605b2b455b2d5b7910a1c19fcfe3f}} 
+\index{BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}!find@{find}}
+\index{find@{find}!BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}}
 \doxysubsubsection{\texorpdfstring{find()}{find()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily template$<$typename Container $>$ \\
-\mbox{\hyperlink{class_bag_container_adaptor_a5e6fc94ba89ed54bd22fe6c82fa333e4}{const\+\_\+iterator}} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::find (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}} \&}]{value }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+{\footnotesize\ttfamily template$<$typename Type , typename Container  = std\+::vector$<$\+Type$>$$>$ \\
+\mbox{\hyperlink{class_bag_container_adaptor_a4a7b3b6c10f021b1021e343830d61bc0}{const\+\_\+iterator}} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Type, Container $>$\+::find (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_bag_container_adaptor_ada48418fde55d629869746bf6393ed29}{value\+\_\+type}} \&}]{value }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
-Get constant iterator pointing to the first instance of element with specified value in const context. 
+Get constant iterator pointing to instance of element with specified value in const context. 
 \begin{DoxyParams}{Parameters}
 {\em value} & The value to compare elements to. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-An iterator pointing to the first instance of element with specified value. 
+An iterator pointing to the instance of element with specified value. 
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
 {\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{class_bag_container_adaptor_a373dac416f69a05f12f7f821a7e45c19}\label{class_bag_container_adaptor_a373dac416f69a05f12f7f821a7e45c19}} 
-\index{BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}!find@{find}}
-\index{find@{find}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
+\mbox{\Hypertarget{class_bag_container_adaptor_ac68467f3439fac96de1a981fdce91be4}\label{class_bag_container_adaptor_ac68467f3439fac96de1a981fdce91be4}} 
+\index{BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}!find@{find}}
+\index{find@{find}!BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}}
 \doxysubsubsection{\texorpdfstring{find()}{find()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily template$<$typename Container $>$ \\
-\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::find (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}} \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+{\footnotesize\ttfamily template$<$typename Type , typename Container  = std\+::vector$<$\+Type$>$$>$ \\
+\mbox{\hyperlink{class_bag_container_adaptor_ac5a50af33c5d0540cfbd05ea531b677b}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Type, Container $>$\+::find (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_bag_container_adaptor_ada48418fde55d629869746bf6393ed29}{value\+\_\+type}} \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
-Get iterator pointing to the first instance of element with specified value. 
+Get iterator pointing to instance of element with specified value. 
 \begin{DoxyParams}{Parameters}
 {\em value} & The value to compare elements to. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-An iterator pointing to the first instance of element with specified value. 
+An iterator pointing to the instance of element with specified value. 
 \end{DoxyReturn}
 
 \begin{DoxyExceptions}{Exceptions}
 {\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{class_bag_container_adaptor_a1d012fb0ee7378569b1babf3c8b44cdc}\label{class_bag_container_adaptor_a1d012fb0ee7378569b1babf3c8b44cdc}} 
-\index{BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}!front@{front}}
-\index{front@{front}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
-\doxysubsubsection{\texorpdfstring{front()}{front()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily template$<$typename Container $>$ \\
-const \mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}}\& \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::front (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\mbox{\Hypertarget{class_bag_container_adaptor_a92e924e8e2591d83a4b60dc52ee70106}\label{class_bag_container_adaptor_a92e924e8e2591d83a4b60dc52ee70106}} 
+\index{BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}!front@{front}}
+\index{front@{front}!BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}}
+\doxysubsubsection{\texorpdfstring{front()}{front()}}
+{\footnotesize\ttfamily template$<$typename Type , typename Container  = std\+::vector$<$\+Type$>$$>$ \\
+const \mbox{\hyperlink{class_bag_container_adaptor_ada48418fde55d629869746bf6393ed29}{value\+\_\+type}}\& \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Type, Container $>$\+::front (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
-Get reference to the first element in the underlying container in const context. \begin{DoxyReturn}{Returns}
-Reference to the first element in the underlying container. 
+Get reference to the implied first element in the underlying container in const context. \begin{DoxyReturn}{Returns}
+Reference to the implied first element in the underlying container. 
 \end{DoxyReturn}
 \begin{DoxyPrecond}{Precondition}
 The container must not be empty. 
@@ -454,32 +345,14 @@ The container must not be empty.
 {\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{class_bag_container_adaptor_ad97b2dddc32035ac263c093dc18d6f44}\label{class_bag_container_adaptor_ad97b2dddc32035ac263c093dc18d6f44}} 
-\index{BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}!front@{front}}
-\index{front@{front}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
-\doxysubsubsection{\texorpdfstring{front()}{front()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily template$<$typename Container $>$ \\
-\mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}}\& \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::front (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+\mbox{\Hypertarget{class_bag_container_adaptor_ace485f3913c95fca47441e148279a7ad}\label{class_bag_container_adaptor_ace485f3913c95fca47441e148279a7ad}} 
+\index{BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}!insert@{insert}}
+\index{insert@{insert}!BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily template$<$typename Type , typename Container  = std\+::vector$<$\+Type$>$$>$ \\
+\mbox{\hyperlink{class_bag_container_adaptor_ac5a50af33c5d0540cfbd05ea531b677b}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Type, Container $>$\+::insert (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_bag_container_adaptor_ada48418fde55d629869746bf6393ed29}{value\+\_\+type}} \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-Get reference to the first element in the underlying container. \begin{DoxyReturn}{Returns}
-Reference to the first element in the underlying container. 
-\end{DoxyReturn}
-\begin{DoxyPrecond}{Precondition}
-The container must not be empty. 
-\end{DoxyPrecond}
-
-\begin{DoxyExceptions}{Exceptions}
-{\em noexcept} & No exceptions are thrown by this operation. \\
-\hline
-\end{DoxyExceptions}
-\mbox{\Hypertarget{class_bag_container_adaptor_a6e43659c3da245fdb215087d5ab09adc}\label{class_bag_container_adaptor_a6e43659c3da245fdb215087d5ab09adc}} 
-\index{BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}!insert@{insert}}
-\index{insert@{insert}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
-\doxysubsubsection{\texorpdfstring{insert()}{insert()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily template$<$typename Container $>$ \\
-\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::insert (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}} \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-Insert element to the last position of the underlying container. 
+Insert element to the underlying container. 
 \begin{DoxyParams}{Parameters}
 {\em value} & The value to be inserted. \\
 \hline
@@ -488,53 +361,19 @@ Insert element to the last position of the underlying container.
 An iterator that points to the inserted element. 
 \end{DoxyReturn}
 \begin{DoxyPostcond}{Postcondition}
-The {\ttfamily value} is inserted at the last position of the underlying container, and the {\ttfamily \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}} object is modified accordingly. 
+The {\ttfamily value} is inserted to the underlying container, and the {\ttfamily \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}} object is modified accordingly. 
 \end{DoxyPostcond}
 
 \begin{DoxyExceptions}{Exceptions}
 {\em Depending} & on the underlying container\textquotesingle{}s insertion operations, this function might throw exceptions like {\ttfamily std\+::bad\+\_\+alloc} if memory allocation fails. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{class_bag_container_adaptor_abe723f32fa16f846137a09908cbde0c9}\label{class_bag_container_adaptor_abe723f32fa16f846137a09908cbde0c9}} 
-\index{BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}!insert@{insert}}
-\index{insert@{insert}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
-\doxysubsubsection{\texorpdfstring{insert()}{insert()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily template$<$typename Container $>$ \\
-template$<$typename Iterator $>$ \\
-\mbox{\hyperlink{class_bag_container_adaptor_a6f128eb5ba209399e3d50c759265556d}{iterator}} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::insert (\begin{DoxyParamCaption}\item[{Iterator}]{pos,  }\item[{const \mbox{\hyperlink{class_bag_container_adaptor_ad24c8ff633fe1fc67a6932d484171e64}{value\+\_\+type}} \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-Insert element to specified position of the underlying container. 
-\begin{DoxyParams}{Parameters}
-{\em pos} & The specified position where the element is inserted. \\
-\hline
-{\em value} & The value to be inserted. \\
-\hline
-\end{DoxyParams}
-
-\begin{DoxyTemplParams}{Template Parameters}
-{\em Iterator} & The iterator type of the underlying container. \\
-\hline
-\end{DoxyTemplParams}
-\begin{DoxyReturn}{Returns}
-An iterator that points to the inserted element. 
-\end{DoxyReturn}
-\begin{DoxyPrecond}{Precondition}
-The {\ttfamily pos} iterator must be a valid iterator that points to a position within the underlying container. 
-\end{DoxyPrecond}
-\begin{DoxyPostcond}{Postcondition}
-The {\ttfamily value} is inserted at the specified {\ttfamily pos} in the underlying container, and the {\ttfamily \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}} object is modified accordingly. 
-\end{DoxyPostcond}
-
-\begin{DoxyExceptions}{Exceptions}
-{\em Depending} & on the underlying container\textquotesingle{}s insertion operations, this function might throw exceptions like {\ttfamily std\+::bad\+\_\+alloc} if memory allocation fails. \\
-\hline
-\end{DoxyExceptions}
-\mbox{\Hypertarget{class_bag_container_adaptor_a6dabc10ce1ca996e156740f4cc94d70b}\label{class_bag_container_adaptor_a6dabc10ce1ca996e156740f4cc94d70b}} 
-\index{BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}!operator=@{operator=}}
-\index{operator=@{operator=}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
+\mbox{\Hypertarget{class_bag_container_adaptor_a0c8666fb6bbfcf9010419e1f5332d37e}\label{class_bag_container_adaptor_a0c8666fb6bbfcf9010419e1f5332d37e}} 
+\index{BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}}
 \doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily template$<$typename Container $>$ \\
-\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}\& \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$ \&\&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+{\footnotesize\ttfamily template$<$typename Type , typename Container  = std\+::vector$<$\+Type$>$$>$ \\
+\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}\& \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Type, Container $>$\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Type, Container $>$ \&\&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 Move assignment operator. 
 \begin{DoxyParams}{Parameters}
@@ -552,30 +391,38 @@ The current {\ttfamily \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Contai
 \end{DoxyPostcond}
 
 \begin{DoxyExceptions}{Exceptions}
-{\em noexcept} & The move assignment operator is marked noexcept to guarantee no exceptions will be thrown during the move assignment, providing a string exception safety. \\
+{\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{class_bag_container_adaptor_a0d4d2dfcfc685d3687dfbe38853c991a}\label{class_bag_container_adaptor_a0d4d2dfcfc685d3687dfbe38853c991a}} 
-\index{BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}!operator=@{operator=}}
-\index{operator=@{operator=}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
+\mbox{\Hypertarget{class_bag_container_adaptor_a70adbb42ef84524beecddeb9b0731d8b}\label{class_bag_container_adaptor_a70adbb42ef84524beecddeb9b0731d8b}} 
+\index{BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}}
 \doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily template$<$typename Container $>$ \\
-\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}\& \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$ \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+{\footnotesize\ttfamily template$<$typename Type , typename Container  = std\+::vector$<$\+Type$>$$>$ \\
+\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}\& \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Type, Container $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Type, Container $>$ \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 Copy assignment operator. 
 \begin{DoxyParams}{Parameters}
 {\em other} & The other \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} where we copy from. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyNote}{Note}
-This copy assignment operator has been explicitly deleted to prevent copying. 
-\end{DoxyNote}
-\mbox{\Hypertarget{class_bag_container_adaptor_a35e5ef7f0c4e00ff34ff58622e17ff08}\label{class_bag_container_adaptor_a35e5ef7f0c4e00ff34ff58622e17ff08}} 
-\index{BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}!size@{size}}
-\index{size@{size}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
+\begin{DoxyPrecond}{Precondition}
+Assumes that both {\ttfamily this} and {\ttfamily other} Bag\+Container\+Adaptors are valid instances. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Copies the content of {\ttfamily other} into {\ttfamily this} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}. 
+\end{DoxyPostcond}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em noexcept} & No exceptions are thrown by this operation. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_bag_container_adaptor_a1510540a7df22c9946d17b22f8ed1a14}\label{class_bag_container_adaptor_a1510540a7df22c9946d17b22f8ed1a14}} 
+\index{BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}!size@{size}}
+\index{size@{size}!BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}}
 \doxysubsubsection{\texorpdfstring{size()}{size()}}
-{\footnotesize\ttfamily template$<$typename Container $>$ \\
-size\+\_\+t \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+{\footnotesize\ttfamily template$<$typename Type , typename Container  = std\+::vector$<$\+Type$>$$>$ \\
+std\+::size\+\_\+t \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Type, Container $>$\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 Get the amount of elements in the underlying container. \begin{DoxyReturn}{Returns}
 The amount of elements in the underlying container. 
@@ -585,12 +432,19 @@ The amount of elements in the underlying container.
 {\em noexcept} & No exceptions are thrown by this operation. \\
 \hline
 \end{DoxyExceptions}
-\mbox{\Hypertarget{class_bag_container_adaptor_a3e65bf0881af8152c2eef90b7e2da37d}\label{class_bag_container_adaptor_a3e65bf0881af8152c2eef90b7e2da37d}} 
-\index{BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}!swap@{swap}}
-\index{swap@{swap}!BagContainerAdaptor$<$ Container $>$@{BagContainerAdaptor$<$ Container $>$}}
+\begin{DoxyParagraph}{Time complexity\+:}
+
+\begin{DoxyItemize}
+\item O(1) For containers with constant-\/time size retrieval, such as std\+::unordered\+\_\+multiset and std\+::queue. These containers maintain an internal count of elements, allowing direct and constant-\/time access to the size.
+\item O(n) For containers with linear-\/time size retrieval, such as std\+::vector, std\+::deque, std\+::list and std\+::multiset. These containers do not maintain an internal count of elements, requiring iteration through the elements to determine the size, resulting in linear time complexity. 
+\end{DoxyItemize}
+\end{DoxyParagraph}
+\mbox{\Hypertarget{class_bag_container_adaptor_a01e0ba62c25cac875c927a92f2c53820}\label{class_bag_container_adaptor_a01e0ba62c25cac875c927a92f2c53820}} 
+\index{BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}!swap@{swap}}
+\index{swap@{swap}!BagContainerAdaptor$<$ Type, Container $>$@{BagContainerAdaptor$<$ Type, Container $>$}}
 \doxysubsubsection{\texorpdfstring{swap()}{swap()}}
-{\footnotesize\ttfamily template$<$typename Container $>$ \\
-void \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$\+::swap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Container $>$ \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+{\footnotesize\ttfamily template$<$typename Type , typename Container  = std\+::vector$<$\+Type$>$$>$ \\
+void \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Type, Container $>$\+::swap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}$<$ Type, Container $>$ \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
 
 Swap the contents of two Bag\+Container\+Adaptors. 
 \begin{DoxyParams}{Parameters}
@@ -598,7 +452,7 @@ Swap the contents of two Bag\+Container\+Adaptors.
 \hline
 \end{DoxyParams}
 \begin{DoxyPostcond}{Postcondition}
-The contents of this \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} are swapped with the contents of the \char`\"{}other\char`\"{} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}. 
+The contents of this \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}} are swapped with the contents of the {\ttfamily other} \mbox{\hyperlink{class_bag_container_adaptor}{Bag\+Container\+Adaptor}}. 
 \end{DoxyPostcond}
 
 \begin{DoxyExceptions}{Exceptions}
