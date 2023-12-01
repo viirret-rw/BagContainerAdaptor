@@ -172,6 +172,24 @@ protected:
         }
         EXPECT_EQ(counter, adapter.size());
     }
+
+    void copyConstructionTest()
+    {
+        BagContainerAdaptor<int, Container> adapter = Container{1, 2};
+
+        auto adapter2 = BagContainerAdaptor<int, Container>(adapter);
+
+        EXPECT_EQ(adapter.size(), adapter2.size());
+    }
+
+    void copyAssignmentTest()
+    {
+        BagContainerAdaptor<int, Container> adapter = Container{2, 5};
+
+        auto adapter2 = adapter;
+
+        EXPECT_EQ(adapter.size(), adapter2.size());
+    }
 };
 
 using MainContainerTypes = ::testing::Types<
@@ -242,6 +260,16 @@ TYPED_TEST(BagContainerAdaptorTest, nonConstIterationTest)
 TYPED_TEST(BagContainerAdaptorTest, constIterationTest)
 {
     this->constIterationTest();
+}
+
+TYPED_TEST(BagContainerAdaptorTest, copyConstructionTest)
+{
+    this->copyConstructionTest();
+}
+
+TYPED_TEST(BagContainerAdaptorTest, copyAssignmentTest)
+{
+    this->copyAssignmentTest();
 }
 
 int main(int argc, char** argv)

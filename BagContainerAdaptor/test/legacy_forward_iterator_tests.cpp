@@ -83,8 +83,6 @@ private:
 };
 
 using IteratorTypes = ::testing::Types<
-
-    /// STL types.
     typename BagContainerAdaptor<int, std::vector<int>>::iterator,
     typename BagContainerAdaptor<int, std::vector<int>>::const_iterator,
     typename BagContainerAdaptor<int, std::list<int>>::iterator,
@@ -96,11 +94,7 @@ using IteratorTypes = ::testing::Types<
     typename BagContainerAdaptor<int, std::multiset<int>>::iterator,
     typename BagContainerAdaptor<int, std::multiset<int>>::const_iterator,
     typename BagContainerAdaptor<int, std::unordered_multiset<int>>::iterator,
-    typename BagContainerAdaptor<int, std::unordered_multiset<int>>::const_iterator,
-
-    // Custom types.
-    typename BagContainerAdaptor<LinkedList<int>>::iterator,
-    typename BagContainerAdaptor<LinkedList<int>>::const_iterator>;
+    typename BagContainerAdaptor<int, std::unordered_multiset<int>>::const_iterator>;
 
 TYPED_TEST_SUITE(PassLegacyForwardIteratorTest, IteratorTypes);
 

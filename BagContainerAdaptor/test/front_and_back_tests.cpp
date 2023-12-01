@@ -57,56 +57,56 @@ template <typename Container>
 class FrontAndBackTestReversed : public ::testing::Test
 {
 protected:
-	void frontTest()
-	{
-		Container testSet;
-		BagContainerAdaptor<int, Container> adaptor;
+    void frontTest()
+    {
+        Container testSet;
+        BagContainerAdaptor<int, Container> adaptor;
 
-		for (int i = 1; i < 4; i++)
-		{
-			insertValues(testSet, i);
-			adaptor.insert(i);
-		}
+        for (int i = 1; i < 4; i++)
+        {
+            insertValues(testSet, i);
+            adaptor.insert(i);
+        }
 
-		EXPECT_EQ(*testSet.begin(), adaptor.front());
-		EXPECT_EQ(3, adaptor.front());
-	}
+        EXPECT_EQ(*testSet.begin(), adaptor.front());
+        EXPECT_EQ(3, adaptor.front());
+    }
 
-	void backTest()
-	{
-		Container testSet;
-		BagContainerAdaptor<int, Container> adaptor;
+    void backTest()
+    {
+        Container testSet;
+        BagContainerAdaptor<int, Container> adaptor;
 
-		for (int i = 1; i < 4; i++)
-		{
-			insertValues(testSet, i);
-			adaptor.insert(i);
-		}
-		
-		auto testSetLast = testSet.begin();
-		for (auto it = testSetLast; it != testSet.end(); it++)
-		{
-			testSetLast = it;
-		}
+        for (int i = 1; i < 4; i++)
+        {
+            insertValues(testSet, i);
+            adaptor.insert(i);
+        }
 
-		EXPECT_EQ(*testSetLast, adaptor.back());
-		EXPECT_EQ(1, adaptor.back());
-	}
+        auto testSetLast = testSet.begin();
+        for (auto it = testSetLast; it != testSet.end(); it++)
+        {
+            testSetLast = it;
+        }
+
+        EXPECT_EQ(*testSetLast, adaptor.back());
+        EXPECT_EQ(1, adaptor.back());
+    }
 
 private:
-	template <typename C = Container>
-	typename std::enable_if<std::is_same<C, std::forward_list<typename C::value_type>>::value>::type
-	insertValues(Container& testSet, typename C::value_type value) 
-	{
-		testSet.insert_after(testSet.before_begin(), value);
-	}
+    template <typename C = Container>
+    typename std::enable_if<std::is_same<C, std::forward_list<typename C::value_type>>::value>::type
+    insertValues(Container& testSet, typename C::value_type value)
+    {
+        testSet.insert_after(testSet.before_begin(), value);
+    }
 
-	template <typename C = Container>
-	typename std::enable_if<!std::is_same<C, std::forward_list<typename C::value_type>>::value>::type
-	insertValues(Container& testSet, typename C::value_type value) 
-	{
-		testSet.insert(value);
-	}
+    template <typename C = Container>
+    typename std::enable_if<!std::is_same<C, std::forward_list<typename C::value_type>>::value>::type
+    insertValues(Container& testSet, typename C::value_type value)
+    {
+        testSet.insert(value);
+    }
 };
 
 using FrontAndBackReverseContainerTypes = ::testing::Types<
@@ -124,4 +124,3 @@ TYPED_TEST(FrontAndBackTestReversed, backTest)
 {
     this->backTest();
 }
-

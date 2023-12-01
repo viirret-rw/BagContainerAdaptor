@@ -26,7 +26,7 @@ public:
 
     static void bagInsert(size_t amount, const value_type& value)
     {
-        BagContainerAdaptor<Container> adapter;
+        BagContainerAdaptor<value_type, Container> adapter;
 
         for (size_t i = 0; i < amount; i++)
         {
@@ -43,25 +43,25 @@ public:
             container.insert(container.begin(), value);
         }
 
-		for (size_t i = 0; i < amount; i++)
-		{
-			container.erase(container.begin());
-		}
+        for (size_t i = 0; i < amount; i++)
+        {
+            container.erase(container.begin());
+        }
     }
 
     static void bagErase(size_t amount, const value_type& value)
     {
-        BagContainerAdaptor<Container> adapter;
+        BagContainerAdaptor<value_type, Container> adapter;
 
         for (size_t i = 0; i < amount; i++)
         {
             adapter.insert(value);
         }
 
-		for (size_t i = 0; i < amount; i++)
-		{
-			adapter.erase(adapter.begin());
-		}
+        for (size_t i = 0; i < amount; i++)
+        {
+            adapter.erase(adapter.begin());
+        }
     }
 
     static void containerLookup(size_t amount, const value_type& target)
@@ -78,8 +78,8 @@ public:
             }
             else
             {
-                typename Container::value_type temp = {};
-                container.insert(temp);
+                typename Container::value_type temp;
+                container.insert(container.end(), temp);
             }
         }
 
@@ -93,7 +93,7 @@ public:
 
     static void bagLookup(size_t amount, const value_type& target)
     {
-        BagContainerAdaptor<Container> adapter;
+        BagContainerAdaptor<value_type, Container> adapter;
 
         size_t half = amount / 2;
 
@@ -105,7 +105,7 @@ public:
             }
             else
             {
-                typename Container::value_type temp = {};
+                typename Container::value_type temp;
                 adapter.insert(temp);
             }
         }
@@ -163,7 +163,7 @@ public:
             }
             else
             {
-                T temp = {};
+                T temp;
                 list.insert_after(it, temp);
             }
         }
