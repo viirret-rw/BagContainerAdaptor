@@ -102,8 +102,6 @@ public:
     ///       is modified accordingly.
     /// \exception Depending on the underlying container's erase operation, this function might throw exceptions like:
     ///            - For std::vector: std::out_of_range if the `elem` iterator is invalid.
-    /// \note The iterator returned points to the element that follows the erased element in the underlying container. If `elem`
-    ///         points to the assumed last element, the returned iterator is the `end()` iterator of the container.
     /// \par Time complexity:
     /// - O(1) For containers with constant-time erase operation (e.g., std::vector, std::unordered_set, std::unordered_map).
     /// - O(n) For containers with linear-time erase operation (e.g., std::list, std::forward_list) where n is the number of elements.
@@ -118,9 +116,6 @@ public:
     ///       is modified accordingly.
     /// \exception Any exception that may be thrown by the underlying container's `erase` function.
     ///         This typically includes exceptions like those related to invalid iterators or invalid operations on the container.
-    /// \note The iterator returned points to the element that follows the last removed element in the underlying container. If no
-    ///         element with the specified value is found or if all occurrences of the value are removed, the returned iterator is
-    ///         the end() iterator of the container.
     void erase(const value_type& value)
     {
         return eraseImpl(m_container, value);
@@ -128,7 +123,7 @@ public:
 
     /// Swap the contents of two BagContainerAdaptors.
     /// \param other The other bag to be swapped with.
-    /// \post The contents of this BagContainerAdaptor are swapped with the contents of the "other" BagContainerAdaptor.
+    /// \post The contents of this BagContainerAdaptor are swapped with the contents of the `other` BagContainerAdaptor.
     /// \exception noexcept No exceptions are thrown by this operation.
     /// \note The swap operation is performed using the underlying container's swap operation, which is noexcept for most
     ///       standard containers (like std::vector, std::deque, std::list, std::forward_list, std::multiset, and std::unordered_multiset),
@@ -140,7 +135,7 @@ public:
 
     /// Get iterator pointing to the first element in the underlying container.
     /// "First" in reference to the implied iteration order withing the container.
-    /// \return Iterator pointing to the first element in the underlying container.
+    /// \return An iterator pointing to the first element in the underlying container.
     /// \exception noexcept No exceptions are thrown by this operation.
     iterator begin() noexcept
     {
@@ -149,25 +144,25 @@ public:
 
     /// Get iterator pointing to the one past the last element in the underlying container.
     /// "Last" in reference to the implied iteration order withing the container.
-    /// \return Iterator pointing one past the last element in the underlying container.
+    /// \return An iterator pointing one past the last element in the underlying container.
     /// \exception noexcept No exceptions are thrown by this operation.
     iterator end() noexcept
     {
         return m_container.end();
     }
 
-    /// Get constant iterator pointing to the first element in the underlying container.
+    /// Get a constant iterator pointing to the first element in the underlying container.
     /// "First" in reference to the implied iteration order withing the container.
-    /// \return Constant iterator pointing to the first element in the underlying container.
+    /// \return A constant iterator pointing to the first element in the underlying container.
     /// \exception noexcept No exceptions are thrown by this operation.
     const_iterator cbegin() const noexcept
     {
         return m_container.cbegin();
     }
 
-    /// Get constant iterator pointing one past the last element in the underlying container.
+    /// Get a constant iterator pointing one past the last element in the underlying container.
     /// "Last" in reference to the implied iteration order withing the container.
-    /// \return Contant iterator pointing one past the last element in the underlying container.
+    /// \return A contant iterator pointing one past the last element in the underlying container.
     /// \exception noexcept No exceptions are thrown by this operation.
     const_iterator cend() const noexcept
     {
@@ -238,7 +233,7 @@ public:
 private:
     /// \defgroup insertImplementations Insert functionality for various underlying container types.
 
-    /// Insert element to the last position of the underlying container type.
+    /// Insert element to the underlying container type.
     /// \param container The underlying container type where the element is inserted.
     /// \param value The value of the inserted element.
     /// \tparam C The underlying container type used for BagContainerAdaptor.
@@ -253,7 +248,7 @@ private:
         return container.insert(container.end(), value);
     }
 
-    /// Insert element to the last position specialized for std::forward_list.
+    /// Insert element to the underlying container type specialized for std::forward_list.
     /// \param container The underlying container type where the element is inserted.
     /// \param value The value of the inserted element.
     /// \return An iterator that points to the inserted element.
@@ -317,7 +312,7 @@ private:
         }
     }
 
-    /// Erase items from the underlying container that have specified value.
+    /// Erase items from the underlying container that have a specified value.
     /// \param container The underlying container type where the elements are erased.
     /// \param value The value of the removed elements.
     /// \tparam C The underlying container type used for BagContainerAdaptor.
@@ -333,7 +328,7 @@ private:
         container.erase(value);
     }
 
-    /// Erase items from the underlying container specialized for std::forward_list.
+    /// Removes all occurrences of a specified value specialized for std::forward_list.
     /// \param container The underlying container type where the elements are erased.
     /// \param value The value of the removed elements.
     /// \pre The `container` must be a valid instance of std::forward_list.
@@ -360,7 +355,7 @@ private:
         }
     }
 
-    /// Erase items from the underlying container type specialized for std::deque.
+    /// Removes all occurrences of a specified value specialized for std::deque.
     /// \param container The underlying container type where the elements are erased.
     /// \param value The value of the to be removed elements.
     /// \pre The `container` must be a valid instance of std::deque.
@@ -484,7 +479,7 @@ private:
         }
     }
 
-    /// \defgroup frontImplementations Functionality for getting the first element for various container types.
+    /// \defgroup frontImplementations Functionality for getting the implied first element for various container types.
 
     /// Front function implementation for container types that have the front() member function in const context.
     /// \param container The underlying container type where the element is accessed.
@@ -572,7 +567,7 @@ private:
     /// \ingroup backImplementations
     const value_type& backImpl(const std::multiset<value_type>& container) const noexcept
     {
-        return const_cast<value_type&>(*container.rbegin());
+        return *container.crbegin();
     }
 
     /// Back function specialization for std::unordered_multiset.
@@ -583,13 +578,13 @@ private:
     /// \ingroup backImplementations
     const value_type& backImpl(const std::unordered_multiset<value_type>& container) const noexcept
     {
-        auto itLast = container.begin();
+        auto itLast = container.cbegin();
 
-        while (std::next(itLast) != container.end())
+        while (std::next(itLast) != container.cend())
         {
             ++itLast;
         }
-        return const_cast<value_type&>(*itLast);
+        return *itLast;
     }
 
     /// \defgroup findImplementations Functionality for looking up elements in the underlying container
