@@ -241,6 +241,8 @@ private:
     /// \pre The `container` must be a valid instance of the underlying container type.
     /// \post The element `value` is inserted at the last position of the `container`.
     /// \exception std::bad_alloc if memory allocation fails during elements insertion.
+    /// \note Iterators might be invalidated in certain cases or specific container types,
+    /// 	especially if reallocation occurs due to insufficient capacity.
     /// \ingroup insertImplementations
     template <typename C>
     iterator insertImpl(C& container, const value_type& value)
@@ -255,6 +257,7 @@ private:
     /// \pre The `container` must be a valid instance of std::forward_list.
     /// \post The element `value` is inserted at the last position of the `container`.
     /// \exception std::bad_alloc if memory allocation fails during elements insertion.
+    /// \note Inserting elements to the beginning of std::forward_list invalidates iterators.
     /// \ingroup insertImplementations
     iterator insertImpl(std::forward_list<value_type>& container, const value_type& value)
     {
@@ -274,6 +277,7 @@ private:
     /// \exception std::out_of_range If the `pos` iterator is invalid or out of range for the container.
     /// \exception Any exception that may be thrown by the underlying container's `erase` function.
     /// 		   This includes exceptions such as `std::bad_alloc` when memory allocation fails.
+    /// \note This function may invalidate all iterators pointing to elements within the container.
     /// \ingroup eraseImplementations
     template <typename C>
     void eraseImpl(C& container, iterator pos)
@@ -290,6 +294,7 @@ private:
     /// \exception std::out_of_range If the `pos` iterator is invalid or out of range for the container.
     /// \exception Any exception that may be thrown by the underlying container's `erase_after` function.
     ///         This typically includes exceptions like those related to invalid iterators or invalid operations on the container.
+    /// \note This function may invalidate all iterators pointing to elements within the container.
     /// \ingroup eraseImplementations
     void eraseImpl(std::forward_list<value_type>& container, iterator pos)
     {
@@ -312,6 +317,56 @@ private:
         }
     }
 
+    /// Erase item from the underlying container at the implied position of the iterator specialized for std::deque.
+    /// \param container The underlying container type where the element is erased.
+    /// \param pos The position where the element is erased.
+    /// \pre The `container` must be a valid instance of std::deque.
+    /// \pre The `pos` iterator must be a valid iterator within the `container`.
+    /// \post The element after the `pos` iterator is removed from the `container`.
+    /// \exception std::out_of_range If the `pos` iterator is invalid or out of range for the container.
+    /// \exception std::runtime_error If an error occurs during element removal.
+    /// \note This function may invalidate all iterators pointing to elements within the container.
+    /// \ingroup eraseImplementations
+    void eraseImpl(std::deque<value_type>& container, iterator pos)
+    {
+        auto end = container.end();
+        auto it = std::find(begin(), end, *pos);
+
+        if (it != end)
+        {
+            if (it != end - 1)
+            {
+                std::iter_swap(it, end - 1);
+            }
+            container.pop_back();
+        }
+    }
+
+    /// Erase item from the underlying container at the implied position of the iterator specialized for std::vector.
+    /// \param container The underlying container type where the element is erased.
+    /// \param pos The position where the element is erased.
+    /// \pre The `container` must be a valid instance of std::vector.
+    /// \pre The `pos` iterator must be a valid iterator within the `container`.
+    /// \post The element after the `pos` iterator is removed from the `container`.
+    /// \exception std::out_of_range If the `pos` iterator is invalid or out of range for the container.
+    /// \exception std::runtime_error If an error occurs during element removal.
+    /// \note This function may invalidate all iterators pointing to elements within the container.
+    /// \ingroup eraseImplementations
+    void eraseImpl(std::vector<value_type>& container, iterator pos)
+    {
+        auto end = container.end();
+        auto it = std::find(begin(), end, *pos);
+
+        if (it != end)
+        {
+            if (it != end - 1)
+            {
+                std::iter_swap(it, end - 1);
+            }
+            container.pop_back();
+        }
+    }
+
     /// Erase items from the underlying container that have a specified value.
     /// \param container The underlying container type where the elements are erased.
     /// \param value The value of the removed elements.
@@ -321,6 +376,7 @@ private:
     /// \post All elements with the specified value are removed from the `container`.
     /// \exception Any exception that may be thrown by the underlying container's `erase` function.
     ///         This typically includes exceptions like those related to invalid iterators or invalid operations on the container.
+    /// \note This function may invalidate all iterators pointing to elements within the container.
     /// \ingroup eraseImplementations
     template <typename C>
     void eraseImpl(C& container, const value_type& value)
@@ -335,6 +391,7 @@ private:
     /// \post All elements with the specified `value` are removed from the `container`.
     /// \exception Any exception that may be thrown by the underlying container's `erase` function.
     ///         This typically includes exceptions like those related to invalid iterators or invalid operations on the container.
+    /// \note This function may invalidate all iterators pointing to elements within the container.
     /// \ingroup eraseImplementations
     void eraseImpl(std::forward_list<value_type>& container, const value_type& value)
     {
@@ -363,6 +420,7 @@ private:
     /// \post All elements with the specified value are removed from the `container`.
     /// \exception Any exception that may be thrown by the underlying container's `erase` function.
     ///         This typically includes exceptions like those related to invalid iterators or invalid operations on the container.
+    /// \note This function may invalidate all iterators pointing to elements within the container.
     /// \ingroup eraseImplementations
     void eraseImpl(std::deque<value_type>& container, const value_type& value)
     {
@@ -399,6 +457,7 @@ private:
     /// \post All elements with the specified value are removed from the `container`.
     /// \exception Any exception that may be thrown by the underlying container's `erase` function.
     ///         This typically includes exceptions like those related to invalid iterators or invalid operations on the container.
+    /// \note This function may invalidate all iterators pointing to elements within the container.
     /// \ingroup eraseImplementations
     void eraseImpl(std::list<value_type>& container, const value_type& value)
     {
@@ -423,6 +482,7 @@ private:
     /// \post All elements with the specified value are removed from the `container`.
     /// \exception Any exception that may be thrown by the underlying container's `erase` function.
     ///         This typically includes exceptions like those related to invalid iterators or invalid operations on the container.
+    /// \note This function may invalidate all iterators pointing to elements within the container.
     /// \ingroup eraseImplementations
     void eraseImpl(std::multiset<value_type>& container, const value_type& value)
     {
@@ -437,6 +497,7 @@ private:
     /// \post All elements with the specified value are removed from the `container`.
     /// \exception Any exception that may be thrown by the underlying container's `erase` function.
     ///         This typically includes exceptions like those related to invalid iterators or invalid operations on the container.
+    /// \note This function may invalidate all iterators pointing to elements within the container.
     /// \ingroup eraseImplementations
     void eraseImpl(std::unordered_multiset<value_type>& container, const value_type& value)
     {
@@ -451,6 +512,7 @@ private:
     /// \post All elements with the specified value are removed from the `container`.
     /// \exception Any exception that may be thrown by the underlying container's `erase` function.
     ///         This typically includes exceptions like those related to invalid iterators or invalid operations on the container.
+    /// \note This function may invalidate all iterators pointing to elements within the container.
     /// \ingroup eraseImplementations
     void eraseImpl(std::vector<value_type>& container, const value_type& value)
     {
