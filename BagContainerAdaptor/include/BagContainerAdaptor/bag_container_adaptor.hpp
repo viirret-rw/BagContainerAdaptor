@@ -88,6 +88,8 @@ public:
     /// \return An iterator that points to the inserted element.
     /// \post The `value` is inserted to the underlying container, and the `BagContainerAdaptor` object
     ///       is modified accordingly.
+    /// \note Iterators might be invalidated in certain cases or specific container types,
+    /// 	especially if reallocation occurs due to insufficient capacity.
     /// \exception Depending on the underlying container's insertion operations, this function might throw exceptions like `std::bad_alloc`
     ///            if memory allocation fails.
     iterator insert(const value_type& value)
@@ -97,13 +99,15 @@ public:
 
     /// Removes a specified element from the underlying container.
     /// \param elem An iterator pointing to the element to be removed from the underlying container.
-    /// \pre The `elem` iterator must be a valid iterator that points to a position within the underlying container.
+    /// \pre The `elem` iterator must be a valid iterator that points to a position within the underlying container
+    ///     and must not be equal to `container.end()`.
     /// \post The element at the specified `elem` in the underlying container is removed, and the `BagContainerAdaptor` object
     ///       is modified accordingly.
     /// \exception Depending on the underlying container's erase operation, this function might throw exceptions like:
     ///            - For std::vector: std::out_of_range if the `elem` iterator is invalid.
+    /// \note This function may invalidate all iterators pointing to elements within the container.
     /// \par Time complexity:
-    /// - O(1) For containers with constant-time erase operation (e.g., std::vector, std::unordered_set, std::unordered_map).
+    /// - O(1) For containers with constant-time erase operation (e.g., std::vector, std::deque).
     /// - O(n) For containers with linear-time erase operation (e.g., std::list, std::forward_list) where n is the number of elements.
     void erase(iterator elem)
     {
@@ -114,6 +118,7 @@ public:
     /// \param value The value of the elements that are removed.
     /// \post All elements equal to the specified value in the underlying container are removed, and the BagContainerAdaptor object
     ///       is modified accordingly.
+    /// \note This function may invalidate all iterators pointing to elements within the container.
     /// \exception Any exception that may be thrown by the underlying container's `erase` function.
     ///         This typically includes exceptions like those related to invalid iterators or invalid operations on the container.
     void erase(const value_type& value)
@@ -275,8 +280,6 @@ private:
     /// \pre The `pos` iterator must be a valid iterator within the `container`.
     /// \post The element at the position specified by `pos` is removed from the `container`.
     /// \exception std::out_of_range If the `pos` iterator is invalid or out of range for the container.
-    /// \exception Any exception that may be thrown by the underlying container's `erase` function.
-    /// 		   This includes exceptions such as `std::bad_alloc` when memory allocation fails.
     /// \note This function may invalidate all iterators pointing to elements within the container.
     /// \ingroup eraseImplementations
     template <typename C>
@@ -322,24 +325,18 @@ private:
     /// \param pos The position where the element is erased.
     /// \pre The `container` must be a valid instance of std::deque.
     /// \pre The `pos` iterator must be a valid iterator within the `container`.
-    /// \post The element after the `pos` iterator is removed from the `container`.
-    /// \exception std::out_of_range If the `pos` iterator is invalid or out of range for the container.
-    /// \exception std::runtime_error If an error occurs during element removal.
+    /// \pre The `pos` iterator must not be equal to `container.end()`; erasing at `end()` is undefined behavior.
+    /// \post The element at the position of the `pos` iterator is removed from the `container`.
+    /// \exception Throws std::runtime_error if the operation of element removal encounters an exceptional condition.
     /// \note This function may invalidate all iterators pointing to elements within the container.
     /// \ingroup eraseImplementations
     void eraseImpl(std::deque<value_type>& container, iterator pos)
     {
-        auto end = container.end();
-        auto it = std::find(begin(), end, *pos);
-
-        if (it != end)
+        if (pos != container.end() - 1)
         {
-            if (it != end - 1)
-            {
-                std::iter_swap(it, end - 1);
-            }
-            container.pop_back();
+            *pos = std::move(container.back());
         }
+        container.pop_back();
     }
 
     /// Erase item from the underlying container at the implied position of the iterator specialized for std::vector.
@@ -347,24 +344,18 @@ private:
     /// \param pos The position where the element is erased.
     /// \pre The `container` must be a valid instance of std::vector.
     /// \pre The `pos` iterator must be a valid iterator within the `container`.
-    /// \post The element after the `pos` iterator is removed from the `container`.
-    /// \exception std::out_of_range If the `pos` iterator is invalid or out of range for the container.
-    /// \exception std::runtime_error If an error occurs during element removal.
+    /// \pre The `pos` iterator must not be equal to `container.end()`; erasing at `end()` is undefined behavior.
+    /// \post The element at the position of the `pos` iterator is removed from the `container`.
+    /// \exception Throws std::runtime_error if the operation of element removal encounters an exceptional condition.
     /// \note This function may invalidate all iterators pointing to elements within the container.
     /// \ingroup eraseImplementations
     void eraseImpl(std::vector<value_type>& container, iterator pos)
     {
-        auto end = container.end();
-        auto it = std::find(begin(), end, *pos);
-
-        if (it != end)
+        if (pos != container.end() - 1)
         {
-            if (it != end - 1)
-            {
-                std::iter_swap(it, end - 1);
-            }
-            container.pop_back();
+            *pos = std::move(container.back());
         }
+        container.pop_back();
     }
 
     /// Erase items from the underlying container that have a specified value.
